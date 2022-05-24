@@ -14,7 +14,9 @@ $(function(){
 	});//이름 체크 end
 	
 	//학번 체크
-	$("")
+	$("#mcode").keyup(function(){
+		let mcocde = $("#mcode").val();
+	})
 	
 	
 });
