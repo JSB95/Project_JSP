@@ -20,11 +20,14 @@
 		
 		for (Lecture lecture : lecturelist){
 			college.add(lecture.getLcollege());
-			department.add(lecture.getLdepartment());
+			if (lecture.getLdepartment() != null){
+				department.add(lecture.getLdepartment());
+			}
+			
 		}
 	%>
 	
-	<select>
+	<select id="collegebox">
 	
 		<% for (String c : college) { %>
 			
