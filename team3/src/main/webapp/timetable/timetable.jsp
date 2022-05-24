@@ -16,18 +16,14 @@
 	<%
 		ArrayList<Lecture> lecturelist = LectureDao.getLectureDao().getlecturelist();
 		Set<String> college = new TreeSet<String>();
-		Set<String> department = new TreeSet<String>();
+		
 		
 		for (Lecture lecture : lecturelist){
 			college.add(lecture.getLcollege());
-			if (lecture.getLdepartment() != null){
-				department.add(lecture.getLdepartment());
-			}
-			
 		}
 	%>
 	
-	<select id="collegebox">
+	<select id="collegebox" onchange="selectchange()">
 	
 		<% for (String c : college) { %>
 			
@@ -37,15 +33,15 @@
 	
 	</select>
 	
-	<select>
+	<select id="departmentbox">
 	
-		<% for (String d : department) { %>
-			
-			<option><%=d %></option>
-			
-		<% } %>
+		
 	
 	</select>
+	
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	
+	<script src="/team3/js/timetable.js" type="text/javascript"></script>
 
 </body>
 </html>
