@@ -61,4 +61,28 @@ public class LectureDao extends Dao{
 		return null;
 		
 	}
+	
+	public ArrayList<Lecture> getlectureList_depart(String department){
+		ArrayList<Lecture> list = new ArrayList<Lecture>();
+		
+		String sql = "SELECT * FROM lecture WHERE ldepartment = '" + department + "'";
+		
+		if (department.equals("")) {
+			sql = "SELECT * FROM lecture WHERE ldivision = 1";
+		}
+		
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				Lecture lecture = new Lecture(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), rs.getString(8));
+				list.add(lecture);
+			}
+			System.out.println("학과 : " + department);
+			return list;
+		} catch (Exception e) {
+			System.out.println("getlectureList_depart ERROR : " + e);
+		}
+		return null;
+	}
 }

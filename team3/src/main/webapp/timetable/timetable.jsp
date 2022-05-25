@@ -10,34 +10,48 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	
 </head>
 <body>
 
-	<%
-		ArrayList<Lecture> lecturelist = LectureDao.getLectureDao().getlecturelist();
-		Set<String> college = new TreeSet<String>();
+	<div class="container">
 		
+		<div class="row">
 		
-		for (Lecture lecture : lecturelist){
-			college.add(lecture.getLcollege());
-		}
-	%>
-	
-	<select id="collegebox" onchange="selectchange()">
-	
-		<% for (String c : college) { %>
+			<div class="col-md-6 selectbox">
 			
-			<option><%=c %></option>
+				<select id="collegebox" onchange="collegechange()">
+				
+				</select>
+				
+				<select id="departmentbox" onchange="departmentchange()">
+				
+				</select>
+				
+				<div id="tablechoice">
+					
+				</div>
+	
+			</div>
 			
-		<% } %>
-	
-	</select>
-	
-	<select id="departmentbox">
-	
+			<div class="col-md-6 tablelist">
+			
+				<table id="lecturelist" class="table">
 		
+				</table>
+				
+			</div>		
+		
+		</div>
 	
-	</select>
+	</div>
+
+
+	
+
+	
 	
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	
