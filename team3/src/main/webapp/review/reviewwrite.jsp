@@ -49,7 +49,6 @@
 				</table>
 			</div><!-- 강의리스트 -->
 			<div id="tableviewbox">
-				
 			</div><!-- 강의평 -->
 			<button type="submit">완료</button>
 		</div>
