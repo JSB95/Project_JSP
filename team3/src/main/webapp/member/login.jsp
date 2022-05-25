@@ -11,16 +11,26 @@
 
 <body>
 	<div class="container">
-		<form action="/team3/member/login" method="post">
-			<div>
-				아이디 <input type="text" id="mid" name="mid">
+		<h3 class="text-center my-4">로그인</h3>
+		<div class="container col-md-6 offset-3">
+			<form action="/team3/member/login" method="post">
+				<div> 
+					<input class="form-control my-2" type="text" id="mid" name="mid" placeholder="아이디">
+				</div>
+				<div>
+					<input class="form-control my-2" type="password" id="mpassword" name="mpassword" placeholder="비밀번호">
+				</div>
+				<input class="form-control btn btn-dark my-4" type="submit" value="로그인하기">
+			</form>
+			<div class="text-center my-2">
+				<a href="#">아이디찾기</a>
+				<a href="#">비밀번호찾기</a>
+				<a href="/team3/member/signup.jsp">회원가입</a>
 			</div>
-			<div>
-				비밀번호 <input type="password" id="mpassword" name="mpassword">
-			</div>
-			<input type="submit" value="로그인">
-		</form>
+		</div>
 	</div>
+	
+	
 	<!-- jquery cdn -->
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="../js/signup.js" type="text/javascript"></script>

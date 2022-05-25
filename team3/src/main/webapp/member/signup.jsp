@@ -44,9 +44,9 @@
 						</div>
 						<div class="col">
 							<select class=" form-control" id="emailselect" name="emailselect">
-								<option value="" style="height: 30px"> 직접 입력 </option>
-								<option value="naver.com" style="height: 30px">naver.com</option>
-								<option value="gmail.com" style="height: 30px">gmail.com</option>
+								<option value=""> 직접 입력 </option>
+								<option value="naver.com">naver.com</option>
+								<option value="gmail.com">gmail.com</option>
 							</select>
 						</div>
 					</div>
@@ -67,8 +67,12 @@
 				</div>
 				</div>
 				<div class="row my-4">
-					<button class="col-md-5 btn btn-outline-secondary " onclick="" type="button">로그인하기</button>
-					<button class="col-md-5 offset-1 btn btn-dark " onclick="signup()" type="button">가입하기</button>
+					<div class="col-md-4">
+						<a href="/team3/member/login.jsp"><button class="form-control btn btn-outline-secondary" type="button">로그인하기</button></a>
+					</div>
+					<div class="col-md-8">
+						<button class="form-control btn btn-dark " onclick="signup()" type="button">가입하기</button>
+					</div>
 				</div>
 			</form>
 		</div>
