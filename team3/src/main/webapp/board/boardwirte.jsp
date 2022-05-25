@@ -10,18 +10,22 @@
 
 	<div class="board_wrap">
 	<h1>게시판 작성</h1>
-	<form  id ="form_board" action="" method="post" >
+	<form  id ="form_board" action="/team3/board/boardwrite" method="post" enctype="multipart/form-data" >
 		<div>
-			<input type="text" placeholder="제목"> <br>
-			<textarea style="resize: none;"></textarea> <br>
-			<input type="file"> <br>
-			<button type="button">등록</button>
+			<input id="btitle" name="btitle" type="text" placeholder="제목"> <br>
+			<textarea id="bcontent" name="bcontent" style="resize: none;"></textarea> <br>
+			<input id ="bimg" name="bimg" type="file"> <br>
+			
+			<input id="anonymous" type="radio" value="아이디" name="anonymous" checked="checked">아이디<br>
+			<input id="anonymous" type="radio" value="익명" name="anonymous">익명<br>
+			<button id="bwrite" type="button" onclick="writecheck()">등록</button>
 		</div>
 		
 	</form>
 	
 	
 	</div>
-
+<script type="text/javascript" src="../js/board/board.js"></script>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 </body>
 </html>
