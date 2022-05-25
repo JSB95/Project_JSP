@@ -19,7 +19,7 @@ import dto.Board;
 /**
  * Servlet implementation class boardwrite
  */
-@WebServlet("/boardwrite")
+@WebServlet("/board/boardwrite")
 public class boardwrite extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

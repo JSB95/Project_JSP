@@ -10,7 +10,7 @@
 
 	<div class="board_wrap">
 	<h1>게시판 작성</h1>
-	<form  id ="form_board" action="../boardwrite" method="post" enctype="multipart/form-data" >
+	<form  id ="form_board" action="/team3/board/boardwrite" method="post" enctype="multipart/form-data" >
 		<div>
 			<input id="btitle" name="btitle" type="text" placeholder="제목"> <br>
 			<textarea id="bcontent" name="bcontent" style="resize: none;"></textarea> <br>
