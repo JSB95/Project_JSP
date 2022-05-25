@@ -4,3 +4,7 @@
 img{
 	width: 20px;
 }
+
+.tableviewbox{
+	border: 2px solid black;
+}
