@@ -68,7 +68,7 @@
 				</div>
 				<div class="row my-4">
 					<button class="col-md-5 btn btn-outline-secondary " onclick="" type="button">로그인하기</button>
-					<button class="col-md-5 btn btn-dark " onclick="signup()" type="button">가입하기</button>
+					<button class="col-md-5 offset-1 btn btn-dark " onclick="signup()" type="button">가입하기</button>
 				</div>
 			</form>
 		</div>
