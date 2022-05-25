@@ -1,25 +1,25 @@
 package dto;
 
-public class member {
+public class Member {
 	private int mno;
 	private String mname;
 	private String mcode;
 	private String mphone;
 	private String memail;
 	private String mid;
-	private String mapssword;
+	private String mpassword;
 	
 	@Override
 	public String toString() {
 		return "member [mno=" + mno + ", mname=" + mname + ", mcode=" + mcode + ", mphone=" + mphone + ", memail="
-				+ memail + ", mid=" + mid + ", mapssword=" + mapssword + "]";
+				+ memail + ", mid=" + mid + ", mpassword=" + mpassword + "]";
 	}
 	
-	public member() {
+	public Member() {
 		super();
 	}
 
-	public member(int mno, String mname, String mcode, String mphone, String memail, String mid, String mapssword) {
+	public Member(int mno, String mname, String mcode, String mphone, String memail, String mid, String mpassword) {
 		super();
 		this.mno = mno;
 		this.mname = mname;
@@ -27,7 +27,7 @@ public class member {
 		this.mphone = mphone;
 		this.memail = memail;
 		this.mid = mid;
-		this.mapssword = mapssword;
+		this.mpassword = mpassword;
 	}
 	public int getMno() {
 		return mno;
@@ -65,11 +65,11 @@ public class member {
 	public void setMid(String mid) {
 		this.mid = mid;
 	}
-	public String getMapssword() {
-		return mapssword;
+	public String getMpassword() {
+		return mpassword;
 	}
-	public void setMapssword(String mapssword) {
-		this.mapssword = mapssword;
+	public void setMpassword(String mpassword) {
+		this.mpassword = mpassword;
 	}
 	
 	

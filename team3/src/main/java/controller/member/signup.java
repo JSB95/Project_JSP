@@ -6,21 +6,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.MemberDao;
+import dto.Member;
 
 /**
- * Servlet implementation class login
+ * Servlet implementation class signup
  */
-@WebServlet("/member/login")
-public class login extends HttpServlet {
+@WebServlet("/signup")
+public class signup extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public login() {
+    public signup() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,20 +37,30 @@ public class login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		request.setCharacterEncoding("UTF-8");
+		String mname = request.getParameter("mname");
+		String mcode = request.getParameter("mcode");
+		String mphone = request.getParameter("mphone");
+		String memail = request.getParameter("memail");
+		String memailaddress = request.getParameter("memailaddress");
+			String email = memail + "@" + memailaddress;
 		String mid = request.getParameter("mid");
 		String mpassword = request.getParameter("mpassword");
-		System.out.println(mid);
-		int result = MemberDao.getMemberDao().login(mid, mpassword);
-		if(result == 1) {
-			HttpSession session = request.getSession();
-			session.setAttribute("login", mid);
-			response.sendRedirect("/team3/main.jsp");
-		}else if(result == 2) {
-			response.sendRedirect("/team3/member/login.jsp?result=2");
-		}else if(result == 3) {
+		
+		Member member = new Member(0, mname, mcode, mphone, memail, mid, mpassword);
+		
+		System.out.println(member.toString());
+		
+		boolean result = MemberDao.getMemberDao().signup(member);
+		
+		System.out.println(result);
+		
+		if (result) {
+			response.sendRedirect("/team3/member/login.jsp");
+		}else {
 			System.out.println("오류");
+			response.sendRedirect("/team3/member/login.jsp");
 		}
 	}
 

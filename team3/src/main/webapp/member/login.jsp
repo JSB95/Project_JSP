@@ -11,12 +11,12 @@
 
 <body>
 	<div class="container">
-		<form action="../login" method="post">
+		<form action="/team3/member/login" method="post">
 			<div>
-				아이디 <input type="text">
+				아이디 <input type="text" id="mid" name="mid">
 			</div>
 			<div>
-				비밀번호 <input type="password">
+				비밀번호 <input type="password" id="mpassword" name="mpassword">
 			</div>
 			<input type="submit" value="로그인">
 		</form>

@@ -6,21 +6,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.MemberDao;
 
 /**
- * Servlet implementation class login
+ * Servlet implementation class codecheck
  */
-@WebServlet("/member/login")
-public class login extends HttpServlet {
+@WebServlet("/member/codecheck")
+public class codecheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public login() {
+    public codecheck() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,29 +28,24 @@ public class login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String mcode = request.getParameter("mcode");
+		
+		boolean result = MemberDao.getMemberDao().codecheck(mcode);
+		if (result) {
+			response.getWriter().print( 1 );
+		}else {
+			response.getWriter().print( 2 );
+		}
+		
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		request.setCharacterEncoding("UTF-8");
-		String mid = request.getParameter("mid");
-		String mpassword = request.getParameter("mpassword");
-		System.out.println(mid);
-		int result = MemberDao.getMemberDao().login(mid, mpassword);
-		if(result == 1) {
-			HttpSession session = request.getSession();
-			session.setAttribute("login", mid);
-			response.sendRedirect("/team3/main.jsp");
-		}else if(result == 2) {
-			response.sendRedirect("/team3/member/login.jsp?result=2");
-		}else if(result == 3) {
-			System.out.println("오류");
-		}
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
