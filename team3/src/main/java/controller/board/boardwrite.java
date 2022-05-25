@@ -73,18 +73,18 @@ public class boardwrite extends HttpServlet {
 			boolean result = BoardDao.getBoardDao().boardwrite(board);
 			if(result) {
 				System.out.println("익명넣기성공");
-				response.sendRedirect("");
+				response.sendRedirect("/team3/board/boardlist.jsp?key=&keyword=");
 			} else { // 디비처리 실패시 행동
-				
+				response.sendRedirect("/team3/board/boardwrite.jsp");
 			}
 		} else { // 라디오버튼 익명이아니면
 			Board board = new Board(0, btitle, bcontent, 0, bimg, 0, 0, "mid넣을거", null);
 			boolean result = BoardDao.getBoardDao().boardwrite(board);
 			if(result) {
 				System.out.println("mid넣을거");
-				response.sendRedirect("");
+				response.sendRedirect("/team3/board/boardlist.jsp?key=&keyword=");
 			} else { // 디비처리 실패시 행동
-				
+				response.sendRedirect("/team3/board/boardwrite.jsp");
 			}
 		}
 		
