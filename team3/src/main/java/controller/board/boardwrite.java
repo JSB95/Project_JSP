@@ -82,7 +82,7 @@ public class boardwrite extends HttpServlet {
 			boolean result = BoardDao.getBoardDao().boardwrite(board);
 			if(result) {
 				System.out.println("mid넣을거");
-				response.sendRedirect("/team3/board/boardlist.jsp?key=&keyword=");
+				response.sendRedirect("/team3/board/boardlist.jsp");
 			} else { // 디비처리 실패시 행동
 				response.sendRedirect("/team3/board/boardwrite.jsp");
 			}
