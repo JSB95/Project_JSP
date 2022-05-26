@@ -22,8 +22,7 @@ $( function(){
 	$("#mcode").keyup(function(){
 		
 		let mcode = $("#mcode").val(); 
-		let codej = /^20[0-9]{8}$/;	//숫자로 10자 입학년도4+학과번호3+학생번호3
-		
+		let codej = /^20+[0-9]{8}$/;	//숫자로 10자 
 		if(codej.test(mcode)){
 			$.ajax({
 	            url : "/team3/member/codecheck" ,
@@ -61,61 +60,31 @@ $( function(){
 	
 	//이메일 체크	
 	$("#memail").keyup(function(){
+		let memail = $("#memail").val();
+		let emailj = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
 		
-		let memail = $("#memail").val(); 
-		let memailaddress = $("#memailaddress").val();
-		
-		if( memailaddress == "" ){ 
-			$("#emailcheck").html("이메일을 적어주세요");  
-			pass[3] = false;
-		}else{
-			let emailj = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{3,20})$/	//한글제외 3~20자리
-		
-			if(emailj.test(memail)){
-			
-			//이메일 중복체크
-				let email = memail+"@"+memailaddress;
-				$.ajax({
-						url : "../emailcheck",
-						data : { "email" : email } , 
-						success : function( result ){
-							if( result == 1 ){
-								$("#emailcheck").html("사용중인 이메일 입니다."); 
-								pass[3] = false;
-							}else{
-								$("#emailcheck").html("사용가능한 이메일 입니다.2");
-								 pass[3] = true;
-							}
-						}
-					}); // ajax end 
-			}else {
-				$("#emailcheck").html("다시 확인해주세요");
-			}
-		}
-	});	//이메일체크 end
-	
-	//이메일주소 목록상자 선택시
-	$("#emailselect").change(function(){
-		let emailselect = $("#emailselect").val();
-		if(emailselect == ""){
-			$("#memailaddress").val(" ");
-			$("#memailaddress").attr("readonly" , false);
-		}else {
-			$("#memailaddress").val(emailselect);
-			$("#memailaddress").attr("readonly" , true);
-			$("#emailcheck").html("사용가능한 이메일 입니다.");
+		if (emailj.test(memail)){
+			$("#emailcheck").html("사용가능한 이메일입니다.");
 			pass[3] = true;
+		}else{
+			$("#emailcheck").html("올바르지 않은 형식입니다.");
+			pass[3] = false;
 		}
+		
 	});
 	
 	//아이디 체크
 	$("#mid").keyup(function(){ 
 		
-		let mid = document.getElementById("mid").value;
-		let idcheck = document.getElementById("idcheck");
-		
+		let mid = $("#mid").val(); 
 		let idj = /^[a-zA-Z0-9]{5,15}$/; //영문 숫자 5~15글자
+		
 		if(idj.test(mid)){ 
+			
+			$("#idcheck").html("사용가능한 아이디입니다.");
+			pass[4] = true;
+			
+			/*
 			$.ajax({
 	            url : "../idcheck" ,
 	            data : { "mid" : mid  } ,
@@ -129,8 +98,9 @@ $( function(){
 	          	 	}
             	}
          	});
+         	*/
 		}else{
-			idcheck.innerHTML="영문 , 숫자 포함 5~15길이로 입력해주세요.";
+			$("#idcheck").html("영문 , 숫자 포함 5~15길이로 입력해주세요.");
 			pass[4] = false;
 		}
 	}); //아이디 체크 end
@@ -177,12 +147,13 @@ $( function(){
 	 function signup(){
 		let check = true;
 		for(let i = 0; i <pass.length; i++){
+			console.log(pass[i]);
 			if(pass[i] == false) {
 				check = false;
 			}
 		}
 		if(check){
-			document.getElementById("signupform").submit();
+			$("#signupform").submit();
 		}else {
 			alert("정보를 모두 입력해주세요.");
 		}
@@ -191,5 +162,3 @@ $( function(){
 function passwordchange () {
 	$("#passwordbox").css("display","block");
 }
-
-

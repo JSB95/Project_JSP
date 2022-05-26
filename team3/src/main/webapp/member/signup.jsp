@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 	<!-- 부트스트랩 css -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" >
+	<!-- member css -->
+	<link href="/team3/css/member/member.css" rel="stylesheet">
 </head>
 
 <body>
@@ -16,54 +18,37 @@
 			<form class="signupform" id="signupform" action="../signup" method="post">
 				
 				<div>
-					<p>이름</p>
+					<span>이름</span>
 					<input class="form-control mb-2" type="text" id="mname" name="mname" placeholder="이름을 입력해주세요.">
-					<span id="namecheck"></span>
+					<div id="namecheck" class="check">한글로 입력해주세요</div>
 				</div>
 				<div>
-					<p>학번</p>
+					<span>학번</span>
 					<input class="form-control mb-2" type="text" id="mcode" name="mcode" placeholder="학번을 입력해주세요">
-					<span id="codecheck"></span>
+					<div id="codecheck" class="check">입학년도 4자리 + 학과번호 3자리+ 학생번호 3자리 숫자</div>
 				</div>
 				<div>
-					<p>전화번호</p>
+					<span>전화번호</span>
 					<input class="form-control mb-2" type="text" id="mphone" name="mphone" placeholder="전화번호 11자리를 입력해주세요.(- 제외)">
-					<span id="phonecheck"></span>
+					<div id="phonecheck" class="check"> 하이픈(-)을 제외한 숫자만 입력해주세요</div>
 				</div>
 				<div >
-					<p>이메일</p>
-					<div id="emailform" class="row  mb-2">
-						<div class="col-md-5">
-							<input class="form-control" type="text" id="memailtext" name="memailtext" placeholder="이메일을 입력해주세요.">
-						</div>
-						<div class="col-md-1">
-							<span>@</span>
-						</div>
-						<div class="col">
-							<input class="form-control" type="text" id="memailaddress" name="memailaddress">
-						</div>
-						<div class="col">
-							<select class=" form-control" id="emailselect" name="emailselect">
-								<option value=""> 직접 입력 </option>
-								<option value="naver.com">naver.com</option>
-								<option value="gmail.com">gmail.com</option>
-							</select>
-						</div>
-					</div>
-					<span id="emailcheck"></span>
+					<span>이메일</span>
+					<input class="form-control mb-2" type="text" id="memail" name="memail" placeholder="이메일을 입력해주세요.">
+					<div id="emailcheck" class="check">이메일 형식을 지켜주세요</div>
 					<div>
-					<p>아이디</p>
+					<span>아이디</span>
 					<input class="form-control mb-2" type="text" id="mid" name="mid" placeholder="아이디를 입력해주세요.">
-					<span id="idcheck"></span>
+					<div id="idcheck" class="check">영어, 숫자로 5~15자리 입력가능합니다</div>
 				</div>
 				<div>
-					<p>비밀번호</p>
+					<span>비밀번호</span>
 					<input class="form-control mb-2" type="password" id="mpassword" name="mpassword" placeholder="비밀번호를 입력해주세요.">
 				</div>
 				<div>
-					<p>비밀번호 확인</p>
+					<span>비밀번호 확인</span>
 					<input class="form-control mb-2" type="password" id="mpasswordcheck" placeholder="비밀번호를 입력해주세요.">
-					<span id="passwordcheck"></span>
+					<div id="passwordcheck" class="check">영어, 숫자로 5~15자리 입력가능합니다</div>
 				</div>
 				</div>
 				<div class="row my-4">
