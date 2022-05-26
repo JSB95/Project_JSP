@@ -38,7 +38,7 @@
 						<option value="bnickname">작성자</option>
 					</select>
 					<input type="text" class="serach_input" id="keyword"> <!-- 키워드입력창 -->
-					<input type="button" class="search_button" value="검색">
+					<input type="button" class="search_button" value="검색" onclick="getsearchlist()">
 				</div>
 			</div>
 			

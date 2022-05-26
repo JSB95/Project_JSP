@@ -80,7 +80,7 @@ public class BoardDao extends Dao {
 //		return null;
 //	}
 	
-	// 2. 모든 게시물 출력
+	// 2. 모든 게시물 출력 <리스트버전 자바에서 바로 뿌릴거면사용 >
 	public ArrayList<Board> getboardlist() {
 		ArrayList<Board> boardlist = new ArrayList<Board>();
 		String sql = "select * from board";
@@ -103,15 +103,24 @@ public class BoardDao extends Dao {
 		return null;
 	}
 	
-	public JSONArray getboardlist2() {
+	// 2. 모든게시물출력 json버전 <ajax로 뿌릴때 사용>
+	public JSONArray getboardlist2(String key,String keyword) {
 		JSONArray jsonArray = new JSONArray();
-		String sql = "select * from board";
+		String sql = null;
+		System.out.println(key);
+		System.out.println(keyword);
+		if(key==null  && keyword==null)
+		{sql = "select * from board";}
+		else {
+			sql = "select * from board where "+key+" like '%"+keyword+"%'";
+		}
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				JSONObject object = new JSONObject();
 				object.put("btitle",rs.getString(2) );
+				object.put("bcontent",rs.getString(3));
 				object.put("bnickname",rs.getString(8) );
 				object.put("bdate",rs.getString(9) );
 				jsonArray.put(object);

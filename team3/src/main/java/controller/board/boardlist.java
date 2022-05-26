@@ -31,9 +31,13 @@ public class boardlist extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("통신");
+		System.out.println("리스트json통신");
+		String key = request.getParameter("key");
+		String keyword = request.getParameter("keyword");
+		System.out.println(key);
+		System.out.println(keyword);
 		JSONArray jsonArray =
-				BoardDao.getBoardDao().getboardlist2();
+				BoardDao.getBoardDao().getboardlist2(key,keyword);
 		
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");
