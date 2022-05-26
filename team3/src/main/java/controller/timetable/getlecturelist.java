@@ -50,19 +50,20 @@ public class getlecturelist extends HttpServlet {
 			String[] l = lecture.getLtime().split("_");
 			String day = "";
 			String time = "";
-			System.out.print("첫번째 스플릿 : " + Arrays.toString(l));
-			System.out.println();
+			System.out.print(Arrays.toString(l) + " -> ");
+
 			for (int i = 0; i < l.length; i++) {
 				day += l[i].split("/")[0];
 				time += l[i].split("/")[1];
 			}
 			
-			System.out.println("요일 : " + day);
-			System.out.println("시간 : " + time);
+
 			
 			for (int i = 0; i < l.length; i++) {
-				if (l[i].split("/")[0].equals(l[i+1].split("/")[0])) {
-					l[i] = l[i].split("/")[0];
+				for (int j = 0; j < i; j++) {
+					if (l[i].split("/")[0].equals(l[j].split("/")[0])){
+						l[i] = l[i].split("/")[0];
+					}
 				}
 			}
 			
