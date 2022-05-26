@@ -18,22 +18,39 @@
 </head>
 <body>
 	
+	<!-- 검색기능 -->
 	<%
-		ArrayList<Lecture> lecturelist = ReviewDao.getreviewDao().getlecturelist();
+		request.setCharacterEncoding("UTF-8");
+		String keyword = request.getParameter("keyword");
+		
+		if( keyword !=null){
+			session.setAttribute("keyword", keyword);
+		}else{
+			keyword = (String)session.getAttribute("keyword");
+		}
+		
+		%>
+	
+	<%
+		ArrayList<Lecture> lecturelist = ReviewDao.getreviewDao().getlecturelist(keyword);
+	
 		String 이수구분 = "전공";
 	%>
 	
 	
 	<div class="container">
 		<div class="row">
-			<div>
 				<div>
-					<input type="text" id="keyword" placeholder="강의명을 입력해주세요"><button type="button">검색</button>
-				</div>
-			</div><!-- 강의검색 -->
+					<form action="reviewwrite.jsp">
+					<div>
+						<input type="text" name="keyword" placeholder="강의명을 입력해주세요">
+						<input type="submit" value="검색">
+					</div>
+					</form>
+				</div><!-- 강의검색 -->
 			<div style="overflow:scroll; height: 200px; margin: 0 auto;">
 				<table class="table table-hover text-center">
-				<% for (int i=0; i<6;i++){
+				<% for (int i=0; i<lecturelist.size();i++){
 					int ldivision = lecturelist.get(i).getLdivision();
 					if(ldivision==0){
 						이수구분="전공";
@@ -50,7 +67,7 @@
 			</div><!-- 강의리스트 -->
 			<div id="tableviewbox">
 			</div><!-- 강의평 -->
-			<button type="submit">완료</button>
+			
 		</div>
 	</div>
 	

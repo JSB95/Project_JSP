@@ -9,7 +9,7 @@ function lecturelist(lno){
 		success : function( json ){
 			jsonarray = json;	/* 응답받은 데이터를 전역변수에 넣어주기 */
 			tableview();
-			
+			$("#lno").val(lno);
 		}
 	});
 	
@@ -18,16 +18,20 @@ function lecturelist(lno){
 function tableview(){
 			let tr = '';
 			for( let i = 0 ; i<jsonarray.length; i++ ){
-				
+				let division = "";
+				if(jsonarray[i]["ldivision"]==0){
+					division="전공";}
+				else{division="교양"}
 				
 				tr += 
 				'<div class="tableviewbox">'+
 				'<div class="row">'+
+				'<input type="hidden" id="lno">'+
 				'	<div class="col-md-4" id="lecture">'+
 				'		<span>'+jsonarray[i]["lname"]+'</span>'+
 				'		<span>'+jsonarray[i]["lprofessor"]+'</span><br>'+
 				'		<span>'+jsonarray[i]["lcredit"]+'</span>'+
-				'		<span>'+jsonarray[i]["ldivision"]+'</span>'+
+				'		<span>'+division+'</span>'+
 				'		<span>'+jsonarray[i]["lcollege"]+'</span><br><br>'+
 				'	</div>'+
 				'	<div class="col-md-8">'+
@@ -61,19 +65,20 @@ function tableview(){
 				'		총평<br>'+
 				'<input type="hidden" id="star">'+
 				'	<span id="starlist">'+
-				'		<img alt="" src="img/별.png">'+
-				'		<img alt="" src="img/별.png">'+
-				'		<img alt="" src="img/별.png">'+
-				'		<img alt="" src="img/별.png">'+
-				'		<img alt="" src="img/별.png"><br>'+
+				'		<img alt="" src="img/별.png" onclick="star1()">'+
+				'		<img alt="" src="img/별.png" onclick="star2()">'+
+				'		<img alt="" src="img/별.png" onclick="star3()">'+
+				'		<img alt="" src="img/별.png" onclick="star4()">'+
+				'		<img alt="" src="img/별.png" onclick="star5()"><br>'+
 					'</span>'+
 				'		<br>'+
 				'	</div>'+
 				'	<div class="col-md-8">'+
-				'		<textarea rows="10" cols="80"></textarea><br>'+
+				'		<textarea rows="10" cols="80" id="text"></textarea><br>'+
 				'	</div>'+
-			'	</div>'
-			'</div>'
+			'	</div>'+
+			'</div>'+
+			'<button type="button" onclick="reviewsubmit()">완료</button>'
 			}
 			
 			$("#tableviewbox").html( tr );
@@ -199,4 +204,111 @@ function team3(){
 		'</span>'
 	 );
 }
+
+
+/////////////////별//////////////////////////
+
+function star1(){
+	$("#star").val(1);
+	$("#starlist").html( 
+		'	<span id="starlist">'+
+			'		<img alt="" src="img/노란별.png" onclick="star1()">'+
+			'		<img alt="" src="img/별.png" onclick="star2()">'+
+			'		<img alt="" src="img/별.png" onclick="star3()">'+
+			'		<img alt="" src="img/별.png" onclick="star4()">'+
+			'		<img alt="" src="img/별.png" onclick="star5()"><br>'+
+		'</span>'
+	 );
+}
+function star1(){
+	$("#star").val(1);
+	$("#starlist").html( 
+		'	<span id="starlist">'+
+			'		<img alt="" src="img/노란별.png" onclick="star1()">'+
+			'		<img alt="" src="img/별.png" onclick="star2()">'+
+			'		<img alt="" src="img/별.png" onclick="star3()">'+
+			'		<img alt="" src="img/별.png" onclick="star4()">'+
+			'		<img alt="" src="img/별.png" onclick="star5()"><br>'+
+		'</span>'
+	 );
+}
+function star2(){
+	$("#star").val(2);
+	$("#starlist").html( 
+		'	<span id="starlist">'+
+			'		<img alt="" src="img/노란별.png" onclick="star1()">'+
+			'		<img alt="" src="img/노란별.png" onclick="star2()">'+
+			'		<img alt="" src="img/별.png" onclick="star3()">'+
+			'		<img alt="" src="img/별.png" onclick="star4()">'+
+			'		<img alt="" src="img/별.png" onclick="star5()"><br>'+
+		'</span>'
+	 );
+}
+function star3(){
+	$("#star").val(3);
+	$("#starlist").html( 
+		'	<span id="starlist">'+
+			'		<img alt="" src="img/노란별.png" onclick="star1()">'+
+			'		<img alt="" src="img/노란별.png" onclick="star2()">'+
+			'		<img alt="" src="img/노란별.png" onclick="star3()">'+
+			'		<img alt="" src="img/별.png" onclick="star4()">'+
+			'		<img alt="" src="img/별.png" onclick="star5()"><br>'+
+		'</span>'
+	 );
+}
+function star4(){
+	$("#star").val(4);
+	$("#starlist").html( 
+		'	<span id="starlist">'+
+			'		<img alt="" src="img/노란별.png" onclick="star1()">'+
+			'		<img alt="" src="img/노란별.png" onclick="star2()">'+
+			'		<img alt="" src="img/노란별.png" onclick="star3()">'+
+			'		<img alt="" src="img/노란별.png" onclick="star4()">'+
+			'		<img alt="" src="img/별.png" onclick="star5()"><br>'+
+		'</span>'
+	 );
+}
+function star5(){
+	$("#star").val(5);
+	$("#starlist").html( 
+		'	<span id="starlist">'+
+			'		<img alt="" src="img/노란별.png" onclick="star1()">'+
+			'		<img alt="" src="img/노란별.png" onclick="star2()">'+
+			'		<img alt="" src="img/노란별.png" onclick="star3()">'+
+			'		<img alt="" src="img/노란별.png" onclick="star4()">'+
+			'		<img alt="" src="img/노란별.png" onclick="star5()"><br>'+
+		'</span>'
+	 );
+}
+
+
+
+/////////////////////////////////강의평제출
+function reviewsubmit(){
+	let team = $("#team").val();
+	let star = $("#star").val();
+	let test = $("#test").val();
+	let home = $("#homework").val();
+	let text = $("#text").val();
+	let lno = $("#lno").val();
+	if(homework==""){alert("과제여부를 선택해주세요");return;}
+	else if(team==""){alert("조모임을 선택해주세요");return;}
+	else if(star==""){alert("별을 1~5 중 선택해주세요");return;}
+	else if(test==""){alert("시험횟수를 선택해주세요");return;}
+	else if(text==""){alert("총평을 입력해주세요");return;}
+	else{
+		$.ajax({
+			url: "/team3/review/reviewadd",
+			data: {"lno": lno ,"home": home , "test": test,"team": team, "star" :star , "text": text},
+			success: function(re){
+				if(re==1){
+					alert("강의평등록완료");
+					location.href = "/team3/review/reviewlist.jsp" ;
+				}
+				else{alert("강의평등록실패");}
+			}
+		});
+	}
+}
+
 
