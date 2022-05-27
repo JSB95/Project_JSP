@@ -33,26 +33,19 @@
 				
 				<div>
 				
-					<table class="timetable">
+					<table class="timetable" id="timetable">
 						
 						  <tr style="width: 100%; text-align: center;">
-						    <th></th>
-						    <th width="20px;">월</th>
-						    <th>화</th>
-						    <th>수</th>
-						    <th>목</th>
-						    <th>금</th>
+						    <td class="head"></td>
+						    <td class="head">월</td>
+						    <td class="head">화</td>
+						    <td class="head">수</td>
+						    <td class="head">목</td>
+						    <td class="head">금</td>
 						  </tr>
+						
 						  <tr>
-						    <th>9</th>
-						    <td></td>
-						    <td style="background-color: #ecc369"></td>
-						    <td style="background-color: #f08676"></td>
-						    <td style="background-color: #70a5e9"></td>
-						    <td style="background-color: #75ca87"></td>
-						  </tr>
-						  <tr>
-						    <th>10</th>
+						    <td class="head">9</td>
 						    <td></td>
 						    <td></td>
 						    <td></td>
@@ -60,15 +53,7 @@
 						    <td></td>
 						  </tr>
 						  <tr>
-						    <th>11</th>
-						    <td style="background-color: #f08676"></td>
-						    <td></td>
-						    <td></td>
-						    <td></td>
-						    <td style="background-color: #d397ed"></td>
-						  </tr>
-						  <tr>
-						    <th>12</th>
+						    <td class="head">10</td>
 						    <td></td>
 						    <td></td>
 						    <td></td>
@@ -76,47 +61,7 @@
 						    <td></td>
 						  </tr>
 						  <tr>
-						    <th>1</th>
-						    <td></td>
-						    <td style="background-color: #a6c96f"></td>
-						    <td></td>
-						    <td></td>
-						    <td></td>
-						  </tr>
-						  <tr>
-						    <th>2</th>
-						    <td></td>
-						    <td style="background-color: #7ad1c0"></td>
-						    <td></td>
-						    <td></td>
-						    <td></td>
-						  </tr>
-						  <tr>
-						    <th>3</th>
-						    <td></td>
-						    <td></td>
-						    <td style="background-color: #fbaa69"></td>
-						    <td></td>
-						    <td></td>
-						  </tr>
-						  <tr>
-						    <th>4</th>
-						    <td></td>
-						    <td></td>
-						    <td></td>
-						    <td style="background-color: #9d86e0"></td>
-						    <td></td>
-						  </tr>
-						  <tr>
-						    <th>5</th>
-						    <td></td>
-						    <td></td>
-						    <td></td>
-						    <td style="background-color: #f08676"></td>
-						    <td></td>
-						  </tr>
-						  <tr>
-						    <th>6</th>
+						    <td class="head">11</td>
 						    <td></td>
 						    <td></td>
 						    <td></td>
@@ -124,7 +69,63 @@
 						    <td></td>
 						  </tr>
 						  <tr>
-						    <th>7</th>
+						    <td class="head">12</td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						  </tr>
+						  <tr>
+						    <td class="head">1</td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						  </tr>
+						  <tr>
+						    <td class="head">2</td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						  </tr>
+						  <tr>
+						    <td class="head">3</td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						  </tr>
+						  <tr>
+						    <td class="head">4</td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						  </tr>
+						  <tr>
+						    <td class="head">5</td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						  </tr>
+						  <tr>
+						    <td class="head">6</td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						  </tr>
+						  <tr>
+						    <td class="head">7</td>
 						    <td></td>
 						    <td></td>
 						    <td></td>
@@ -149,9 +150,6 @@
 		</div>
 	
 	</div>
-
-adfgdfg
-	s
 
 	
 	

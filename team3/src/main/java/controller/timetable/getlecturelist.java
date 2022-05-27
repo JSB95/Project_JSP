@@ -41,7 +41,7 @@ public class getlecturelist extends HttpServlet {
 						"<th> 교수명 </th>" +
 						"<th> 시간 </th>" +
 						"<th> 학점 </th>" +
-						"<th> 데이터용 시간 </th>" +
+						"<th id=\"time1\"> 데이터용 시간 </th>" +
 					"</tr>";
 		PrintWriter out = response.getWriter();
 		ArrayList<Lecture> lecturelist = LectureDao.getLectureDao().getlectureList_depart(department);
