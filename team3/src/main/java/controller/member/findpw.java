@@ -6,20 +6,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.MemberDao;
 
 /**
- * Servlet implementation class emailcheck
+ * Servlet implementation class findpw
  */
-@WebServlet("/member/emailcheck")
-public class emailcheck extends HttpServlet {
+@WebServlet("/member/findpw")
+public class findpw extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public emailcheck() {
+    public findpw() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,25 +29,21 @@ public class emailcheck extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.setCharacterEncoding("UTF-8");
-		String memail = request.getParameter("memail");
-		
-		boolean result 
-			= MemberDao.getMemberDao().emailcheck(memail);
-		if( result ) { 
-			response.getWriter().print(1); 
-		}else {
-			response.getWriter().print(2); 
-		}
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		String mid = request.getParameter("mid");
+		String memail = request.getParameter("memail");
+		String mpassword = MemberDao.getMemberDao().findpw(mid, memail);
+		response.getWriter().print(mpassword);
+		
+		
 	}
 
 }

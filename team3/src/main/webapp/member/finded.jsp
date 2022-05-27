@@ -14,20 +14,10 @@
 <body>
 	<div class="container">
 		<div class="container" style="width: 400px;">
-			<h3 class="text-center my-4">로그인</h3>
-			<form action="/team3/member/login" method="post">
-				<div> 
-					<input class="form-control my-2" type="text" id="mid" name="mid" placeholder="아이디">
-				</div>
-				<div>
-					<input class="form-control my-2" type="password" id="mpassword" name="mpassword" placeholder="비밀번호">
-				</div>
-				<input class="form-control btn btn-dark my-4" type="submit" value="로그인하기">
-			</form>
+			<h3 class="text-center my-4">회원님의 정보</h3>
 			<div class="text-center my-2">
-				<a href="/team3/member/findid.jsp">아이디찾기</a>
-				<a href="/team3/member/findpw.jsp">비밀번호찾기</a>
-				<a href="/team3/member/signup.jsp">회원가입</a>
+				<a href="/team3/member/findpw.jsp">아이디 찾기</a>
+				<a href="/team3/member/login.jsp">로그인하러 가기</a>
 			</div>
 		</div>
 	</div>
@@ -35,6 +25,7 @@
 	
 	<!-- jquery cdn -->
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="../js/signup.js" type="text/javascript"></script>
 	<!-- 부트스트랩 js -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" ></script>
 </body>

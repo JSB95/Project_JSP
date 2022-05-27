@@ -41,7 +41,6 @@ public class login extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String mid = request.getParameter("mid");
 		String mpassword = request.getParameter("mpassword");
-		System.out.println(mid);
 		int result = MemberDao.getMemberDao().login(mid, mpassword);
 		if(result == 1) {
 			HttpSession session = request.getSession();

@@ -29,7 +29,6 @@ public class idcheck extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8"); 	
 		String mid = request.getParameter("mid");  
-		
 		boolean result =  MemberDao.getMemberDao().idcheck(mid);
 		if( result ) { 
 			response.getWriter().print( 1 );

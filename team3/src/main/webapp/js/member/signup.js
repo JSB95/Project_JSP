@@ -38,7 +38,7 @@ $( function(){
             	}
          	});
 		}else{
-			$("#codecheck").html("다시 입력해주세요.");
+			$("#codecheck").html("올바른 형식이 아닙니다.");
 			pass[1] = false;
 		}
 	}); //학번 체크 end
@@ -64,8 +64,19 @@ $( function(){
 		let emailj = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
 		
 		if (emailj.test(memail)){
-			$("#emailcheck").html("사용가능한 이메일입니다.");
-			pass[3] = true;
+			$.ajax({
+	            url : "/team3/member/emailcheck" ,
+	            data : { "memail" : memail  } ,
+	            success : function( result ){
+	               if( result == 1 ){ 
+	                  $("#emailcheck").html("사용중인 이메일입니다.");
+	                  pass[3] = false;
+	               }else{ 
+	                 $("#emailcheck").html("사용가능한 이메일입니다.");
+	                  pass[3] = true;
+	          	 	}
+            	}
+         	});
 		}else{
 			$("#emailcheck").html("올바르지 않은 형식입니다.");
 			pass[3] = false;
@@ -81,24 +92,20 @@ $( function(){
 		
 		if(idj.test(mid)){ 
 			
-			$("#idcheck").html("사용가능한 아이디입니다.");
-			pass[4] = true;
-			
-			/*
 			$.ajax({
-	            url : "../idcheck" ,
+	            url : "/team3/member/idcheck" ,
 	            data : { "mid" : mid  } ,
 	            success : function( result ){
 	               if( result == 1 ){ 
-	                  idcheck.innerHTML="사용중인 아이디 입니다.";
+	                  $("#idcheck").html("사용중인 아이디입니다.");
 	                  pass[4] = false;
 	               }else{ 
-	                  idcheck.innerHTML="사용가능한 아이디 입니다.";
+	                 $("#idcheck").html("사용가능한 아이디입니다.");
 	                  pass[4] = true;
 	          	 	}
             	}
          	});
-         	*/
+         	
 		}else{
 			$("#idcheck").html("영문 , 숫자 포함 5~15길이로 입력해주세요.");
 			pass[4] = false;
