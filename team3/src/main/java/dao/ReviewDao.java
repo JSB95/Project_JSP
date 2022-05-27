@@ -107,41 +107,10 @@ public class ReviewDao extends Dao{
 	}
 	
 	
-	//////강의평 전체갯수출력
-	public int gettotallist(String keyword) {
-		try {
-			String sql = null;
-			if(keyword.equals("")) {
-				sql = "select count(*) from review";
-			}
-			else {
-				sql = "select count(*) from review A, lecture B"
-						+ " where A.lno = B.lno and"
-						+ " B.lname like '%"+keyword+"%' or A.lno = B.lno and B.lprofessor like '%"+keyword+"%'";
-			}
-			ps = con.prepareStatement(sql); rs = ps.executeQuery(); 
-			if( rs.next() )
-				System.out.println(rs.getInt(1));
-				return rs.getInt(1); 
-		}catch (Exception e) {System.out.println(e);
-		}return 0;
-	}
-	
-	///전체 강의평출력
-	public ArrayList<Review> list(int startrow, int listsize, String keyword){
+	public ArrayList<Review> list(int startrow,int listsize){
 		ArrayList<Review> getreviewlist = new ArrayList<Review>();
 		try {
-			String sql = null;
-			if( keyword.equals("")) {
-			sql = "select * from review A, lecture B"
-					+ " where A.lno = B.lno order by reviewno desc limit "+startrow+","+listsize;
-			}
-			else {
-				sql = "select * from review A, lecture B"
-						+ " where A.lno = B.lno and"
-						+ " B.lname like '%"+keyword+"%' or A.lno = B.lno and B.lprofessor like '%"+keyword+"%'  order by reviewno desc limit "+startrow+","+listsize;
-				
-	 		}
+			String sql = "select * from review order by reviewno desc limit "+startrow+","+listsize;
 			ps=con.prepareStatement(sql);
 			rs=ps.executeQuery();
 			while(rs.next()) {
@@ -158,10 +127,10 @@ public class ReviewDao extends Dao{
 				getreviewlist.add(review);
 			}
 			return getreviewlist;
-		}catch(Exception e) {System.out.println(e);}
+		}catch(Exception e) {}
 		return null;
 	}
-	
+
 	public Lecture lecture(int lno) {
 		String sql ="select * from lecture where lno="+lno;	// 1. SQL 작성 
 			try {
@@ -177,11 +146,29 @@ public class ReviewDao extends Dao{
 					return lecture;
 				}
 			}catch (Exception e) {} return null;
-			
-			
-		
+
+
+
 	}
 	
-	
+//////강의평 전체갯수출력
+	public int gettotallist(String keyword) {
+		try {
+			String sql = null;
+			if(keyword.equals("")) {
+				sql = "select count(*) from review";
+			}
+			else {
+				sql = "select count(*) from review A, lecture B"
+						+ " where A.lno = B.lno and"
+						+ " B.lname like '%"+keyword+"%' or A.lno = B.lno and B.lprofessor like '%"+keyword+"%'";
+			}
+			ps = con.prepareStatement(sql); rs = ps.executeQuery(); 
+			if( rs.next() )
+			{	
+				return rs.getInt(1); }
+		}catch (Exception e) {System.out.println(e);
+		}return 0;
+	}
 	
 }
