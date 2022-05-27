@@ -69,13 +69,15 @@ $("#lecturelist").on('click', 'tr', function(){
 	
 	let lecturedata = {
 		name : name,
-		time : time
+		time : time1
 	}
+	
+	let jsondata = JSON.stringify(lecturedata);
 
 	console.table(lecturedata);
 	$.ajax({
 		url : "../timetable/lecturechoice",
-		data : {"name" : name, "time" : time1},
+		data : {"jsondata" : jsondata},
 		success : function(re){
 			console.log("강의 선택 통신");
 		}

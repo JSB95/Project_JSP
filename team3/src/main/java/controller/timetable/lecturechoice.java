@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 
 
 /**
@@ -33,21 +36,30 @@ public class lecturechoice extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String name = request.getParameter("name");
-		String time = request.getParameter("time");
-		System.out.println("강의명 : " + name + " 시간 : " +time);
-		String temp[] = time.split("_");
-
-		System.out.println(Arrays.toString(temp));
-
-		Hashtable<String, String> temp3 = new Hashtable<String, String>();
-		for (int i = 0; i < temp.length; i++) {
-			temp3.put(temp[i].split("/")[0], temp[i].split("/")[1]);
-		}
+//		String name = request.getParameter("name");
+//		String time = request.getParameter("time");
+//		System.out.println("강의명 : " + name + " 시간 : " +time);
+//		String temp[] = time.split("_");
 		
-		for(Map.Entry<String, String> e : temp3.entrySet()) {
-			System.out.println("Key : " + e.getKey() + ", Value : " + e.getValue());
+		try {
+			JSONObject jsonObject = new JSONObject(request.getParameter("jsondata"));
+			System.out.println(jsonObject);
+			System.out.println(jsonObject.get("time"));
+		} catch (JSONException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
+
+//		System.out.println(Arrays.toString(temp));
+//
+//		Hashtable<String, String> temp3 = new Hashtable<String, String>();
+//		for (int i = 0; i < temp.length; i++) {
+//			temp3.put(temp[i].split("/")[0], temp[i].split("/")[1]);
+//		}
+//		
+//		for(Map.Entry<String, String> e : temp3.entrySet()) {
+//			System.out.println("Key : " + e.getKey() + ", Value : " + e.getValue());
+//		}
 
 		
 		
