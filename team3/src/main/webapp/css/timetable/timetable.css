@@ -1,0 +1,27 @@
+.timetable {
+  border-collapse: collapse;
+  border-radius: 15px;
+  border-style: hidden;
+  box-shadow: 0 0 0 1px #d2d2d2;
+  font-size: 0.9em;
+}
+.timetable th, td{
+	border: 1px solid #d2d2d2;
+	border-collapse: collapse;
+	
+}
+.timetable th{
+	width: 50px;
+	height: 5px;
+	text-align: center;
+}
+.timetable td{
+	width: 200px;
+	height: 60px;
+}
+
+
+
+
+
+
