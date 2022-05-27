@@ -83,7 +83,7 @@ public class BoardDao extends Dao {
 	// 2. 모든 게시물 출력 <리스트버전 자바에서 바로 뿌릴거면사용 >
 	public ArrayList<Board> getboardlist() {
 		ArrayList<Board> boardlist = new ArrayList<Board>();
-		String sql = "select * from board";
+		String sql = "select * from board order by bno desc";
 		
 		try {
 			ps = con.prepareStatement(sql);
@@ -110,15 +110,16 @@ public class BoardDao extends Dao {
 		System.out.println(key);
 		System.out.println(keyword);
 		if(key==null  && keyword==null)
-		{sql = "select * from board";}
+		{sql = "select * from board order by bno desc";}
 		else {
-			sql = "select * from board where "+key+" like '%"+keyword+"%'";
+			sql = "select * from board where "+key+" like '%"+keyword+"%' order by bno desc";
 		}
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				JSONObject object = new JSONObject();
+				object.put("bno", rs.getInt(1));
 				object.put("btitle",rs.getString(2) );
 				object.put("bcontent",rs.getString(3));
 				object.put("bnickname",rs.getString(8) );
@@ -138,9 +139,21 @@ public class BoardDao extends Dao {
 	
 	
 	// 3. 개별 게시물 출력
-	public Board getboaBoard() {
-		String sql = "";
+	public Board getboaBoard(int bno) {
+		String sql = "select * from board where bno=" +bno;
 		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				Board board = new Board(
+						rs.getInt(1),rs.getString(2), 
+						rs.getString(3),rs.getInt(4),
+						rs.getString(5), rs.getInt(6),
+						rs.getInt(7), rs.getString(8),
+						rs.getString(9)
+						);
+				return board;
+			}
 			
 		} catch (Exception e) {System.out.println("개별 게시물 출력 오류" + e);}
 		return null;

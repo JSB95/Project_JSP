@@ -1,7 +1,9 @@
-.list{
+#list{
 	
 	width: 40%;
 	border: 1px solid black;
+	border-radius: 15px;
+	margin-top: 20px;
 }
  
  .list span {

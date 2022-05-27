@@ -7,7 +7,7 @@ $( function(){
 }); 
 
 
-let viewcount = 5; // 현재 화면에 보이는 주문 개수 
+let viewcount = 10; // 현재 화면에 보이는 주문 개수 
 
 // 스크롤 이벤트 
 let sss =$(window).scroll( function(){ 
@@ -40,7 +40,7 @@ function getboardlist(){
 }
 
 function getsearchlist(){
-	location.reload();
+	
 	let key = $("#key").val()
 	let keyword = $("#keyword").val()
 		$.ajax({ 
@@ -50,6 +50,7 @@ function getsearchlist(){
 			boardlist = result;   console.log( boardlist );
 			//alert(boardlist.length)
 			//searchview();
+			
 			view();
 		}
 	});
@@ -60,9 +61,9 @@ function view() {
 	let html ="";
 	
 	for(let i = 0; i<boardlist.length; i++) {
-		if( i == viewcount ) break; // 만약에 i가 화면에 표시할 주문수와 동일하면 출력 금지 
+		if( i >= viewcount ) break; // 만약에 i가 화면에 표시할 주문수와 동일하면 출력 금지 
 		html += 
-		'<div class="list"> '+
+		'<div id="list" onclick="location.href=\'boardview.jsp?bno='+boardlist[i]["bno"]+'\'">'+
 		'<h2>'+boardlist[i]["btitle"]+'</h2>'+
 		'<span>'+boardlist[i]["bnickname"]+'</span><span>'+boardlist[i]["bdate"]+'</span>'+
 		'</div>'

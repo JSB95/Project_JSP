@@ -31,7 +31,7 @@
 		
 		<div class="search_area">
 		
-				<div class="search_area"> <!-- 키 선택 -->
+				<div  class="search_area"> <!-- 키 선택 -->
 					<select class="form_select" id="key">
 						<option value="btitle">제목</option>
 						<option value="bcontent">내용</option>
@@ -43,7 +43,7 @@
 			</div>
 			
 			
-		<div id="listbox">
+		<div id="listbox"  >
 		
 		</div>
 	
