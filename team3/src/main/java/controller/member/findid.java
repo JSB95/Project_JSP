@@ -13,7 +13,7 @@ import dao.MemberDao;
 /**
  * Servlet implementation class findpw
  */
-@WebServlet("/member/findpw")
+@WebServlet("/member/findid")
 public class findid extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
