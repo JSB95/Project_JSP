@@ -111,5 +111,22 @@ public class MemberDao extends Dao {
 		return null;
 	}
 
+
+
+	public String findid(String mname, String memail) {
+		String sql = "select mid from member "
+				+ "where mname = '"+mname+"' and memail = '"+memail+"'";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				return rs.getString(1);
+			}
+		} catch (Exception e) {
+			System.out.println("findpw 오류 : " + e);
+		}
+		return null;
+	}
+
 	
 }
