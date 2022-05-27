@@ -1,4 +1,5 @@
-
+let jsondata;
+let jsonlist = [];
 
 
 $(function(){
@@ -57,11 +58,27 @@ $("#lecturelist").on('click', 'tr', function(){
 	var professor = td.eq(1).text();
 	var time = td.eq(2).text();
 	var credit = td.eq(3).text();
+	var time1 = td.eq(4).text();
 	
 	str +=	" * 클릭된 Row의 td값 = 강의명 : <font color='red'>" + name + "</font>" +
 					", 교수명 : <font color='red'>" + professor + "</font>" +
 					", 시간 : <font color='red'>" + time + "</font>" +
 					", 학점 : <font color='red'>" + credit + "</font>";
 	$("#tablechoice").html(str);
+	
+	
+	let lecturedata = {
+		name : name,
+		time : time
+	}
+
+	console.table(lecturedata);
+	$.ajax({
+		url : "../timetable/lecturechoice",
+		data : {"name" : name, "time" : time1},
+		success : function(re){
+			console.log("강의 선택 통신");
+		}
+	})
 	
 });

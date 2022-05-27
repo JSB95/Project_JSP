@@ -2,36 +2,22 @@
   border-collapse: collapse;
   border-radius: 15px;
   border-style: hidden;
-  box-shadow: 0 0 0 1px #000;
+  box-shadow: 0 0 0 1px #d2d2d2;
   font-size: 0.9em;
 }
-#timetable th, td{
+.timetable th, td{
 	border: 1px solid #d2d2d2;
 	border-collapse: collapse;
 	
 }
-#timetable th{
+.timetable th{
+	width: 50px;
 	height: 5px;
+	text-align: center;
 }
-#timetable td{
-	width: 70px;
+.timetable td{
+	width: 200px;
 	height: 60px;
-}
-
-#timetable #edge_left_top {
-	border-top-left-radius: 15px; 	
-}
-
-#edge_rigth_top{
-	border-top-right-radius: 15px;
-}
-
-#edge_left_bottom{
-	border-bottom-left-radius: 15px; 
-}
-
-#edge_right_bottome{
-	border-bottom-right-radius: 15px;
 }
 
 

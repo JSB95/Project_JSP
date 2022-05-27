@@ -41,13 +41,14 @@ public class getlecturelist extends HttpServlet {
 						"<th> 교수명 </th>" +
 						"<th> 시간 </th>" +
 						"<th> 학점 </th>" +
+						"<th> 데이터용 시간 </th>" +
 					"</tr>";
 		PrintWriter out = response.getWriter();
 		ArrayList<Lecture> lecturelist = LectureDao.getLectureDao().getlectureList_depart(department);
 		for (Lecture lecture : lecturelist) {
 			
 			String[] l = lecture.getLtime().split("_");
-			System.out.println(Arrays.toString(l) + " 길이 : " + l.length);
+			
 			ArrayList<String> temp = new ArrayList<String>();
 			if (l.length == 1) {
 				temp.add(l[0].split("/")[0] + "(" + l[0].split("/")[1] + ")");
@@ -108,9 +109,6 @@ public class getlecturelist extends HttpServlet {
 				temp.add("미지원 기능");
 			}
 			
-			
-			System.out.println("과목명 : " + lecture.getLname() + " temp값 : " + temp);
-			
 			html += 
 		
 					"<tr>" + 
@@ -118,7 +116,9 @@ public class getlecturelist extends HttpServlet {
 						"<td>" + lecture.getLprofessor() + "</td>" +
 						"<td>" + temp + "</td>" +
 						"<td>" + lecture.getLcredit() + "</td>" +
-					"</tr>";
+						"<td id=\"time1\">" + lecture.getLtime() + "</td>" +
+					"</tr>" ;
+					
 		}
 		
 		out.print(html);

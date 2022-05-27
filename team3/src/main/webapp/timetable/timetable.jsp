@@ -29,25 +29,27 @@
 					
 				</div>
 				
+				<br><br><br>
+				
 				<div>
 				
 					<table class="timetable">
 						
-						  <tr style="width: 100%;">
-						    <th id="edge_left_top"></th>
-						    <th>월</th>
+						  <tr style="width: 100%; text-align: center;">
+						    <th></th>
+						    <th width="20px;">월</th>
 						    <th>화</th>
 						    <th>수</th>
 						    <th>목</th>
-						    <th id="edge_rigth_top">금</th>
+						    <th>금</th>
 						  </tr>
 						  <tr>
 						    <th>9</th>
 						    <td></td>
-						    <td style="background-color: #ecc369">Practical English A2</td>
-						    <td style="background-color: #f08676">해부생리학2</td>
-						    <td style="background-color: #70a5e9">Practical English A4</td>
-						    <td style="background-color: #75ca87">다문화가족건강</td>
+						    <td style="background-color: #ecc369"></td>
+						    <td style="background-color: #f08676"></td>
+						    <td style="background-color: #70a5e9"></td>
+						    <td style="background-color: #75ca87"></td>
 						  </tr>
 						  <tr>
 						    <th>10</th>
@@ -59,11 +61,11 @@
 						  </tr>
 						  <tr>
 						    <th>11</th>
-						    <td style="background-color: #f08676">해부생리학2</td>
+						    <td style="background-color: #f08676"></td>
 						    <td></td>
 						    <td></td>
 						    <td></td>
-						    <td style="background-color: #d397ed">창조와 몰입</td>
+						    <td style="background-color: #d397ed"></td>
 						  </tr>
 						  <tr>
 						    <th>12</th>
@@ -76,7 +78,7 @@
 						  <tr>
 						    <th>1</th>
 						    <td></td>
-						    <td style="background-color: #a6c96f">삶과 철학</td>
+						    <td style="background-color: #a6c96f"></td>
 						    <td></td>
 						    <td></td>
 						    <td></td>
@@ -122,12 +124,12 @@
 						    <td></td>
 						  </tr>
 						  <tr>
-						    <th id="edge_left_botton">7</th>
+						    <th>7</th>
 						    <td></td>
 						    <td></td>
 						    <td></td>
 						    <td></td>
-						    <td id="edge_right_botton"></td>
+						    <td></td>
 						  </tr>
 						  
 						</table>
