@@ -89,94 +89,204 @@ $("#lecturelist").on('click', 'tr', function(){
 		name : name,
 		time : time1
 	}
-	
+	let count = 0;
 	let asdf = time1.split("_");
 	console.log(asdf);
 	
 	for (let i = 0; i < asdf.length; i++){
-		console.log(i+" 번째 루프");
-		if (asdf[i].split("/")[0] == "월"){
 		
+		switch(asdf[i].split("/")[0]){
+			case '월' : 
 				console.log("선택된 요일 " + (i + 1) +" 번째 : 월"); 
 				console.log("시간 : " + asdf[i].split("/")[1]);
 				
-				for(let j = 1; j < 12; j++){
-					
+				for (let j = i + 1; j < 12; j++){
+				
 					if ($('#timetable tr:eq(' + j + ')>td:eq(1)').html() == '' && asdf[i].split("/")[1] == j){
-						$('#timetable tr:eq(' + j + ')>td:eq(1)').html(lecturedata.name);
 						
-					} else if ($('#timetable tr:eq(' + j + ')>td:eq(1)').html() != ''){
-						console.log("선택한 시간이 존재 : " + $('#timetable tr:eq(' + j + ')>td:eq(1)').html());
+						$('#timetable tr:eq(' + j + ')>td:eq(1)').html(lecturedata.name);
+						break;
+	
+					} else if ($('#timetable tr:eq(' + j + ')>td:eq(1)').html() != '' && $('#timetable tr:eq(' + j + ')>td:eq(1)').html() != (lecturedata.name)){
+						
+						alert("선택한 시간이 존재 : ");
 
-					} 
-					
+					}
+				
 				}
-		} else if (asdf[i].split("/")[0] == "화"){
-
+				
+				break;
+			case '화' : 
 				console.log("선택된 요일 " + (i + 1) +" 번째 : 화"); 
 				console.log("시간 : " + asdf[i].split("/")[1]);
-				for(let j = 1; j < 12; j++){
-					
+				
+				for (let j = i + 1; j < 12; j++){
+				
 					if ($('#timetable tr:eq(' + j + ')>td:eq(2)').html() == '' && asdf[i].split("/")[1] == j){
-						$('#timetable tr:eq(' + j + ')>td:eq(2)').html(lecturedata.name);
 						
-					} else if ($('#timetable tr:eq(' + j + ')>td:eq(2)').html() != ''){
-						console.log("선택한 시간이 존재 : " + $('#timetable tr:eq(' + j + ')>td:eq(2)').html());
+						$('#timetable tr:eq(' + j + ')>td:eq(2)').html(lecturedata.name);
+						break;
+	
+					} else if ($('#timetable tr:eq(' + j + ')>td:eq(2)').html() != '' && $('#timetable tr:eq(' + j + ')>td:eq(2)').html() != (lecturedata.name)){
+						
+						alert("선택한 시간이 존재 : ");
 
 					}
-					
+				
 				}
-
-		} else if (asdf[i].split("/")[0] == "수"){
+				
+				break;
+			case '수' : 
 				console.log("선택된 요일 " + (i + 1) +" 번째 : 수"); 
 				console.log("시간 : " + asdf[i].split("/")[1]);
-				for(let j = 1; j < 12; j++){
-					
+				
+				for (let j = i + 1; j < 12; j++){
+				
 					if ($('#timetable tr:eq(' + j + ')>td:eq(3)').html() == '' && asdf[i].split("/")[1] == j){
+						
 						$('#timetable tr:eq(' + j + ')>td:eq(3)').html(lecturedata.name);
 						break;
-					} else if ($('#timetable tr:eq(' + j + ')>td:eq(3)').html() != ''){
-						console.log("선택한 시간이 존재 : " + $('#timetable tr:eq(' + j + ')>td:eq(3)').html());
+	
+					} else if ($('#timetable tr:eq(' + j + ')>td:eq(3)').html() != (lecturedata.name)){
 						
-					}
-					
-				}
+						alert("선택한 시간이 존재 : " + $('#timetable tr:eq(' + j + ')>td:eq(3)').html() + "강으명 : " + lecturedata.name);
 
-		} else if (asdf[i].split("/")[0] == "목"){
+					}
+				
+				}
+				break;
+			case '목' : 
 				console.log("선택된 요일 " + (i + 1) +" 번째 : 목"); 
 				console.log("시간 : " + asdf[i].split("/")[1]);
-				for(let j = 1; j < 12; j++){
-					
+				
+				for (let j = i + 1; j < 12; j++){
+				
 					if ($('#timetable tr:eq(' + j + ')>td:eq(4)').html() == '' && asdf[i].split("/")[1] == j){
-						$('#timetable tr:eq(' + j + ')>td:eq(4)').html(lecturedata.name);
 						
-					} else if ($('#timetable tr:eq(' + j + ')>td:eq(4)').html() != ''){
-						console.log("선택한 시간이 존재 : " + $('#timetable tr:eq(' + j + ')>td:eq(4)').html());
+						$('#timetable tr:eq(' + j + ')>td:eq(4)').html(lecturedata.name);
+						break;
+	
+					} else if ($('#timetable tr:eq(' + j + ')>td:eq(4)').html() != '' && $('#timetable tr:eq(' + j + ')>td:eq(4)').html() != (lecturedata.name)){
+						
+						alert("선택한 시간이 존재 : ");
 
 					}
-					
+				
 				}
-
-		} else if (asdf[i].split("/")[0] == "금"){
+				
+				break;
+			case '금' : 
 				console.log("선택된 요일 " + (i + 1) +" 번째 : 금"); 
 				console.log("시간 : " + asdf[i].split("/")[1]);
-				for(let j = 1; j < 12; j++){
-					
+				
+				for (let j = i + 1; j < 12; j++){
+				
 					if ($('#timetable tr:eq(' + j + ')>td:eq(5)').html() == '' && asdf[i].split("/")[1] == j){
+						
 						$('#timetable tr:eq(' + j + ')>td:eq(5)').html(lecturedata.name);
+						break;
+	
+					} else if ($('#timetable tr:eq(' + j + ')>td:eq(5)').html() != '' && $('#timetable tr:eq(' + j + ')>td:eq(5)').html() != (lecturedata.name)){
 						
-					} else if ($('#timetable tr:eq(' + j + ')>td:eq(5)').html() != ''){
-						console.log("선택한 시간이 존재 : " + $('#timetable tr:eq(' + j + ')>td:eq(5)').html());
-						
+						alert("선택한 시간이 존재 : ");
 
 					}
+				
+				}
+				
+				break;
+		}
+		/*
+		for (let j = i + 1; j < 12; j++){
+			
+			if (asdf[i].split("/")[0] == "월"){
+		
+				console.log("선택된 요일 " + (i + 1) +" 번째 : 월"); 
+				console.log("시간 : " + asdf[i].split("/")[1]);
+
+				if ($('#timetable tr:eq(' + j + ')>td:eq(1)').html() == '' && asdf[i].split("/")[1] == j){
 					
+					$('#timetable tr:eq(' + j + ')>td:eq(1)').html(lecturedata.name);
+
+				} else if ($('#timetable tr:eq(' + j + ')>td:eq(1)').html() != '' && $('#timetable tr:eq(' + j + ')>td:eq(1)').html() != (lecturedata.name)){
+					
+					console.log("선택한 시간이 존재 : " + $('#timetable tr:eq(' + j + ')>td:eq(1)').html());
+					
+				} else {
+					console.log("여기서 막힘");
+				}
+				
+			} else if (asdf[i].split("/")[0] == "화"){
+				
+				console.log("선택된 요일 " + (i + 1) +" 번째 : 화"); 
+				console.log("시간 : " + asdf[i].split("/")[1]);
+				
+				if ($('#timetable tr:eq(' + j + ')>td:eq(2)').html() == '' && asdf[i].split("/")[1] == j){
+					
+						$('#timetable tr:eq(' + j + ')>td:eq(2)').html(lecturedata.name);
+						
+				} else if ($('#timetable tr:eq(' + j + ')>td:eq(2)').html() != '' && $('#timetable tr:eq(' + j + ')>td:eq(2)').html() != (lecturedata.name)){
+					
+						alert("선택한 시간이 존재 : " + $('#timetable tr:eq(' + j + ')>td:eq(2)').html());
+						break;
+
 				}
 
+			} else if (asdf[i].split("/")[0] == "수"){
+				
+				console.log("선택된 요일 " + (i + 1) +" 번째 : 수"); 
+				console.log("시간 : " + asdf[i].split("/")[1]);
+				console.log(j + "번째 루프[j]");
+				if ($('#timetable tr:eq(' + j + ')>td:eq(3)').html() == '' && asdf[i].split("/")[1] == j){
+					
+					$('#timetable tr:eq(' + j + ')>td:eq(3)').html(lecturedata.name);
 
-		} else {
-			console.log("때려쳐");
+				} else if ($('#timetable tr:eq(' + j + ')>td:eq(3)').html() != '' && $('#timetable tr:eq(' + j + ')>td:eq(3)').html() != (lecturedata.name)){
+					
+					alert("선택한 시간이 존재 : " + $('#timetable tr:eq(' + j + ')>td:eq(3)').html() + "강으명 : " + lecturedata.name);
+					break;
+					
+				}
+				
+			} else if (asdf[i].split("/")[0] == "목"){
+				
+				console.log("선택된 요일 " + (i + 1) +" 번째 : 목"); 
+				console.log("시간 : " + asdf[i].split("/")[1]);
+
+				if ($('#timetable tr:eq(' + j + ')>td:eq(4)').html() == '' && asdf[i].split("/")[1] == j){
+					
+					$('#timetable tr:eq(' + j + ')>td:eq(4)').html(lecturedata.name);
+					
+				} else if ($('#timetable tr:eq(' + j + ')>td:eq(4)').html() != '' && $('#timetable tr:eq(' + j + ')>td:eq(3)').html() != (lecturedata.name)){
+					
+					alert("선택한 시간이 존재 : " + $('#timetable tr:eq(' + j + ')>td:eq(4)').html());
+					break;
+
+				}
+					
+
+				
+			} else if (asdf[i].split("/")[0] == "금"){
+				
+				console.log("선택된 요일 " + (i + 1) +" 번째 : 금"); 
+				console.log("시간 : " + asdf[i].split("/")[1]);
+					
+				if ($('#timetable tr:eq(' + j + ')>td:eq(5)').html() == '' && asdf[i].split("/")[1] == j){
+					
+					$('#timetable tr:eq(' + j + ')>td:eq(5)').html(lecturedata.name);
+					
+				} else if ($('#timetable tr:eq(' + j + ')>td:eq(5)').html() != '' && $('#timetable tr:eq(' + j + ')>td:eq(3)').html() != (lecturedata.name)){
+					
+					
+					alert("선택한 시간이 존재 : " + $('#timetable tr:eq(' + j + ')>td:eq(5)').html());
+					break;
+				}
+				
+			} else {
+				console.log("때려쳐");
+			}
 		}
+		*/
 	}
 	
 	
