@@ -2,6 +2,9 @@ package dao;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import dto.Board;
 
 public class BoardDao extends Dao {
@@ -34,31 +37,54 @@ public class BoardDao extends Dao {
 		return false;
 	}
 	
-public int gettotalrow( String key , String keyword  ) {
-		
-		// 만약에 작성자 요청이면 
-		//if( key.equals("mid") ) { key = "mno"; keyword = MemberDao.getmemberDao().getmno(keyword)+""; }
-		
-		String sql = null;
-		if( key.equals("") && keyword.equals("") ) { sql ="select count(*) from board";} //검색이 없을경우 
-		else { sql ="select count(*) from board where "+key+" like '%"+keyword+"%'";} // 검색이 있을경우
-		
-		try { ps = con.prepareStatement(sql); rs = ps.executeQuery(); 
-			if( rs.next() ) return rs.getInt(1); 
-		}
-		catch( Exception e ) { System.out.println( e );} return 0;
-	}
+//public int gettotalrow( String key , String keyword  ) {
+//		
+//		// 만약에 작성자 요청이면 
+//		//if( key.equals("mid") ) { key = "mno"; keyword = MemberDao.getmemberDao().getmno(keyword)+""; }
+//		
+//		String sql = null;
+//		if( key.equals("") && keyword.equals("") ) { sql ="select count(*) from board";} //검색이 없을경우 
+//		else { sql ="select count(*) from board where "+key+" like '%"+keyword+"%'";} // 검색이 있을경우
+//		
+//		try { ps = con.prepareStatement(sql); rs = ps.executeQuery(); 
+//			if( rs.next() ) return rs.getInt(1); 
+//		}
+//		catch( Exception e ) { System.out.println( e );} return 0;
+//	}
+//	
+//	// 2. 모든 게시물 출력
+//	public ArrayList<Board> getboardlist(int startrow,int listsize,String key,String keyword) {
+//		ArrayList<Board> boardlist = new ArrayList<Board>();
+//		String sql = "null";
+//		//if( key.equals("mid") ) { key = "mno"; keyword = MemberDao.getmemberDao().getmno(keyword)+""; }
+//		if( key.equals("") && keyword.equals("") ) { //검색이 없을경우 
+//			sql = "select * from board order by bno desc limit "+startrow+","+listsize; /* limit 시작 인덱스 , 표시 개수 */
+//		}else {
+//			sql ="select * from board where "+key+" like '%"+keyword+"%' order by bno desc limit "+startrow+","+listsize;
+//		}
+//		try {
+//			ps = con.prepareStatement(sql);
+//			rs = ps.executeQuery();
+//			while(rs.next()) {
+//				Board board = new Board(
+//						rs.getInt(1),rs.getString(2),
+//						rs.getString(3),rs.getInt(4),
+//						rs.getString(5),rs.getInt(6),rs.getInt(7),
+//						rs.getString(8),rs.getString(9)
+//						);
+//				boardlist.add(board);
+//			}
+//			return boardlist;
+//			
+//		} catch (Exception e) {System.out.println("모든 게시물 출력 오류" +e);}
+//		return null;
+//	}
 	
-	// 2. 모든 게시물 출력
-	public ArrayList<Board> getboardlist(int startrow,int listsize,String key,String keyword) {
+	// 2. 모든 게시물 출력 <리스트버전 자바에서 바로 뿌릴거면사용 >
+	public ArrayList<Board> getboardlist() {
 		ArrayList<Board> boardlist = new ArrayList<Board>();
-		String sql = "null";
-		//if( key.equals("mid") ) { key = "mno"; keyword = MemberDao.getmemberDao().getmno(keyword)+""; }
-		if( key.equals("") && keyword.equals("") ) { //검색이 없을경우 
-			sql = "select * from board order by bno desc limit "+startrow+","+listsize; /* limit 시작 인덱스 , 표시 개수 */
-		}else {
-			sql ="select * from board where "+key+" like '%"+keyword+"%' order by bno desc limit "+startrow+","+listsize;
-		}
+		String sql = "select * from board order by bno desc";
+		
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -77,10 +103,57 @@ public int gettotalrow( String key , String keyword  ) {
 		return null;
 	}
 	
-	// 3. 개별 게시물 출력
-	public Board getboaBoard() {
-		String sql = "";
+	// 2. 모든게시물출력 json버전 <ajax로 뿌릴때 사용>
+	public JSONArray getboardlist2(String key,String keyword) {
+		JSONArray jsonArray = new JSONArray();
+		String sql = null;
+		System.out.println(key);
+		System.out.println(keyword);
+		if(key==null  && keyword==null)
+		{sql = "select * from board order by bno desc";}
+		else {
+			sql = "select * from board where "+key+" like '%"+keyword+"%' order by bno desc";
+		}
 		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				JSONObject object = new JSONObject();
+				object.put("bno", rs.getInt(1));
+				object.put("btitle",rs.getString(2) );
+				object.put("bcontent",rs.getString(3));
+				object.put("bnickname",rs.getString(8) );
+				object.put("bdate",rs.getString(9) );
+				jsonArray.put(object);
+				
+			}
+			return jsonArray;
+			
+		} catch (Exception e) {System.out.println("전체 게시물 출력오류"+ e);}
+		
+		
+		return null;
+	}
+	
+	
+	
+	
+	// 3. 개별 게시물 출력
+	public Board getboaBoard(int bno) {
+		String sql = "select * from board where bno=" +bno;
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				Board board = new Board(
+						rs.getInt(1),rs.getString(2), 
+						rs.getString(3),rs.getInt(4),
+						rs.getString(5), rs.getInt(6),
+						rs.getInt(7), rs.getString(8),
+						rs.getString(9)
+						);
+				return board;
+			}
 			
 		} catch (Exception e) {System.out.println("개별 게시물 출력 오류" + e);}
 		return null;

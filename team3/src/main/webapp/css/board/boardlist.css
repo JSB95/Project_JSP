@@ -1,3 +1,31 @@
+#list{
+	
+	width: 40%;
+	border: 1px solid black;
+	border-radius: 15px;
+	margin-top: 20px;
+}
+ 
+ .list span {
+ 	padding: 20px;
+ }
+ .list h2 {
+ 	padding: 20px;
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  .btable{
  	display: flex;
  }
