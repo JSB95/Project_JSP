@@ -16,6 +16,7 @@ function findpw(){
 }
 
 function findid(){
+	alert("일치하는 아이디를 찾는중");
 	let mname = $("#mname").val();
 	let memail = $("#memail").val();
 	$.ajax({

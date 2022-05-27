@@ -11,9 +11,9 @@ import javax.servlet.http.HttpSession;
 import dao.MemberDao;
 
 /**
- * Servlet implementation class findpw
+ * Servlet implementation class findid
  */
-@WebServlet("/member/findpw")
+@WebServlet("/member/findid")
 public class findid extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -37,11 +37,16 @@ public class findid extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String mid = request.getParameter("mid");
+		System.out.println("findid");
+		String mname = request.getParameter("mname");
 		String memail = request.getParameter("memail");
-		String mpassword = MemberDao.getMemberDao().findpw(mid, memail);
-		response.getWriter().print(mpassword);
+		String mid = MemberDao.getMemberDao().findid(mname, memail);
+		
+		System.out.println("이름 : " + mname);
+		System.out.println("이메일 : " + memail);
+		System.out.println("아이디 : " + mid);
+		
+		response.getWriter().print(mid);
 		
 		
 	}

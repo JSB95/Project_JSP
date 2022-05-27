@@ -22,7 +22,7 @@
 				<div>
 					<input class="form-control my-2" type="text" id="memail" name="memail" placeholder="이메일">
 				</div>
-				<input class="form-control btn btn-dark my-4" onclick="findid()" value="비밀번호 찾기">
+				<input class="form-control btn btn-dark my-4" onclick="findid()" value="아이디 찾기">
 			</form>
 			<div class="text-center my-2">
 				<a href="/team3/member/findpw.jsp">비밀번호 찾기</a>
