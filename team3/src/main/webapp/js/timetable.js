@@ -89,7 +89,7 @@ $("#lecturelist").on('click', 'tr', function(){
 		name : name,
 		time : time1
 	}
-	let count = 0;
+	let error = 0;
 	let asdf = time1.split("_");
 	console.log(asdf);
 	
@@ -105,11 +105,15 @@ $("#lecturelist").on('click', 'tr', function(){
 					if ($('#timetable tr:eq(' + j + ')>td:eq(1)').html() == '' && asdf[i].split("/")[1] == j){
 						
 						$('#timetable tr:eq(' + j + ')>td:eq(1)').html(lecturedata.name);
+						console.log("i	값 : " + i + " j값 : " + j);
 						break;
 	
-					} else if ($('#timetable tr:eq(' + j + ')>td:eq(1)').html() != '' && $('#timetable tr:eq(' + j + ')>td:eq(1)').html() != (lecturedata.name)){
+					} else if ($('#timetable tr:eq(' + j + ')>td:eq(1)').html() != '' && asdf[i].split("/")[1] == j){
 						
-						alert("선택한 시간이 존재 : ");
+						console.log("i	값 : " + i + " j값 : " + j);
+						error = -1;
+						alert("오류");
+						break;
 
 					}
 				
@@ -125,11 +129,15 @@ $("#lecturelist").on('click', 'tr', function(){
 					if ($('#timetable tr:eq(' + j + ')>td:eq(2)').html() == '' && asdf[i].split("/")[1] == j){
 						
 						$('#timetable tr:eq(' + j + ')>td:eq(2)').html(lecturedata.name);
+						console.log("i	값 : " + i + " j값 : " + j);
 						break;
 	
-					} else if ($('#timetable tr:eq(' + j + ')>td:eq(2)').html() != '' && $('#timetable tr:eq(' + j + ')>td:eq(2)').html() != (lecturedata.name)){
+					} else if ($('#timetable tr:eq(' + j + ')>td:eq(2)').html() != ''  && asdf[i].split("/")[1] == j){
 						
-						alert("선택한 시간이 존재 : ");
+						console.log("i	값 : " + i + " j값 : " + j);
+						error = -1;
+						alert("오류");
+						break;
 
 					}
 				
@@ -145,11 +153,15 @@ $("#lecturelist").on('click', 'tr', function(){
 					if ($('#timetable tr:eq(' + j + ')>td:eq(3)').html() == '' && asdf[i].split("/")[1] == j){
 						
 						$('#timetable tr:eq(' + j + ')>td:eq(3)').html(lecturedata.name);
+						console.log("값 넣기 / i	값 : " + i + " j값 : " + j);
 						break;
 	
-					} else if ($('#timetable tr:eq(' + j + ')>td:eq(3)').html() != (lecturedata.name)){
+					} else if ($('#timetable tr:eq(' + j + ')>td:eq(3)').html() != '' && asdf[i].split("/")[1] == j){
 						
-						alert("선택한 시간이 존재 : " + $('#timetable tr:eq(' + j + ')>td:eq(3)').html() + "강으명 : " + lecturedata.name);
+						console.log("i	값 : " + i + " j값 : " + j);
+						alert("오류");
+						error = -1;
+						break;
 
 					}
 				
@@ -164,11 +176,15 @@ $("#lecturelist").on('click', 'tr', function(){
 					if ($('#timetable tr:eq(' + j + ')>td:eq(4)').html() == '' && asdf[i].split("/")[1] == j){
 						
 						$('#timetable tr:eq(' + j + ')>td:eq(4)').html(lecturedata.name);
+						console.log("i	값 : " + i + " j값 : " + j);
 						break;
 	
-					} else if ($('#timetable tr:eq(' + j + ')>td:eq(4)').html() != '' && $('#timetable tr:eq(' + j + ')>td:eq(4)').html() != (lecturedata.name)){
+					} else if ($('#timetable tr:eq(' + j + ')>td:eq(4)').html() != ''  && asdf[i].split("/")[1] == j){
 						
-						alert("선택한 시간이 존재 : ");
+						console.log("i	값 : " + i + " j값 : " + j);
+						alert("오류");
+						error = -1;
+						break;
 
 					}
 				
@@ -184,18 +200,25 @@ $("#lecturelist").on('click', 'tr', function(){
 					if ($('#timetable tr:eq(' + j + ')>td:eq(5)').html() == '' && asdf[i].split("/")[1] == j){
 						
 						$('#timetable tr:eq(' + j + ')>td:eq(5)').html(lecturedata.name);
+						console.log("i	값 : " + i + " j값 : " + j);
 						break;
 	
-					} else if ($('#timetable tr:eq(' + j + ')>td:eq(5)').html() != '' && $('#timetable tr:eq(' + j + ')>td:eq(5)').html() != (lecturedata.name)){
+					} else if ($('#timetable tr:eq(' + j + ')>td:eq(5)').html() != '' && asdf[i].split("/")[1] == j){
 						
-						alert("선택한 시간이 존재 : ");
+						console.log("i	값 : " + i + " j값 : " + j);
+						alert("오류");
+						error = -1;
+						break;
 
 					}
 				
 				}
 				
 				break;
+				
+				
 		}
+		
 		/*
 		for (let j = i + 1; j < 12; j++){
 			
@@ -287,6 +310,18 @@ $("#lecturelist").on('click', 'tr', function(){
 			}
 		}
 		*/
+		
+		if (error == -1){
+			alert("error 발생");
+			for (let x = 1; x < 6; x++){
+				for (let y = 1; y < 12; y++){
+					console.log("error난 과목명 : " + lecturedata.name);
+					if (lecturedata.name == $('#timetable tr:eq(' + y + ')>td:eq('+ x +')').html()){
+						$('#timetable tr:eq(' + y + ')>td:eq('+ x +')').empty();
+					}
+				}
+			}
+		}
 	}
 	
 	
@@ -299,6 +334,10 @@ $("#lecturelist").on('click', 'tr', function(){
 		success : function(re){
 			console.log("강의 선택 통신");
 		}
-	})
+	});
+	
+	if (error == -1){
+		
+	}
 	
 });
