@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<span><a href="/team3/board/boardlist.jsp">게시판</a></span>
 
 </body>
 </html>

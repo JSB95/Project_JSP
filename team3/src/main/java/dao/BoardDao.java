@@ -17,6 +17,23 @@ public class BoardDao extends Dao {
 		return boardDao;
 	}
 	
+	// MemberDao 사용 메소드
+	public int getmno(String mid) {
+		String sql = "select mno from member where mid = '"+mid+"'";
+		
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (Exception e) {}
+		return 0;
+		}
+	
+	
+	
+	
 	// 1. 글작성
 	public boolean boardwrite(Board board) {
 		
@@ -135,6 +152,29 @@ public class BoardDao extends Dao {
 		return null;
 	}
 	
+	// 인기글 출력 메소드
+	public JSONArray getboardbestlist() {
+		JSONArray jsonArray = new JSONArray();
+		String sql = "select * from board order by blike desc";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				JSONObject object = new JSONObject();
+				object.put("bno", rs.getInt(1));
+				object.put("btitle",rs.getString(2) );
+				object.put("bcontent",rs.getString(3));
+				object.put("bnickname",rs.getString(8) );
+				object.put("bdate",rs.getString(9) );
+				jsonArray.put(object);
+				
+			}
+			return jsonArray;
+			
+		} catch (Exception e) {System.out.println("dd"+ e);}
+		return null;
+	}
+	
 	
 	
 	
@@ -183,12 +223,41 @@ public class BoardDao extends Dao {
 		return false;
 	}
 	
-	// 7. 추천메소드
-	public boolean boardlike() {
-		String sql = "";
+	// 7. 추천메소드  <수정사항 쿼리문 하나로 쓰는법 생각해보기>
+	public int boardlike(int bno, int mno) {
+		String sql = "select blikeno from blike where bno="+bno+" and mno="+mno;
 		try {
+			ps= con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				sql = "delete from blike where blikeno = " + rs.getInt(1);
+				ps =con.prepareStatement(sql); ps.executeUpdate();
+				String sql2 ="update board set blike = blike-1 where bno = "+bno;
+				ps = con.prepareStatement(sql2);ps.executeUpdate();
+				return 2; // 삭제
+			} else {
+				sql = "insert into blike(bno,mno)values("+bno+","+mno+")";
+				
+				ps = con.prepareStatement(sql); ps.executeUpdate();
+				
+				String sql2 ="update board set blike = blike+1 where bno = "+bno;
+				ps = con.prepareStatement(sql2);ps.executeUpdate();
+				return 1;// 등록
+			}
 			
 		} catch (Exception e) {System.out.println("게시물 추천 오류" + e);}
+		return 3;
+	}
+	
+	public boolean getblike(int bno, int mno) {
+		
+		String sql = "select*from blike where bno = "+bno+" and mno="+mno;
+		try {
+			ps =con.prepareStatement(sql); rs = ps.executeQuery();
+			if(rs.next())return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		return false;
 	}
 	

@@ -15,11 +15,13 @@
 <%
 int bno = Integer.parseInt( request.getParameter("bno"));
 Board board  = BoardDao.getBoardDao().getboaBoard(bno);
+String mid = (String)session.getAttribute("login"); 
+int mno = BoardDao.getBoardDao().getmno(mid);
 
 %>
 
 <h1>게시물조회</h1>
-
+<input type="hidden" value="<%=bno%>" id="bno">
 
 			 
 				<div class="view_header">
@@ -45,7 +47,8 @@ Board board  = BoardDao.getBoardDao().getboaBoard(bno);
 				</div>
 				
 				
-				<div>추천수  <%=board.getBlike() %> </div>
+				
+				</div>
 			
 			
 				 
@@ -61,9 +64,21 @@ Board board  = BoardDao.getBoardDao().getboaBoard(bno);
 				 <div class="img_area">이미지 : <img width="100%" alt="" src="/team3/board/upload/<%=board.getBimg()%>"> </div> <!-- 첨부파일 다운로드 -->
 			<% } %>
 			
+			<div id="like_area">
+			<%
+				if(mid != null && BoardDao.getBoardDao().getblike(bno, mno)) {%>
+				<button onclick="saveplike('<%=mid%>');"><i class="fas fa-thumbs-up"></i><%=board.getBlike() %></button>
+			<% } else {%>
+			
+			<button onclick="saveplike('<%=mid%>');"><i class="far fa-thumbs-up"></i>  <%=board.getBlike() %></button>
+			<%} %>
+			
+			</div>
+			
 		
 
-
+<script type="text/javascript" src="/team3/js/board/boardview.js"></script>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 </body>
 </html>

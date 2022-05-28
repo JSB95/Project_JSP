@@ -57,6 +57,17 @@ function getsearchlist(){
 	
 }
 
+/*
+function board_best(best) {
+	$.ajax({
+		url : "/team3/board/boardlist",
+		data :{"best" : best},
+		success : function (result) {
+			view();
+		}
+	});
+}*/
+
 function view() {
 	let html ="";
 	

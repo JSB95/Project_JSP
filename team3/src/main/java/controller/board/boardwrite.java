@@ -12,6 +12,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import dao.BoardDao;
+import dao.MemberDao;
 import dto.Board;
 
 
@@ -55,7 +56,10 @@ public class boardwrite extends HttpServlet {
 				1024*1024*10, // 3.파일최대 용량 허용 범위 [10mb]
 				"UTF-8", // 4.인코딩타입
 				new DefaultFileRenamePolicy()); // 4.보안방식 : 동일한 파일명이 있을경우 자동 이름 변환
+		HttpSession session = request.getSession();
+		String mid = (String)session.getAttribute("login");
 		
+		int mno = BoardDao.getBoardDao().getmno(mid);
 		request.setCharacterEncoding("UTF-8");
 		String btitle = multi.getParameter("btitle");
 		String bcontent = multi.getParameter("bcontent");
@@ -69,7 +73,7 @@ public class boardwrite extends HttpServlet {
 		
 		
 		if(radio.equals("익명")) { // 라디오버튼 익명이면
-			Board board = new Board(0, btitle, bcontent, 0, bimg, 0, 0, "익명", null);
+			Board board = new Board(0, btitle, bcontent, mno, bimg, 0, 0, "익명", null);
 			boolean result = BoardDao.getBoardDao().boardwrite(board);
 			if(result) {
 				System.out.println("익명넣기성공");
@@ -78,7 +82,7 @@ public class boardwrite extends HttpServlet {
 				response.sendRedirect("/team3/board/boardwrite.jsp");
 			}
 		} else { // 라디오버튼 익명이아니면
-			Board board = new Board(0, btitle, bcontent, 0, bimg, 0, 0, "mid넣을거", null);
+			Board board = new Board(0, btitle, bcontent, mno, bimg, 0, 0, mid, null);
 			boolean result = BoardDao.getBoardDao().boardwrite(board);
 			if(result) {
 				System.out.println("mid넣을거");
