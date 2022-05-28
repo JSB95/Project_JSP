@@ -57,16 +57,18 @@ function getsearchlist(){
 	
 }
 
-/*
-function board_best(best) {
+
+function boardbest() {
+	alert("gd")
 	$.ajax({
-		url : "/team3/board/boardlist",
-		data :{"best" : best},
+		url : "/team3/board/bestlist",
+		
 		success : function (result) {
+			boardlist = result;
 			view();
 		}
 	});
-}*/
+}
 
 function view() {
 	let html ="";
