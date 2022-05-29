@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
 
@@ -15,6 +16,7 @@
 			<input id="btitle" name="btitle" type="text" placeholder="제목"> <br>
 			<textarea id="bcontent" name="bcontent" style="resize: none;"></textarea> <br>
 			<input id ="bimg" name="bimg" type="file"> <br>
+			<img id="preview" width="100%">
 			
 			<input id="anonymous" type="radio" value="아이디" name="anonymous" checked="checked">아이디<br>
 			<input id="anonymous" type="radio" value="익명" name="anonymous">익명<br>
@@ -25,7 +27,8 @@
 	
 	
 	</div>
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="../js/board/board.js"></script>
-<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 </body>
 </html>

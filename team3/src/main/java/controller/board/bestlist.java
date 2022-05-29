@@ -32,6 +32,7 @@ public class bestlist extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("best리스트json통신");
 		//String best = request.getParameter("best");
+		
 		JSONArray jsonArray = BoardDao.getBoardDao().getboardbestlist();
 		
 		response.setCharacterEncoding("UTF-8");

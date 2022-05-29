@@ -139,6 +139,7 @@ public class BoardDao extends Dao {
 				object.put("bno", rs.getInt(1));
 				object.put("btitle",rs.getString(2) );
 				object.put("bcontent",rs.getString(3));
+				object.put("blike", rs.getInt(7));
 				object.put("bnickname",rs.getString(8) );
 				object.put("bdate",rs.getString(9) );
 				jsonArray.put(object);
@@ -164,6 +165,7 @@ public class BoardDao extends Dao {
 				object.put("bno", rs.getInt(1));
 				object.put("btitle",rs.getString(2) );
 				object.put("bcontent",rs.getString(3));
+				object.put("blike", rs.getInt(7));
 				object.put("bnickname",rs.getString(8) );
 				object.put("bdate",rs.getString(9) );
 				jsonArray.put(object);
