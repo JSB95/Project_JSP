@@ -13,7 +13,7 @@ import dto.Member;
 /**
  * Servlet implementation class signup
  */
-@WebServlet("/signup")
+@WebServlet("/member/signup")
 public class signup extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -43,8 +43,6 @@ public class signup extends HttpServlet {
 		String mcode = request.getParameter("mcode");
 		String mphone = request.getParameter("mphone");
 		String memail = request.getParameter("memail");
-		String memailaddress = request.getParameter("memailaddress");
-			String email = memail + "@" + memailaddress;
 		String mid = request.getParameter("mid");
 		String mpassword = request.getParameter("mpassword");
 		

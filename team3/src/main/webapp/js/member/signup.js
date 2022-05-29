@@ -154,7 +154,6 @@ $( function(){
 	 function signup(){
 		let check = true;
 		for(let i = 0; i <pass.length; i++){
-			console.log(pass[i]);
 			if(pass[i] == false) {
 				check = false;
 			}
@@ -166,6 +165,37 @@ $( function(){
 		}
 	}
 
-function passwordchange () {
-	$("#passwordbox").css("display","block");
+//////////////////////////////////////// 회원 정보 수정
+function update(){
+	let memail = $("#memail").val();
+	let mphone = $("#mphone").val();
+	
+	//안 바꿔도 통과
+	if($("#memail").val() == $("#email").val()){pass[3] = true;}
+	if($("#mphone").val() == $("#phone").val()){pass[2] = true;}
+	
+	//비밀번호 확인
+	if ($("#mpassword").val()==$("#password").val()){pass[6] = true;}
+
+	if(pass[2] == true && pass[3] == true && pass[6] == true){
+		$.ajax({
+			url:"/team3/member/update",
+			type: 'POST',   
+			data : {"memail" : memail, "mphone" : mphone},
+			success : function(result){
+				if(result == 1){
+					alert("수정 완료");
+					location.href = "/team3/member/memberinfo.jsp";
+				}else{
+					alert("일치하는 회원이 없습니다.");
+				}
+			}
+		});
+	}else if(pass[2] == true && pass[3] == true && pass[6] == false){
+		alert("비밀번호를 다시 확인해주세요.");
+	}else{
+		alert("정보를 다시 확인해주세요.");
+	}
+		
 }
+

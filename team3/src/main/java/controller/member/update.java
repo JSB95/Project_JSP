@@ -11,16 +11,16 @@ import javax.servlet.http.HttpSession;
 import dao.MemberDao;
 
 /**
- * Servlet implementation class login
+ * Servlet implementation class update
  */
-@WebServlet("/member/login")
-public class login extends HttpServlet {
+@WebServlet("/member/update")
+public class update extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public login() {
+    public update() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,21 +37,19 @@ public class login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		request.setCharacterEncoding("UTF-8");
-		String mid = request.getParameter("mid");
-		String mpassword = request.getParameter("mpassword");
-		int result = MemberDao.getMemberDao().login(mid, mpassword);
-		if(result == 1) {
-			HttpSession session = request.getSession();
-			session.setMaxInactiveInterval(60*60*24);
-			session.setAttribute("login", mid);
-			response.sendRedirect("/team3/main.jsp");
-		}else if(result == 2) {
-			response.sendRedirect("/team3/member/login.jsp?result=2");
-		}else if(result == 3) {
-			System.out.println("오류");
+		
+		String memail = request.getParameter("memail");
+		String mphone = request.getParameter("mphone");
+		HttpSession session = request.getSession();
+		String mid = (String)session.getAttribute("login");
+		boolean result = MemberDao.getMemberDao().update(memail, mphone,mid);
+		
+		if (result) {
+			response.getWriter().print(1);
+		}else {
+			response.getWriter().print(2);
 		}
+		
 	}
 
 }

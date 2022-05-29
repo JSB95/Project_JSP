@@ -15,7 +15,7 @@
 	<div class="container">
 		<h3 class="text-center mt-4">회원가입</h3>
 		<div class="container col-md-6 offset-3">
-			<form class="signupform" id="signupform" action="../signup" method="post">
+			<form class="signupform" id="signupform" action="/team3/member/signup" method="post">
 				
 				<div>
 					<span>이름</span>
