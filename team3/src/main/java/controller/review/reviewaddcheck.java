@@ -7,17 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.ReviewDao;
+
 /**
- * Servlet implementation class gettotallist
+ * Servlet implementation class reviewaddcheck
  */
-@WebServlet("/gettotallist")
-public class gettotallist extends HttpServlet {
+@WebServlet("/review/reviewaddcheck")
+public class reviewaddcheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public gettotallist() {
+    public reviewaddcheck() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,8 +28,16 @@ public class gettotallist extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String mid = (String)request.getSession().getAttribute("login");
+		int mno = ReviewDao.getreviewDao().getmno(mid);
+		int lno = Integer.parseInt( request.getParameter("lno"));
+		
+		boolean result =  ReviewDao.getreviewDao().addcheck(lno, mno);
+		if(result) {
+			response.getWriter().print( 1 );
+		}
+		else {response.getWriter().print( 2 );}
+		
 	}
 
 	/**

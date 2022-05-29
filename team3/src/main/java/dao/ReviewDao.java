@@ -43,7 +43,6 @@ public class ReviewDao extends Dao{
 			return getlecturelist;
 			
 		} catch (Exception e) {
-			System.out.println("" + e);
 		}
 		return null;
 	}
@@ -146,9 +145,6 @@ public class ReviewDao extends Dao{
 					return lecture;
 				}
 			}catch (Exception e) {} return null;
-
-
-
 	}
 	
 //////강의평 전체갯수출력
@@ -197,16 +193,95 @@ public class ReviewDao extends Dao{
 				object.put( "reviewhome" , rs.getInt(6) );
 				object.put( "reviewteam" , rs.getInt(7) );
 				object.put( "reviewtest" , rs.getInt(8));
-				object.put( "lno" , rs.getInt(8));
-				object.put( "reviewtest" , rs.getInt(8));
-				object.put( "reviewtest" , rs.getInt(8));
-				object.put( "reviewtest" , rs.getInt(8));
-				object.put( "reviewtest" , rs.getInt(8));
+				object.put( "llno" , rs.getInt(9));
+				object.put( "ldivision" , rs.getInt(10));
+				object.put( "lcollege" , rs.getString(11));
+				object.put( "ldepartment" , rs.getString(12));
+				object.put( "lprofessor" , rs.getString(13));
+				object.put( "lcredit" , rs.getInt(14));
+				object.put( "ltime" , rs.getString(15));
+				object.put( "lname" , rs.getString(16));
 				jsonArray.put( object );
 			}
 			return jsonArray;
 		}catch(Exception e) {System.out.println(e);}
 		return null;
+	}
+	
+	
+	public JSONArray getreview(int lno,int startrow, int listsize){
+		JSONArray jsonArray = new JSONArray();
+		try {
+			 String sql = "select * from review A, lecture B where A.lno = "+lno+" and B.lno = "+lno+" order by reviewno desc limit "+startrow+","+listsize;
+	 		
+			ps=con.prepareStatement(sql);
+			rs=ps.executeQuery();
+			while( rs.next() ) {
+				// 결과내 하나씩 모든 레코드를 -> 하나씩 json객체 변환  
+				JSONObject object = new JSONObject();
+				object.put( "reviewno" , rs.getInt(1) );
+				object.put( "lno" , rs.getInt(2) );
+				object.put( "mno" , rs.getInt(3) );
+				object.put( "reviewcontent" , rs.getString(4) );
+				object.put( "reviewrate" , rs.getInt(5) );
+				object.put( "reviewhome" , rs.getInt(6) );
+				object.put( "reviewteam" , rs.getInt(7) );
+				object.put( "reviewtest" , rs.getInt(8));
+				object.put( "llno" , rs.getInt(9));
+				object.put( "ldivision" , rs.getInt(10));
+				object.put( "lcollege" , rs.getString(11));
+				object.put( "ldepartment" , rs.getString(12));
+				object.put( "lprofessor" , rs.getString(13));
+				object.put( "lcredit" , rs.getInt(14));
+				object.put( "ltime" , rs.getString(15));
+				object.put( "lname" , rs.getString(16));
+				jsonArray.put( object );
+			}
+			return jsonArray;
+		}catch(Exception e) {System.out.println(e);}
+		return null;
+	}
+	
+	
+	
+	//특정강의평 전체갯수 출력
+	public int gettotal(int lno) {
+		try {
+			String sql = "select count(*) from review where lno = "+lno+"";
+			ps = con.prepareStatement(sql); rs = ps.executeQuery(); 
+			if( rs.next() )
+			{	
+				return rs.getInt(1); }
+		}catch (Exception e) {System.out.println(e);
+		}return 0;
+	}
+	
+	////강의평 평균 
+	public double review(int lno, String num) {
+	try {
+		String sql = "SELECT avg("+num+") FROM jsp.review where lno = "+lno;
+		ps = con.prepareStatement(sql);
+		rs=ps.executeQuery();
+		if( rs.next() ) { // 4. 검색 결과 [ rs.next() 할 때 마다 결과물에서 레코드 1개씩 호출 ]  
+			return rs.getDouble(1);
+		}
+	}catch (Exception e) {
+		// TODO: handle exception
+	}
+	return 0;
+	
+	}
+	
+	public boolean addcheck(int lno , int mno) {
+		try {
+			String sql = "select * from review where lno= "+lno+" and mno = " + mno;
+			ps=con.prepareStatement(sql);
+			rs= ps.executeQuery();
+			if(rs.next()) {
+				return true;
+			}
+		}catch(Exception e){}
+		return false;
 	}
 	
 	

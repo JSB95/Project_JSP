@@ -71,54 +71,53 @@
 	<div class="container">
 		<div class="row">
 			<div>
-				<input type="text" id="keyword" placeholder="강의명을 입력해주세요"><button type="button" onclick="gettotallist()">검색</button><br>
-				<a href="reviewwrite.jsp?keyword="><button>강의평쓰기</button></a>
+				<form action="reviewlist.jsp?pagenum=<%=currentpage %>">
+					<input type="text" name="keyword" placeholder="강의명 또는 교수명을 입력해주세요"><input type="submit" value="검색"><br>
+					<a href="reviewwrite.jsp?keyword="><button type="button">강의평쓰기</button></a>
+				</form>
 			</div>
 			<div>
 				<h3>최근강의평</h3>
-				<table class="table table-hover text-center">
+				<table class="table table-hover">
 				
 				
-				<% ArrayList <Review> list = ReviewDao.getreviewDao().list(startrow, listsize);
-					for(int i=0; i<list.size(); i++){
-					Lecture lecture = ReviewDao.getreviewDao().lecture(list.get(i).getLno());
-					JSONArray json= ReviewDao.getreviewDao().getlecture(2);
+				<% 
+					JSONArray json= ReviewDao.getreviewDao().getlist(startrow, listsize, keyword);
 					for(int j=0; j<json.length();j++){
-						System.out.print(json.getJSONObject(j).get("lno")   );
-					}
+					System.out.print(json.getJSONObject(j).get("reviewrate"));
 				%>
-					<tr>
+					<tr onClick="location.href='/team3/review/review.jsp?lno=<%=json.getJSONObject(j).get("lno")%>'">
 						<td>
-							<%=lecture.getLname() %><%=lecture.getLprofessor()%><br>
-							<%if(list.get(i).getReviewrate()==1){ %>
+							<%=json.getJSONObject(j).get("lname")%><%=json.getJSONObject(j).get("lprofessor")%><br>
+							<%if(json.getJSONObject(j).get("reviewrate").equals(1)){ %>
 								<img class="star" alt="" src="img/노란별.png">
 								<img class="star"  alt="" src="img/별.png">
 								<img class="star"  alt="" src="img/별.png">
 								<img class="star"  alt="" src="img/별.png">
 								<img class="star"  alt="" src="img/별.png">
 							<%} %>
-							<%if(list.get(i).getReviewrate()==2){ %>
+							<%if(json.getJSONObject(j).get("reviewrate").equals(2)){ %>
 								<img class="star" alt="" src="img/노란별.png">
 								<img class="star"  alt="" src="img/노란별.png">
 								<img class="star"  alt="" src="img/별.png">
 								<img class="star"  alt="" src="img/별.png">
 								<img class="star"  alt="" src="img/별.png">
 							<%} %>
-							<%if(list.get(i).getReviewrate()==3){ %>
+							<%if(json.getJSONObject(j).get("reviewrate").equals(3)){ %>
 								<img class="star" alt="" src="img/노란별.png">
 								<img class="star"  alt="" src="img/노란별.png">
 								<img class="star"  alt="" src="img/노란별.png">
 								<img class="star"  alt="" src="img/별.png">
 								<img class="star"  alt="" src="img/별.png">
 							<%} %>
-							<%if(list.get(i).getReviewrate()==4){ %>
+							<%if(json.getJSONObject(j).get("reviewrate").equals(4)){ %>
 								<img class="star" alt="" src="img/노란별.png">
 								<img class="star"  alt="" src="img/노란별.png">
 								<img class="star"  alt="" src="img/노란별.png">
 								<img class="star"  alt="" src="img/노란별.png">
 								<img class="star"  alt="" src="img/별.png">
 							<%} %>
-							<%if(list.get(i).getReviewrate()==5){ %>
+							<%if(json.getJSONObject(j).get("reviewrate").equals(5)){ %>
 								<img class="star" alt="" src="img/노란별.png">
 								<img class="star"  alt="" src="img/노란별.png">
 								<img class="star"  alt="" src="img/노란별.png">
@@ -126,27 +125,27 @@
 								<img class="star"  alt="" src="img/노란별.png">
 							<%} %>
 							<br>
-							<%=list.get(i).getReviewcontent() %>
+							<%=json.getJSONObject(j).get("reviewcontent") %>
 						</td>
 					</tr>
 					<%} %>
 				</table>
 				</div>
 				<div>
-					<div class="col-md-4 offset-4 d-flex justify-content-center">	
+					<div class="col-md-4 offset-4 d-flex justify-content-center">	<!--  d-flex justify-content-center : 박스권 내에서 가운데 배치 -->
 						 <ul class="pagination">
 						
 						 <!-- 이전 버튼 -->
 						 <%if( currentpage == 1  ){ // 현재페이지가 1이면 0페이지로 요청 못하게 제한두기  %>
-						 	<li class="page-item">  <a class="page-link pagenum" >이전</a></li>
+						 	<li class="page-item">  <a class="page-link pagenum" href="reviewlist.jsp">이전</a></li>
 						 <%}else{ %>
-						 	<li class="page-item">  <a class="page-link pagenum">이전</a></li>
+						 	<li class="page-item">  <a class="page-link pagenum" href="reviewlist.jsp?pagenum=<%=currentpage-1%> ">이전</a></li>
 						 <%} %>
 						 
 						 <!-- 페이징 버튼 -->
 						 	<% for( int i = startbtn  ; i<=endhtn ; i++ ){ %>
 						 		<li class="page-item"> 
-							 		<a class="page-link pagenum"> 
+							 		<a class="page-link pagenum" href="reviewlist.jsp?pagenum=<%=i%>"> 
 							 			<%=i %> 
 							 		</a> 
 						 		</li>
@@ -154,9 +153,9 @@
 						
 						<!-- 다음 버튼 --> 
 						 <%if( currentpage == lastpage  ){ // 현재페이지가 마지막페이지 이면 마지막페이지 이상으로 요청 못하게 제한두기  %>
-						 	<li class="page-item"> <a class="page-link pagenum" >다음</a></li>
+						 	<li class="page-item"> <a class="page-link pagenum" href="reviewlist.jsp?pagenum=<%=currentpage%>">다음</a></li>
 						 <%}else{ %>
-						 	<li class="page-item"> <a class="page-link pagenum" >다음</a></li>
+						 	<li class="page-item"> <a class="page-link pagenum" href="reviewlist.jsp?pagenum=<%=currentpage+1%>">다음</a></li>
 						 <%} %>
 						 </ul>
 					</div>

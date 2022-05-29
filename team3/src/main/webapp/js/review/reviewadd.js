@@ -4,14 +4,27 @@ let jsonarray;
 function lecturelist(lno){
 	
 	$.ajax({
-		url : '/team3/review/getlecture' ,
+		url : '/team3/review/reviewaddcheck' ,
 		data: {"lno": lno},
-		success : function( json ){
-			jsonarray = json;	/* 응답받은 데이터를 전역변수에 넣어주기 */
-			tableview();
-			$("#lno").val(lno);
+		success : function( re ){
+			if(re==1){
+				alert("기존에 입력한 기록이 있습니다.");
+			}
+			else{
+				$.ajax({
+				url : '/team3/review/getlecture' ,
+				data: {"lno": lno},
+				success : function( json ){
+					jsonarray = json;	/* 응답받은 데이터를 전역변수에 넣어주기 */
+					tableview();
+					$("#lno").val(lno);
 		}
 	});
+			}
+		}
+	});
+	
+	
 	
 }
 
