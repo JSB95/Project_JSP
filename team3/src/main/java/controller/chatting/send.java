@@ -1,4 +1,4 @@
-package controller.review;
+package controller.chatting;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,19 +7,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.ChattingDao;
 import dao.ReviewDao;
+import dto.Chatting;
 
 /**
- * Servlet implementation class reviewaddcheck
+ * Servlet implementation class send
  */
-@WebServlet("/review/reviewaddcheck")
-public class reviewaddcheck extends HttpServlet {
+@WebServlet("/send")
+public class send extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public reviewaddcheck() {
+    public send() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,24 +30,29 @@ public class reviewaddcheck extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String mid = (String)request.getSession().getAttribute("login");
-		int mno = ReviewDao.getreviewDao().getmno(mid);
-		int lno = Integer.parseInt( request.getParameter("lno"));
-		
-		boolean result =  ReviewDao.getreviewDao().addcheck(lno, mno);
-		if(result) {
-			response.getWriter().print( 1 );
-		}
-		else {}
-		
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		String mid = (String)request.getSession().getAttribute("login");
+		int mno = ReviewDao.getreviewDao().getmno(mid);
+		int getno = Integer.parseInt(request.getParameter("getno"));
+		String ccontent = request.getParameter("ccontent");
+		
+		Chatting chatting = new Chatting(mno, getno, ccontent);
+		boolean result = ChattingDao.getChattingDao().send(chatting);
+		if(result) {
+			response.sendRedirect("/team3/chatting/chatting.jsp");
+		}
+		else{response.sendRedirect("/team3/chatting/send.jsp");}
+		
+		
+		
 	}
 
 }

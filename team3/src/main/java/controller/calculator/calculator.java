@@ -1,4 +1,4 @@
-package controller.review;
+package controller.calculator;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,19 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.ReviewDao;
-
 /**
- * Servlet implementation class reviewaddcheck
+ * Servlet implementation class calculator
  */
-@WebServlet("/review/reviewaddcheck")
-public class reviewaddcheck extends HttpServlet {
+@WebServlet("/calculator")
+public class calculator extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public reviewaddcheck() {
+    public calculator() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,16 +26,11 @@ public class reviewaddcheck extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String mid = (String)request.getSession().getAttribute("login");
-		int mno = ReviewDao.getreviewDao().getmno(mid);
-		int lno = Integer.parseInt( request.getParameter("lno"));
+		for(int i =0; i<10;) {
 		
-		boolean result =  ReviewDao.getreviewDao().addcheck(lno, mno);
-		if(result) {
-			response.getWriter().print( 1 );
+		System.out.println(Integer.parseInt( request.getParameter("학점"+i+"")));
 		}
-		else {}
-		
+		System.out.println("연결?");
 	}
 
 	/**
