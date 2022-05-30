@@ -43,7 +43,6 @@
 			<h3><a href="/team3/member/mdelete.jsp">회원탈퇴</a></h3>
 		</div>
 		
-		
 	</div>
 	
 	<!-- jquery cdn -->

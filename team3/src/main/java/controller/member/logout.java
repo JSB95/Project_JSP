@@ -32,8 +32,6 @@ public class logout extends HttpServlet {
 		session.setAttribute("login", null);
 		response.sendRedirect("/team3/member/login.jsp");
 		
-		
-		
 	}
 
 	/**

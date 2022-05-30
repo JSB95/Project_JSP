@@ -8,5 +8,6 @@
 </head>
 <body>
 	<a href="/team3/member/memberinfo.jsp">회원정보</a>
+	
 </body>
 </html>
