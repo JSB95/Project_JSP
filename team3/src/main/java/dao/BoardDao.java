@@ -202,28 +202,32 @@ public class BoardDao extends Dao {
 	}
 	// 4. 게시물 수정 메소드
 	public boolean boardupdate(Board board) {
-		String sql = "";
+		String sql = "update board set btitle=? , bcontent=? , bimg=?,bnickname=? where bno = ?";
 		try {
-			
-		} catch (Exception e) {System.out.println("게시물 수정 오류 " + e);}
-		return false;
+			ps = con.prepareStatement(sql);
+			ps.setString( 1 , board.getBtitle() );
+			ps.setString( 2 , board.getBcontent() );
+			ps.setString( 3 , board.getBimg() );
+			ps.setString( 4 , board.getBnickname() );
+			ps.setInt( 5 , board.getBno() );
+			ps.executeUpdate(); return true;
+		}
+		catch (Exception e) { System.out.println( e );} return false;
 	}
+	
+	public boolean filedelete( int bno ) {
+		String sql = "update board set bimg = null where bno = "+bno;
+		try { ps = con.prepareStatement(sql); ps.executeUpdate(); return true; }
+		catch (Exception e) {} return false;
+	}
+	
 	// 5. 게시물 삭제
-	public boolean boarddelete() {
-		String sql = "";
-		try {
-			
-		} catch (Exception e) {System.out.println("게시물 삭제 오류" + e);}
-		return false;
+	public boolean delete( int bno ) { 
+		String sql = "delete from board where bno="+bno;
+		try { ps = con.prepareStatement(sql); ps.executeUpdate(); return true;}
+		catch (Exception e) {System.out.println("게시물삭제 오류"+ e);} return false;
 	}
-	// 6. 첨부이미지만 삭제?
-	public boolean imgdelete() {
-		String sql = "";
-		try {
-			
-		} catch (Exception e) {System.out.println("첨부이미지 삭제 오류 " + e);}
-		return false;
-	}
+	
 	
 	// 7. 추천메소드  <수정사항 쿼리문 하나로 쓰는법 생각해보기>
 	public int boardlike(int bno, int mno) {
@@ -263,7 +267,7 @@ public class BoardDao extends Dao {
 		return false;
 	}
 	
-	// 8. 인기글 출력리스트 필요한가 ?? *select로 검색후 추천수 10이상인 게시글 리스트 생성?
+
 	
 	//////////////////////////////////댓글관련////////////////////////////////////////////////
 

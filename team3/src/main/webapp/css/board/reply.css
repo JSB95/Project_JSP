@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+.reply_wrap{
+	width: 50%;
+	margin: 0 auto;
+	 word-break:break-all;
+	
+}
+
+.rwrite_wrap{
+	display: flex;
+	width: 50%;
+	margin: 0 auto;
+	 word-break:break-all;
+}
+#rcontent {
+	width: 45vw;
+}
+#rwrite{
+	width: 70px;
+	height: 50px;
+}
+
+
+
+time{
+	float: right;
+	margin-right: 30px;
+}
+.rbox{
+	border: 2px solid #eeeeee;
+	
+}
+.rheader, .rfooter {
+	margin-left: 30px;
+	margin-top: 10px;
+}
+.rmain{
+	width: 100%;
+	  word-break:break-all;
+}
+.con{
+	margin-left: 30px;
+	margin-right: 30px;
+}

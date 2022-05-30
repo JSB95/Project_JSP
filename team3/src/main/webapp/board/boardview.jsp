@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/team3/css/board/boardview.css">
+<link rel="stylesheet" type="text/css" href="/team3/css/board/reply.css">
 <!-- 폰트어썸[ 아이콘 ]  -->
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
 </head>
@@ -41,7 +42,7 @@ int mno = BoardDao.getBoardDao().getmno(mid);
 						<span><%=board.getBnickname() %></span> 
 						
 					</div>
-					<div><span>작성일  <%=board.getBdate() %></h3> </span>
+					<div><span>작성일  <%=board.getBdate() %> </span>
 				
 				</div>
 				</div>
@@ -74,6 +75,45 @@ int mno = BoardDao.getBoardDao().getmno(mid);
 			<%} %>
 			
 			</div>
+			
+			
+			
+			<!-- 댓글작성구역 ------------------------------------------------------------------------------------->
+			
+			<div class="rwrite_wrap"> <!-- row : 가로배치 -->
+			<div class="rwirte_area">
+				<textarea name="rcontent" id="rcontent"  ></textarea>
+			</div>
+			<div class="rbutton_area">	<!-- p : padding   /   m : margin -->
+				<button id="rwrite" onclick="replywrite(<%=bno%> )">등록</button>
+			</div>
+		</div>
+			
+			
+			<!-- 댓글출력구역------------------------------------------------------------------------------------ -->
+			<div class="reply_wrap"> <!-- 댓글출력구역 -->
+				<div class="rbox">
+				<div class="rheader"><span><i class="fas fa-user"></i></span>  닉네임   <time>05-30-2022 5:21</time></div> 
+				<div class="rmain"><p class="con">내용요요요요요요요요용요요요요요요요요요요요용내용요요요요요요요요용요요요요요요요요요요요용내용요요요요요요요요용요요요요요요요요요요요용내용요요요요요요요요용요요요요요요요요요요요용내용요요요요요요요요용요요요요요요요요요요요용내용요요요요요요요요용요요요요요요요요요요요용내용요요요요요요요요용요요요요요요요요요요요용내용요요요요요요요요용요요요요요요요요요요요용내용요요요요요요요요용요요요요요요요요요요요용내용요요요요요요요요용요요요요요요요요요요요용내용요요요요요요요요용요요요요요요요요요요요용<p></div>
+				<div class="rfooter"><p>좋아요: 댓글 :<p></div>
+				
+			</div>
+			</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<div class="upbutton_area"> <!-- 게시물 수정삭제 버튼 구역 -->
+				<a href="boardupdate.jsp?bno=<%=board.getBno()%>"><button>수정</button></a>
+				<a href="boarddelete?bno=<%=board.getBno()%>"> <button>삭제</button> </a>
+			</div>
+			
 			
 		
 
