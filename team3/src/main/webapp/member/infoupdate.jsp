@@ -21,7 +21,6 @@
 	<div class="container">
 		<h3>회원정보 수정</h3>
 		<div>
-			<form id="updateform" action="/team3/member/update" method="post"></form>
 			<table class="table">
 				<tr>
 					<td>이름</td><td colspan="2"><%=member.getMname()%></td>

@@ -198,4 +198,35 @@ function update(){
 	}
 		
 }
-
+//////////////////////////////////////// 비밀번호 수정
+function updatepw(){
+	let mpassword = $("#mpassword").val(); 
+	//비밀번호 확인
+	if ($("#oldpassword").val()==$("#password").val()){
+		pass[4] = true;
+	}
+	console.log($("#oldpassword").val());
+	console.log($("#password").val());
+	
+	for(let i = 0; i <pass.length; i++){
+			console.log(pass[i]);
+		}
+	if(pass[4] == true && pass[5] == true && pass[6] == true){
+		$.ajax({
+			url:"/team3/member/updatepw",
+			type: 'POST',   
+			data : {"mpassword" : mpassword},
+			success : function(result){
+				if(result == 1){
+					alert("수정 완료");
+					location.href = "/team3/member/memberinfo.jsp";
+				}else{
+					alert("비밀번호 변경 오류");
+				}
+			}
+		});
+	}else{
+		alert("비밀번호를 다시 확인해주세요");
+	}
+		
+}

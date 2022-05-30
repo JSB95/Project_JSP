@@ -162,6 +162,20 @@ public class MemberDao extends Dao {
 		}
 		return false;
 	}
+	//비밀번호 수정
+	public boolean updatepw(String mpassword, String mid) {
+		
+		String sql = "update member set mpassword = '"+mpassword+"' where mid='"+mid+"'";
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println("updatepw 오류 : " + e);
+		}
+		return false;
+	}
 
 	
 }

@@ -26,13 +26,15 @@
 			아이디 : <%=member.getMid() %><br>
 			연락처 : <%=member.getMphone() %><br>
 			이메일 : <%=member.getMemail() %><br>
-			비밀번호 : <%=member.getMpassword() %>
 		</div>
 		<div>
-			<a href="/team3/member/infoupdate.jsp"><h3>정보 수정</h3></a>
+			<h3><a href="/team3/member/infoupdate.jsp">정보 수정</a></h3>
 		</div>
 		<div>
 			<h3>내가 쓴 글</h3>
+		</div>
+		<div>
+			<h3><a href="/team3/member/pwupdate.jsp">비밀번호 변경</a></h3>
 		</div>
 		<div>
 			<h3>회원탈퇴</h3>

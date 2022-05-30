@@ -12,6 +12,7 @@
 </head>
 
 <body>
+
 	<div class="container">
 		<div class="container" style="width: 400px;">
 			<h3 class="text-center my-4">로그인</h3>
@@ -31,7 +32,6 @@
 			</div>
 		</div>
 	</div>
-	
 	
 	<!-- jquery cdn -->
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
