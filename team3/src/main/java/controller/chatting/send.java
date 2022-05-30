@@ -44,7 +44,7 @@ public class send extends HttpServlet {
 		int getno = Integer.parseInt(request.getParameter("getno"));
 		String ccontent = request.getParameter("ccontent");
 		
-		Chatting chatting = new Chatting(mno, getno, ccontent);
+		Chatting chatting = new Chatting(0,mno, getno, ccontent);
 		boolean result = ChattingDao.getChattingDao().send(chatting);
 		if(result) {
 			response.sendRedirect("/team3/chatting/chatting.jsp");

@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.ArrayList;
+
 import dto.Chatting;
 
 public class ChattingDao extends Dao{
@@ -26,6 +28,15 @@ public class ChattingDao extends Dao{
 			return true;
 		}catch(Exception e) {System.out.println(e);}
 		return false;
+	}
+	
+	
+	///내 전체쪽지리스트 출력
+	public ArrayList<Chatting> chattinglist(){
+		try {
+			String sql = "SELECT * FROM jsp.chatting where getno=? and sendno=?";
+		}catch(Exception e) {}
+		return null;
 	}
 	
 	

@@ -1,7 +1,8 @@
 package dto;
 
 public class Chatting {
-
+	
+	int cno;
 	int sendno ;
 	int getno;
 	String ccontent ;
@@ -12,11 +13,22 @@ public class Chatting {
 	}
 
 
-	public Chatting(int sendno, int getno, String ccontent) {
+	public Chatting(int cno, int sendno, int getno, String ccontent) {
 		super();
+		this.cno = cno;
 		this.sendno = sendno;
 		this.getno = getno;
 		this.ccontent = ccontent;
+	}
+
+
+	public int getCno() {
+		return cno;
+	}
+
+
+	public void setCno(int cno) {
+		this.cno = cno;
 	}
 
 
@@ -52,10 +64,9 @@ public class Chatting {
 
 	@Override
 	public String toString() {
-		return "Chatting [sendno=" + sendno + ", getno=" + getno + ", ccontent=" + ccontent + "]";
+		return "Chatting [cno=" + cno + ", sendno=" + sendno + ", getno=" + getno + ", ccontent=" + ccontent + "]";
 	}
-	
-	
-	
+
+
 	
 }

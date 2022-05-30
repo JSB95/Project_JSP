@@ -9,14 +9,17 @@
 </head>
 <body>
 
-	<div class="container">
-		<h3>쪽지내용</h3>
-		<a href="/team3/chatting/send.jsp?getno=4"><button>보내기</button></a>
-		<div class="col-md-4 offset-4">
-			
-		
-		</div>
-	</div>
+
 	
+	
+	<div class="container">
+		<table class="table">
+			<tr>
+				<td></td>
+			</tr>
+		</table>
+	</div>
+
+
 </body>
 </html>
