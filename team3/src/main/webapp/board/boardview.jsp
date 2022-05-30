@@ -68,10 +68,10 @@ int mno = BoardDao.getBoardDao().getmno(mid);
 			<div id="like_area">
 			<%
 				if(mid != null && BoardDao.getBoardDao().getblike(bno, mno)) {%>
-				<button onclick="saveplike('<%=mid%>');"><i class="fas fa-thumbs-up"></i><%=board.getBlike() %></button>
+				<button onclick="saveblike('<%=mid%>');"><i class="fas fa-thumbs-up"></i><%=board.getBlike() %></button>
 			<% } else {%>
 			
-			<button onclick="saveplike('<%=mid%>');"><i class="far fa-thumbs-up"></i>  <%=board.getBlike() %></button>
+			<button onclick="saveblike('<%=mid%>');"><i class="far fa-thumbs-up"></i>  <%=board.getBlike() %></button>
 			<%} %>
 			
 			</div>
@@ -82,12 +82,17 @@ int mno = BoardDao.getBoardDao().getmno(mid);
 			
 			<div class="rwrite_wrap"> <!-- row : 가로배치 -->
 			<div class="rwirte_area">
-				<textarea name="rcontent" id="rcontent"  ></textarea>
+				<textarea  rows="4" cols="50" name="rcontent" id="rcontent"  ></textarea>
+				<button type="button" id="rwrite" onclick="replywrite(<%=bno%>)">등록</button>
 			</div>
-			<div class="rbutton_area">	<!-- p : padding   /   m : margin -->
-				<button id="rwrite" onclick="replywrite(<%=bno%> )">등록</button>
+			<div>
+			
+			
+			
+			
 			</div>
 		</div>
+		
 			
 			
 			<!-- 댓글출력구역------------------------------------------------------------------------------------ -->
@@ -95,7 +100,7 @@ int mno = BoardDao.getBoardDao().getmno(mid);
 				<div class="rbox">
 				<div class="rheader"><span><i class="fas fa-user"></i></span>  닉네임   <time>05-30-2022 5:21</time></div> 
 				<div class="rmain"><p class="con">내용요요요요요요요요용요요요요요요요요요요요용내용요요요요요요요요용요요요요요요요요요요요용내용요요요요요요요요용요요요요요요요요요요요용내용요요요요요요요요용요요요요요요요요요요요용내용요요요요요요요요용요요요요요요요요요요요용내용요요요요요요요요용요요요요요요요요요요요용내용요요요요요요요요용요요요요요요요요요요요용내용요요요요요요요요용요요요요요요요요요요요용내용요요요요요요요요용요요요요요요요요요요요용내용요요요요요요요요용요요요요요요요요요요요용내용요요요요요요요요용요요요요요요요요요요요용<p></div>
-				<div class="rfooter"><p>좋아요: 댓글 :<p></div>
+				<div class="rfooter"><p><i class="fas fa-thumbs-up"></i> <i class="far fa-comment-alt"></i></p></div>
 				
 			</div>
 			</div>

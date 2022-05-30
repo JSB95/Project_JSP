@@ -16,7 +16,7 @@ public class ReplyDao extends Dao {
 	
 	// 1.댓글 작성
 public boolean replywrite(Reply reply) {
-		String sql = "insert into board(rcontent,rnickname,rindex,bno,mno)values(?,?,?,?,?)";
+		String sql = "insert into reply(rcontent,rnickname,rindex,bno,mno)values(?,?,?,?,?)";
 		
 		try {
 			ps = con.prepareStatement(sql);

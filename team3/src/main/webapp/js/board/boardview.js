@@ -1,4 +1,5 @@
-function saveplike(mid){
+
+function saveblike(mid){
 	// 
 	let bno = $("#bno").val();
 	
@@ -21,4 +22,24 @@ function saveplike(mid){
 				$("#like_area").load(location.href +" #like_area")
 		}
 	})
+}
+
+
+function replywrite(bno) {
+	let rcontent = $("#rcontent").val();
+	$.ajax({
+		url: "/team3/board/replywrite" ,
+		data: { "bno":bno , "rcontent" : rcontent  } ,
+		success : function( result ){
+			if( result == 1 ){
+				 alert("댓글작성 되었습니다."); // 성공 메시지 알림 
+				 $("#rcontent").val(""); // 작성 input 공백으로 초기화 
+				 $("#replytable").load( location.href+" #replytable"); // 특정 태그 새로고침
+				 /* 해당 replytable 의 불러오기 = replytable */
+			}
+			else{ alert("댓글작성이 실패했습니다."); }
+		}
+	});
+	
+	
 }
