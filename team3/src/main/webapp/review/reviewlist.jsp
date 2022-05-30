@@ -84,8 +84,7 @@
 					Lecture lecture = ReviewDao.getreviewDao().lecture(list.get(i).getLno());
 					JSONArray json= ReviewDao.getreviewDao().getlecture(2);
 					for(int j=0; j<json.length();j++){
-						json.getString(j);
-						System.out.print(json.getString(j));
+						System.out.print(json.getJSONObject(j).get("lno")   );
 					}
 				%>
 					<tr>

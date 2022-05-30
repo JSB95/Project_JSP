@@ -171,4 +171,43 @@ public class ReviewDao extends Dao{
 		}return 0;
 	}
 	
+	public JSONArray getlist(int startrow, int listsize, String keyword){
+		JSONArray jsonArray = new JSONArray();
+		try {
+			String sql = null;
+			if( keyword.equals("")) {
+			sql = "select * from review A, lecture B"
+					+ " where A.lno = B.lno order by reviewno desc limit "+startrow+","+listsize;
+			}
+			else {
+				sql = "select * from review A, lecture B"
+						+ " where A.lno = B.lno and"
+						+ " B.lname like '%"+keyword+"%' or A.lno = B.lno and B.lprofessor like '%"+keyword+"%'  order by reviewno desc limit "+startrow+","+listsize;
+	 		}
+			ps=con.prepareStatement(sql);
+			rs=ps.executeQuery();
+			while( rs.next() ) {
+				// 결과내 하나씩 모든 레코드를 -> 하나씩 json객체 변환  
+				JSONObject object = new JSONObject();
+				object.put( "reviewno" , rs.getInt(1) );
+				object.put( "lno" , rs.getInt(2) );
+				object.put( "mno" , rs.getInt(3) );
+				object.put( "reviewcontent" , rs.getString(4) );
+				object.put( "reviewrate" , rs.getInt(5) );
+				object.put( "reviewhome" , rs.getInt(6) );
+				object.put( "reviewteam" , rs.getInt(7) );
+				object.put( "reviewtest" , rs.getInt(8));
+				object.put( "lno" , rs.getInt(8));
+				object.put( "reviewtest" , rs.getInt(8));
+				object.put( "reviewtest" , rs.getInt(8));
+				object.put( "reviewtest" , rs.getInt(8));
+				object.put( "reviewtest" , rs.getInt(8));
+				jsonArray.put( object );
+			}
+			return jsonArray;
+		}catch(Exception e) {System.out.println(e);}
+		return null;
+	}
+	
+	
 }
