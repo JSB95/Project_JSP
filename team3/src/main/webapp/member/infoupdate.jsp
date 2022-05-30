@@ -47,7 +47,7 @@
 				</tr>
 			</table>
 			<button onclick="update()" type="submit">수정</button>
-			<button onclick="/team3/member/memberinfo.jsp">취소</button>
+			<a href="/team3/member/memberinfo.jsp"><button>취소</button></a>
 			<input type="hidden" value="<%=member.getMemail()%>" id="email">
 			<input type="hidden" value="<%=member.getMphone()%>" id="phone">
 			<input type="hidden" value="<%=member.getMpassword()%>" id="password">

@@ -34,10 +34,13 @@
 			<h3>내가 쓴 글</h3>
 		</div>
 		<div>
+			<h3><a href="logout">로그아웃</a></h3>
+		</div>
+		<div>
 			<h3><a href="/team3/member/pwupdate.jsp">비밀번호 변경</a></h3>
 		</div>
 		<div>
-			<h3>회원탈퇴</h3>
+			<h3><a href="/team3/member/mdelete.jsp">회원탈퇴</a></h3>
 		</div>
 		
 		

@@ -177,5 +177,17 @@ public class MemberDao extends Dao {
 		return false;
 	}
 
+	public boolean delete(String mid) {
+		String sql = "delete from member where mid = '"+mid+"'";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.execute();
+			return true;
+		}catch (Exception e) {
+			System.out.println("delete오류 : "+ e);
+		}
+		return false;
+	}
+
 	
 }

@@ -16,7 +16,6 @@ function findpw(){
 }
 
 function findid(){
-	alert("일치하는 아이디를 찾는중");
 	let mname = $("#mname").val();
 	let memail = $("#memail").val();
 	$.ajax({
@@ -31,4 +30,22 @@ function findid(){
 			}
 		}
 	});
+}
+
+function mdelete(){
+	if ($("#mpassword").val()==$("#password").val()){
+		$.ajax({
+			url:"/team3/member/mdelete",
+			success : function(result){
+				if(result == 1){
+					alert("탈퇴 완료");
+					location.href = "/team3/member/login.jsp";
+				}else{
+					alert("탈퇴 오류");
+				}
+			}
+		});
+	}else{
+		alert("비밀번호가 일치하지 않습니다.");
+	}
 }
