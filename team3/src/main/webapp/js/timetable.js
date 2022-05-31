@@ -55,19 +55,26 @@ function collegechange(){
 	})
 }
 
+let department = $("#departmentbox").val();
+
 function departmentchange(){
-	let department = $("#departmentbox").val();
+	
 	console.log($("#departmentbox").val());
 	lectureprint(department);
 }
 
 
-function lectureprint(department){
+function lectureprint(department1){
+	
+	department1 = $("#departmentbox").val();
 		$.ajax({
 			url : "../timetable/getlecturelist",
-			data : {"department" : department},
+			data : {"department1" : department1},
 			success : function(re){
 				$("#lecturelist").html(re);
+				
+				console.table(re);
+				
 			}
 		})
 }
@@ -80,7 +87,7 @@ $("#timetable td").bind('click', function(){
 })
 console.log( $('#timetable tr:eq(1)>td:eq(1)').html());
 
-$("#lecturelist").on('click', 'tr', function(){
+$("#123").on('click', 'tr', function(){
 	var str = "";
 	var arr = new Array();
 	var tr = $(this);
@@ -359,13 +366,15 @@ $("#lecturelist").on('click', 'tr', function(){
 	
 });
 
-$('.card-lecture').click(function (department) {
+$('.card-lecture').click(function () {
 	
+	let lno = $("#lectureno1").val();
+	console.log("JS 클릭 학과번호 : " + lno);
 	$.ajax({
 		url : "../timetable/getlectureinfo",
-		data : {department : "department"},
+		data : {"lno" : lno},
 		success : function(re){
-			console.log("강의 정보 통신" + re);
+			console.table(re);
 			$("#modal-lecture-info").html(re);
 			
 		}

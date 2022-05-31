@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import dto.Lecture;
 
@@ -82,6 +83,28 @@ public class LectureDao extends Dao{
 			return list;
 		} catch (Exception e) {
 			System.out.println("getlectureList_depart ERROR : " + e);
+		}
+		return null;
+	}
+	
+	public ArrayList<Lecture> getlectureinfo(int lno){
+		ArrayList<Lecture> arrayList = new ArrayList<Lecture>();
+		
+		String sql = "SELECT * FROM lecture WHERE lno = " + lno;
+		
+		try {
+			System.out.println(sql);
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				Lecture lecture = new Lecture(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), rs.getString(8));
+				arrayList.add(lecture);
+				System.out.println(arrayList.toString());
+			}
+			return arrayList;
+			
+		} catch (Exception e) {
+			System.out.println("getlectureinfo ERROR : " + e);
 		}
 		return null;
 	}

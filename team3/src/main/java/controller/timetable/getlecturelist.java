@@ -36,10 +36,11 @@ public class getlecturelist extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setCharacterEncoding("UTF-8");
-		String department = request.getParameter("department");
+		String department = request.getParameter("department1");
 		String html="";
 		PrintWriter out = response.getWriter();
 		ArrayList<Lecture> lecturelist = LectureDao.getLectureDao().getlectureList_depart(department);
+		int count = 0;
 		
 		for (Lecture lecture : lecturelist) {
 			
@@ -105,7 +106,9 @@ public class getlecturelist extends HttpServlet {
 				temp.add("미지원 기능");
 			}
 			
-			html += "<li class=\"card-lecture\">" +
+			
+			
+			html += "<li class=\"card-lecture\" id=\"card-lecture\">" +
 			
 						"<a class=\"lecture-title\" href=\"#\"> " + lecture.getLname() +" </a>" +
 			
@@ -119,12 +122,15 @@ public class getlecturelist extends HttpServlet {
 			
 							"<li> 교과목 코드 : " + lecture.getLno() +" </li>" + 
 							"<li> 담당 교수 : " + lecture.getLprofessor() + " </li>" +
+							"<input type=\"text\" id=\"lectureno" + count + "\" value=" + lecture.getLno() + ">" +
 			
 						"</ul>" +
 			
 					"</li>";
-					
+			
+			count++;
 		}
+		
 		
 		out.print(html);
 	}

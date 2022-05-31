@@ -3,6 +3,7 @@ package controller.timetable;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,9 +37,13 @@ public class getlectureinfo extends HttpServlet {
 
 		response.setCharacterEncoding("UTF-8");
 		
-		String department = request.getParameter("department");
+		int lno = Integer.parseInt(request.getParameter("lno"));
 		
-		ArrayList<Lecture> list = LectureDao.getLectureDao().getlectureList_depart(department);
+		System.out.println("학과번호 : " + lno);
+		
+		ArrayList<Lecture> list = LectureDao.getLectureDao().getlectureinfo(lno);
+		
+		
 		
 		String html ="";
 		
@@ -71,7 +76,7 @@ public class getlectureinfo extends HttpServlet {
 								"</div>" +
 							"</div>" +
 							"<div class=\"modal-footer\">" +
-								"<button type=\"button\" class=\"btn btn-light\" data-dismiss=\"modal\">취소</button>" + 
+								"<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">취소</button>" + 
 								"<button type=\"button\" class=\"btn btn-primary\" id=\"btn_regist\">과목 등록하기</button>" +
 							"</div>" +
 						"</div>" +
@@ -81,6 +86,8 @@ public class getlectureinfo extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		out.print(html);
+		
+		System.out.println(html);
 		
 	}
 
