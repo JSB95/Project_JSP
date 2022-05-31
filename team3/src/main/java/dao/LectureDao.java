@@ -87,8 +87,8 @@ public class LectureDao extends Dao{
 		return null;
 	}
 	
-	public ArrayList<Lecture> getlectureinfo(int lno){
-		ArrayList<Lecture> arrayList = new ArrayList<Lecture>();
+	public Lecture getlectureinfo(int lno){
+		
 		
 		String sql = "SELECT * FROM lecture WHERE lno = " + lno;
 		
@@ -96,12 +96,11 @@ public class LectureDao extends Dao{
 			System.out.println(sql);
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
-			while(rs.next()) {
+			if(rs.next()) {
 				Lecture lecture = new Lecture(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), rs.getString(8));
-				arrayList.add(lecture);
-				System.out.println(arrayList.toString());
+				return lecture; 
 			}
-			return arrayList;
+			
 			
 		} catch (Exception e) {
 			System.out.println("getlectureinfo ERROR : " + e);

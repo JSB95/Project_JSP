@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import dao.LectureDao;
 import dto.Lecture;
 
@@ -35,59 +39,36 @@ public class getlectureinfo extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		response.setCharacterEncoding("UTF-8");
+		
 		
 		int lno = Integer.parseInt(request.getParameter("lno"));
 		
-		System.out.println("학과번호 : " + lno);
+		Lecture lecture = LectureDao.getLectureDao().getlectureinfo(lno);
 		
-		ArrayList<Lecture> list = LectureDao.getLectureDao().getlectureinfo(lno);
+		JSONArray jsonArray = new JSONArray();
 		
-		
-		
-		String html ="";
-		
-		for (Lecture lecture : list) {
-			html += "<div class=\"modal-dialog\" role=\"document\">" +
-						"<div class=\"modal-content\">" +
-							"<div class=\"modal-header\">" +
-								"<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">" +
-								"<span aria-hidden=\"true\">×</span>" +
-								"</button>" +
-							"</div>" +
-							"<div class=\"modal-body\">" +
-								"<h3 class=\"lecture-title\">" + lecture.getLname() + "</h3>" +
-								"<ul class=\"lecture-info\">" +
-									"<li class=\"lecture-time\">" +
-										"<i class=\"material-icons ic-lecture-info\">access_alarm</i>" +
-										"<span>강의 시간 : " + getlecturelist.temp +"</span>" +
-									"</li>" +
-									"<li class=\"lecture-code\">" +
-										"<i class=\"material-icons ic-lecture-info\">code</i>" +
-										"<span>교과목 코드 : " + lecture.getLno() +"</span>" +
-									"</li>" +
-									"<li class=\"lecture-code\">" +
-										"<i class=\"material-icons ic-lecture-info\">school</i>" +
-										"<span>담당 교수 : " + lecture.getLprofessor() + "</span>" +
-									"</li>" +
-								"</ul>" +
-								"<div class=\"lecture-description\">" +
-									"<p class=\"txt-description\"></p>" +
-								"</div>" +
-							"</div>" +
-							"<div class=\"modal-footer\">" +
-								"<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">취소</button>" + 
-								"<button type=\"button\" class=\"btn btn-primary\" id=\"btn_regist\">과목 등록하기</button>" +
-							"</div>" +
-						"</div>" +
-					"</div>";
+
+		try {
+			JSONObject jsonObject = new JSONObject();
+			jsonObject.put("lname",lecture.getLname());
+			jsonObject.put("ltime",lecture.getLtime());
+			jsonObject.put("lno", lecture.getLno());
+			jsonObject.put("lprofessor",lecture.getLprofessor());
+			
+			jsonArray.put(jsonObject);
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("application/json");
+			response.getWriter().print(jsonObject.toString());
+			System.out.println("jsonobject : " + jsonObject);
+			System.out.println("jsonobject tostring : " + jsonObject.toString());
+			System.out.println("jsonarray  : " + jsonArray);
+			System.out.println("jsonarray tostring  : " + jsonArray.toString());
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
-		PrintWriter out = response.getWriter();
-		
-		out.print(html);
-		
-		System.out.println(html);
+
 		
 	}
 

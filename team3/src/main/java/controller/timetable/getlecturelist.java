@@ -37,7 +37,7 @@ public class getlecturelist extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setCharacterEncoding("UTF-8");
 		String department = request.getParameter("department1");
-		String html="";
+		String html="<ul class=\"list-lecture\" id=\"lecturelist\">";
 		PrintWriter out = response.getWriter();
 		ArrayList<Lecture> lecturelist = LectureDao.getLectureDao().getlectureList_depart(department);
 		int count = 0;
@@ -108,13 +108,13 @@ public class getlecturelist extends HttpServlet {
 			
 			
 			
-			html += "<li class=\"card-lecture\" id=\"card-lecture\">" +
+			html += "<li class=\"card-lecture\" id=\"card-lecture\" data-bs-toggle=\"modal\" data-bs-target=\"#modal-lecture-info\">" +
 			
 						"<a class=\"lecture-title\" href=\"#\"> " + lecture.getLname() +" </a>" +
 			
 						"<h6 class=\"lecture-time\">" +
 			
-							"<i class=\"fa-regular fa-clock\">&nbsp" + temp + " </i>" +
+							"<i class=\"fa-regular fa-clock\">&nbsp;" + temp + " </i>" +
 				
 						"</h6>" +
 			
@@ -122,7 +122,7 @@ public class getlecturelist extends HttpServlet {
 			
 							"<li> 교과목 코드 : " + lecture.getLno() +" </li>" + 
 							"<li> 담당 교수 : " + lecture.getLprofessor() + " </li>" +
-							"<input type=\"text\" id=\"lectureno" + count + "\" value=" + lecture.getLno() + ">" +
+							"<li id=\"lectureno" + count + "\" value=" + lecture.getLno() + ">" +
 			
 						"</ul>" +
 			
@@ -130,6 +130,8 @@ public class getlecturelist extends HttpServlet {
 			
 			count++;
 		}
+		
+		html += "</ul>";
 		
 		
 		out.print(html);

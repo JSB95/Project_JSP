@@ -1,11 +1,7 @@
 let jsondata;
 let jsonlist = [];
 
-$('.selectpicker').selectpicker();
-			$('.selectpicker').selectpicker({
-		      style: 'btn-info',
-		      size: 4
-			});
+
 
 
 function isEmpty(val){
@@ -24,13 +20,7 @@ $(function(){
 	$.ajax({
 		url : "../timetable/getcollege",
 		success : function(re){
-			console.log(re);
 			$("#collegebox_wrap").html(re);
-			$('.selectpicker').selectpicker();
-			$('.selectpicker').selectpicker({
-		      style: 'btn-info',
-		      size: 4
-			});
 			collegechange();
 		}
 	})
@@ -45,11 +35,6 @@ function collegechange(){
 		data : {"college" : college},
 		success : function(re){
 			$("#departmentbox_wrap").html(re);
-			$('.selectpicker').selectpicker();
-			$('.selectpicker').selectpicker({
-		      style: 'btn-info',
-		      size: 4
-			});
 			departmentchange();
 		}
 	})
@@ -67,16 +52,16 @@ function departmentchange(){
 function lectureprint(department1){
 	
 	department1 = $("#departmentbox").val();
-		$.ajax({
-			url : "../timetable/getlecturelist",
-			data : {"department1" : department1},
-			success : function(re){
-				$("#lecturelist").html(re);
-				
-				console.table(re);
-				
-			}
-		})
+	
+	$.ajax({
+		url : "../timetable/getlecturelist",
+		data : {"department1" : department1},
+		success : function(re){
+			$("#lecturelist_wrap").html(re);
+		}
+	})
+	
+	
 }
 
 $("#timetable td").bind('click', function(){
@@ -368,17 +353,10 @@ $("#123").on('click', 'tr', function(){
 
 $('.card-lecture').click(function () {
 	
-	let lno = $("#lectureno1").val();
-	console.log("JS 클릭 학과번호 : " + lno);
-	$.ajax({
-		url : "../timetable/getlectureinfo",
-		data : {"lno" : lno},
-		success : function(re){
-			console.table(re);
-			$("#modal-lecture-info").html(re);
-			
-		}
-	});
+	setTimeout(function(){
+		console.log("카드렉쳐 클릭");
+		
+	},1000);
 	$('#modal-lecture-info').modal('show');
 	
   
@@ -388,7 +366,36 @@ $('.lecture-time > a').click(function () {
   $('#modal-lecture-task').modal('show');
 });
 
-$(function () {
+$('#modal-lecture-info').on('show.bs.modal',function(event){
+	department1 = $("#departmentbox").val();
+	$.ajax({
+		url : "../timetable/getlectureinfo",
+		data : {"department1" : department1, "lno" : 121},
+		success : function(json){
+			jsondata = json;
+			console.log("모달 json : " + jsondata);
+			//$("#ordername").val( member['mname']);
+			var button = $(event.relatedTarget);
+	
+			var ltime = button.data(jsondata['ltime']);
+			var lname = jsondata["lname"];
+			var lno = button.data(jsondata['lno']);
+			var lprofessor = button.data(jsondata['lprofessor']);
+			var modal = $(this);
+	
+			modal.find('.lecture-title').text(lname);
+			modal.find('.lecture_time').text(ltime);
+			modal.find('.lecutre_code').text(lno);
+			modal.find('.lecture_professor').text(lprofessor);
+			
+		}
+	});
+	
+	
+	
+});
+
+/*$(function () {
   $('[data-toggle="tooltip"]').tooltip();
 });
 
@@ -402,4 +409,4 @@ $(function () {
     return $("#PopoverContent").html();
     }
   });
-});
+}); */
