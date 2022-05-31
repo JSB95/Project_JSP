@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.BoardDao;
-import dao.MemberDao;
+
 import dao.ReplyDao;
-import dto.Board;
+
 import dto.Reply;
 
 /**
@@ -39,9 +39,36 @@ public class replywrite extends HttpServlet {
 		rcontent = rcontent.replace("\r\n", "<br>");
 			String mid = (String)request.getSession().getAttribute("login");
 		int mno = BoardDao.getBoardDao().getmno(mid);
+		String anonymous = request.getParameter("anonymous");
 		//String radio = request.getParameter("anonymous");
-		//System.out.println(radio.toString());
+		System.out.println(anonymous.toString());
 		// 객체화 [ 댓글번호 , 댓글작성일 , rindex , mid 제외 ]
+		
+		if(anonymous.equals("true")) {
+			Reply reply = new Reply(0, rcontent, "익명", null, 0, 0, bno, mno);
+			boolean result = ReplyDao.getReplyDao().replywrite(reply);
+			if(result) {
+				 response.getWriter().print( 1 );
+			}
+			else {
+				 response.getWriter().print( 2 );
+			}
+			
+			
+		} else {
+			Reply reply = new Reply(0, rcontent, mid, null, 0, 0, bno, mno);
+			boolean result = ReplyDao.getReplyDao().replywrite(reply);
+			if(result) {
+				 response.getWriter().print( 1 );
+			}
+			else {
+				 response.getWriter().print( 2 );
+			}
+		}
+		
+		
+		
+		
 
 		
 	}
@@ -55,8 +82,7 @@ public class replywrite extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	
 	}
 
 }

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.reply_wrap{
+#reply_wrap{
 	width: 50%;
 	margin: 0 auto;
 	 word-break:break-all;
@@ -16,9 +16,10 @@ textarea{
 	margin: 0 auto;
 	 word-break:break-all;
 }
-#rcontent {
+#rcontent, #upcontent {
 	width: 45vw;
 }
+
 #rwrite{
 	width: 82px;
 	
@@ -53,3 +54,15 @@ time{
 .rwirte_area{
 	display: flex
 }
+.rfooter{
+	display: flex;
+	justify-content: space-between;
+	
+}
+.upbutton_area{
+	float: right;
+}
+.btn_area{
+	display: flex;
+}
+
