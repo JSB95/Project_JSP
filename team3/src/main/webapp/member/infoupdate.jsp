@@ -44,6 +44,7 @@
 				<tr>
 					<td>비밀번호</td>
 					<td><input class="form-control mb-2" type="password" id="mpassword" name="mpassword" placeholder="비밀번호를 입력해주세요."></td>
+					<td>회원님의 비밀번호를 입력해주세요</td>
 				</tr>
 			</table>
 			<button onclick="update()" type="submit">수정</button>

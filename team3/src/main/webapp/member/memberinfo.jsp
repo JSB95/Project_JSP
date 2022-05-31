@@ -13,36 +13,48 @@
 	<link href="/team3/css/member/member.css" rel="stylesheet">
 </head>
 <body>
+	<%@include file="../header.jsp" %>
+	<%
+		String mid = (String)session.getAttribute("login");
+		Member member =  MemberDao.getMemberDao().getmemberinfo(mid);
+	%>
 	<div class="container">
-		
-		<%
-			String mid = (String)session.getAttribute("login");
-			Member member =  MemberDao.getMemberDao().getmemberinfo(mid);
-		%>
-		<div>
-			<h3 class="text-center">회원정보</h3>
-			이름 : <%=member.getMname() %><br>
-			학번 : <%=member.getMcode() %><br>
-			아이디 : <%=member.getMid() %><br>
-			연락처 : <%=member.getMphone() %><br>
-			이메일 : <%=member.getMemail() %><br>
+		<h3 class="text-center">회원정보</h3>
+		<div class="row">
+			<div class="col-md-4">
+				<div>
+					<h4>내프로필</h4>
+					<hr>
+					이름 : <%=member.getMname() %><br>
+					학번 : <%=member.getMcode() %><br>
+					아이디 : <%=member.getMid() %><br>
+					연락처 : <%=member.getMphone() %><br>
+					이메일 : <%=member.getMemail() %><br>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<h4>계정</h4>
+				<hr>
+				<div>
+					<h5><a href="/team3/member/infoupdate.jsp">정보 수정</a></h5>
+				</div>
+				<div>
+					<h5>내가 쓴 글</h5>
+				</div>
+				<div>
+					<h5>쪽지함</h5>
+				</div>
+				<div>
+					<h5><a href="logout">로그아웃</a></h5>
+				</div>
+				<div>
+					<h5><a href="/team3/member/pwupdate.jsp">비밀번호 변경</a></h5>
+				</div>
+				<div>
+					<h5><a href="/team3/member/mdelete.jsp">회원탈퇴</a></h5>
+				</div>
+			</div>
 		</div>
-		<div>
-			<h3><a href="/team3/member/infoupdate.jsp">정보 수정</a></h3>
-		</div>
-		<div>
-			<h3>내가 쓴 글</h3>
-		</div>
-		<div>
-			<h3><a href="logout">로그아웃</a></h3>
-		</div>
-		<div>
-			<h3><a href="/team3/member/pwupdate.jsp">비밀번호 변경</a></h3>
-		</div>
-		<div>
-			<h3><a href="/team3/member/mdelete.jsp">회원탈퇴</a></h3>
-		</div>
-		
 	</div>
 	
 	<!-- jquery cdn -->

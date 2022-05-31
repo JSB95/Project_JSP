@@ -20,7 +20,7 @@
 				<ul class="navbar-nav">
 					<li class="nav-item"><a href="#">시간표</a></li>
 					<li class="nav-item"><a href="#">자유게시판</a></li>
-					<li class="nav-item"><a href="#">강의평</a></li>
+					<li class="nav-item"><a href="/team3/review/reviewlist.jsp">강의평</a></li>
 					<li class="nav-item"><a href="/team3/bookstore/booklist.jsp">책방</a></li>
 				</ul>
 			</div>
