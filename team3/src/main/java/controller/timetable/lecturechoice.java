@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -43,8 +44,13 @@ public class lecturechoice extends HttpServlet {
 		
 		try {
 			JSONObject jsonObject = new JSONObject(request.getParameter("jsondata"));
-			System.out.println(jsonObject);
-			System.out.println(jsonObject.get("time"));
+			JSONArray array = new JSONArray();
+			for (int i = 0; i < jsonObject.length()-1; i++) {
+				array.put(jsonObject.get("time").toString().split("_"));
+			}
+			
+			
+			System.out.println(array);
 		} catch (JSONException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
