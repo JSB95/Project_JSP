@@ -22,7 +22,6 @@
 	<%
 		request.setCharacterEncoding("UTF-8");
 		String keyword = request.getParameter("keyword");
-		
 		if( keyword !=null){
 			session.setAttribute("keyword", keyword);
 		}else{
@@ -70,7 +69,6 @@
 			
 		</div>
 	</div>
-	
 	
 	
 	

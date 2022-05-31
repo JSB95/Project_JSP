@@ -4,14 +4,27 @@ let jsonarray;
 function lecturelist(lno){
 	
 	$.ajax({
-		url : '/team3/review/getlecture' ,
+		url : '/team3/review/reviewaddcheck' ,
 		data: {"lno": lno},
-		success : function( json ){
-			jsonarray = json;	/* 응답받은 데이터를 전역변수에 넣어주기 */
-			tableview();
-			$("#lno").val(lno);
+		success : function( re ){
+			if(re==1){
+				alert("기존에 입력한 기록이 있습니다.");
+			}
+			else{
+				$.ajax({
+				url : '/team3/review/getlecture' ,
+				data: {"lno": lno},
+				success : function( json ){
+					jsonarray = json;	/* 응답받은 데이터를 전역변수에 넣어주기 */
+					tableview();
+					$("#lno").val(lno);
 		}
 	});
+			}
+		}
+	});
+	
+	
 	
 }
 
@@ -74,7 +87,7 @@ function tableview(){
 				'		<br>'+
 				'	</div>'+
 				'	<div class="col-md-8">'+
-				'		<textarea rows="10" cols="80" id="text"></textarea><br>'+
+				'		<textarea rows="10" cols="80" id="text" placeholder="이 강의에 대한 총평을 작성해주세요. (등록 후에는 수정 및 삭제가 불가능하므로 신중히 적어주세요.)"></textarea><br>'+
 				'	</div>'+
 			'	</div>'+
 			'</div>'+
