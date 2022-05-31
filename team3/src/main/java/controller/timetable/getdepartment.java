@@ -41,20 +41,22 @@ public class getdepartment extends HttpServlet {
 		
 		ArrayList<Lecture> list = LectureDao.getLectureDao().getdepartmentlist(college);
 		Set<String> department = new TreeSet<String>();
-		String html = "";
+		String html = "<select id=\"departmentbox\" onchange=\"departmentchange()\" class=\"selectpicker\" style=\"width : 100px\">";
 		
 		PrintWriter out = response.getWriter();
 		
 		for (Lecture lecture : list) {
 			if (lecture.getLdepartment() != null){
 				department.add(lecture.getLdepartment());
-	
 			}
 		}
 		for (String lecture : department) {
+			
 				html += "<option>" + lecture.toString() + "</option>";
 			
 		}
+		
+		html += "</select>";
 		
 		out.print(html);
 	}

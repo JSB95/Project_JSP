@@ -32,24 +32,20 @@ public class getlecturelist extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    public static ArrayList<String> temp = new ArrayList<String>();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setCharacterEncoding("UTF-8");
 		String department = request.getParameter("department");
-		String html="<tr>" +
-						"<th> 강의명 </th>" +
-						"<th> 교수명 </th>" +
-						"<th> 시간 </th>" +
-						"<th> 학점 </th>" +
-						"<th id=\"time1\"> 데이터용 시간 </th>" +
-					"</tr>";
+		String html="";
 		PrintWriter out = response.getWriter();
 		ArrayList<Lecture> lecturelist = LectureDao.getLectureDao().getlectureList_depart(department);
+		
 		for (Lecture lecture : lecturelist) {
 			
 			String[] l = lecture.getLtime().split("_");
 			
-			ArrayList<String> temp = new ArrayList<String>();
+			temp = new ArrayList<String>();
 			if (l.length == 1) {
 				temp.add(l[0].split("/")[0] + "(" + l[0].split("/")[1] + ")");
 			} else if (l.length == 2) {
@@ -109,15 +105,24 @@ public class getlecturelist extends HttpServlet {
 				temp.add("미지원 기능");
 			}
 			
-			html += 
-		
-					"<tr>" + 
-						"<td>" + lecture.getLname() + "</td>" +
-						"<td>" + lecture.getLprofessor() + "</td>" +
-						"<td>" + temp + "</td>" +
-						"<td>" + lecture.getLcredit() + "</td>" +
-						"<td id=\"time1\">" + lecture.getLtime() + "</td>" +
-					"</tr>" ;
+			html += "<li class=\"card-lecture\">" +
+			
+						"<a class=\"lecture-title\" href=\"#\"> " + lecture.getLname() +" </a>" +
+			
+						"<h6 class=\"lecture-time\">" +
+			
+							"<i class=\"fa-regular fa-clock\">&nbsp" + temp + " </i>" +
+				
+						"</h6>" +
+			
+						"<ul class=\"list-lecture-info\">" +
+			
+							"<li> 교과목 코드 : " + lecture.getLno() +" </li>" + 
+							"<li> 담당 교수 : " + lecture.getLprofessor() + " </li>" +
+			
+						"</ul>" +
+			
+					"</li>";
 					
 		}
 		

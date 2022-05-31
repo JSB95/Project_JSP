@@ -1,6 +1,13 @@
 let jsondata;
 let jsonlist = [];
 
+$('.selectpicker').selectpicker();
+			$('.selectpicker').selectpicker({
+		      style: 'btn-info',
+		      size: 4
+			});
+
+
 function isEmpty(val){
 	if (val == "" || val == null || val == undefined || (val != null && typeof val == "object" && !Object.keys(val).length) || val == " "){
 		return true;
@@ -18,7 +25,12 @@ $(function(){
 		url : "../timetable/getcollege",
 		success : function(re){
 			console.log(re);
-			$("#collegebox").html(re);
+			$("#collegebox_wrap").html(re);
+			$('.selectpicker').selectpicker();
+			$('.selectpicker').selectpicker({
+		      style: 'btn-info',
+		      size: 4
+			});
 			collegechange();
 		}
 	})
@@ -32,7 +44,12 @@ function collegechange(){
 		url : "../timetable/getdepartment",
 		data : {"college" : college},
 		success : function(re){
-			$("#departmentbox").html(re);
+			$("#departmentbox_wrap").html(re);
+			$('.selectpicker').selectpicker();
+			$('.selectpicker').selectpicker({
+		      style: 'btn-info',
+		      size: 4
+			});
 			departmentchange();
 		}
 	})
@@ -340,4 +357,40 @@ $("#lecturelist").on('click', 'tr', function(){
 		
 	}
 	
+});
+
+$('.card-lecture').click(function (department) {
+	
+	$.ajax({
+		url : "../timetable/getlectureinfo",
+		data : {department : "department"},
+		success : function(re){
+			console.log("강의 정보 통신" + re);
+			$("#modal-lecture-info").html(re);
+			
+		}
+	});
+	$('#modal-lecture-info').modal('show');
+	
+  
+});
+
+$('.lecture-time > a').click(function () {
+  $('#modal-lecture-task').modal('show');
+});
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
+
+$(function () {
+  $('[data-toggle="popover"]').popover({
+    container: 'body',
+    html: true,
+    placement: 'right',
+    sanitize: false,
+    content: function () {
+    return $("#PopoverContent").html();
+    }
+  });
 });
