@@ -1,3 +1,6 @@
+<%@page import="dto.Reply"%>
+<%@page import="dao.ReplyDao"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="dao.BoardDao"%>
 <%@page import="dto.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -8,6 +11,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/team3/css/board/boardview.css">
+<link rel="stylesheet" type="text/css" href="/team3/css/board/reply.css">
 <!-- 폰트어썸[ 아이콘 ]  -->
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
 </head>
@@ -15,11 +19,13 @@
 <%
 int bno = Integer.parseInt( request.getParameter("bno"));
 Board board  = BoardDao.getBoardDao().getboaBoard(bno);
+String mid = (String)session.getAttribute("login"); 
+int mno = BoardDao.getBoardDao().getmno(mid);
 
 %>
 
 <h1>게시물조회</h1>
-
+<input type="hidden" value="<%=bno%>" id="bno">
 
 			 
 				<div class="view_header">
@@ -39,13 +45,14 @@ Board board  = BoardDao.getBoardDao().getboaBoard(bno);
 						<span><%=board.getBnickname() %></span> 
 						
 					</div>
-					<div><span>작성일  <%=board.getBdate() %></h3> </span>
+					<div><span>작성일  <%=board.getBdate() %> </span>
 				
 				</div>
 				</div>
 				
 				
-				<div>추천수  <%=board.getBlike() %> </div>
+				
+				</div>
 			
 			
 				 
@@ -61,9 +68,96 @@ Board board  = BoardDao.getBoardDao().getboaBoard(bno);
 				 <div class="img_area">이미지 : <img width="100%" alt="" src="/team3/board/upload/<%=board.getBimg()%>"> </div> <!-- 첨부파일 다운로드 -->
 			<% } %>
 			
+			<div id="like_area">
+			<%
+				if(mid != null && BoardDao.getBoardDao().getblike(bno, mno)) {%>
+				<button onclick="saveblike('<%=mid%>');"><i class="fas fa-thumbs-up"></i><%=board.getBlike() %></button>
+			<% } else {%>
+			
+			<button onclick="saveblike('<%=mid%>');"><i class="far fa-thumbs-up"></i>  <%=board.getBlike() %></button>
+			<%} %>
+			
+			</div>
+			
+			
+			
+			<!-- 댓글작성구역 ------------------------------------------------------------------------------------->
+			
+			<div class="rwrite_wrap"> <!-- row : 가로배치 -->
+			<div class="rwirte_area">
+				<textarea  rows="4" cols="50" name="rcontent" id="rcontent"  ></textarea>
+				
+				<button type="button" id="rwrite" onclick="replywrite(<%=bno%>)">등록</button>
+				
+			</div>
+			<span> <input id="anonymous" type="checkbox" value="익명" name="anonymous"> 익명</span>
+			<div>
+		
+			</div>
+		</div>
+		
+			
+			
+			<!-- 댓글출력구역------------------------------------------------------------------------------------ -->
+			<%
+				ArrayList<Reply> replylist = ReplyDao.getReplyDao().replylist(bno);
+				
+			%>
+			<div id="wrap">
+			<p>댓글</p> <div>댓글</div>
+			<% for(Reply reply : replylist) { %>
+			
+			<div id="reply_wrap"> <!-- 댓글출력구역 -->
+			
+				<div class="rbox">
+				<div class="rheader"><span><i class="fas fa-user"></i></span>  <%=reply.getRnickname() %>   <time><%=reply.getRdate() %></time></div> 
+				<div class="rmain"><p class="con"><%=reply.getRcontent()%><p></div>
+				<div class="rfooter">
+				<div><i class="fas fa-thumbs-up"></i> <i class="far fa-comment-alt"></i></div>
+				<div class="btn_area">
+				<div class="test"><button onclick="updateview(<%=reply.getRno()%>,'<%=reply.getRcontent()%>',<%=reply.getBno()%>)">수정</button></div>
+				<div class="test"><button onclick="replydelete(<%=reply.getRno()%>)">삭제</button></div>
+				</div>
+				</div>
+				
+			</div>
+			</div> 
+			<!-- 수정입력창 -->
+					<div class="rwrite_wrap" id=<%=reply.getRno()%>> <!-- row : 가로배치 -->
+			
+					</div>
+					
+			<!-- 대댓입력창 -->
+			<div class="rwrite_wrap" id=<%=reply.getRno()%>> <!-- row : 가로배치 -->
+	
+			</div>
+					
+					
+			<% }%>
+			
+			
+			
+			
+	
+			
+			
+			
+			</div>
+			
+			
+			
+			
+			
+			<div class="upbutton_area"> <!-- 게시물 수정삭제 버튼 구역 -->
+				<a href="boardupdate.jsp?bno=<%=board.getBno()%>"><button>수정</button></a>
+				<a href="boarddelete?bno=<%=board.getBno()%>"> <button>삭제</button> </a>
+			</div>
+			
+			
 		
 
-
+<script type="text/javascript" src="/team3/js/board/boardview.js"></script>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 </body>
 </html>

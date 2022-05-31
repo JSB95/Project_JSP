@@ -7,22 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONArray;
-
 import dao.BoardDao;
-import dto.Board;
 
 /**
- * Servlet implementation class boardlist
+ * Servlet implementation class saveblike
  */
-@WebServlet("/board/boardlist")
-public class boardlist extends HttpServlet {
+@WebServlet("/board/saveblike")
+public class saveblike extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public boardlist() {
+    public saveblike() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,20 +28,15 @@ public class boardlist extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("리스트json통신");
-		String key = request.getParameter("key");
-		String keyword = request.getParameter("keyword");
 		
-		System.out.println(key);
-		System.out.println(keyword);
-		JSONArray jsonArray =
-				BoardDao.getBoardDao().getboardlist2(key,keyword);
+		int bno = Integer.parseInt(request.getParameter("bno"));
+		String mid = request.getParameter("mid");
 		
+		int result = BoardDao.getBoardDao().boardlike(bno, BoardDao.getBoardDao().getmno(mid));
 		
-		
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("application/json");
-		response.getWriter().print(jsonArray);
+		if(result == 1) {response.getWriter().print(result);}
+		else if(result==2) {response.getWriter().print(result);}
+		else if(result==3) {response.getWriter().print(result);}
 	}
 
 	/**

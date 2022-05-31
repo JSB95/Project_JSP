@@ -14,15 +14,17 @@
 <%
 	ArrayList<Board> boardlist
 	= BoardDao.getBoardDao().getboardlist();
-
+String mid = (String)session.getAttribute("login");
+String best = "best";
 
 %>
 
 
 <!-- 인기글 전체글 선택 -->
 	<div class="board_category">
-		<button>전체글</button>
-		<button>인기글</button>
+		<a href="boardlist.jsp"><button>전체글</button></a>
+		<button onclick="boardbest()">인기글</button>
+		<a href="boardwirte.jsp"><button>글쓰기</button></a>
 	</div>
 <!-- ---------------------- 테이블 구역 -------------------------- -->
 	

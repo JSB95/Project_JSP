@@ -7,22 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONArray;
 
-import dao.BoardDao;
-import dto.Board;
+import dao.ReplyDao;
 
 /**
- * Servlet implementation class boardlist
+ * Servlet implementation class replydelete
  */
-@WebServlet("/board/boardlist")
-public class boardlist extends HttpServlet {
+@WebServlet("/board/replydelete")
+public class replydelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public boardlist() {
+    public replydelete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,20 +29,10 @@ public class boardlist extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("리스트json통신");
-		String key = request.getParameter("key");
-		String keyword = request.getParameter("keyword");
-		
-		System.out.println(key);
-		System.out.println(keyword);
-		JSONArray jsonArray =
-				BoardDao.getBoardDao().getboardlist2(key,keyword);
-		
-		
-		
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("application/json");
-		response.getWriter().print(jsonArray);
+		int rno = Integer.parseInt(request.getParameter("rno") );
+		boolean result = ReplyDao.getReplyDao().replydelete(rno);
+		if( result ) { response.getWriter().print(1); }
+		else { response.getWriter().print(2); }
 	}
 
 	/**
