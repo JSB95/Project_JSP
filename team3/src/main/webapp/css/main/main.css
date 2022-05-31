@@ -1,0 +1,42 @@
+.fa-school{
+	font-size: 50px;
+}
+.fa-comment-dots{
+	font-size: 40px;
+}
+.fa-user{
+	font-size: 40px; 
+	padding-right: 100px;
+}
+
+.iconbox{
+	background-color: #c62917;
+	border-radius: 10px;
+	padding: 20px;
+	margin-left: 200px;margin-right:  200px;margin-top: 50px;margin-bottom: 40;
+	height: 180px;
+}
+
+.nav-link{
+	text-decoration: none; color: white;
+}
+
+li i{
+	font-size: 50px;
+}
+
+.nav-link{
+	padding: 30px 50px 0px 50px;
+}
+.mainheader{
+	margin-top: 30px;
+	height: 50px;
+}
+a{
+	text-decoration: none; color: #c62917;
+}
+
+.tablelist{
+	margin-top: 50px;
+	margin-left: 100px;margin-right: 100px;
+}
