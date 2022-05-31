@@ -181,25 +181,25 @@
 						
 						<div class="modal-body">
 						
-							<h3 class="lecture_title"></h3>
+							<h3 class="lecture_title">1</h3>
 							
 							<ul class="lecture-info">
 							
 									<li class="lecture-time">
 									
 										<i class="material-icons ic-lecture-info">access_alarm</i>
-										강의시간 : <span class="lecture_time"></span>
+										강의시간 : <span class="lecture_time">1</span>
 										
 									</li>
 									
 									<li class="lecture-code">
 										<i class="material-icons ic-lecture-info">code</i>
-										<span class="lecutre_code">교과목 코드 :  lecture.getLno() +</span>
+										교과목 코드 : <span class="lecutre_code">1</span>
 									</li>
 									
 									<li class="lecture-code">
 										<i class="material-icons ic-lecture-info">school</i>
-										<span class="lecture_professor">담당 교수 :  lecture.getLprofessor() + </span>
+										담당 교수 : <span class="lecture_professor">1</span>
 									</li>
 									
 								</ul>

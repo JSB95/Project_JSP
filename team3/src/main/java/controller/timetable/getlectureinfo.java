@@ -59,10 +59,6 @@ public class getlectureinfo extends HttpServlet {
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("application/json");
 			response.getWriter().print(jsonObject.toString());
-			System.out.println("jsonobject : " + jsonObject);
-			System.out.println("jsonobject tostring : " + jsonObject.toString());
-			System.out.println("jsonarray  : " + jsonArray);
-			System.out.println("jsonarray tostring  : " + jsonArray.toString());
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

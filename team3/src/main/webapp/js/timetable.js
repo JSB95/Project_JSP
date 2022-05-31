@@ -366,7 +366,7 @@ $('.lecture-time > a').click(function () {
   $('#modal-lecture-task').modal('show');
 });
 
-$('#modal-lecture-info').on('show.bs.modal',function(event){
+$('#modal-lecture-info').on('show.bs.modal',function(e){
 	department1 = $("#departmentbox").val();
 	$.ajax({
 		url : "../timetable/getlectureinfo",
@@ -375,18 +375,27 @@ $('#modal-lecture-info').on('show.bs.modal',function(event){
 			jsondata = json;
 			console.log("모달 json : " + jsondata);
 			//$("#ordername").val( member['mname']);
-			var button = $(event.relatedTarget);
-	
-			var ltime = button.data(jsondata['ltime']);
+			
+			var button = $(e.relatedTarget);
+			var ltime = jsondata['ltime'];
 			var lname = jsondata["lname"];
-			var lno = button.data(jsondata['lno']);
-			var lprofessor = button.data(jsondata['lprofessor']);
+			var lno =jsondata['lno'];
+			var lprofessor = jsondata['lprofessor'];
 			var modal = $(this);
-	
-			modal.find('.lecture-title').text(lname);
-			modal.find('.lecture_time').text(ltime);
-			modal.find('.lecutre_code').text(lno);
-			modal.find('.lecture_professor').text(lprofessor);
+			console.log(jsondata['ltime']);
+			console.log(lname);
+			console.log(jsondata['lno']);
+			console.log(lprofessor);
+			
+			$(".lecture_title").html(lname);
+			$(".lecture_time").html(ltime);
+			$(".lecutre_code").html(lno);
+			$(".lecture_professor").html(lprofessor);
+			
+			modal.find('#modal-lecture-info .lecture-title').html('test');
+			modal.find('.lecture_time').html(ltime);
+			modal.find('.lecutre_code').html(lno);
+			modal.find('.lecture_professor').html(lprofessor);
 			
 		}
 	});
