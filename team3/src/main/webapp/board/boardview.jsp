@@ -104,7 +104,7 @@ int mno = BoardDao.getBoardDao().getmno(mid);
 				
 			%>
 			<div id="wrap">
-			<p>댓글</p> <div>댓글</div>
+			
 			<% for(Reply reply : replylist) { %>
 			
 			<div id="reply_wrap"> <!-- 댓글출력구역 -->
@@ -113,7 +113,7 @@ int mno = BoardDao.getBoardDao().getmno(mid);
 				<div class="rheader"><span><i class="fas fa-user"></i></span>  <%=reply.getRnickname() %>   <time><%=reply.getRdate() %></time></div> 
 				<div class="rmain"><p class="con"><%=reply.getRcontent()%><p></div>
 				<div class="rfooter">
-				<div><i class="fas fa-thumbs-up"></i> <i class="far fa-comment-alt"></i></div>
+				<div><i class="fas fa-thumbs-up"></i> <span onclick="rereplyview(<%=reply.getRno()%>,<%=reply.getBno()%>)"><i class="far fa-comment-alt"></i></span></div>
 				<div class="btn_area">
 				<div class="test"><button onclick="updateview(<%=reply.getRno()%>,'<%=reply.getRcontent()%>',<%=reply.getBno()%>)">수정</button></div>
 				<div class="test"><button onclick="replydelete(<%=reply.getRno()%>)">삭제</button></div>
@@ -131,15 +131,36 @@ int mno = BoardDao.getBoardDao().getmno(mid);
 			<div class="rwrite_wrap" id=<%=reply.getRno()%>> <!-- row : 가로배치 -->
 	
 			</div>
-					
-					
-			<% }%>
 			
+			<!-- 대댓글 출력 -->
+			<%ArrayList<Reply> rereplylist = ReplyDao.getReplyDao().rereplylist( bno , reply.getRno() );
+				for( Reply rereply : rereplylist ){%>
+				<div id="reply_wrap"> <!-- 댓글출력구역 -->
 			
+				<div class="rbox re">
+				<div class="rheader"><span><i class="fas fa-user"></i></span>  <%=rereply.getRnickname() %>   <time><%=reply.getRdate() %></time></div> 
+				<div class="rmain"><p class="con"><%=rereply.getRcontent()%><p></div>
+				<div class="rfooter">
+				<div><i class="fas fa-thumbs-up"></i> <span onclick="rereplyview(<%=rereply.getRno()%>,<%=rereply.getBno()%>)"></span></div>
+				<div class="btn_area">
+				<div class="test"><button onclick="reupdateview(<%=rereply.getRno()%>,'<%=rereply.getRcontent()%>',<%=rereply.getBno()%>)">수정</button></div>
+				<div class="test"><button onclick="replydelete(<%=rereply.getRno()%>)">삭제</button></div>
+				</div>
+				</div>
+				
+			</div>
+			</div> 
 			
-			
+			<!-- 대댓입력창 -->
+			<div class="rwrite_wrap" id=<%=rereply.getRno()%>> <!-- row : 가로배치 -->
 	
+			</div>
 			
+				
+				
+			<%  }  } %>
+			
+					
 			
 			
 			</div>

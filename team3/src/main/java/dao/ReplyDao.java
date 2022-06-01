@@ -35,7 +35,7 @@ public boolean replywrite(Reply reply) {
 		return false;
 	}
 
-
+// 댓글출력
 public ArrayList<Reply> replylist( int bno ) { 
 	ArrayList<Reply> replylist = new ArrayList<Reply>();
 	String sql = "select * from reply where bno = "+bno+" and rindex = 0"; // rindex = 0  : 댓글만 출력 [ 대댓글 제외 ] 
@@ -51,6 +51,24 @@ public ArrayList<Reply> replylist( int bno ) {
 		}
 		return replylist;
 	}catch (Exception e) { System.out.println( e ); } return null; 
+}
+
+// 대댓글출력
+public ArrayList<Reply> rereplylist( int bno , int  rno ){
+	ArrayList<Reply> rereplylist = new ArrayList<Reply>();
+	String sql = "select * from reply where bno = "+bno+" and rindex = "+rno;
+	try { 
+		ps = con.prepareStatement(sql); rs= ps.executeQuery();
+		while( rs.next() ) {
+			Reply reply = new Reply(
+					rs.getInt(1) , rs.getString(2) , 
+					rs.getString(3) , rs.getString(4) , 
+					rs.getInt(5), rs.getInt(6), rs.getInt(7),rs.getInt(8));
+			rereplylist.add(reply);
+		}
+		return rereplylist;
+	}catch (Exception e) { System.out.println(e); } return null;
+	
 }
 
 // 댓글수정
