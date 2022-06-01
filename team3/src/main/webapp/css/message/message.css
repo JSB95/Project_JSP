@@ -1,0 +1,19 @@
+ .mcontent{
+ 	 display: inline-block;
+    width: 630px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+ }
+ .td{
+	height: 20px;
+ }
+ 
+ .내용{
+ 	 width: 630px;
+ }
+ 
+ .read{
+ 	height: 20px;
+ 	color: #eeeeee ;
+ }
