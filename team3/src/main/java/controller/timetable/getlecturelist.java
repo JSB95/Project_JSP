@@ -106,11 +106,11 @@ public class getlecturelist extends HttpServlet {
 				temp.add("미지원 기능");
 			}
 			
+			//onclick=\"li_onclick()\"
 			
+			html += "<li class=\"card-lecture\" id=\"card-lecture\" >" +
 			
-			html += "<li class=\"card-lecture\" id=\"card-lecture\" data-bs-toggle=\"modal\" data-bs-target=\"#modal-lecture-info\">" +
-			
-						"<a class=\"lecture-title\" href=\"#\"> " + lecture.getLname() +" </a>" +
+						"<a class=\"lecture-title\" href=\"#\" id=\"getlname\" data-item=\"<?= $row['getlname']\"> " + lecture.getLname() +" </a>" +
 			
 						"<h6 class=\"lecture-time\">" +
 			
@@ -121,7 +121,7 @@ public class getlecturelist extends HttpServlet {
 						"<ul class=\"list-lecture-info\">" +
 			
 							"<li> 교과목 코드 : " + lecture.getLno() +" </li>" + 
-							"<li> 담당 교수 : " + lecture.getLprofessor() + " </li>" +
+							"<li> 담당 교수 : <span id=\"getlprofessor\">"  + lecture.getLprofessor()  + "</span> </li>" +
 							"<li id=\"lectureno" + count + "\" value=" + lecture.getLno() + ">" +
 			
 						"</ul>" +

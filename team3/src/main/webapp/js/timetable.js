@@ -48,6 +48,8 @@ function departmentchange(){
 	lectureprint(department);
 }
 
+let lecturelist = [ ];
+
 
 function lectureprint(department1){
 	
@@ -350,27 +352,30 @@ $("#123").on('click', 'tr', function(){
 	}
 	
 });
-
-$('.card-lecture').click(function () {
+let name;
+$('#card-lecture').click(function () {
 	
-	setTimeout(function(){
-		console.log("카드렉쳐 클릭");
-		
-	},1000);
-	$('#modal-lecture-info').modal('show');
-	
+	alert($(this).html());
   
 });
+
+$(function(){
+	$('#card-lecture').click(function(){
+		alert("클릭");
+	})
+})
 
 $('.lecture-time > a').click(function () {
   $('#modal-lecture-task').modal('show');
 });
 
 $('#modal-lecture-info').on('show.bs.modal',function(e){
-	department1 = $("#departmentbox").val();
+	var lname="공학수학I";
+	var lprofessor ="신창환";
+	
 	$.ajax({
 		url : "../timetable/getlectureinfo",
-		data : {"department1" : department1, "lno" : 121},
+		data : {"lname" : lname, "lprofessor" : lprofessor},
 		success : function(json){
 			jsondata = json;
 			console.log("모달 json : " + jsondata);
@@ -396,9 +401,9 @@ $('#modal-lecture-info').on('show.bs.modal',function(e){
 			modal.find('.lecture_time').html(ltime);
 			modal.find('.lecutre_code').html(lno);
 			modal.find('.lecture_professor').html(lprofessor);
-			
+			console.log($("#getlname").html());
 		}
-	});
+	}); 
 	
 	
 	
@@ -418,4 +423,17 @@ $(function () {
     return $("#PopoverContent").html();
     }
   });
-}); */
+}); 
+
+function li_onclick(){
+	const $btn = $('#card-lecture');
+	
+	$btn.on('click',function(e){
+		console.log(e.target);
+	});
+}*/
+
+$(document).on('click','#card-lecture', function(e){
+	console.log(e.target);
+	console.log($(this).html())
+});

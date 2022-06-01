@@ -39,11 +39,10 @@ public class getlectureinfo extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		String lname = request.getParameter("lname");
+		String lprofessor = request.getParameter("lprofessor");
 		
-		
-		int lno = Integer.parseInt(request.getParameter("lno"));
-		
-		Lecture lecture = LectureDao.getLectureDao().getlectureinfo(lno);
+		Lecture lecture = LectureDao.getLectureDao().getlectureinfo(lname, lprofessor);
 		
 		JSONArray jsonArray = new JSONArray();
 		

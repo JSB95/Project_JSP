@@ -87,10 +87,10 @@ public class LectureDao extends Dao{
 		return null;
 	}
 	
-	public Lecture getlectureinfo(int lno){
+	public Lecture getlectureinfo(String lname, String lprofessor){
 		
-		
-		String sql = "SELECT * FROM lecture WHERE lno = " + lno;
+		lname = lname.trim();
+		String sql = "SELECT * FROM lecture WHERE lname = '" + lname + "' AND lprofessor = '" + lprofessor + "'";
 		
 		try {
 			System.out.println(sql);
