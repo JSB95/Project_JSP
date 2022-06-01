@@ -79,7 +79,7 @@ public class LectureDao extends Dao{
 				Lecture lecture = new Lecture(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), rs.getString(8));
 				list.add(lecture);
 			}
-			System.out.println("학과 : " + department);
+
 			return list;
 		} catch (Exception e) {
 			System.out.println("getlectureList_depart ERROR : " + e);
@@ -87,13 +87,12 @@ public class LectureDao extends Dao{
 		return null;
 	}
 	
-	public Lecture getlectureinfo(String lname, String lprofessor){
+	public Lecture getlectureinfo(int lno){
 		
-		lname = lname.trim();
-		String sql = "SELECT * FROM lecture WHERE lname = '" + lname + "' AND lprofessor = '" + lprofessor + "'";
+		
+		String sql = "SELECT * FROM lecture WHERE lno = " + lno;
 		
 		try {
-			System.out.println(sql);
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			if(rs.next()) {

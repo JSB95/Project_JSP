@@ -175,7 +175,7 @@
 					
 						<div class="modal-header">
 						
-							 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						
 						</div>
 						
@@ -188,13 +188,13 @@
 									<li class="lecture-time">
 									
 										<i class="material-icons ic-lecture-info">access_alarm</i>
-										강의시간 : <span class="lecture_time">1</span>
+										강의시간 : <span class="lecture_time">1</span><span class="lecture_time_db" style="display: none;"></span>
 										
 									</li>
 									
 									<li class="lecture-code">
 										<i class="material-icons ic-lecture-info">code</i>
-										교과목 코드 : <span class="lecutre_code">1</span>
+										교과목 코드 : <span class="lecutre_code">1</span> 
 									</li>
 									
 									<li class="lecture-code">

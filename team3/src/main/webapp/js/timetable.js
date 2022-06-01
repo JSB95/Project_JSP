@@ -1,20 +1,6 @@
 let jsondata;
 let jsonlist = [];
 
-
-
-
-function isEmpty(val){
-	if (val == "" || val == null || val == undefined || (val != null && typeof val == "object" && !Object.keys(val).length) || val == " "){
-		return true;
-	} else if ($('"#'+val+'"').html == " " || $('"#'+val+'"').html == ""){
-		return true;
-	} else {
-		return false;
-	}
-}
-
-
 $(function(){
 	
 	$.ajax({
@@ -43,13 +29,9 @@ function collegechange(){
 let department = $("#departmentbox").val();
 
 function departmentchange(){
-	
 	console.log($("#departmentbox").val());
 	lectureprint(department);
 }
-
-let lecturelist = [ ];
-
 
 function lectureprint(department1){
 	
@@ -62,8 +44,7 @@ function lectureprint(department1){
 			$("#lecturelist_wrap").html(re);
 		}
 	})
-	
-	
+
 }
 
 $("#timetable td").bind('click', function(){
@@ -74,7 +55,12 @@ $("#timetable td").bind('click', function(){
 })
 console.log( $('#timetable tr:eq(1)>td:eq(1)').html());
 
-$("#123").on('click', 'tr', function(){
+$("#btn_regist").on('click', function(){
+	$('#modal-lecture-info').modal('hide');
+	var name = $(this).parent().parent().find('.lecture_title').html();
+	var professor = $(this).parent().parent().find('.lecture_professor').html();
+	
+	var time1 = ($(this).parent().parent().find('.lecture_time_db').html());	
 	var str = "";
 	var arr = new Array();
 	var tr = $(this);
@@ -83,17 +69,6 @@ $("#123").on('click', 'tr', function(){
 		arr.push(td.eq(i).text());
 	});
 	console.log("배열에 담긴 값 : "+arr);
-	var name = td.eq(0).text();
-	var professor = td.eq(1).text();
-	var time = td.eq(2).text();
-	var credit = td.eq(3).text();
-	var time1 = td.eq(4).text();
-	
-	str +=	" * 클릭된 Row의 td값 = 강의명 : <font color='red'>" + name + "</font>" +
-					", 교수명 : <font color='red'>" + professor + "</font>" +
-					", 시간 : <font color='red'>" + time + "</font>" +
-					", 학점 : <font color='red'>" + credit + "</font>";
-	$("#tablechoice").html(str);
 	
 	
 	let lecturedata = {
@@ -369,45 +344,7 @@ $('.lecture-time > a').click(function () {
   $('#modal-lecture-task').modal('show');
 });
 
-$('#modal-lecture-info').on('show.bs.modal',function(e){
-	var lname="공학수학I";
-	var lprofessor ="신창환";
-	
-	$.ajax({
-		url : "../timetable/getlectureinfo",
-		data : {"lname" : lname, "lprofessor" : lprofessor},
-		success : function(json){
-			jsondata = json;
-			console.log("모달 json : " + jsondata);
-			//$("#ordername").val( member['mname']);
-			
-			var button = $(e.relatedTarget);
-			var ltime = jsondata['ltime'];
-			var lname = jsondata["lname"];
-			var lno =jsondata['lno'];
-			var lprofessor = jsondata['lprofessor'];
-			var modal = $(this);
-			console.log(jsondata['ltime']);
-			console.log(lname);
-			console.log(jsondata['lno']);
-			console.log(lprofessor);
-			
-			$(".lecture_title").html(lname);
-			$(".lecture_time").html(ltime);
-			$(".lecutre_code").html(lno);
-			$(".lecture_professor").html(lprofessor);
-			
-			modal.find('#modal-lecture-info .lecture-title').html('test');
-			modal.find('.lecture_time').html(ltime);
-			modal.find('.lecutre_code').html(lno);
-			modal.find('.lecture_professor').html(lprofessor);
-			console.log($("#getlname").html());
-		}
-	}); 
-	
-	
-	
-});
+
 
 /*$(function () {
   $('[data-toggle="tooltip"]').tooltip();
@@ -433,7 +370,49 @@ function li_onclick(){
 	});
 }*/
 
+let lecturelist = [ ];
+let lno = 0;
 $(document).on('click','#card-lecture', function(e){
 	console.log(e.target);
-	console.log($(this).html())
+	console.log($(this).find('#getlname').html());
+	setTimeout(function(){
+		$('#modal-lecture-info').modal('show');	
+	},500);
+	
+	
+	
+	lno = $(this).find('#lectureno').val();
+});
+
+
+
+$('#modal-lecture-info').on('show.bs.modal',function(){
+	department = $("#departmentbox").val();
+	console.log(department);
+	$.ajax({
+		url : "../timetable/getlectureinfo",
+		data : {"lno" : lno, "department" : department},
+		success : function(json){
+			jsondata = json;
+			var ltime = jsondata['ltime'];
+			var lname = jsondata["lname"];
+			var lno = jsondata['lno'];
+			var lprofessor = jsondata['lprofessor'];
+			var ltime_db = jsondata['ltime_db'];
+			var modal = $(this);
+			
+			$(".lecture_title").html(lname);
+			$(".lecture_time").html(ltime);
+			$(".lecutre_code").html(lno);
+			$(".lecture_professor").html(lprofessor);
+			$(".lecture_time_db").html(ltime_db);
+			modal.find('#modal-lecture-info .lecture-title').html('test');
+			modal.find('.lecture_time').html(ltime);
+			modal.find('.lecutre_code').html(lno);
+			modal.find('.lecture_professor').html(lprofessor);
+			modal.find('.lecture_time_db').html(ltime_db);
+			console.log("db시간 : " + ltime_db);
+		}
+	}); 
+	
 });
