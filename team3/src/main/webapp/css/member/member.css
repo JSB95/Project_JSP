@@ -4,3 +4,17 @@
 	font-size: 12px;
 	margin-bottom: 20px;
 }
+.profilebox{
+	border: 1px solid grey;
+	border-radius: 15px;
+	padding: 40px;
+}
+.profile_table {
+	padding: 0px 80px;
+}
+.col1{
+	text-align: right;
+}
+.col2{
+	text-align: left;
+}
