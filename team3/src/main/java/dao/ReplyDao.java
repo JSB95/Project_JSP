@@ -2,7 +2,7 @@ package dao;
 
 import java.util.ArrayList;
 
-import dto.Board;
+
 import dto.Reply;
 
 public class ReplyDao extends Dao {
@@ -100,5 +100,44 @@ public boolean replydelete( int rno) {
 	}
 	catch( Exception e ) {} return false;
 }
+
+
+//7. 추천메소드  <수정사항 쿼리문 하나로 쓰는법 생각해보기>
+	public int replylike(int rno, int mno) {
+		String sql = "select relikeno from relike where rno="+rno+" and mno="+mno;
+		try {
+			ps= con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				sql = "delete from relike where relikeno = " + rs.getInt(1);
+				ps =con.prepareStatement(sql); ps.executeUpdate();
+				String sql2 ="update reply set relike = relike-1 where rno = "+rno;
+				ps = con.prepareStatement(sql2);ps.executeUpdate();
+				return 2; // 삭제
+			} else {
+				sql = "insert into relike(rno,mno)values("+rno+","+mno+")";
+				
+				ps = con.prepareStatement(sql); ps.executeUpdate();
+				
+				String sql2 ="update reply set relike = relike+1 where rno = "+rno;
+				ps = con.prepareStatement(sql2);ps.executeUpdate();
+				return 1;// 등록
+			}
+			
+		} catch (Exception e) {System.out.println("게시물 추천 오류" + e);}
+		return 3;
+	}
+	
+	public boolean getreplylike(int rno, int mno) {
+		
+		String sql = "select*from relike where rno = "+rno+" and mno="+mno;
+		try {
+			ps =con.prepareStatement(sql); rs = ps.executeQuery();
+			if(rs.next())return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return false;
+	}
 
 }

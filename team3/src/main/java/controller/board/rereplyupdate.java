@@ -14,7 +14,7 @@ import dto.Reply;
 /**
  * Servlet implementation class rereplyupdate
  */
-@WebServlet("/rereplyupdate")
+@WebServlet("/board/rereplyupdate")
 public class rereplyupdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,6 +30,7 @@ public class rereplyupdate extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("xxx");
 		request.setCharacterEncoding("UTF-8");
     	int rno = Integer.parseInt(request.getParameter("rno") );
     	int bno = Integer.parseInt(request.getParameter("bno") );
@@ -38,6 +39,7 @@ public class rereplyupdate extends HttpServlet {
 		int mno = BoardDao.getBoardDao().getmno(mid);
 		String anonymous = request.getParameter("anonymous");
 		System.out.println(anonymous.toString());
+		System.out.println(upcontent2);
 		
 		if(anonymous.equals("true")) {
 			Reply reply = new Reply(rno, upcontent2, "익명", null, 0, 0, bno, mno);

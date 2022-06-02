@@ -38,6 +38,7 @@ public class rereplywrite extends HttpServlet {
 			String mid = (String)request.getSession().getAttribute("login");
 			int mno = BoardDao.getBoardDao().getmno(mid);
 			String anonymous = request.getParameter("anonymous");
+			System.out.println(rcontent);
 			if(anonymous.equals("true")) {
 				Reply reply = new Reply(0, rcontent, "익명", null, rindex, 0, bno, mno);
 				boolean result = ReplyDao.getReplyDao().replywrite(reply);

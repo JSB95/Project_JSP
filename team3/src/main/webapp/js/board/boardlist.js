@@ -1,6 +1,6 @@
 
 let boardlist;
-let searchlist;
+let comentcount;
 $( function(){
 	getboardlist();
 

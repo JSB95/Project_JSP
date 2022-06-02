@@ -267,6 +267,39 @@ public class BoardDao extends Dao {
 		return false;
 	}
 	
+	// 게시판 댓글갯수 세기
+	public int getcountcoment(int bno) {
+		String sql = "select count(bno) from reply where bno="+bno ;
+		
+		try {
+			ps =con.prepareStatement(sql); rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+			
+			
+			
+		} catch (Exception e) {System.out.println("댓글갯수 출력 오류"+ e);}
+		return 0;
+	}
+	
+	public JSONObject getcountcomentj(int bno) {
+String sql = "select count(bno) from reply where bno="+bno ;
+			JSONObject object = new JSONObject();
+		try {
+			ps =con.prepareStatement(sql); rs = ps.executeQuery();
+			if(rs.next()) {
+				
+				object.put("rcount", rs.getInt(6));
+			}
+			return object;
+			
+			
+		} catch (Exception e) {System.out.println("댓글갯수 출력 오류"+ e);}
+		return null;
+		
+	}
+	
 
 	
 	//////////////////////////////////댓글관련////////////////////////////////////////////////

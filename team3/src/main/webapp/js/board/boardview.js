@@ -24,14 +24,13 @@ function saveblike(mid){
 	})
 }
 
-
-function saverlike(mid){
+function saverelike(mid,rno){
 	// 
-	let rno = $("#rno").val();
-	
+	//let rno = $("#rno").val();
+	alert(rno)
 	
 	$.ajax({
-		url : "/team3/board/saveblike",
+		url : "/team3/board/saverelike",
 		data : {'mid' : mid, 'rno' : rno},
 		success : function(re) {
 				if (re == 1){
@@ -45,10 +44,15 @@ function saverlike(mid){
 					}
 				// 특정 태그 새로고침 
 				
-				$("#like_area").load(location.href +" #like_area")
+				$("#wrap").load(location.href +" #wrap")
+				
+				
 		}
 	})
 }
+
+
+
 
 // 댓글 등록
 function replywrite(bno) {
@@ -176,14 +180,14 @@ function replyupdate(rno ,bno){ // 수정쓰기메소드
 
 // 대댓글 수정
 function rereplyupdate(rno ,bno){ // 수정쓰기메소드
-	let upcontent= $("#upcontent").val();
+	let upcontent2= $("#upcontent2").val();
 	var anonymous = $('input:checkbox[id="anonymous"]').is(':checked');
 	//alert(rno)
 	//alert(bno)
-	alert(upcontent);
+	alert(upcontent2);
 	$.ajax({
 		url : "/team3/board/rereplyupdate" , 
-		data : { "rno" : rno ,"upcontent":upcontent,"bno":bno ,"anonymous" :anonymous } ,
+		data : { "rno" : rno ,"upcontent2":upcontent2,"bno":bno ,"anonymous" :anonymous } ,
 		success : function( result ){
 			if( result ==1 ){
 				alert("댓글 수정 되었습니다.");
