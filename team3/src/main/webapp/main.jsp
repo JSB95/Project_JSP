@@ -19,7 +19,7 @@
 			 	<a href="#"><i class="fas fa-school"></i></a>
 			 </div>
 				<div class="col-md-3 d-flex justify-content-end">
-					<a href="#"><i class="far fa-comment-dots"></i></a>
+					<a href="/team3/message/getmessage.jsp"><i class="far fa-comment-dots"></i></a>
 					<a href="/team3/member/memberinfo.jsp"><i class="fas fa-user"></i></a>
 				</div>
 		</div>

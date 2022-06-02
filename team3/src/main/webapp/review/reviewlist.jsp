@@ -70,13 +70,16 @@
 
 	<div class="container">
 		<div class="row">
-			<div>
+			<div class="col-md-9">
 				<form action="reviewlist.jsp?pagenum=<%=currentpage %>">
-					<input type="text" name="keyword" placeholder="강의명 또는 교수명을 입력해주세요"><input type="submit" value="검색"><br>
-					<a href="reviewwrite.jsp?keyword="><button type="button">강의평쓰기</button></a>
+					<input class="search" type="text" name="keyword" placeholder="강의명 또는 교수명을 입력해주세요"><input class="searchbtn" type="submit" value="검색"><br>
+				
 				</form>
 			</div>
-			<div>
+			<div class="col-md-3">
+				<a href="reviewwrite.jsp?keyword="><button type="button">강의평쓰기</button></a>
+			</div>
+			<div class="reviewbox">
 				<h3>최근강의평</h3>
 				<table class="table table-hover">
 				
@@ -86,9 +89,9 @@
 					for(int j=0; j<json.length();j++){
 					System.out.print(json.getJSONObject(j).get("reviewrate"));
 				%>
-					<tr onClick="location.href='/team3/review/review.jsp?lno=<%=json.getJSONObject(j).get("lno")%>'">
+					<tr class="tabletr" onClick="location.href='/team3/review/review.jsp?lno=<%=json.getJSONObject(j).get("lno")%>'">
 						<td>
-							<%=json.getJSONObject(j).get("lname")%><%=json.getJSONObject(j).get("lprofessor")%><br>
+							<h5><%=json.getJSONObject(j).get("lname")%></h5><%=json.getJSONObject(j).get("lprofessor")%> 교수님<br>
 							<%if(json.getJSONObject(j).get("reviewrate").equals(1)){ %>
 								<img class="star" alt="" src="img/노란별.png">
 								<img class="star"  alt="" src="img/별.png">
