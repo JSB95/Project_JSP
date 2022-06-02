@@ -59,8 +59,172 @@
 		
 		</section>
 		
+		<section class="section-list" style="float: right;">
 		
-		<div class="col-5" style="float: right;">
+        <div class="container-xl">
+        
+            <div class="table-schedule">
+            
+                <div class="timeline">
+                
+                    <ul>
+                        <li><span>09:00</span></li>
+                        <li><span>09:30</span></li>
+                        <li><span>10:00</span></li>
+                        <li><span>10:30</span></li>
+                        <li><span>11:00</span></li>
+                        <li><span>11:30</span></li>
+                        <li><span>12:00</span></li>
+                        <li><span>12:30</span></li>
+                        <li><span>13:00</span></li>
+                        <li><span>13:30</span></li>
+                        <li><span>14:00</span></li>
+                        <li><span>14:30</span></li>
+                        <li><span>15:00</span></li>
+                        <li><span>15:30</span></li>
+                        <li><span>16:00</span></li>
+                        <li><span>16:30</span></li>
+                        <li><span>17:00</span></li>
+                        <li><span>17:30</span></li>
+                        <li><span>18:00</span></li>
+                        <li><span>18:30</span></li>
+                        <li><span>19:00</span></li>
+                        <li><span>19:30</span></li>
+                        <li><span>20:00</span></li>
+                    </ul>
+                    
+                </div>
+
+                <div class="table-schedule-subject">
+                
+                    <ul class="list-lecture-item">
+                    
+                        <li class="timeline-vertical">
+                        
+                            <div class="top-info today">
+                                <h4 class="day_mon">Mon</h4>
+                            </div>
+                            
+                            <ul>
+                            	<li class="lecture_time_list" value="월&#47;1"></li>
+                            	<li class="lecture_time_list" value="월&#47;2"></li>
+                            	<li class="lecture_time_list" value="월&#47;3"></li>
+                            	<li class="lecture_time_list" value="월&#47;4"></li>
+                            	<li class="lecture_time_list" value="월&#47;5"></li>
+                            	<li class="lecture_time_list" value="월&#47;6"></li>
+                            	<li class="lecture_time_list" value="월&#47;7"></li>
+                            	<li class="lecture_time_list" value="월&#47;8"></li>
+                            	<li class="lecture_time_list" value="월&#47;9"></li>
+                            	<li class="lecture_time_list" value="월&#47;10"></li>
+                            	<li class="lecture_time_list" value="월&#47;11"></li>
+                            </ul>
+                            
+                        </li>
+
+                        <li class="timeline-vertical">
+                        
+                            <div class="top-info">
+                                <h4 class="day">Tue</h4>
+                            </div>
+                            
+                            <ul>
+                            	<li class="lecture_time_list" value="화&#47;1"></li>
+                            	<li class="lecture_time_list" value="화&#47;2"></li>
+                            	<li class="lecture_time_list" value="화&#47;3"></li>
+                            	<li class="lecture_time_list" value="화&#47;4"></li>
+                            	<li class="lecture_time_list" value="화&#47;5"></li>
+                            	<li class="lecture_time_list" value="화&#47;6"></li>
+                            	<li class="lecture_time_list" value="화&#47;7"></li>
+                            	<li class="lecture_time_list" value="화&#47;8"></li>
+                            	<li class="lecture_time_list" value="화&#47;9"></li>
+                            	<li class="lecture_time_list" value="화&#47;10"></li>
+                            	<li class="lecture_time_list" value="화&#47;11"></li>
+                                
+                            </ul>
+                            
+                        </li>
+
+                        <li class="timeline-vertical">
+                        
+                            <div class="top-info">
+                                <h4 class="day">Wed</h4>
+                            </div>
+
+                            <ul>
+                            	<li class="lecture_time_list" value="수&#47;1"></li>
+                            	<li class="lecture_time_list" value="수&#47;2"></li>
+                            	<li class="lecture_time_list" value="수&#47;3"></li>
+                            	<li class="lecture_time_list" value="수&#47;4"></li>
+                            	<li class="lecture_time_list" value="수&#47;5"></li>
+                            	<li class="lecture_time_list" value="수&#47;6"></li>
+                            	<li class="lecture_time_list" value="수&#47;7"></li>
+                            	<li class="lecture_time_list" value="수&#47;8"></li>
+                            	<li class="lecture_time_list" value="수&#47;9"></li>
+                            	<li class="lecture_time_list" value="수&#47;10"></li>
+                            	<li class="lecture_time_list" value="수&#47;11"></li>
+
+                            </ul>
+                            
+                        </li>
+
+                        <li class="timeline-vertical">
+                        
+                            <div class="top-info">
+                                <h4 class="day">Thu</h4>
+                            </div>
+
+                            <ul>
+                            	<li class="lecture_time_list" value="목&#47;1"></li>
+                            	<li class="lecture_time_list" value="목&#47;2"></li>
+                            	<li class="lecture_time_list" value="목&#47;3"></li>
+                            	<li class="lecture_time_list" value="목&#47;4"></li>
+                            	<li class="lecture_time_list" value="목&#47;5"></li>
+                            	<li class="lecture_time_list" value="목&#47;6"></li>
+                            	<li class="lecture_time_list" value="목&#47;7"></li>
+                            	<li class="lecture_time_list" value="목&#47;8"></li>
+                            	<li class="lecture_time_list" value="목&#47;9"></li>
+                            	<li class="lecture_time_list" value="목&#47;10"></li>
+                            	<li class="lecture_time_list" value="목&#47;11"></li>
+
+                            </ul>
+                            
+                        </li>
+
+                        <li class="timeline-vertical">
+                        
+                            <div class="top-info">
+                                <h4 class="day">Fri</h4>
+                            </div>
+
+                            <ul>
+                            	<li class="lecture_time_list" value="금&#47;1"></li>
+                            	<li class="lecture_time_list" value="금&#47;2"></li>
+                            	<li class="lecture_time_list" value="금&#47;3"></li>
+                            	<li class="lecture_time_list" value="금&#47;4"></li>
+                            	<li class="lecture_time_list" value="금&#47;5"></li>
+                            	<li class="lecture_time_list" value="금&#47;6"></li>
+                            	<li class="lecture_time_list" value="금&#47;7"></li>
+                            	<li class="lecture_time_list" value="금&#47;8"></li>
+                            	<li class="lecture_time_list" value="금&#47;9"></li>
+                            	<li class="lecture_time_list" value="금&#47;10"></li>
+                            	<li class="lecture_time_list" value="금&#47;11"></li>
+                                
+                            </ul>
+                            
+                        </li>
+                        
+                    </ul>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        
+    </section>
+		
+		
+		<div class="col-5" style="float: right; display: none;">
 				
 			<table class="timetable" id="timetable">
 				

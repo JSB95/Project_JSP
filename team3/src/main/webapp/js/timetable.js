@@ -56,11 +56,77 @@ $("#timetable td").bind('click', function(){
 console.log( $('#timetable tr:eq(1)>td:eq(1)').html());
 
 $("#btn_regist").on('click', function(){
+	
 	$('#modal-lecture-info').modal('hide');
+	
 	var name = $(this).parent().parent().find('.lecture_title').html();
+	
 	var professor = $(this).parent().parent().find('.lecture_professor').html();
 	
-	var time1 = ($(this).parent().parent().find('.lecture_time_db').html());	
+	var time1 = ($(this).parent().parent().find('.lecture_time_db').html());
+	
+	
+	
+	let timelist = [];
+	let timelist2 = [];
+	
+	
+	
+	var time1 = time1.split("_");
+	
+	
+	
+	$('.lecture_time_list').each(function(){
+	  var text = $(this).attr('value');
+	  timelist.push(text);
+	  var text2 = $(this).html();
+	  timelist2.push(text2);
+	});
+
+	
+	var colorCode = "#" + Math.round(Math.random() * 0xffffff).toString(16);
+	
+	let duplicationchk = true;
+	for (let i = 0; i < timelist.length; i++){
+		for (let j = 0; j < time1.length; j++){
+			if (timelist[i] == time1[j] && timelist2[i] == ''){
+				console.log($('.lecture_time_list').eq(i).html(name));
+				$('.lecture_time_list').eq(i).html(name);
+				$('.lecture_time_list').eq(i).css('display','block').css('background', colorCode);
+				break;
+			} else if(timelist[i] == time1[j] && timelist2[i] != name){
+				alert("겹친 수업 존재");
+				duplicationchk = false
+				break;
+			}
+		}
+		
+	}
+	
+	if (duplicationchk == false){
+		for (let j = 0; j <timelist2.length; j++){
+			if (timelist2[j] == name){
+				console.log("겹친 수업 이름 + " + name);
+			}
+		}
+	}
+	
+	/*if (error == -1){
+			alert("error 발생");
+			for (let x = 1; x < 6; x++){
+				for (let y = 1; y < 12; y++){
+					console.log("error난 과목명 : " + lecturedata.name);
+					if (lecturedata.name == $('#timetable tr:eq(' + y + ')>td:eq('+ x +')').html()){
+						$('#timetable tr:eq(' + y + ')>td:eq('+ x +')').empty();
+					}
+				}
+			}
+		}
+	
+	
+	
+	
+	/*
 	var str = "";
 	var arr = new Array();
 	var tr = $(this);
@@ -205,109 +271,7 @@ $("#btn_regist").on('click', function(){
 				
 		}
 		
-		/*
-		for (let j = i + 1; j < 12; j++){
-			
-			if (asdf[i].split("/")[0] == "월"){
 		
-				console.log("선택된 요일 " + (i + 1) +" 번째 : 월"); 
-				console.log("시간 : " + asdf[i].split("/")[1]);
-
-				if ($('#timetable tr:eq(' + j + ')>td:eq(1)').html() == '' && asdf[i].split("/")[1] == j){
-					
-					$('#timetable tr:eq(' + j + ')>td:eq(1)').html(lecturedata.name);
-
-				} else if ($('#timetable tr:eq(' + j + ')>td:eq(1)').html() != '' && $('#timetable tr:eq(' + j + ')>td:eq(1)').html() != (lecturedata.name)){
-					
-					console.log("선택한 시간이 존재 : " + $('#timetable tr:eq(' + j + ')>td:eq(1)').html());
-					
-				} else {
-					console.log("여기서 막힘");
-				}
-				
-			} else if (asdf[i].split("/")[0] == "화"){
-				
-				console.log("선택된 요일 " + (i + 1) +" 번째 : 화"); 
-				console.log("시간 : " + asdf[i].split("/")[1]);
-				
-				if ($('#timetable tr:eq(' + j + ')>td:eq(2)').html() == '' && asdf[i].split("/")[1] == j){
-					
-						$('#timetable tr:eq(' + j + ')>td:eq(2)').html(lecturedata.name);
-						
-				} else if ($('#timetable tr:eq(' + j + ')>td:eq(2)').html() != '' && $('#timetable tr:eq(' + j + ')>td:eq(2)').html() != (lecturedata.name)){
-					
-						alert("선택한 시간이 존재 : " + $('#timetable tr:eq(' + j + ')>td:eq(2)').html());
-						break;
-
-				}
-
-			} else if (asdf[i].split("/")[0] == "수"){
-				
-				console.log("선택된 요일 " + (i + 1) +" 번째 : 수"); 
-				console.log("시간 : " + asdf[i].split("/")[1]);
-				console.log(j + "번째 루프[j]");
-				if ($('#timetable tr:eq(' + j + ')>td:eq(3)').html() == '' && asdf[i].split("/")[1] == j){
-					
-					$('#timetable tr:eq(' + j + ')>td:eq(3)').html(lecturedata.name);
-
-				} else if ($('#timetable tr:eq(' + j + ')>td:eq(3)').html() != '' && $('#timetable tr:eq(' + j + ')>td:eq(3)').html() != (lecturedata.name)){
-					
-					alert("선택한 시간이 존재 : " + $('#timetable tr:eq(' + j + ')>td:eq(3)').html() + "강으명 : " + lecturedata.name);
-					break;
-					
-				}
-				
-			} else if (asdf[i].split("/")[0] == "목"){
-				
-				console.log("선택된 요일 " + (i + 1) +" 번째 : 목"); 
-				console.log("시간 : " + asdf[i].split("/")[1]);
-
-				if ($('#timetable tr:eq(' + j + ')>td:eq(4)').html() == '' && asdf[i].split("/")[1] == j){
-					
-					$('#timetable tr:eq(' + j + ')>td:eq(4)').html(lecturedata.name);
-					
-				} else if ($('#timetable tr:eq(' + j + ')>td:eq(4)').html() != '' && $('#timetable tr:eq(' + j + ')>td:eq(3)').html() != (lecturedata.name)){
-					
-					alert("선택한 시간이 존재 : " + $('#timetable tr:eq(' + j + ')>td:eq(4)').html());
-					break;
-
-				}
-					
-
-				
-			} else if (asdf[i].split("/")[0] == "금"){
-				
-				console.log("선택된 요일 " + (i + 1) +" 번째 : 금"); 
-				console.log("시간 : " + asdf[i].split("/")[1]);
-					
-				if ($('#timetable tr:eq(' + j + ')>td:eq(5)').html() == '' && asdf[i].split("/")[1] == j){
-					
-					$('#timetable tr:eq(' + j + ')>td:eq(5)').html(lecturedata.name);
-					
-				} else if ($('#timetable tr:eq(' + j + ')>td:eq(5)').html() != '' && $('#timetable tr:eq(' + j + ')>td:eq(3)').html() != (lecturedata.name)){
-					
-					
-					alert("선택한 시간이 존재 : " + $('#timetable tr:eq(' + j + ')>td:eq(5)').html());
-					break;
-				}
-				
-			} else {
-				console.log("때려쳐");
-			}
-		}
-		*/
-		
-		if (error == -1){
-			alert("error 발생");
-			for (let x = 1; x < 6; x++){
-				for (let y = 1; y < 12; y++){
-					console.log("error난 과목명 : " + lecturedata.name);
-					if (lecturedata.name == $('#timetable tr:eq(' + y + ')>td:eq('+ x +')').html()){
-						$('#timetable tr:eq(' + y + ')>td:eq('+ x +')').empty();
-					}
-				}
-			}
-		}
 	}
 	
 	
@@ -325,6 +289,7 @@ $("#btn_regist").on('click', function(){
 	if (error == -1){
 		
 	}
+	*/
 	
 });
 let name;

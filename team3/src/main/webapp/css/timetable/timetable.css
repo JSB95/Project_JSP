@@ -25,6 +25,11 @@
 	visibility: collapse;
 }
 
+.lecture_time_list{
+	height:6rem;
+	
+}
+
 a:hover {
   text-decoration: none; }
 
@@ -33,86 +38,95 @@ ol, ul {
   list-style: none; }
 
 .container-lecture {
-  
-  position: relative; }
-  .container-lecture .header {
+  position: relative; 
+ }
+ .container-lecture .header {
     border-bottom: 0.0625rem solid #D7E2EB;
     padding: 1rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky; }
-    .container-lecture .header .headline {
+    position: sticky; 
+}
+.container-lecture .header .headline {
       display: inline-block;
       margin-bottom: 0;
       font-weight: 700;
-      color: #263747; }
-  .container-lecture .section-nav,
-  .container-lecture .section-list {
+      color: #263747; 
+}
+  .container-lecture .section-nav, .container-lecture .section-list {
     font-size: 16px;
     line-height: 1.6;
     letter-spacing: -0.009em;
     display: inline-block;
     vertical-align: top;
-    padding: 1.5rem; }
-    @media (max-width: 767px) {
+    padding: 1.5rem; 
+}
+@media (max-width: 767px) {
       .container-lecture .section-nav,
       .container-lecture .section-list {
-        font-size: 15px; } }
-    @media (max-width: 767px) {
+        font-size: 15px; } 
+}
+
+@media (max-width: 767px) {
       .container-lecture .section-nav,
       .container-lecture .section-list {
-        padding: 1.5rem 1rem; } }
-  .container-lecture .section-nav {
+        padding: 1.5rem 1rem; } 
+}
+
+.container-lecture .section-nav {
     width: 25rem;
     max-height: 100vh;
     overflow-y: scroll;
-    border-right: 0.0625rem solid #D7E2EB; }
-    .container-lecture .section-nav .form-control {
+    border-right: 0.0625rem solid #D7E2EB; 
+}
+.container-lecture .section-nav .form-control {
       font-size: 16px;
       line-height: 1.6;
       letter-spacing: -0.009em;
       padding: 0.3125rem 0.75rem 0.3125rem 2.5rem;
       border: 0.0625rem solid #D7E2EB; }
       @media (max-width: 767px) {
-        .container-lecture .section-nav .form-control {
-          font-size: 15px; } }
-      .container-lecture .section-nav .form-control::placeholder {
+.container-lecture .section-nav .form-control {
+          font-size: 15px; } 
+}
+.container-lecture .section-nav .form-control::placeholder {
         color: #98A8B9; }
-    .container-lecture .section-nav .ic-search {
+.container-lecture .section-nav .ic-search {
       position: absolute;
       transform: translateY(-50%);
       top: 2.625rem;
       left: 2rem;
       color: #98A8B9; }
-      @media (max-width: 1199px) {
-        .container-lecture .section-nav .ic-search {
+@media (max-width: 1199px) {
+	.container-lecture .section-nav .ic-search {
           position: inherit;
           left: 1rem;
           margin-left: 0.5rem;
-          transform: translateY(-135%); } }
-    .container-lecture .section-nav .list-lecture {
+          transform: translateY(-135%); } 
+}
+.container-lecture .section-nav .list-lecture {
       padding-left: 0; }
-      .container-lecture .section-nav .list-lecture .card-lecture {
+.container-lecture .section-nav .list-lecture .card-lecture {
         margin-top: 1rem;
         padding: 1rem;
         border: 0.0625rem solid #D7E2EB;
         border-radius: 0.5rem; }
-        .container-lecture .section-nav .list-lecture .card-lecture .lecture-title {
+.container-lecture .section-nav .list-lecture .card-lecture .lecture-title {
           font-size: 20px;
           line-height: 1.6;
           letter-spacing: -0.009em;
           font-weight: 600; }
-          @media (max-width: 767px) {
-            .container-lecture .section-nav .list-lecture .card-lecture .lecture-title {
+@media (max-width: 767px) {
+	.container-lecture .section-nav .list-lecture .card-lecture .lecture-title {
               font-size: 18px; } }
-        .container-lecture .section-nav .list-lecture .card-lecture:hover {
+.container-lecture .section-nav .list-lecture .card-lecture:hover {
           background-color: #EEEBFF;
           border: 0.0625rem solid #0078FF;
           cursor: pointer; }
-          .container-lecture .section-nav .list-lecture .card-lecture:hover .list-lecture-info {
+.container-lecture .section-nav .list-lecture .card-lecture:hover .list-lecture-info {
             color: #0078FF; }
-      .container-lecture .section-nav .list-lecture .lecture-time {
+.container-lecture .section-nav .list-lecture .lecture-time {
         font-size: 16px;
         line-height: 1.6;
         letter-spacing: -0.009em;
@@ -120,50 +134,50 @@ ol, ul {
         align-items: center;
         margin-bottom: 0.25rem;
         color: #263747; }
-        @media (max-width: 767px) {
-          .container-lecture .section-nav .list-lecture .lecture-time {
+@media (max-width: 767px) {
+	.container-lecture .section-nav .list-lecture .lecture-time {
             font-size: 15px; } }
-        .container-lecture .section-nav .list-lecture .lecture-time .ic-lecture-info {
+.container-lecture .section-nav .list-lecture .lecture-time .ic-lecture-info {
           margin-right: 0.25rem;
           font-size: 1.125rem;
           font-weight: 700; }
-        .container-lecture .section-nav .list-lecture .lecture-time span {
+.container-lecture .section-nav .list-lecture .lecture-time span {
           padding-top: 0.0625rem; }
-      .container-lecture .section-nav .list-lecture .list-lecture-info {
+.container-lecture .section-nav .list-lecture .list-lecture-info {
         font-size: 14px;
         line-height: 1.5;
         color: #98A8B9; }
-        @media (max-width: 767px) {
-          .container-lecture .section-nav .list-lecture .list-lecture-info {
+@media (max-width: 767px) {
+	.container-lecture .section-nav .list-lecture .list-lecture-info {
             font-size: 13px; } }
-      @media (max-width: 1199px) {
-        .container-lecture .section-nav .list-lecture {
+@media (max-width: 1199px) {
+	.container-lecture .section-nav .list-lecture {
           display: flex;
           overflow-x: scroll;
           margin-bottom: 0; }
-          .container-lecture .section-nav .list-lecture .card-lecture {
+.container-lecture .section-nav .list-lecture .card-lecture {
             margin-top: 0;
             margin-right: 0.5rem;
             min-width: 15rem;
             width: 100%; } }
-    @media (max-width: 1199px) {
-      .container-lecture .section-nav {
+@media (max-width: 1199px) {
+	.container-lecture .section-nav {
         display: block;
         width: 100%;
         border-bottom: 0.0625rem solid #D7E2EB;
         max-height: 17.5rem; } }
-    @media (min-width: 1200px) {
-      .container-lecture .section-nav {
+@media (min-width: 1200px) {
+	.container-lecture .section-nav {
         position: sticky;
         top: 0; } }
-  .container-lecture .section-list {
+.container-lecture .section-list {
     width: calc(100% - 25rem);
     padding-bottom: 7.5rem; }
-    @media (min-width: 768px) {
-      .container-lecture .section-list {
+@media (min-width: 768px) {
+	.container-lecture .section-list {
         min-height: calc(100vh - 3.125rem - rem-calc(66) - 21.125rem); } }
-    @media (max-width: 1199px) {
-      .container-lecture .section-list {
+@media (max-width: 1199px) {
+	.container-lecture .section-list {
         display: block;
         padding-top: 0;
         width: 100%; } }
@@ -175,51 +189,52 @@ ol, ul {
   width: 90%;
   max-width: 1400px;
   margin: 2rem auto; }
-  .header-timetable-info h3 {
+.header-timetable-info h3 {
     margin-bottom: 0;
     margin-left: 3rem;
     font-weight: 700; }
-  .header-timetable-info .btn-group .btn-light {
+.header-timetable-info .btn-group .btn-light {
     margin: 0 0.0625rem;
     color: #263747;
     background-color: #E9ECF3;
     border-color: #E9ECF3;
     font-weight: 500;
     border-radius: 0.375rem; }
-    .header-timetable-info .btn-group .btn-light:hover {
+.header-timetable-info .btn-group .btn-light:hover {
       color: #263747;
       background-color: #D7E2EB;
       border-color: #D7E2EB; }
-    .header-timetable-info .btn-group .btn-light:not(:last-child):not(.dropdown-toggle) {
+.header-timetable-info .btn-group .btn-light:not(:last-child):not(.dropdown-toggle) {
       border-top-right-radius: 0.375rem;
       border-bottom-right-radius: 0.375rem; }
-  .header-timetable-info .btn-group .btn-previous, .header-timetable-info .btn-group .btn-next {
+.header-timetable-info .btn-group .btn-previous, .header-timetable-info .btn-group .btn-next {
     padding: 0 0.25rem; }
-  .header-timetable-info .btn-group .btn-today {
+.header-timetable-info .btn-group .btn-today {
     padding: 0 1.25rem; }
-  .header-timetable-info .btn-group .ic-previous, .header-timetable-info .btn-group .ic-next {
+.header-timetable-info .btn-group .ic-previous, .header-timetable-info .btn-group .ic-next {
     vertical-align: bottom; }
-  @media (max-width: 991px) {
-    .header-timetable-info {
+@media (max-width: 991px) {
+	.header-timetable-info {
       width: 90%; }
-      .header-timetable-info h3 {
+.header-timetable-info h3 {
         margin-left: 0; } }
 
 .table-schedule {
   position: relative;
-  margin: 2rem 0; }
-  .table-schedule .timeline {
+  margin: 50px; }
+.table-schedule .timeline {
     display: none; }
-  @media (min-width: 992px) {
-    .table-schedule {
-      width: 90%;
+@media (min-width: 992px) {
+	.table-schedule {
+      width: 70%;
       max-width: 87.5rem;
-      margin: 2rem auto; }
-      .table-schedule:after {
+      
+}
+.table-schedule:after {
         clear: both;
         content: "";
         display: block; }
-      .table-schedule .timeline {
+.table-schedule .timeline {
         display: block;
         position: absolute;
         top: 0;
@@ -227,12 +242,12 @@ ol, ul {
         height: 100%;
         width: 100%;
         padding-top: 3.5rem; }
-        .table-schedule .timeline ul {
+.table-schedule .timeline ul {
           padding-top: 0.75rem; }
-          .table-schedule .timeline ul li {
+.table-schedule .timeline ul li {
             position: relative;
-            height: 3.5rem; }
-            .table-schedule .timeline ul li:after {
+            height: 3rem; }
+.table-schedule .timeline ul li:after {
               content: '';
               position: absolute;
               top: 0;
@@ -240,7 +255,7 @@ ol, ul {
               width: 96.5%;
               height: 1px;
               background: #D7E2EB; }
-            .table-schedule .timeline ul li:last-child:after {
+.table-schedule .timeline ul li:last-child:after {
               border: none; } }
 
 @media (min-width: 992px) {
@@ -256,14 +271,14 @@ ol, ul {
     display: none; } }
 .table-schedule .table-schedule-subject .timeline-vertical {
   margin-bottom: 2rem; }
-  .table-schedule .table-schedule-subject .timeline-vertical ul {
+.table-schedule .table-schedule-subject .timeline-vertical ul {
     display: flex;
     position: relative;
     padding: 0 1rem;
     overflow-x: scroll;
     -webkit-overflow-scrolling: touch; }
-    @media (max-width: 1199px) {
-      .table-schedule .table-schedule-subject .timeline-vertical ul {
+@media (max-width: 1199px) {
+	.table-schedule .table-schedule-subject .timeline-vertical ul {
         padding: 0; } }
 .table-schedule .table-schedule-subject .top-info {
   padding: 1rem 0;
@@ -285,7 +300,7 @@ ol, ul {
   float: left;
   margin-right: 0.5rem;
   transition: opacity .2s, background .2s;
-  height: 7rem;
+  height: 3rem;
   width: 50%; }
   .table-schedule .table-schedule-subject .lecture-time:before {
     content: '';
@@ -350,7 +365,7 @@ ol, ul {
     width: calc(100% - 3rem);
     margin-left: 3rem; }
     .table-schedule .table-schedule-subject .timeline-vertical ul {
-      height: 66.25rem;
+      height: 66rem;
       display: block;
       overflow: visible;
       padding: 0;
@@ -372,7 +387,7 @@ ol, ul {
       margin-right: 0; }
       .table-schedule .table-schedule-subject .lecture-time a {
         padding: 0.5rem 0.75rem;
-        overflow: scroll; }
+        /*overflow: scroll;*/ }
         .table-schedule .table-schedule-subject .lecture-time a .lecture-noti {
           display: flex;
           align-items: center; }
@@ -403,7 +418,7 @@ ol, ul {
     .table-schedule .table-schedule-subject .hr-18 {
       top: 57.375rem; } }
 
-.table-schedule .lecture-time[data-event="lecture-01"] {
+/*.table-schedule .lecture-time[data-event="lecture-01"] {
   background-color: #E0F2F1; }
   .table-schedule .lecture-time[data-event="lecture-01"] .lecture-title, .table-schedule .lecture-time[data-event="lecture-01"] .lecture-location, .table-schedule .lecture-time[data-event="lecture-01"] .ic-lecture-noti, .table-schedule .lecture-time[data-event="lecture-01"] .lecture-noti-title {
     color: #009688; }
@@ -492,7 +507,7 @@ ol, ul {
     background-color: #FFCCBC; }
   .table-schedule .lecture-time[data-event="lecture-10"]:before {
     background-color: #FF5722; }
-
+*/
 .modal-header {
   border-bottom: 0; }
 
