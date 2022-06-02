@@ -76,11 +76,12 @@
 				
 				</form>
 			</div>
-			<div class="col-md-3">
-				<a href="reviewwrite.jsp?keyword="><button type="button">강의평쓰기</button></a>
+			<div class="col-md-3 d-flex justify-content-end">
+				<a href="reviewwrite.jsp?keyword="><button  class="write" type="button">강의평쓰기</button></a>
 			</div>
 			<div class="reviewbox">
 				<h3>최근강의평</h3>
+				<div class="line"></div>
 				<table class="table table-hover">
 				
 				

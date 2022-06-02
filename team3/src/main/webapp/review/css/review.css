@@ -20,7 +20,9 @@ img{
 }
 
 .box{
-	border: 2px solid black;
+	border: 1px solid #eeeeee;
+	border-radius: 10px;
+	padding: 20px 20px 10px 20px;
 }
 
 .reviewbox{
@@ -45,4 +47,28 @@ img{
 .searchbtn{
 	margin: 10px 0;
 	padding: 10px 12px;
+}
+
+.write{
+	margin-top: 10px;
+	padding: 10px 12px;
+	border-radius: 8px;
+	border: 1px solid #bbb;
+}
+
+.line{
+	border-bottom: 2px solid #eeeeee;
+}
+
+.page-link pagenum{
+	text-decoration: none; color: black;
+}
+.rline{
+	border-bottom: 2px solid #eeeeee;
+	padding-bottom: 20px;
+}
+
+
+.tableheight{
+	height: 100px;
 }

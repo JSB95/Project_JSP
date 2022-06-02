@@ -21,7 +21,7 @@
 	<%
 	String mid = (String)session.getAttribute("login");
 	int mno = ReviewDao.getreviewDao().getmno(mid);
-	int totalrow = MessageDao.getMessageDao().gettotallist(mno);
+	int totalrow = MessageDao.getMessageDao().gettotal(mno);
 	int currentpage = 1;
 		String pagenum = request.getParameter("pagenum");
 		if( pagenum == null ){ // 만약에 페이지번호 요청이 없으면
