@@ -30,6 +30,9 @@
 	
 }
 
+a{
+	text-decoration: none;
+}
 a:hover {
   text-decoration: none; }
 
@@ -240,7 +243,7 @@ ol, ul {
         top: 0;
         left: 0;
         height: 100%;
-        width: 100%;
+        width: 97%;
         padding-top: 3.5rem; }
 .table-schedule .timeline ul {
           padding-top: 0.75rem; }
@@ -295,57 +298,57 @@ ol, ul {
     border-radius: 50%;
     width: 2rem;
     color: white; }
-.table-schedule .table-schedule-subject .lecture-time {
+.table-schedule .table-schedule-subject .lecture_time_list {
   flex-shrink: 0;
   float: left;
   margin-right: 0.5rem;
   transition: opacity .2s, background .2s;
-  height: 3rem;
-  width: 50%; }
-  .table-schedule .table-schedule-subject .lecture-time:before {
+  height: 6rem;
+  width: 100%; }
+  .table-schedule .table-schedule-subject .lecture_time_list:before {
     content: '';
     position: absolute;
     width: 0.1875rem;
     height: 100%;
     top: 0;
     left: 0; }
-  .table-schedule .table-schedule-subject .lecture-time:last-of-type {
+  .table-schedule .table-schedule-subject .list-lecture-item:last-of-type {
     margin-right: 1rem; }
-  .table-schedule .table-schedule-subject .lecture-time a {
+  .table-schedule .table-schedule-subject .list-lecture-item a {
     display: block;
     height: 100%;
     padding: 1rem; }
-  .table-schedule .table-schedule-subject .lecture-time .lecture-title {
+  .table-schedule .table-schedule-subject .list-lecture-item .lecture-title {
     display: block;
     margin-bottom: 0;
     font-weight: 700; }
-  .table-schedule .table-schedule-subject .lecture-time .lecture-location {
+  .table-schedule .table-schedule-subject .list-lecture-item .lecture-location {
     font-size: 14px;
     line-height: 1.5;
     margin-bottom: 0;
     font-weight: 500; }
     @media (max-width: 767px) {
-      .table-schedule .table-schedule-subject .lecture-time .lecture-location {
+      .table-schedule .table-schedule-subject .list-lecture-item .lecture-location {
         font-size: 13px; } }
-  .table-schedule .table-schedule-subject .lecture-time .lecture-info {
+  .table-schedule .table-schedule-subject .list-lecture-item .lecture-info {
     margin-bottom: 0.5rem; }
-  .table-schedule .table-schedule-subject .lecture-time .lecture-noti {
+  .table-schedule .table-schedule-subject .list-lecture-item .lecture-noti {
     z-index: 500; }
-  .table-schedule .table-schedule-subject .lecture-time .ic-lecture-noti {
+  .table-schedule .table-schedule-subject .list-lecture-item .ic-lecture-noti {
     vertical-align: middle;
     margin-right: 0.125rem;
     font-size: 1rem; }
-  .table-schedule .table-schedule-subject .lecture-time .lecture-noti-title {
+  .table-schedule .table-schedule-subject .list-lecture-item .lecture-noti-title {
     font-size: 14px;
     line-height: 1.5;
     margin-bottom: 0; }
     @media (max-width: 767px) {
-      .table-schedule .table-schedule-subject .lecture-time .lecture-noti-title {
+      .table-schedule .table-schedule-subject .list-lecture-item .lecture-noti-title {
         font-size: 13px; } }
   @media (max-width: 991px) {
-    .table-schedule .table-schedule-subject .lecture-time {
+    .table-schedule .table-schedule-subject .list-lecture-item {
       height: auto; }
-      .table-schedule .table-schedule-subject .lecture-time:before {
+      .table-schedule .table-schedule-subject .list-lecture-item:before {
         content: none; } }
 @media (min-width: 992px) {
   .table-schedule .table-schedule-subject {
@@ -377,23 +380,23 @@ ol, ul {
       border-left: 0; }
     .table-schedule .table-schedule-subject .timeline-vertical:last-child ul {
       border-right: 0; }
-    .table-schedule .table-schedule-subject .lecture-time {
-      position: absolute;
+    .table-schedule .table-schedule-subject .lecture_time_list {
+      /*position: absolute;*/
       z-index: 3;
       width: calc(100% + 1px);
       left: -0.0625rem;
       flex-shrink: 1;
       max-width: none;
       margin-right: 0; }
-      .table-schedule .table-schedule-subject .lecture-time a {
+      .table-schedule .table-schedule-subject .lecture_time_list a {
         padding: 0.5rem 0.75rem;
         /*overflow: scroll;*/ }
-        .table-schedule .table-schedule-subject .lecture-time a .lecture-noti {
+        .table-schedule .table-schedule-subject .lecture_time_list a .lecture-noti {
           display: flex;
           align-items: center; }
-      .table-schedule .table-schedule-subject .lecture-time:last-of-type {
+      .table-schedule .table-schedule-subject .lecture_time_list:last-of-type {
         margin-right: 0; }
-      .table-schedule .table-schedule-subject .lecture-time .selected-event {
+      .table-schedule .table-schedule-subject .lecture_time_list .selected-event {
         visibility: hidden; }
     .table-schedule .table-schedule-subject .two-hr {
       height: 14rem; }
@@ -418,14 +421,29 @@ ol, ul {
     .table-schedule .table-schedule-subject .hr-18 {
       top: 57.375rem; } }
 
-/*.table-schedule .lecture-time[data-event="lecture-01"] {
-  background-color: #E0F2F1; }
-  .table-schedule .lecture-time[data-event="lecture-01"] .lecture-title, .table-schedule .lecture-time[data-event="lecture-01"] .lecture-location, .table-schedule .lecture-time[data-event="lecture-01"] .ic-lecture-noti, .table-schedule .lecture-time[data-event="lecture-01"] .lecture-noti-title {
-    color: #009688; }
-  .table-schedule .lecture-time[data-event="lecture-01"]:hover {
-    background-color: #B2DFDB; }
-  .table-schedule .lecture-time[data-event="lecture-01"]:before {
-    background-color: #009688; }
+
+
+
+.lecture_time_list[data-event="lecture-01"] {
+	background-color: #E0F2F1; 
+}
+
+
+.lecture_time_list[data-event="lecture-01"] .lecture-title, .table-schedule .lecture_time_list[data-event="lecture-01"] .lecture-location, .table-schedule .lecture_time_list[data-event="lecture-01"] .ic-lecture-noti, .table-schedule .lecture_time_list[data-event="lecture-01"] .lecture-noti-title {
+    color: #009688; 
+}
+
+
+.lecture_time_list[data-event="lecture-01"]:hover {
+    background-color: #B2DFDB; 
+}
+
+
+.lecture_time_list[data-event="lecture-01"]:before {
+    background-color: #009688; 
+}
+    
+    
 
 .table-schedule .lecture-time[data-event="lecture-02"] {
   background: #EFEBE9; }
@@ -507,7 +525,7 @@ ol, ul {
     background-color: #FFCCBC; }
   .table-schedule .lecture-time[data-event="lecture-10"]:before {
     background-color: #FF5722; }
-*/
+
 .modal-header {
   border-bottom: 0; }
 

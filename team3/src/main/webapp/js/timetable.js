@@ -11,6 +11,20 @@ $(function(){
 		}
 	})
 	
+	let html = '<a href="#">' +
+                    '<div class="lecture-info">' + 
+                        '<h6 class="lecture-title"></h6>' +
+                        '<h6 class="lecture-code"></h6>' +
+                    '</div>' +
+                    '<div class="lecture-noti" data-toggle="tooltip" data-placement="top" title="" data-original-title="과제 설명 텍스트 과제 설명 텍스트 과제 설명 텍스트">' +
+                        '<i class="material-icons ic-lecture-noti">assignment</i>' +
+                        '<span class="lecture-noti-title"></span>' +
+                    '</div>' +
+                '</a>' ;
+    $('.lecture_time_list').html(html);
+    $('.lecture_time_list').removeAttr('style');
+    $('.lecture_time_list').find('.material-icons').css('display', 'none');
+	
 
 })
 
@@ -63,9 +77,9 @@ $("#btn_regist").on('click', function(){
 	
 	var name = $(this).parent().parent().find('.lecture_title').html();
 	
-	var time1 = ($(this).parent().parent().find('.lecture_time_db').html());
-	
-	
+	var time1 = $(this).parent().parent().find('.lecture_time_db').html();
+	console.log($(this).parent().parent().html());
+	var code = $(this).parent().parent().find('.lecture_code').html();
 	
 	let timelist = [];
 	
@@ -74,7 +88,7 @@ $("#btn_regist").on('click', function(){
 	$('.lecture_time_list').each(function(){
 	  var text = $(this).attr('value');
 	  timelist.push(text);
-	  var text2 = $(this).html();
+	  var text2 = $(this).find('.lecture-title').html();
 	  timelist2.push(text2);
 	});
 	
@@ -87,10 +101,26 @@ $("#btn_regist").on('click', function(){
 		for (let j = 0; j < time1.length; j++){
 			
 			if (timelist[i] == time1[j] && timelist2[i] == ''){
+				let html = '';
 				
-				$('.lecture_time_list').eq(i).html(name);
-				$('.lecture_time_list').eq(i).css('display','block').css('background', colorCode);
+				/*html += '<a href="#">' +
+                                '<div class="lecture-info">' + 
+                                    '<h6 class="lecture-title">' + name + '</h6>' +
+                                    '<h6 class="lecture-location">' + code +'</h6>' +
+                                '</div>' +
+                                '<div class="lecture-noti" data-toggle="tooltip" data-placement="top" title="" data-original-title="과제 설명 텍스트 과제 설명 텍스트 과제 설명 텍스트">' +
+                                    '<i class="material-icons ic-lecture-noti">assignment</i>' +
+                                    '<span class="lecture-noti-title">과제 제목 텍스트</span>' +
+                                '</div>' +
+                            '</a>' ;*/
+                            
+				$('.lecture_time_list').eq(i).find('.lecture-title').html(name);
+				$('.lecture_time_list').find('.material-icons').css('display', 'block');
+				console.log($(this).html());
+//				$('.lecture_time_list').eq(i).find('.lecture-code').html(code);
+				//$('.lecture_time_list').eq(i).css('display','block').css('background', colorCode);
 				console.log(timelist2);
+				break;
 				
 			} else if(timelist[i] == time1[j] && timelist2[i] != ''){
 				
@@ -203,12 +233,12 @@ $('#modal-lecture-info').on('show.bs.modal',function(){
 			
 			$(".lecture_title").html(lname);
 			$(".lecture_time").html(ltime);
-			$(".lecutre_code").html(lno);
+			$(".lecture_code").html(lno);
 			$(".lecture_professor").html(lprofessor);
 			$(".lecture_time_db").html(ltime_db);
 			modal.find('#modal-lecture-info .lecture-title').html('test');
 			modal.find('.lecture_time').html(ltime);
-			modal.find('.lecutre_code').html(lno);
+			modal.find('.lecture_code').html(lno);
 			modal.find('.lecture_professor').html(lprofessor);
 			modal.find('.lecture_time_db').html(ltime_db);
 			console.log("db시간 : " + ltime_db);

@@ -106,7 +106,11 @@
                             </div>
                             
                             <ul>
-                            	<li class="lecture_time_list" value="월&#47;1"></li>
+                            	<li class="lecture_time_list" value="월&#47;1" data-event="lecture-01">
+                            	
+                            		
+                            	
+                            	</li>
                             	<li class="lecture_time_list" value="월&#47;2"></li>
                             	<li class="lecture_time_list" value="월&#47;3"></li>
                             	<li class="lecture_time_list" value="월&#47;4"></li>
@@ -356,12 +360,12 @@
 										
 									</li>
 									
-									<li class="lecture-code">
+									<li class="">
 										<i class="material-icons ic-lecture-info">code</i>
-										교과목 코드 : <span class="lecutre_code">1</span> 
+										교과목 코드 : <span class="lecture_code">1</span> 
 									</li>
 									
-									<li class="lecture-code">
+									<li class="">
 										<i class="material-icons ic-lecture-info">school</i>
 										담당 교수 : <span class="lecture_professor">1</span>
 									</li>
