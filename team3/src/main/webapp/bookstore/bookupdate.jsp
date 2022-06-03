@@ -20,7 +20,7 @@
 	%>
 	<div class="container">
 		<h3 class="text-center my-4">판매하기</h3>
-		<form class="col-md-8 offset-2"  action="/team3/bookstore/bookadd" method="post" enctype="multipart/form-data">
+		<form class="col-md-8 offset-2"  action="/team3/bookstore/bookupdate?tno<%=textbook.getTno() %>>" method="post" enctype="multipart/form-data">
 			<div>
 				<h3>자세한 책 정보를 적어주세요</h3>
 				<input class="form-control" type="text" name="ttitle" value="<%=textbook.getTtitle() %>">
@@ -42,7 +42,7 @@
 				<h3>실제 사진을 올려주세요</h3>
 				<input class="form-control" id="timg" type="file" name="timg" accept=".jpg, .jpeg, .png" >
 				<div>
-					<img width="150px" alt="" src="/team3/bookstore/bookimg/<%=textbook.getTimg()%>">
+					<img width="150px" id="preview" alt="" src="/team3/bookstore/bookimg/<%=textbook.getTimg()%>">
 				</div> 
 			</div>
 			<div>
@@ -53,10 +53,8 @@
 				<h3>추가 설명을 자유롭게 적어주세요</h3>
 				<input class="form-control" type="text" name="tcontent" placeholder="(1000자 이내)" value="<%=textbook.getTcontent()%>">
 			</div>
-			<!-- 
-			<input type="submit" value="등록">
-			 -->
-			<button id="btnadd" >확인</button>
+		
+			<button id="btnadd" >수정</button>
 			<a href="/team3/bookstore/booklist.jsp"><button>취소</button></a>
 		</form>
 		

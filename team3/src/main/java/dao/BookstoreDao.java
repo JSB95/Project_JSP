@@ -94,5 +94,9 @@ public class BookstoreDao extends Dao{
 		}
 		return null;
 	}
+	public boolean bookupdate(Textbook textbook) {
+		
+		return false;
+	}
 	
 }
