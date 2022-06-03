@@ -11,7 +11,9 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import dao.BookstoreDao;
 import dao.MemberDao;
+import dto.Textbook;
 
 /**
  * Servlet implementation class bookadd
@@ -32,24 +34,6 @@ public class bookadd extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MultipartRequest multi = new MultipartRequest(
-				request, /*요청타입*/
-				request.getSession().getServletContext().getRealPath("/admin/productimg"), /*저장 폴더위치*/
-				1024*1024*1024, /*파일 최대용량(바이트기준)*/
-				"UTF-8", 
-				new DefaultFileRenamePolicy()
-				);
-		String ttitle = multi.getParameter("ttitle");
-		String timg = multi.getFilesystemName("timg");
-		String tcontent = multi.getParameter("tcontent");
-		int tprice = Integer.parseInt(multi.getParameter("tprice"));
-		int tactive = Integer.parseInt(multi.getParameter("tactive"));
-		int tcondition = Integer.parseInt(multi.getParameter("tcondition"));
-			HttpSession session = request.getSession();
-			String mid = (String)session.getAttribute("login");
-		int mno = MemberDao.getMemberDao().getmno(mid);
-		
-		
 		
 		
 	}
@@ -58,8 +42,39 @@ public class bookadd extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String uploadpath = request.getSession().getServletContext().getRealPath("/bookstore/bookimg");
+		
+		MultipartRequest multi = new MultipartRequest(
+				request, // 요청방식
+				uploadpath,	//파일저장경로
+				1024*1024*10 , //파일 최대 용량 허용 범위
+				"UTF-8",	//인코딩 타입
+				new DefaultFileRenamePolicy() //동일한 파일명이 있을 경우 자동 이름 변환
+				);
+		
+		request.setCharacterEncoding("UTF-8");
+		String ttitle = multi.getParameter("ttitle");
+		String timg = multi.getFilesystemName("timg");
+		String tcontent = multi.getParameter("tcontent");
+		int tprice = Integer.parseInt(multi.getParameter("tprice"));
+		int tcondition = Integer.parseInt(multi.getParameter("tcondition"));
+			HttpSession session = request.getSession();
+			String mid = (String)session.getAttribute("login");
+		String tauthor = multi.getParameter("tauthor");
+		String tcompany = multi.getParameter("tcompany");
+		String tyear = multi.getParameter("tyear");
+		String tclass = multi.getParameter("tclass");
+		int mno = MemberDao.getMemberDao().getmno(mid);
+		
+		Textbook textbook = new Textbook(0 , timg, ttitle, tcontent, tprice, 1, tcondition, tauthor, tcompany, tyear, tclass, mno);
+		
+		boolean result = BookstoreDao.getBookstoreDao().bookadd(textbook);
+		
+		if( result ) { 
+			response.sendRedirect("/team3/bookstore/booklist.jsp");
+		}else { 
+			System.out.println("오류");
+		}
 	}
 
 }
