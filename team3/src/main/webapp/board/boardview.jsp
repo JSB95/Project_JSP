@@ -12,6 +12,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/team3/css/board/boardview.css">
 <link rel="stylesheet" type="text/css" href="/team3/css/board/reply.css">
+<script src="https://kit.fontawesome.com/d77abffe02.js"></script>
 <!-- 폰트어썸[ 아이콘 ]  -->
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
 </head>
@@ -26,6 +27,7 @@ int mno = BoardDao.getBoardDao().getmno(mid);
 
 <h1>게시물조회</h1>
 <input type="hidden" value="<%=bno%>" id="bno">
+
 
 			 
 				<div class="view_header">
@@ -128,7 +130,7 @@ int mno = BoardDao.getBoardDao().getmno(mid);
 			</div>
 				<div class="btn_area">
 				<div class="test"><button onclick="updateview(<%=reply.getRno()%>,'<%=reply.getRcontent()%>',<%=reply.getBno()%>)">수정</button></div>
-				<div class="test"><button onclick="replydelete(<%=reply.getRno()%>)">삭제</button></div>
+				<div class="test"><button onclick="replydelete(<%=reply.getRno()%>,<%=reply.getBno()%>)">삭제</button></div>
 				</div>
 				</div>
 				
@@ -156,18 +158,18 @@ int mno = BoardDao.getBoardDao().getmno(mid);
 						<div id="relike_area">
 			<%
 				if(mid != null && ReplyDao. getReplyDao().getreplylike(rereply.getRno(), mno)) {%>
-				 <span onclick="rereplyview(<%=rereply.getRno()%>,<%=rereply.getBno()%>)"><i class="far fa-comment-alt"></i></span>
+				 <span onclick="rereplyview(<%=rereply.getRno()%>,<%=rereply.getBno()%>)"></span>
 				<button onclick="saverelike('<%=mid%>',<%=rereply.getRno()%>);"><i class="fas fa-thumbs-up"></i><%=rereply.getRelike() %></button>
 				
 			<% } else {%>
-			 <span onclick="rereplyview(<%=rereply.getRno()%>,<%=rereply.getBno()%>)"><i class="far fa-comment-alt"></i></span>
+			 <span onclick="rereplyview(<%=rereply.getRno()%>,<%=rereply.getBno()%>)"></span>
 			<button onclick="saverelike('<%=mid%>',<%=rereply.getRno()%>);"><i class="far fa-thumbs-up"></i>  <%=rereply.getRelike() %></button>
 			<%} %>
 			
 			</div>
 				<div class="btn_area">
 				<div class="test"><button onclick="reupdateview(<%=rereply.getRno()%>,'<%=rereply.getRcontent()%>',<%=rereply.getBno()%>)">수정</button></div>
-				<div class="test"><button onclick="replydelete(<%=rereply.getRno()%>)">삭제</button></div>
+				<div class="test"><button onclick="replydelete(<%=rereply.getRno()%> ,<%=rereply.getBno()%>)">삭제</button></div>
 				</div>
 				</div>
 				

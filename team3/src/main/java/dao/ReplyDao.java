@@ -19,15 +19,25 @@ public class ReplyDao extends Dao {
 	// 1.댓글 작성
 public boolean replywrite(Reply reply) {
 		String sql = "insert into reply(rcontent,rnickname,rindex,bno,mno)values(?,?,?,?,?)";
+		//String sql2 = "update board set rcount = rcount+1 where bno ="+reply.getBno();
+		
+		
 		
 		try {
+			
+			
 			ps = con.prepareStatement(sql);
 			ps.setString(1, reply.getRcontent());
 			ps.setString(2, reply.getRnickname());
 			ps.setInt(3, reply.getRindex());
 			ps.setInt(4, reply.getBno());
-			ps.setInt(5, reply.getMno());			
+			ps.setInt(5, reply.getMno());	
 			ps.executeUpdate();
+			
+			String sql2 = "update board set rcount = "+BoardDao.getBoardDao().getcountcoment(reply.getBno())+" where bno ="+reply.getBno();
+			ps= con.prepareStatement(sql2);
+			ps.executeUpdate();
+			
 			return true;
 			
 		} catch (Exception e) {System.out.println("댓글 작성 오류" + e);}
@@ -90,11 +100,17 @@ public boolean replyupdate(Reply reply) {
 
 // 댓글 삭제
 
-public boolean replydelete( int rno) { 
+public boolean replydelete( int rno ,int bno) { 
 	String sql ="delete from reply "
 			+ "where rno = "+rno+" or rindex = "+rno;
+	
 	try { 
+		
+		
 		ps = con.prepareStatement(sql); 
+		ps.executeUpdate();
+		String sql2 = "update board set rcount = "+BoardDao.getBoardDao().getcountcoment(bno)+" where bno ="+bno;
+		ps= con.prepareStatement(sql2);
 		ps.executeUpdate();
 		return true;
 	}

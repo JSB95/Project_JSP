@@ -143,10 +143,12 @@ function reupdateview(rno,rcontent,bno){ // 댓글수정창 표시 메소드
 
 
 
-function replydelete( rno ){
+function replydelete( rno,bno ){
+	
 	$.ajax({
+
 		url : "/team3/board/replydelete" , 
-		data : { "rno" : rno } , 
+		data : { "rno" : rno ,"bno":bno} , 
 		success : function( result ){
 			if( result == 1 ){
 				alert("댓글 삭제 되었습니다.");
