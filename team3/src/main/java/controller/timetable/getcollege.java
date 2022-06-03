@@ -48,7 +48,7 @@ public class getcollege extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		
-		String html ="<select id=\"collegebox\" onchange=\"collegechange()\" class=\"selectpicker\">";
+		String html ="<select id=\"collegebox\" onchange=\"collegechange()\" class=\"form-select\">";
 		
 		for (String c : college) {
 			html += "<option>" + c + "</option>";

@@ -1,7 +1,6 @@
 package controller.timetable;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -9,6 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import dao.LectureDao;
 import dto.Lecture;
@@ -33,54 +36,100 @@ public class getlectureinfo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
 		response.setCharacterEncoding("UTF-8");
-		
+		int lno = Integer.parseInt(request.getParameter("lno"));
 		String department = request.getParameter("department");
+		ArrayList<String> temp = new ArrayList<String>();
+		Lecture lecture = LectureDao.getLectureDao().getlectureinfo(lno);
+			
+		String[] l = lecture.getLtime().split("_");
 		
-		ArrayList<Lecture> list = LectureDao.getLectureDao().getlectureList_depart(department);
-		
-		String html ="";
-		
-		for (Lecture lecture : list) {
-			html += "<div class=\"modal-dialog\" role=\"document\">" +
-						"<div class=\"modal-content\">" +
-							"<div class=\"modal-header\">" +
-								"<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">" +
-								"<span aria-hidden=\"true\">×</span>" +
-								"</button>" +
-							"</div>" +
-							"<div class=\"modal-body\">" +
-								"<h3 class=\"lecture-title\">" + lecture.getLname() + "</h3>" +
-								"<ul class=\"lecture-info\">" +
-									"<li class=\"lecture-time\">" +
-										"<i class=\"material-icons ic-lecture-info\">access_alarm</i>" +
-										"<span>강의 시간 : " + getlecturelist.temp +"</span>" +
-									"</li>" +
-									"<li class=\"lecture-code\">" +
-										"<i class=\"material-icons ic-lecture-info\">code</i>" +
-										"<span>교과목 코드 : " + lecture.getLno() +"</span>" +
-									"</li>" +
-									"<li class=\"lecture-code\">" +
-										"<i class=\"material-icons ic-lecture-info\">school</i>" +
-										"<span>담당 교수 : " + lecture.getLprofessor() + "</span>" +
-									"</li>" +
-								"</ul>" +
-								"<div class=\"lecture-description\">" +
-									"<p class=\"txt-description\"></p>" +
-								"</div>" +
-							"</div>" +
-							"<div class=\"modal-footer\">" +
-								"<button type=\"button\" class=\"btn btn-light\" data-dismiss=\"modal\">취소</button>" + 
-								"<button type=\"button\" class=\"btn btn-primary\" id=\"btn_regist\">과목 등록하기</button>" +
-							"</div>" +
-						"</div>" +
-					"</div>";
+		temp = new ArrayList<String>();
+		if (l.length == 1) {
+			temp.add(l[0].split("/")[0] + "(" + l[0].split("/")[1] + ")");
+		} else if (l.length == 2) {
+			for (int i = 0; i < l.length; i ++) {
+				for (int j = i+1; j < l.length; j++) {
+					if (l[i].split("/")[0].equals(l[j].split("/")[0])) {
+						temp.add(l[i].split("/")[0] + "(" + l[i].split("/")[1] + "-" + l[j].split("/")[1] + ")");
+					} else {
+						temp.add(l[i].split("/")[0] + "(" + l[i].split("/")[1] + ") " + l[j].split("/")[0] + "(" + l[j].split("/")[1] + ")"); 
+					}
+				}
+			}
+		} else if (l.length == 3) {
+			
+			for (String item : l) {
+				temp.add(item);
+			}
+			
+			
+			if (temp.get(0).split("/")[0].equals(temp.get(1).split("/")[0]) && temp.get(1).split("/")[0].equals(temp.get(2).split("/")[0])) {
+				temp.set(0, temp.get(0).split("/")[0] + "(" + temp.get(0).split("/")[1] + "-" + temp.get(2).split("/")[1] + ")");
+				temp.remove(1);
+				temp.remove(1);
+			} else if (temp.get(0).split("/")[0].equals(temp.get(1).split("/")[0])) {
+				temp.set(0, temp.get(0).split("/")[0] + "(" + temp.get(0).split("/")[1] + "-" + temp.get(1).split("/")[1] + ")");
+				temp.set(1, temp.get(2).split("/")[0] + "(" + temp.get(2).split("/")[1] + ")");
+				temp.remove(2);
+			} else if (temp.get(1).split("/")[0].equals(temp.get(2).split("/")[0])) {
+				temp.set(0, temp.get(0).split("/")[0] + "(" + temp.get(0).split("/")[1] + ")");
+				temp.set(1, temp.get(1).split("/")[0] + "(" + temp.get(1).split("/")[1] + "-" + temp.get(2).split("/")[1] + ")");
+				temp.remove(2);
+			} else {
+				temp.set(0, temp.get(0).split("/")[0] + "(" + temp.get(0).split("/")[1] + ")");
+				temp.set(1, temp.get(1).split("/")[0] + "(" + temp.get(1).split("/")[1] + ")");
+				temp.set(2, temp.get(2).split("/")[0] + "(" + temp.get(2).split("/")[1] + ")");
+			}
+			
+		} else if (l.length == 4) {
+			
+			for (String item : l) {
+				temp.add(item);
+			}
+			
+			if(temp.get(0).split("/")[0].equals(temp.get(1).split("/")[0]) && temp.get(1).split("/")[0].equals(temp.get(2).split("/")[0]) && temp.get(2).split("/")[0].equals(temp.get(3).split("/")[0])) {
+				temp.set(0, temp.get(0).split("/")[0] + "(" + temp.get(0).split("/")[1] + "-" + temp.get(3).split("/")[1] + ")");
+				temp.remove(1);
+				temp.remove(1);
+				temp.remove(1);
+			} else if (temp.get(0).split("/")[0].equals(temp.get(1).split("/")[0]) && temp.get(2).split("/")[0].equals(temp.get(3).split("/")[0])) {
+				temp.set(0, temp.get(0).split("/")[0] + "(" + temp.get(0).split("/")[1] + "-" + temp.get(1).split("/")[1] + ")");
+				temp.set(1, temp.get(2).split("/")[0] + "(" + temp.get(2).split("/")[1] + "-" + temp.get(3).split("/")[1] + ")");
+				temp.remove(2);
+				temp.remove(2);
+			}
+			
+		} else {
+			temp.add("미지원 기능");
 		}
 		
-		PrintWriter out = response.getWriter();
 		
-		out.print(html);
+		
+		
+		
+		
+		JSONArray jsonArray = new JSONArray();
+		
+
+		try {
+			JSONObject jsonObject = new JSONObject();
+			jsonObject.put("lname",lecture.getLname());
+			jsonObject.put("ltime",temp);
+			jsonObject.put("lno", lecture.getLno());
+			jsonObject.put("lprofessor",lecture.getLprofessor());
+			jsonObject.put("ltime_db",lecture.getLtime());
+			System.out.println("DB 시간 : " + lecture.getLtime());
+			jsonArray.put(jsonObject);
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("application/json");
+			response.getWriter().print(jsonObject.toString());
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
 		
 	}
 

@@ -36,10 +36,11 @@ public class getlecturelist extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setCharacterEncoding("UTF-8");
-		String department = request.getParameter("department");
-		String html="";
+		String department = request.getParameter("department1");
+		String html="<ul class=\"list-lecture\" id=\"lecturelist\">";
 		PrintWriter out = response.getWriter();
 		ArrayList<Lecture> lecturelist = LectureDao.getLectureDao().getlectureList_depart(department);
+		int count = 0;
 		
 		for (Lecture lecture : lecturelist) {
 			
@@ -105,26 +106,33 @@ public class getlecturelist extends HttpServlet {
 				temp.add("미지원 기능");
 			}
 			
-			html += "<li class=\"card-lecture\">" +
+			//onclick=\"li_onclick()\"
 			
-						"<a class=\"lecture-title\" href=\"#\"> " + lecture.getLname() +" </a>" +
+			html += "<li class=\"card-lecture\" id=\"card-lecture\" >" +
+			
+						"<a class=\"lecture-title\" href=\"#\" id=\"getlname\" data-item=\"<?= $row['getlname']\"> " + lecture.getLname() +" </a>" +
 			
 						"<h6 class=\"lecture-time\">" +
 			
-							"<i class=\"fa-regular fa-clock\">&nbsp" + temp + " </i>" +
+							"<i class=\"fa-regular fa-clock\">&nbsp;" + temp + " </i>" +
 				
 						"</h6>" +
 			
 						"<ul class=\"list-lecture-info\">" +
 			
 							"<li> 교과목 코드 : " + lecture.getLno() +" </li>" + 
-							"<li> 담당 교수 : " + lecture.getLprofessor() + " </li>" +
+							"<li> 담당 교수 : <span id=\"getlprofessor\">"  + lecture.getLprofessor()  + "</span> </li>" +
+							"<li id=\"lectureno\" value=" + lecture.getLno() + "></li>" +
 			
 						"</ul>" +
 			
 					"</li>";
-					
+			
+			count++;
 		}
+		
+		html += "</ul>";
+		
 		
 		out.print(html);
 	}
