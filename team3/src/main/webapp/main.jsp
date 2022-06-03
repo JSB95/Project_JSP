@@ -18,24 +18,41 @@
 			 	<a href="#"><i class="fas fa-school"></i></a>
 			 </div>
 				<div class="col-md-3 d-flex justify-content-end">
-					<a href="/team3/message/getmessage.jsp"><i class="far fa-comment-dots"></i></a>
+					<a href="/team3/message/getmessage.jsp">
+						<i class="far fa-comment-dots"></i>
+					</a>
 					<a href="/team3/member/memberinfo.jsp"><i class="fas fa-user"></i></a>
 				</div>
 		</div>
 		<div class="iconbox"><!-- 페이지이동 아이콘 -->
 			<ul class="nav justify-content-center">
 			  <li class="nav-item">
-			    <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-calendar-check"></i></a>
-			    <br>시간표
+			    <a class="nav-link active" aria-current="page" href="#">
+			    	<i class="fas fa-calendar-check"></i><br><br>
+			    	<h5 class="h5">시간표</h5>
+					<span>나의 일정을 한눈에!</span>
+			    </a>
 			  </li>
 			  <li class="nav-item">
-			    <a class="nav-link" href="/team3/board/boardlist.jsp"><i class="far fa-comment-alt"></i></a>
+			    <a class="nav-link" href="/team3/board/boardlist.jsp">
+			    	<i class="far fa-comment-alt"></i>
+			    	<h5 class="h5">게시판</h5>
+					<span>다양한 소통<br>활동을 즐기자!</span>
+			    </a>
 			  </li>
 			  <li class="nav-item">
-			    <a class="nav-link" href="/team3/review/reviewlist.jsp?keyword="><i class="fas fa-user-graduate"></i></a>
+			    <a class="nav-link" href="/team3/review/reviewlist.jsp?keyword=">
+			   	 	<i class="fas fa-user-graduate"></i>
+			   	 	<h5 class="h5">강의평</h5>
+					<span>강의정보를<br>알고싶다면?</span>
+			    </a>
 			  </li>
 			  <li class="nav-item">
-			    <a class="nav-link" href="#"><i class="fas fa-book-open"></i></a>
+			    <a class="nav-link" href="#">
+			    	<i class="fas fa-book-open"></i>
+			    	<h5 class="h5">책방</h5>
+					<span>저렴한 가격으로<br>책을 구매하자!</span>
+			    </a>
 			  </li>
 			</ul>
 			

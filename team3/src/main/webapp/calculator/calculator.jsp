@@ -33,7 +33,7 @@
 					<%for(int i =0 ; i<10; i++){ %>
 					<tr>
 						<td><input type="text"></td>
-						<td><input type="text" id="학점"></td>
+						<td><input type="text" id="학점<%=i%>"></td>
 						<td>
 							<select id="성적">
 								<option value="4.5">A+</option>
