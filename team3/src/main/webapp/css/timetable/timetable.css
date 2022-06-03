@@ -79,7 +79,7 @@ ol, ul {
 
 .container-lecture .section-nav {
     width: 25rem;
-    max-height: 100vh;
+    max-height: 127vh;
     overflow-y: scroll;
     border-right: 0.0625rem solid #D7E2EB; 
 }

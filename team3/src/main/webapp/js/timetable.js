@@ -78,7 +78,7 @@ $("#btn_regist").on('click', function(){
 	var name = $(this).parent().parent().find('.lecture_title').html();
 	
 	var time1 = $(this).parent().parent().find('.lecture_time_db').html();
-	console.log($(this).parent().parent().html());
+	
 	var code = $(this).parent().parent().find('.lecture_code').html();
 	
 	let timelist = [];
@@ -93,27 +93,16 @@ $("#btn_regist").on('click', function(){
 	});
 	
 	
-	var colorCode = "#" + Math.round(Math.random() * 0xffffff).toString(16);
+	
 	
 	console.log(timelist2);
+	loop:
 	for (let i = 0; i < timelist.length; i++){
 		
 		for (let j = 0; j < time1.length; j++){
 			
 			if (timelist[i] == time1[j] && timelist2[i] == ''){
-				let html = '';
-				
-				/*html += '<a href="#">' +
-                                '<div class="lecture-info">' + 
-                                    '<h6 class="lecture-title">' + name + '</h6>' +
-                                    '<h6 class="lecture-location">' + code +'</h6>' +
-                                '</div>' +
-                                '<div class="lecture-noti" data-toggle="tooltip" data-placement="top" title="" data-original-title="과제 설명 텍스트 과제 설명 텍스트 과제 설명 텍스트">' +
-                                    '<i class="material-icons ic-lecture-noti">assignment</i>' +
-                                    '<span class="lecture-noti-title">과제 제목 텍스트</span>' +
-                                '</div>' +
-                            '</a>' ;*/
-                            
+				console.log($('.lecture_time_list').eq(i).html());
 				$('.lecture_time_list').eq(i).find('.lecture-title').html(name);
 				$('.lecture_time_list').eq(i).find('.lecture-title').css('color', '#009688');
 				$('.lecture_time_list').eq(i).find('.material-icons').css({'display': 'block','color' : '#009688'});
@@ -130,12 +119,13 @@ $("#btn_regist").on('click', function(){
 				break;
 				
 			} else if(timelist[i] == time1[j] && timelist2[i] != ''){
-				
-				alert("겹친 수업 존재");
-				duplicationchk = false
+				console.log("중복검사걸림");
+				alert("겹친 수업 존재 : " + timelist2[i]);
+				duplicationchk = false;
 				deletedupli(name);
 				timelist2.length = 0;
-				return;
+				break loop;
+				
 				
 			}
 		}
@@ -156,8 +146,13 @@ function deletedupli(name){
 	
 	for (let i = 0; i < timelist2.length; i++){
 		if (timelist2[i] == name){
-			$('.lecture_time_list').eq(i).empty();
-			$('.lecture_time_list').eq(i).removeAttr("style");
+			$('.lecture_time_list').eq(i).find('.lecture-title').html('');
+			$('.lecture_time_list').eq(i).find('.material-icons').css('display', 'none');
+			$('.lecture_time_list').eq(i).find('.lecture-code').html('');
+			$('.lecture_time_list').eq(i).unbind('mouseenter mouseleave');
+			$('.lecture_time_list').eq(i).css('background-color','');
+			console.log("지우기");
+			
 		}
 	}
 	
