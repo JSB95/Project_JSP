@@ -1,3 +1,19 @@
+ /*bar*/
+  .barbtn{
+ 	border: 1px solid #bbb;
+    border-radius: 5px;
+    margin: 10px 0;
+	padding: 10px 12px;
+ }
+ 
+ /*getmessage*/
+ 
+ .tablebox{
+ 		border: 2px solid #eeeeee;
+	border-radius: 10px;
+	padding: 10px 20px 10px 20px;
+ }
+ 
  .mcontent{
  	 display: inline-block;
     width: 630px;
@@ -16,4 +32,25 @@
  .read{
  	height: 20px;
  	color: #eeeeee ;
+ }
+ 
+ .modal-body{
+ 	height: 500px;
+ }
+ .p{
+ 	
+ 	margin-top: 20px;
+ 	border: 2px solid #eeeeee;
+	border-radius: 10px;
+	padding: 10px 20px 10px 20px;
+	height: 400px;
+ }
+ 
+ .ctext{
+ 	width: 100%;
+ 	margin-top: 10px;
+ 	border: 2px solid #eeeeee;
+	border-radius: 10px;
+	padding: 0px 20px 10px 20px;
+	height: 400px;
  }

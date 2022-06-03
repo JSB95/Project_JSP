@@ -10,12 +10,13 @@ function read(mnum){
 			data: {"mnum": mnum},
 			success : function( json ){
 				jsonarray = json;	
-				tableview();
+				
 				
 				$.ajax({
 				url : '/team3/message/read' ,
 				data: {"mnum": mnum},
 				success : function( result ){
+					tableview();
 					}
 				});
 				
@@ -46,11 +47,11 @@ function tableview1(){
 			for( let i = 0 ; i<jsonarray1.length; i++ ){
 					
 				tr += 
-				' <div class="modal-body" id="mcontent1">'+
-					'<span>'+jsonarray1[i]["mid"]+'</span>'+
-					'<span>'+jsonarray1[i]["mtime"]+'</span><br>'+
-			       '<p>'+jsonarray1[i]["mcontent"]+'</p>'+
-			   '  </div>';
+				'<div class="modal-body" id="mcontent1">'+
+						'<div class="row"><div class="col-md-3"><span>'+jsonarray1[i]["mid"]+'님</span></div>'+
+						'<div class="col-md-9 d-flex justify-content-end"><span>'+jsonarray1[i]["mtime"]+'</span></div></div>'+
+				       	'<div><p class="p">'+jsonarray1[i]["mcontent"]+'</p></div>'+
+			   ' </div>';
 			  
 			}
 			for( let i = 0 ; i<jsonarray1.length; i++ ){
@@ -70,11 +71,11 @@ function tableview(){
 			for( let i = 0 ; i<jsonarray.length; i++ ){
 					
 				tr += 
-				' <div class="modal-body" id="mcontent">'+
-					'<span>'+jsonarray[i]["mid"]+'</span>'+
-					'<span>'+jsonarray[i]["mtime"]+'</span><br>'+
-			       '<p>'+jsonarray[i]["mcontent"]+'</p>'+
-			   '  </div>';
+				'<div class="modal-body" id="mcontent">'+
+						'<div class="row"><div class="col-md-3"><span>'+jsonarray[i]["mid"]+'님</span></div>'+
+						'<div class="col-md-9 d-flex justify-content-end"><span>'+jsonarray[i]["mtime"]+'</span></div></div>'+
+				       	'<div><p class="p">'+jsonarray[i]["mcontent"]+'</p></div>'+
+			   ' </div>';
 			  
 			}
 			for( let i = 0 ; i<jsonarray.length; i++ ){
@@ -94,7 +95,7 @@ function send(mid,sendno){
 	'<div class="container">'+
 			'<p>'+mid+'님</p>'+
 			'<input type="hidden" id="getno" value="'+sendno+'">'+
-			'<textarea rows="20" cols="40" id="content"></textarea>'+
+			'<textarea class="ctext" rows="" cols="" id="content"></textarea>'+
 		'</div>'+
 	'</div>'
 );
@@ -110,7 +111,7 @@ function send1(mid,sendno){
 	'<div class="container">'+
 			'<p>'+mid+'님</p>'+
 			'<input type="hidden" id="getno1" value="'+sendno+'">'+
-			'<textarea rows="20" cols="40" id="content1"></textarea>'+
+			'<textarea class="ctext" rows="" cols="" id="content1"></textarea>'+
 		'</div>'+
 	'</div>'
 );

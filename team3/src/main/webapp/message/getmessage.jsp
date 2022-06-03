@@ -68,51 +68,53 @@
 	<%@include file="messagebar.jsp"%>
 	
 	<div class="container">
-		<table class="table">
-				<tr>
-					<th>작성자</th><th class="내용">내용</th><th>작성일</th>
-				</tr>
-			<%for(Message message : getmessage){ 
-				int sendno = message.getMsendno();
-				String sendid= MessageDao.getMessageDao().getmid(sendno);
-				if(message.getMactive()==1){
-			%>
-				<tr class="td" onclick="read(<%=message.getMnum() %>)" data-bs-toggle="modal" data-bs-target="#read">
-					<td><%=sendid %></td><td><span class="mcontent"><%=message.getMcontent()%></span></td><td><%=message.getMtime() %></td>
-				</tr>
-			<%}else{ %>
-				<tr class="read" onclick="read(<%=message.getMnum() %>)" data-bs-toggle="modal" data-bs-target="#read">
-					<td><%=sendid %></td><td><span class="mcontent"><%=message.getMcontent() %></span></td><td><%=message.getMtime() %></td>
-				</tr>
-			<%}} %>
-		</table>
-		<div class="col-md-4 offset-4 d-flex justify-content-center">	<!--  d-flex justify-content-center : 박스권 내에서 가운데 배치 -->
-						 <ul class="pagination">
-						
-						 <!-- 이전 버튼 -->
-						 <%if( currentpage == 1  ){ // 현재페이지가 1이면 0페이지로 요청 못하게 제한두기  %>
-						 	<li class="page-item">  <a class="page-link pagenum" href="getmessage.jsp">이전</a></li>
-						 <%}else{ %>
-						 	<li class="page-item">  <a class="page-link pagenum" href="getmessage.jsp?pagenum=<%=currentpage-1%> ">이전</a></li>
-						 <%} %>
-						 
-						 <!-- 페이징 버튼 -->
-						 	<% for( int i = startbtn  ; i<=endhtn ; i++ ){ %>
-						 		<li class="page-item"> 
-							 		<a class="page-link pagenum" href="getmessage.jsp?pagenum=<%=i%>"> 
-							 			<%=i %> 
-							 		</a> 
-						 		</li>
-							<%} %>
-						
-						<!-- 다음 버튼 --> 
-						 <%if( currentpage == lastpage  ){ // 현재페이지가 마지막페이지 이면 마지막페이지 이상으로 요청 못하게 제한두기  %>
-						 	<li class="page-item"> <a class="page-link pagenum" href="getmessage.jsp?pagenum=<%=currentpage%>">다음</a></li>
-						 <%}else{ %>
-						 	<li class="page-item"> <a class="page-link pagenum" href="getmessage.jsp?pagenum=<%=currentpage+1%>">다음</a></li>
-						 <%} %>
-						 </ul>
-					</div>
+		<div class="tablebox">
+			<table class="table">
+					<tr>
+						<th>작성자</th><th class="내용">내용</th><th>작성일</th>
+					</tr>
+				<%for(Message message : getmessage){ 
+					int sendno = message.getMsendno();
+					String sendid= MessageDao.getMessageDao().getmid(sendno);
+					if(message.getMactive()==1){
+				%>
+					<tr class="td" onclick="read(<%=message.getMnum() %>)" data-bs-toggle="modal" data-bs-target="#read">
+						<td><%=sendid %></td><td><span class="mcontent"><%=message.getMcontent()%></span></td><td><%=message.getMtime() %></td>
+					</tr>
+				<%}else{ %>
+					<tr class="read" onclick="read(<%=message.getMnum() %>)" data-bs-toggle="modal" data-bs-target="#read">
+						<td><%=sendid %></td><td><span class="mcontent"><%=message.getMcontent() %></span></td><td><%=message.getMtime() %></td>
+					</tr>
+				<%}} %>
+			</table>
+			<div class="col-md-4 offset-4 d-flex justify-content-center">	<!--  d-flex justify-content-center : 박스권 내에서 가운데 배치 -->
+							 <ul class="pagination">
+							
+							 <!-- 이전 버튼 -->
+							 <%if( currentpage == 1  ){ // 현재페이지가 1이면 0페이지로 요청 못하게 제한두기  %>
+							 	<li class="page-item">  <a class="page-link pagenum" href="getmessage.jsp">이전</a></li>
+							 <%}else{ %>
+							 	<li class="page-item">  <a class="page-link pagenum" href="getmessage.jsp?pagenum=<%=currentpage-1%> ">이전</a></li>
+							 <%} %>
+							 
+							 <!-- 페이징 버튼 -->
+							 	<% for( int i = startbtn  ; i<=endhtn ; i++ ){ %>
+							 		<li class="page-item"> 
+								 		<a class="page-link pagenum" href="getmessage.jsp?pagenum=<%=i%>"> 
+								 			<%=i %> 
+								 		</a> 
+							 		</li>
+								<%} %>
+							
+							<!-- 다음 버튼 --> 
+							 <%if( currentpage == lastpage  ){ // 현재페이지가 마지막페이지 이면 마지막페이지 이상으로 요청 못하게 제한두기  %>
+							 	<li class="page-item"> <a class="page-link pagenum" href="getmessage.jsp?pagenum=<%=currentpage%>">다음</a></li>
+							 <%}else{ %>
+							 	<li class="page-item"> <a class="page-link pagenum" href="getmessage.jsp?pagenum=<%=currentpage+1%>">다음</a></li>
+							 <%} %>
+							 </ul>
+						</div>
+			</div>
 	</div>
 
 <div class="modal" tabindex="-1" id="read">

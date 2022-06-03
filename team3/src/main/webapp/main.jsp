@@ -11,9 +11,8 @@
 
 </head>
 <body>
-<<<<<<< HEAD
-	
-	<div class="container">
+
+	<div>
 		<div class="row mainheader"><!-- 메인헤더 -->
 			 <div class="col-md-6 offset-3 d-flex justify-content-center">
 			 	<a href="#"><i class="fas fa-school"></i></a>
@@ -70,9 +69,6 @@
 	</div>
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-=======
 
-
->>>>>>> refs/remotes/origin/sdy
 </body>
 </html>

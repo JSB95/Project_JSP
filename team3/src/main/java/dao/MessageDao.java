@@ -30,7 +30,7 @@ public class MessageDao extends Dao{
 			if( rs.next() )
 			{	
 				return rs.getInt(1); }
-		}catch (Exception e) {System.out.println(e);
+		}catch (Exception e) {System.out.println("gettotallist"+e);
 		}return 0;
 	}
 //////내 보낸쪽지 전체갯수출력
@@ -41,7 +41,7 @@ public class MessageDao extends Dao{
 			if( rs.next() )
 			{	
 				return rs.getInt(1); }
-		}catch (Exception e) {System.out.println("dsssssff"+e);
+		}catch (Exception e) {System.out.println("gettotal"+e);
 		}return 0;
 	}
 	
@@ -61,7 +61,7 @@ public class MessageDao extends Dao{
 				getmessage.add(message);
 			}
 			return getmessage;
-		}catch(Exception e) {System.out.println("dff"+e);}
+		}catch(Exception e) {System.out.println("getmessage"+e);}
 		return null;
 	}
 	
@@ -73,13 +73,12 @@ public class MessageDao extends Dao{
 			rs=ps.executeQuery();
 			if(rs.next()) {
 			return rs.getString(1); }
-		}catch(Exception e) {System.out.println(e); }
+		}catch(Exception e) {System.out.println("getmid"+e); }
 		return null;
 	}
 	
 	
 	public JSONArray getlist(int mnum){
-		System.out.println(mnum);
 		JSONArray jsonArray = new JSONArray();
 		try {
 			String 
@@ -104,10 +103,9 @@ public class MessageDao extends Dao{
 				object.put( "mid" , rs.getString(12) );
 				object.put( "mpassword" , rs.getString(13) );
 				jsonArray.put( object );
-				System.out.println( rs.getString(12) );
 			}
 			return jsonArray;
-		}catch(Exception e) {System.out.println(e);}
+		}catch(Exception e) {System.out.println("getlist"+e); }
 		return null;
 	}
 	
@@ -117,7 +115,7 @@ public class MessageDao extends Dao{
 			ps=con.prepareStatement(sql);
 			ps.executeUpdate();
 			return true;
-		}catch(Exception e) {System.out.println(e);}
+		}catch(Exception e) {System.out.println("read"+e);}
 		return false;
 	}
 	
@@ -133,7 +131,7 @@ public class MessageDao extends Dao{
 			ps.setInt(4, 1);
 			ps.executeUpdate();
 			return true;
-		}catch(Exception e) {}
+		}catch(Exception e) {System.out.println("send"+e);}
 		return false;
 	}
 	
@@ -151,7 +149,7 @@ public class MessageDao extends Dao{
 				sendmessage.add(message);
 			}
 			return sendmessage;
-		}catch(Exception e) {System.out.println("dffsada"+e);}
+		}catch(Exception e) {System.out.println("sendmessage"+e);}
 		return null;
 	}
 	
@@ -181,10 +179,9 @@ public class MessageDao extends Dao{
 				object.put( "mid" , rs.getString(12) );
 				object.put( "mpassword" , rs.getString(13) );
 				jsonArray.put( object );
-				System.out.println( rs.getString(12) );
 			}
 			return jsonArray;
-		}catch(Exception e) {System.out.println(e);}
+		}catch(Exception e) {System.out.println("sendlist"+e);}
 		return null;
 	}
 	

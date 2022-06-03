@@ -95,31 +95,31 @@
 							<h5><%=json.getJSONObject(j).get("lname")%></h5><%=json.getJSONObject(j).get("lprofessor")%> 교수님<br>
 							<%if(json.getJSONObject(j).get("reviewrate").equals(1)){ %>
 								<img class="star" alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/별.png">
-								<img class="star"  alt="" src="img/별.png">
-								<img class="star"  alt="" src="img/별.png">
-								<img class="star"  alt="" src="img/별.png">
+								<img class="star"  alt="" src="img/회색별.png">
+								<img class="star"  alt="" src="img/회색별.png">
+								<img class="star"  alt="" src="img/회색별.png">
+								<img class="star"  alt="" src="img/회색별.png">
 							<%} %>
 							<%if(json.getJSONObject(j).get("reviewrate").equals(2)){ %>
 								<img class="star" alt="" src="img/노란별.png">
 								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/별.png">
-								<img class="star"  alt="" src="img/별.png">
-								<img class="star"  alt="" src="img/별.png">
+								<img class="star"  alt="" src="img/회색별.png">
+								<img class="star"  alt="" src="img/회색별.png">
+								<img class="star"  alt="" src="img/회색별.png">
 							<%} %>
 							<%if(json.getJSONObject(j).get("reviewrate").equals(3)){ %>
 								<img class="star" alt="" src="img/노란별.png">
 								<img class="star"  alt="" src="img/노란별.png">
 								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/별.png">
-								<img class="star"  alt="" src="img/별.png">
+								<img class="star"  alt="" src="img/회색별.png">
+								<img class="star"  alt="" src="img/회색별.png">
 							<%} %>
 							<%if(json.getJSONObject(j).get("reviewrate").equals(4)){ %>
 								<img class="star" alt="" src="img/노란별.png">
 								<img class="star"  alt="" src="img/노란별.png">
 								<img class="star"  alt="" src="img/노란별.png">
 								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/별.png">
+								<img class="star"  alt="" src="img/회색별.png">
 							<%} %>
 							<%if(json.getJSONObject(j).get("reviewrate").equals(5)){ %>
 								<img class="star" alt="" src="img/노란별.png">
@@ -129,7 +129,7 @@
 								<img class="star"  alt="" src="img/노란별.png">
 							<%} %>
 							<br>
-							<%=json.getJSONObject(j).get("reviewcontent") %>
+							<span class="rcontent"><%=json.getJSONObject(j).get("reviewcontent") %></span>
 						</td>
 					</tr>
 					<%} %>

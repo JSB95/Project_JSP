@@ -40,58 +40,58 @@ function tableview(){
 				'<div class="tableviewbox">'+
 				'<div class="row">'+
 				'<input type="hidden" id="lno">'+
-				'	<div class="col-md-4" id="lecture">'+
-				'		<span>'+jsonarray[i]["lname"]+'</span>'+
-				'		<span>'+jsonarray[i]["lprofessor"]+'</span><br>'+
-				'		<span>'+jsonarray[i]["lcredit"]+'</span>'+
-				'		<span>'+division+'</span>'+
-				'		<span>'+jsonarray[i]["lcollege"]+'</span><br><br>'+
+				'	<div class="col-md-3" id="lecture">'+
+				'		<span class="lname">'+jsonarray[i]["lname"]+'</span>'+
+				'		<span>'+jsonarray[i]["lprofessor"]+'교수</span><br>'+
+				'		<span>'+jsonarray[i]["lcredit"]+'학점</span><br>'+
+				'		<span class="lcollege">'+division+' : : </span>'+
+				'		<span class="lcollege">'+jsonarray[i]["lcollege"]+'</span><br><br>'+
 				'	</div>'+
-				'	<div class="col-md-8">'+
-				'		과제: <br>'+
+				'	<div class="col-md-9">'+
+				'		과제 <br>'+
 				'<input type="hidden" id="homework">'+
 				'	<span id="homelist">'+
-						'<button type="button" onclick="home1()">없음</button>'+
-						'<button type="button" onclick="home2()">보통</button>'+
-						'<button type="button" onclick="home3()">많음</button><br>'+
+						'<button class="selectbtn" type="button" onclick="home1()">없음</button>'+
+						'<button class="selectbtn" type="button" onclick="home2()">보통</button>'+
+						'<button class="selectbtn" type="button" onclick="home3()">많음</button><br>'+
 					'</span>'+
-				'		시험횟수: <br>'+
+				'		시험횟수 <br>'+
 				'<input type="hidden" id="test">'+
 				'	<span id="testlist">'+
-						'<button type="button" onclick="test1()">없음</button>'+
-						'<button type="button" onclick="test2()">한번</button>'+
-						'<button type="button" onclick="test3()">두번</button>'+
-						'<button type="button" onclick="test4()">세번이상</button><br>'+
+						'<button class="selectbtn" type="button" onclick="test1()">없음</button>'+
+						'<button class="selectbtn" type="button" onclick="test2()">한번</button>'+
+						'<button class="selectbtn" type="button" onclick="test3()">두번</button>'+
+						'<button class="selectbtn" type="button" onclick="test4()">세번이상</button><br>'+
 					'</span>'+
-				'		조모임: <br>'+
+				'		조모임 <br>'+
 				'<input type="hidden" id="team">'+
 				'	<span id="teamlist">'+
-					'	<button type="button" onclick="team1()">없음</button>'+
-					'	<button type="button" onclick="team2()">보통</button>'+
-					'	<button type="button" onclick="team3()">많음</button><br>'+
+					'<button class="selectbtn" type="button" onclick="team1()">없음</button>'+
+					'<button class="selectbtn" type="button" onclick="team2()">보통</button>'+
+					'<button class="selectbtn" type="button" onclick="team3()">많음</button><br>'+
 					'</span>'+
 				'	<br>'+
 				'	</div>'+
 				'</div>'+
 				'<div class="row">'+
-				'	<div class="col-md-4" >'+
+				'	<div class="col-md-3" >'+
 				'		총평<br>'+
 				'<input type="hidden" id="star">'+
 				'	<span id="starlist">'+
-				'		<img alt="" src="img/별.png" onclick="star1()">'+
-				'		<img alt="" src="img/별.png" onclick="star2()">'+
-				'		<img alt="" src="img/별.png" onclick="star3()">'+
-				'		<img alt="" src="img/별.png" onclick="star4()">'+
-				'		<img alt="" src="img/별.png" onclick="star5()"><br>'+
+				'		<img alt="" src="img/회색별.png" onclick="star1()">'+
+				'		<img alt="" src="img/회색별.png" onclick="star2()">'+
+				'		<img alt="" src="img/회색별.png" onclick="star3()">'+
+				'		<img alt="" src="img/회색별.png" onclick="star4()">'+
+				'		<img alt="" src="img/회색별.png" onclick="star5()"><br>'+
 					'</span>'+
 				'		<br>'+
 				'	</div>'+
-				'	<div class="col-md-8">'+
-				'		<textarea rows="10" cols="80" id="text" placeholder="이 강의에 대한 총평을 작성해주세요. (등록 후에는 수정 및 삭제가 불가능하므로 신중히 적어주세요.)"></textarea><br>'+
+				'	<div class="col-md-9">'+
+				'		<textarea class="textarea" rows="10" cols="100%" id="text" placeholder="이 강의에 대한 총평을 작성해주세요. (등록 후에는 수정 및 삭제가 불가능하므로 신중히 적어주세요.)"></textarea><br>'+
 				'	</div>'+
 			'	</div>'+
 			'</div>'+
-			'<button type="button" onclick="reviewsubmit()">완료</button>'
+			'<button class="submitbtn" type="button" onclick="reviewsubmit()">완료</button>'
 			}
 			
 			$("#tableviewbox").html( tr );
@@ -103,8 +103,8 @@ function home1(){
 	$("#homelist").html( 
 		'<span id="homelist">'
 		+'<button class="home1" type="button" onclick="home1()">없음</button>'+
-		'<button type="button" onclick="home2()">보통</button>'+
-		'<button type="button" onclick="home3()">많음</button><br>'+
+		'<button class="selectbtn" type="button" onclick="home2()">보통</button>'+
+		'<button class="selectbtn" type="button" onclick="home3()">많음</button><br>'+
 		'</span>'
 	 );
 }
@@ -114,9 +114,9 @@ function home2(){
 	$("#homework").val(2);
 	$("#homelist").html( 
 		'<span id="homelist">'
-		+'<button type="button" onclick="home1()">없음</button>'+
+		+'<button class="selectbtn" type="button" onclick="home1()">없음</button>'+
 		'<button class="home1" type="button" onclick="home2()">보통</button>'+
-		'<button type="button" onclick="home3()">많음</button><br>'+
+		'<button class="selectbtn" type="button" onclick="home3()">많음</button><br>'+
 		'</span>'
 	 );
 }
@@ -127,8 +127,8 @@ function home3(){
 	$("#homework").val(3);
 	$("#homelist").html( 
 		'<span id="homelist">'
-		+'<button type="button" onclick="home1()">없음</button>'+
-		'<button  type="button" onclick="home2()">보통</button>'+
+		+'<button class="selectbtn" type="button" onclick="home1()">없음</button>'+
+		'<button class="selectbtn"  type="button" onclick="home2()">보통</button>'+
 		'<button class="home1" type="button" onclick="home3()">많음</button><br>'+
 		'</span>'
 	 );
@@ -142,9 +142,9 @@ function test1(){
 	$("#testlist").html( 
 		'	<span id="testlist">'+
 					'<button class="home1" type="button" onclick="test1()">없음</button>'+
-					'<button type="button" onclick="test2()">한번</button>'+
-					'<button type="button" onclick="test3()">두번</button>'+
-					'<button type="button" onclick="test4()">세번이상</button><br>'+
+					'<button class="selectbtn" type="button" onclick="test2()">한번</button>'+
+					'<button class="selectbtn" type="button" onclick="test3()">두번</button>'+
+					'<button class="selectbtn" type="button" onclick="test4()">세번이상</button><br>'+
 			'</span>'
 	 );
 }
@@ -153,10 +153,10 @@ function test2(){
 	$("#test").val(2);
 	$("#testlist").html( 
 		'	<span id="testlist">'+
-					'<button type="button" onclick="test1()">없음</button>'+
+					'<button class="selectbtn" type="button" onclick="test1()">없음</button>'+
 					'<button class="home1" type="button" onclick="test2()">한번</button>'+
-					'<button type="button" onclick="test3()">두번</button>'+
-					'<button type="button" onclick="test4()">세번이상</button><br>'+
+					'<button class="selectbtn" type="button" onclick="test3()">두번</button>'+
+					'<button class="selectbtn" type="button" onclick="test4()">세번이상</button><br>'+
 			'</span>'
 	 );
 }
@@ -165,10 +165,10 @@ function test3(){
 	$("#test").val(3);
 	$("#testlist").html( 
 		'	<span id="testlist">'+
-					'<button type="button" onclick="test1()">없음</button>'+
-					'<button type="button" onclick="test2()">한번</button>'+
+					'<button class="selectbtn" type="button" onclick="test1()">없음</button>'+
+					'<button class="selectbtn" type="button" onclick="test2()">한번</button>'+
 					'<button class="home1" type="button" onclick="test3()">두번</button>'+
-					'<button type="button" onclick="test4()">세번이상</button><br>'+
+					'<button class="selectbtn" type="button" onclick="test4()">세번이상</button><br>'+
 			'</span>'
 	 );
 }
@@ -177,9 +177,9 @@ function test4(){
 	$("#test").val(4);
 	$("#testlist").html( 
 		'	<span id="testlist">'+
-					'<button type="button" onclick="test1()">없음</button>'+
-					'<button type="button" onclick="test2()">한번</button>'+
-					'<button type="button" onclick="test3()">두번</button>'+
+					'<button class="selectbtn" type="button" onclick="test1()">없음</button>'+
+					'<button class="selectbtn" type="button" onclick="test2()">한번</button>'+
+					'<button class="selectbtn" type="button" onclick="test3()">두번</button>'+
 					'<button class="home1" type="button" onclick="test4()">세번이상</button><br>'+
 			'</span>'
 	 );
@@ -191,9 +191,9 @@ function team1(){
 	$("#team").val(1);
 	$("#teamlist").html( 
 	'	<span id="teamlist">'+
-				'	<button class="home1" type="button" onclick="team1()">없음</button>'+
-				'	<button type="button" onclick="team2()">보통</button>'+
-				'	<button type="button" onclick="team3()">많음</button><br>'+
+				'<button class="home1" type="button" onclick="team1()">없음</button>'+
+				'<button class="selectbtn" type="button" onclick="team2()">보통</button>'+
+				'<button class="selectbtn" type="button" onclick="team3()">많음</button><br>'+
 		'</span>'
 	 );
 }
@@ -201,9 +201,9 @@ function team2(){
 	$("#team").val(2);
 	$("#teamlist").html( 
 	'	<span id="teamlist">'+
-				'	<button type="button" onclick="team1()">없음</button>'+
-				'	<button  class="home1" type="button" onclick="team2()">보통</button>'+
-				'	<button type="button" onclick="team3()">많음</button><br>'+
+				'<button class="selectbtn" type="button" onclick="team1()">없음</button>'+
+				'<button  class="home1" type="button" onclick="team2()">보통</button>'+
+				'<button class="selectbtn" type="button" onclick="team3()">많음</button><br>'+
 		'</span>'
 	 );
 }
@@ -211,9 +211,9 @@ function team3(){
 	$("#team").val(3);
 	$("#teamlist").html( 
 	'	<span id="teamlist">'+
-				'	<button type="button" onclick="team1()">없음</button>'+
-				'	<button type="button" onclick="team2()">보통</button>'+
-				'	<button  class="home1" type="button" onclick="team3()">많음</button><br>'+
+				'<button class="selectbtn" type="button" onclick="team1()">없음</button>'+
+				'<button class="selectbtn" type="button" onclick="team2()">보통</button>'+
+				'<button  class="home1" type="button" onclick="team3()">많음</button><br>'+
 		'</span>'
 	 );
 }
@@ -226,10 +226,10 @@ function star1(){
 	$("#starlist").html( 
 		'	<span id="starlist">'+
 			'		<img alt="" src="img/노란별.png" onclick="star1()">'+
-			'		<img alt="" src="img/별.png" onclick="star2()">'+
-			'		<img alt="" src="img/별.png" onclick="star3()">'+
-			'		<img alt="" src="img/별.png" onclick="star4()">'+
-			'		<img alt="" src="img/별.png" onclick="star5()"><br>'+
+			'		<img alt="" src="img/회색별.png" onclick="star2()">'+
+			'		<img alt="" src="img/회색별.png" onclick="star3()">'+
+			'		<img alt="" src="img/회색별.png" onclick="star4()">'+
+			'		<img alt="" src="img/회색별.png" onclick="star5()"><br>'+
 		'</span>'
 	 );
 }
@@ -238,10 +238,10 @@ function star1(){
 	$("#starlist").html( 
 		'	<span id="starlist">'+
 			'		<img alt="" src="img/노란별.png" onclick="star1()">'+
-			'		<img alt="" src="img/별.png" onclick="star2()">'+
-			'		<img alt="" src="img/별.png" onclick="star3()">'+
-			'		<img alt="" src="img/별.png" onclick="star4()">'+
-			'		<img alt="" src="img/별.png" onclick="star5()"><br>'+
+			'		<img alt="" src="img/회색별.png" onclick="star2()">'+
+			'		<img alt="" src="img/회색별.png" onclick="star3()">'+
+			'		<img alt="" src="img/회색별.png" onclick="star4()">'+
+			'		<img alt="" src="img/회색별.png" onclick="star5()"><br>'+
 		'</span>'
 	 );
 }
@@ -251,9 +251,9 @@ function star2(){
 		'	<span id="starlist">'+
 			'		<img alt="" src="img/노란별.png" onclick="star1()">'+
 			'		<img alt="" src="img/노란별.png" onclick="star2()">'+
-			'		<img alt="" src="img/별.png" onclick="star3()">'+
-			'		<img alt="" src="img/별.png" onclick="star4()">'+
-			'		<img alt="" src="img/별.png" onclick="star5()"><br>'+
+			'		<img alt="" src="img/회색별.png" onclick="star3()">'+
+			'		<img alt="" src="img/회색별.png" onclick="star4()">'+
+			'		<img alt="" src="img/회색별.png" onclick="star5()"><br>'+
 		'</span>'
 	 );
 }
@@ -264,8 +264,8 @@ function star3(){
 			'		<img alt="" src="img/노란별.png" onclick="star1()">'+
 			'		<img alt="" src="img/노란별.png" onclick="star2()">'+
 			'		<img alt="" src="img/노란별.png" onclick="star3()">'+
-			'		<img alt="" src="img/별.png" onclick="star4()">'+
-			'		<img alt="" src="img/별.png" onclick="star5()"><br>'+
+			'		<img alt="" src="img/회색별.png" onclick="star4()">'+
+			'		<img alt="" src="img/회색별.png" onclick="star5()"><br>'+
 		'</span>'
 	 );
 }
@@ -277,7 +277,7 @@ function star4(){
 			'		<img alt="" src="img/노란별.png" onclick="star2()">'+
 			'		<img alt="" src="img/노란별.png" onclick="star3()">'+
 			'		<img alt="" src="img/노란별.png" onclick="star4()">'+
-			'		<img alt="" src="img/별.png" onclick="star5()"><br>'+
+			'		<img alt="" src="img/회색별.png" onclick="star5()"><br>'+
 		'</span>'
 	 );
 }

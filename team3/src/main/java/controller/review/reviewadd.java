@@ -29,7 +29,7 @@ public class reviewadd extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.setCharacterEncoding("UTF-8");
 		String mid = (String)request.getSession().getAttribute("login");
 		int mno = ReviewDao.getreviewDao().getmno(mid);
 		int lno = Integer.parseInt( request.getParameter("lno"));
@@ -38,6 +38,7 @@ public class reviewadd extends HttpServlet {
 		int home = Integer.parseInt( request.getParameter("home"));
 		int star = Integer.parseInt( request.getParameter("star"));
 		String text = request.getParameter("text");
+		text = text.replace("\r\n", "<br>");
 		
 		Review review = new Review(0, lno, mno, text, star, home, team, test);
 		boolean result = ReviewDao.getreviewDao().reviewadd(review);

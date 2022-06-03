@@ -213,6 +213,22 @@
 						<% 
 						
 						for(int j=0; j<json.length();j++){
+							int rhome = (int)json.getJSONObject(j).get("reviewhome");
+							String r과제 = null;
+							if(rhome==1){r과제="없음";}
+							else if(rhome==2){r과제="보통";}
+							else if(rhome==3){r과제="많음";}
+							int rtest = (int)json.getJSONObject(j).get("reviewtest");
+							String r시험 = null;
+							if(rtest==1){r시험="없음";}
+							else if(rtest==2){r시험="한번";}
+							else if(rtest==3){r시험="두번";}
+							else if(rtest==4){r시험="세번이상";}
+							int rteam = (int)json.getJSONObject(j).get("reviewteam");
+							String r조모임 = null;
+							if(rteam==1){r조모임="없음";}
+							else if(rteam==2){r조모임="보통";}
+							else if(rteam==3){r조모임="많음";}
 					%>
 							<tr>
 								<td class="tableheight">
@@ -253,7 +269,10 @@
 									<img class="star"  alt="" src="img/노란별.png">
 								<%} %>
 								<br>
-								<%=json.getJSONObject(j).get("reviewcontent") %>
+								<%=json.getJSONObject(j).get("reviewcontent") %><br>
+								<span class="개별평가">과제: <%=r과제 %></span>
+								<span class="개별평가">시험: <%=r시험 %></span>
+								<span class="개별평가">조모임: <%=r조모임 %></span>
 							</td>
 							</tr>
 							<%} %>
