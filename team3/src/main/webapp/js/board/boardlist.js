@@ -82,9 +82,9 @@ function view() {
 		html += 
 		'<div id="list" onclick="location.href=\'boardview.jsp?bno='+boardlist[i]["bno"]+'\'">'+
 		'<h2>'+boardlist[i]["btitle"]+'</h2>'+
-		'<span>'+boardlist[i]["bnickname"]+'</span><span>'+boardlist[i]["bdate"]+'</span>'+
-		'<span>추천수 : '+boardlist[i]["blike"]+' </span>'+
-		'<span><img src="/team3/board/upload/bcomment.svg"> : '+boardlist[i]["rcount"]+' </span>'+
+		'<span>'+boardlist[i]["bnickname"]+'</span><span>' +boardlist[i]["bdate"]+  '</span>'+
+		'<span><img src="/team3/board/upload/blike.svg" id ="cicon"> '+boardlist[i]["blike"]+' </span>'+
+		'<span><img src="/team3/board/upload/bcomment.svg" id ="cicon"> '+boardlist[i]["rcount"]+' </span>'+
 		'</div>'
 		
 	}
