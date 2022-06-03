@@ -106,11 +106,7 @@
                             </div>
                             
                             <ul>
-                            	<li class="lecture_time_list" value="월&#47;1" data-event="lecture-01">
-                            	
-                            		
-                            	
-                            	</li>
+                            	<li class="lecture_time_list" value="월&#47;1"></li>
                             	<li class="lecture_time_list" value="월&#47;2"></li>
                             	<li class="lecture_time_list" value="월&#47;3"></li>
                             	<li class="lecture_time_list" value="월&#47;4"></li>
@@ -227,114 +223,6 @@
         
     </section>
 		
-		
-		<div class="col-5" style="float: right; display: none;">
-				
-			<table class="timetable" id="timetable">
-				
-				  <tr style="width: 100%; text-align: center;">
-				    <td class="head"></td>
-				    <td class="head">월</td>
-				    <td class="head">화</td>
-				    <td class="head">수</td>
-				    <td class="head">목</td>
-				    <td class="head">금</td>
-				  </tr>
-				
-				  <tr>
-				    <td class="head">9</td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				  </tr>
-				  <tr>
-				    <td class="head">10</td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				  </tr>
-				  <tr>
-				    <td class="head">11</td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				  </tr>
-				  <tr>
-				    <td class="head">12</td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				  </tr>
-				  <tr>
-				    <td class="head">1</td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				  </tr>
-				  <tr>
-				    <td class="head">2</td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				  </tr>
-				  <tr>
-				    <td class="head">3</td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				  </tr>
-				  <tr>
-				    <td class="head">4</td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				  </tr>
-				  <tr>
-				    <td class="head">5</td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				  </tr>
-				  <tr>
-				    <td class="head">6</td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				  </tr>
-				  <tr>
-				    <td class="head">7</td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				    <td></td>
-				  </tr>
-				  
-				</table>
-				
-			</div>
-
-				
 				
 			<div class="modal fade" id="modal-lecture-info" role="dialog" aria-hidden="true">
 				<div class="modal-dialog">

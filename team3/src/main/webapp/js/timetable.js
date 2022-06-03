@@ -22,7 +22,7 @@ $(function(){
                     '</div>' +
                 '</a>' ;
     $('.lecture_time_list').html(html);
-    $('.lecture_time_list').removeAttr('style');
+    $('.lecture_time_list').css('','');
     $('.lecture_time_list').find('.material-icons').css('display', 'none');
 	
 
@@ -115,10 +115,17 @@ $("#btn_regist").on('click', function(){
                             '</a>' ;*/
                             
 				$('.lecture_time_list').eq(i).find('.lecture-title').html(name);
-				$('.lecture_time_list').find('.material-icons').css('display', 'block');
-				console.log($(this).html());
-//				$('.lecture_time_list').eq(i).find('.lecture-code').html(code);
-				//$('.lecture_time_list').eq(i).css('display','block').css('background', colorCode);
+				$('.lecture_time_list').eq(i).find('.lecture-title').css('color', '#009688');
+				$('.lecture_time_list').eq(i).find('.material-icons').css({'display': 'block','color' : '#009688'});
+				
+				$('.lecture_time_list').eq(i).find('.lecture-code').html('과목코드 : ' + code);
+				$('.lecture_time_list').eq(i).find('.lecture-code').css('color', '#009688');
+				$('.lecture_time_list').eq(i).css('background-color', '#E0F2F1');
+				$('.lecture_time_list').eq(i).hover(function(){
+					$(this).css('background-color','#B2DFDB');
+				}, function(){
+					$(this).css('background-color','#E0F2F1');
+				})
 				console.log(timelist2);
 				break;
 				
@@ -143,7 +150,7 @@ function deletedupli(name){
 	timelist2.length = 0;
 	
 	$('.lecture_time_list').each(function(){
-	  var text2 = $(this).html();
+	  var text2 = $(this).find('.lecture-title').html();
 	  timelist2.push(text2);
 	});
 	
