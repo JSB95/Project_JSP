@@ -1,4 +1,4 @@
-package controller.review;
+package controller.message;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,20 +7,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.MessageDao;
 import dao.ReviewDao;
-import dto.Review;
+
 
 /**
- * Servlet implementation class reviewadd
+ * Servlet implementation class send
  */
-@WebServlet("/review/reviewadd")
-public class reviewadd extends HttpServlet {
+@WebServlet("/message/send")
+public class send extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public reviewadd() {
+    public send() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,28 +33,26 @@ public class reviewadd extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String mid = (String)request.getSession().getAttribute("login");
 		int mno = ReviewDao.getreviewDao().getmno(mid);
-		int lno = Integer.parseInt( request.getParameter("lno"));
-		int test = Integer.parseInt( request.getParameter("test"));
-		int team = Integer.parseInt( request.getParameter("team"));
-		int home = Integer.parseInt( request.getParameter("home"));
-		int star = Integer.parseInt( request.getParameter("star"));
-		String text = request.getParameter("text");
-		text = text.replace("\r\n", "<br>");
+		int getno = Integer.parseInt(request.getParameter("getno"));
+		String mcontent = request.getParameter("mcontent");
+		mcontent = mcontent.replace("\r\n", "<br>");
 		
-		Review review = new Review(0, lno, mno, text, star, home, team, test);
-		boolean result = ReviewDao.getreviewDao().reviewadd(review);
+		boolean result = MessageDao.getMessageDao().send(mno, getno, mcontent);
 		if(result) {
-			response.getWriter().print( 1 );
+			response.getWriter().print( result );
 		}
-		else {response.getWriter().print( 2 );}
+		else{}
+		
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		
+		
 	}
 
 }

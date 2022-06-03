@@ -14,7 +14,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
   />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" >
-	<link href="css/review.css" rel="stylesheet">
+	<link href="css/reviewwrite.css" rel="stylesheet">
 </head>
 <body>
 	
@@ -42,13 +42,19 @@
 				<div>
 					<form action="reviewwrite.jsp">
 					<div>
-						<input type="text" name="keyword" placeholder="강의명을 입력해주세요">
-						<input type="submit" value="검색">
+						<input class="search" type="text" name="keyword" placeholder="강의명을 입력해주세요">
+						<input class="searchbtn" type="submit" value="검색">
 					</div>
 					</form>
 				</div><!-- 강의검색 -->
-			<div style="overflow:scroll; height: 200px; margin: 0 auto;">
+			<div class="lecturetable" style="overflow-y:scroll; height: 200px; margin: 0 auto;">
 				<table class="table table-hover text-center">
+					<tr>
+						<th>과목</th>
+						<th>교수명</th>
+						<th>학점</th>
+						<th>이수구분</th>
+					</tr>
 				<% for (int i=0; i<lecturelist.size();i++){
 					int ldivision = lecturelist.get(i).getLdivision();
 					if(ldivision==0){
