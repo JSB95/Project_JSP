@@ -1,5 +1,46 @@
 @charset "UTF-8";
-.bookbox{
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
+*{
+	font-family: 'Noto Sans KR', sans-serif;
+}
+.bookbox, .contentbox{
 	border: 1px solid grey;
-	border-radius: 15px;
+	border-radius: 10px;
+	padding : 30px 50px;
+	margin: 20px 0px;
+}
+.ttitle {
+	font-size : 24px;
+	font-weight: bold;
+}
+.table_col1 {
+	width: 100px;
+}
+.content_table_tr {
+	margin-bottom: 10px;
+}
+.tprice {
+    color: #ff5d57;
+    font-size: 24px;
+    font-weight: bold;
+}
+.bookconditon {
+	color: #33b207;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 20px 40px;
+}
+.contentbox img {
+	margin-top: 15px;
+}
+.tcontent {
+	margin-bottom: 20px;
+}
+.btnbook {
+	background-color: #ff5d57;
+	color: white;
+	border: none;
+	border-radius: 10px;
+	height: 40px;
 }

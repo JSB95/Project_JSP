@@ -5,7 +5,7 @@ public class Textbook {
 	private String timg;
 	private String ttitle;
 	private String tcontent;
-	private String tprice;
+	private int tprice;
 	private int tactive; 
 	private int tcondition;
 	private String tauthor;
@@ -22,7 +22,7 @@ public class Textbook {
 	public Textbook() {
 		super();
 	}
-	public Textbook(int tno, String timg, String ttitle, String tcontent, String tprice, int tactive, int tcondition,
+	public Textbook(int tno, String timg, String ttitle, String tcontent, int tprice, int tactive, int tcondition,
 			String tauthor, String tcompany, String tyear, String tclass, int mno) {
 		super();
 		this.tno = tno;
@@ -62,10 +62,10 @@ public class Textbook {
 	public void setTcontent(String tcontent) {
 		this.tcontent = tcontent;
 	}
-	public String getTprice() {
+	public int getTprice() {
 		return tprice;
 	}
-	public void setTprice(String tprice) {
+	public void setTprice(int tprice) {
 		this.tprice = tprice;
 	}
 	public int getTactive() {

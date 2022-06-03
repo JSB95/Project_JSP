@@ -21,7 +21,7 @@ public class BookstoreDao extends Dao{
 			ps.setString(1, textbook.getTimg());
 			ps.setString(2, textbook.getTtitle());
 			ps.setString(3, textbook.getTcontent());
-			ps.setString(4, textbook.getTprice());
+			ps.setInt(4, textbook.getTprice());
 			ps.setInt(5, textbook.getTcondition());
 			ps.setString(6, textbook.getTauthor());
 			ps.setString(7, textbook.getTcompany());
@@ -38,7 +38,7 @@ public class BookstoreDao extends Dao{
 	//책 출력
 	public ArrayList<Textbook> getbooklist(){
 		ArrayList<Textbook> booklist = new ArrayList<Textbook>();
-		String sql = "select * from textbook";
+		String sql = "select * from textbook order by tno desc";
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -51,7 +51,11 @@ public class BookstoreDao extends Dao{
 						rs.getInt(5),
 						rs.getInt(6),
 						rs.getInt(7),
-						rs.getInt(8)
+						rs.getString(8),
+						rs.getString(9),
+						rs.getString(10),
+						rs.getString(11),
+						rs.getInt(12)
 						);
 				booklist.add(textbook);
 			}
@@ -61,6 +65,34 @@ public class BookstoreDao extends Dao{
 		}
 		return null;
 	}
-	
+	//개별 책 출력
+	public Textbook getBook(int tno) {
+		String sql = "select * from textbook where tno = "+tno;
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				Textbook textbook = new Textbook(
+						rs.getInt(1),
+						rs.getString(2),
+						rs.getString(3),
+						rs.getString(4),
+						rs.getInt(5),
+						rs.getInt(6),
+						rs.getInt(7),
+						rs.getString(8),
+						rs.getString(9),
+						rs.getString(10),
+						rs.getString(11),
+						rs.getInt(12)
+						);
+				return textbook;
+			}
+		
+		} catch (Exception e) {
+			System.out.println("getbook 오류 : "+ e);
+		}
+		return null;
+	}
 	
 }

@@ -55,10 +55,8 @@ public class bookadd extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String ttitle = multi.getParameter("ttitle");
 		String timg = multi.getFilesystemName("timg");
-		
-		System.out.println("timg : " + timg);
 		String tcontent = multi.getParameter("tcontent");
-		String tprice = multi.getParameter("tprice");
+		int tprice = Integer.parseInt(multi.getParameter("tprice"));
 		int tcondition = Integer.parseInt(multi.getParameter("tcondition"));
 			HttpSession session = request.getSession();
 			String mid = (String)session.getAttribute("login");
@@ -68,17 +66,7 @@ public class bookadd extends HttpServlet {
 		String tclass = multi.getParameter("tclass");
 		int mno = MemberDao.getMemberDao().getmno(mid);
 		
-		System.out.println("ttilte : " + ttitle);
-		System.out.println("서버경로 : " + request.getSession().getServletContext().getRealPath("/bookstore/bookimg"));
-		System.out.println("tcontent : " + tcontent);
-		System.out.println("tprice : " + tprice);
-		System.out.println("tcondition : " + tcondition);
-		System.out.println("mno : " + mno);
-
 		Textbook textbook = new Textbook(0 , timg, ttitle, tcontent, tprice, 1, tcondition, tauthor, tcompany, tyear, tclass, mno);
-		
-		
-		System.out.println(textbook.toString());
 		
 		boolean result = BookstoreDao.getBookstoreDao().bookadd(textbook);
 		
