@@ -41,7 +41,7 @@ public class getdepartment extends HttpServlet {
 		
 		ArrayList<Lecture> list = LectureDao.getLectureDao().getdepartmentlist(college);
 		Set<String> department = new TreeSet<String>();
-		String html = "<select id=\"departmentbox\" onchange=\"departmentchange()\" class=\"selectpicker\" style=\"width : 100px\">";
+		String html = "<select id=\"departmentbox\" onchange=\"departmentchange()\" class=\"form-select\">";
 		
 		PrintWriter out = response.getWriter();
 		

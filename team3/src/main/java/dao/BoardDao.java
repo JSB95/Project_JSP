@@ -37,7 +37,7 @@ public class BoardDao extends Dao {
 	// 1. 글작성
 	public boolean boardwrite(Board board) {
 		
-		String sql = "insert into board(btitle,bcontent,mno,bimg,bnickname)values(?,?,?,?,?)";
+		String sql = "insert into board(btitle,bcontent,mno,bimg,bnickname,rcount)values(?,?,?,?,?,?)";
 		
 		try {
 			ps = con.prepareStatement(sql);
@@ -46,6 +46,7 @@ public class BoardDao extends Dao {
 			ps.setInt(3, board.getMno());
 			ps.setString(4, board.getBimg());
 			ps.setString(5, board.getBnickname());
+			ps.setInt(6, board.getRcount());
 			ps.executeUpdate();
 			return true;
 			
@@ -139,6 +140,7 @@ public class BoardDao extends Dao {
 				object.put("bno", rs.getInt(1));
 				object.put("btitle",rs.getString(2) );
 				object.put("bcontent",rs.getString(3));
+				object.put("rcount", rs.getInt(6));
 				object.put("blike", rs.getInt(7));
 				object.put("bnickname",rs.getString(8) );
 				object.put("bdate",rs.getString(9) );
@@ -165,6 +167,7 @@ public class BoardDao extends Dao {
 				object.put("bno", rs.getInt(1));
 				object.put("btitle",rs.getString(2) );
 				object.put("bcontent",rs.getString(3));
+				object.put("rcount", rs.getInt(6));
 				object.put("blike", rs.getInt(7));
 				object.put("bnickname",rs.getString(8) );
 				object.put("bdate",rs.getString(9) );
@@ -266,6 +269,24 @@ public class BoardDao extends Dao {
 		}
 		return false;
 	}
+	
+	// 게시판 댓글갯수 세기
+	public int getcountcoment(int bno) {
+		String sql = "select count(bno) from reply where bno="+bno ;
+		
+		try {
+			ps =con.prepareStatement(sql); rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+			
+			
+			
+		} catch (Exception e) {System.out.println("댓글갯수 출력 오류"+ e);}
+		return 0;
+	}
+	
+
 	
 
 	

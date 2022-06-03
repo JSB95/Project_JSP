@@ -120,169 +120,190 @@
 				교수명: <%=lecture.getLprofessor() %><br>
 				이수구분: <%=ldivision %>
 			</div>
-			<div class="box"><!-- 강의평평균 -->
-				<h4>강의평</h4>
-				<%if(5==star){ %>
-					<img class="star" alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-				<%} %>
-				<%if(5>star&&star>=4.5){ %>
-					<img class="star" alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/회색반별.png">
-				<%} %>
-				<%if(4.5>star&&star>=4){ %>
-								<img class="star" alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/회색별.png">
-				<%} %>
-				<%if(4>star&&star>=3.5){ %>
-								<img class="star" alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/회색반별.png">
-								<img class="star"  alt="" src="img/회색별.png">
-				<%} %>
-				<%if(3.5>star&&star>=3){ %>
-								<img class="star" alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/회색별.png">
-								<img class="star"  alt="" src="img/회색별.png">
-				<%} %>
-				<%if(3>star&&star>=2.5){ %>
-								<img class="star" alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/회색반별.png">
-								<img class="star"  alt="" src="img/회색별.png">
-								<img class="star"  alt="" src="img/회색별.png">
-				<%} %>
-				<%if(2.5>star&&star>=2){ %>
-								<img class="star" alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/회색별.png">
-								<img class="star"  alt="" src="img/회색별.png">
-								<img class="star"  alt="" src="img/회색별.png">
-				<%} %>
-				<%if(2>star&&star>=1.5){ %>
-								<img class="star" alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/회색반별.png">
-								<img class="star"  alt="" src="img/회색별.png">
-								<img class="star"  alt="" src="img/회색별.png">
-								<img class="star"  alt="" src="img/회색별.png">
-				<%} %>
-				<%if(1.5>star&&star>=1){ %>
-								<img class="star" alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/회색반별.png">
-								<img class="star"  alt="" src="img/회색별.png">
-								<img class="star"  alt="" src="img/회색별.png">
-								<img class="star"  alt="" src="img/회색별.png">
-				<%} %>
-				<%if(1>star&&star>=0.5){ %>
-								<img class="star" alt="" src="img/회색반별.png">
-								<img class="star"  alt="" src="img/회색별.png">
-								<img class="star"  alt="" src="img/회색별.png">
-								<img class="star"  alt="" src="img/회색별.png">
-								<img class="star"  alt="" src="img/회색별.png">
-				<%} %>
-				<%if(0.5>star&&star>=0){ %>
-								<img class="star" alt="" src="img/회색별.png">
-								<img class="star"  alt="" src="img/회색별.png">
-								<img class="star"  alt="" src="img/회색별.png">
-								<img class="star"  alt="" src="img/회색별.png">
-								<img class="star"  alt="" src="img/회색별.png">
-				<%} %>
-				<%=st %>
-				<br>
-				과제: <%=과제 %><br>
-				시험: <%=시험 %><br>
-				조모임: <%=조모임 %>
-			</div>
-			<div class="box"><!-- 강의평리스트 -->
-				<div>
-					<table class="table">
-					
-					<% 
-					
-					for(int j=0; j<json.length();j++){
-				%>
-						<tr>
-							<td>
-							
-							<%if(json.getJSONObject(j).get("reviewrate").equals(1)){ %>
-								<img class="star" alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/별.png">
-								<img class="star"  alt="" src="img/별.png">
-								<img class="star"  alt="" src="img/별.png">
-								<img class="star"  alt="" src="img/별.png">
-							<%} %>
-							<%if(json.getJSONObject(j).get("reviewrate").equals(2)){ %>
-								<img class="star" alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/별.png">
-								<img class="star"  alt="" src="img/별.png">
-								<img class="star"  alt="" src="img/별.png">
-							<%} %>
-							<%if(json.getJSONObject(j).get("reviewrate").equals(3)){ %>
-								<img class="star" alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/별.png">
-								<img class="star"  alt="" src="img/별.png">
-							<%} %>
-							<%if(json.getJSONObject(j).get("reviewrate").equals(4)){ %>
-								<img class="star" alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/별.png">
-							<%} %>
-							<%if(json.getJSONObject(j).get("reviewrate").equals(5)){ %>
-								<img class="star" alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-								<img class="star"  alt="" src="img/노란별.png">
-							<%} %>
-							<br>
-							<%=json.getJSONObject(j).get("reviewcontent") %>
-						</td>
-						</tr>
-						<%} %>
-					</table>
+			<div class="box">
+				<div class="rline"><!-- 강의평평균 -->
+					<h4>강의평</h4>
+					<%if(5==star){ %>
+						<img class="star" alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+					<%} %>
+					<%if(5>star&&star>=4.5){ %>
+						<img class="star" alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/회색반별.png">
+					<%} %>
+					<%if(4.5>star&&star>=4){ %>
+									<img class="star" alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+					<%} %>
+					<%if(4>star&&star>=3.5){ %>
+									<img class="star" alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/회색반별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+					<%} %>
+					<%if(3.5>star&&star>=3){ %>
+									<img class="star" alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+					<%} %>
+					<%if(3>star&&star>=2.5){ %>
+									<img class="star" alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/회색반별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+					<%} %>
+					<%if(2.5>star&&star>=2){ %>
+									<img class="star" alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+					<%} %>
+					<%if(2>star&&star>=1.5){ %>
+									<img class="star" alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/회색반별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+					<%} %>
+					<%if(1.5>star&&star>=1){ %>
+									<img class="star" alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/회색반별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+					<%} %>
+					<%if(1>star&&star>=0.5){ %>
+									<img class="star" alt="" src="img/회색반별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+					<%} %>
+					<%if(0.5>star&&star>=0){ %>
+									<img class="star" alt="" src="img/회색별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+					<%} %>
+					<%=st %>
+					<br>
+					과제: <%=과제 %><br>
+					시험: <%=시험 %><br>
+					조모임: <%=조모임 %>
 				</div>
-				<div class="col-md-4 offset-4 d-flex justify-content-center">	<!--  d-flex justify-content-center : 박스권 내에서 가운데 배치 -->
-						 <ul class="pagination">
-						 <!-- 이전 버튼 -->
-						 <%if( currentpage == 1  ){ // 현재페이지가 1이면 0페이지로 요청 못하게 제한두기  %>
-						 	<li class="page-item">  <a class="page-link pagenum" href="review.jsp?lno=<%=lno%>">이전</a></li>
-						 <%}else{ %>
-						 	<li class="page-item">  <a class="page-link pagenum" href="review.jsp?lno=<%=lno%>&pagenum=<%=currentpage-1%> ">이전</a></li>
-						 <%} %>
-						 
-						 <!-- 페이징 버튼 -->
-						 	<% for( int i = startbtn  ; i<=endhtn ; i++ ){ %>
-						 		<li class="page-item"> 
-							 		<a class="page-link pagenum" href="review.jsp?lno=<%=lno%>&pagenum=<%=i%>"> 
-							 			<%=i %> 
-							 		</a> 
-						 		</li>
-							<%} %>
+				<div><!-- 강의평리스트 -->
+					<div>
+						<table class="table">
 						
-						<!-- 다음 버튼 --> 
-						 <%if( currentpage == lastpage  ){ // 현재페이지가 마지막페이지 이면 마지막페이지 이상으로 요청 못하게 제한두기  %>
-						 	<li class="page-item"> <a class="page-link pagenum" href="review.jsp?lno=<%=lno%>&pagenum=<%=currentpage%>">다음</a></li>
-						 <%}else{ %>
-						 	<li class="page-item"> <a class="page-link pagenum" href="review.jsp?lno=<%=lno%>&pagenum=<%=currentpage+1%>">다음</a></li>
-						 <%} %>
-						 </ul>
+						<% 
+						
+						for(int j=0; j<json.length();j++){
+							int rhome = (int)json.getJSONObject(j).get("reviewhome");
+							String r과제 = null;
+							if(rhome==1){r과제="없음";}
+							else if(rhome==2){r과제="보통";}
+							else if(rhome==3){r과제="많음";}
+							int rtest = (int)json.getJSONObject(j).get("reviewtest");
+							String r시험 = null;
+							if(rtest==1){r시험="없음";}
+							else if(rtest==2){r시험="한번";}
+							else if(rtest==3){r시험="두번";}
+							else if(rtest==4){r시험="세번이상";}
+							int rteam = (int)json.getJSONObject(j).get("reviewteam");
+							String r조모임 = null;
+							if(rteam==1){r조모임="없음";}
+							else if(rteam==2){r조모임="보통";}
+							else if(rteam==3){r조모임="많음";}
+					%>
+							<tr>
+								<td class="tableheight">
+								
+								<%if(json.getJSONObject(j).get("reviewrate").equals(1)){ %>
+									<img class="star" alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+								<%} %>
+								<%if(json.getJSONObject(j).get("reviewrate").equals(2)){ %>
+									<img class="star" alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+								<%} %>
+								<%if(json.getJSONObject(j).get("reviewrate").equals(3)){ %>
+									<img class="star" alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+								<%} %>
+								<%if(json.getJSONObject(j).get("reviewrate").equals(4)){ %>
+									<img class="star" alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/회색별.png">
+								<%} %>
+								<%if(json.getJSONObject(j).get("reviewrate").equals(5)){ %>
+									<img class="star" alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+									<img class="star"  alt="" src="img/노란별.png">
+								<%} %>
+								<br>
+								<%=json.getJSONObject(j).get("reviewcontent") %><br>
+								<span class="개별평가">과제: <%=r과제 %></span>
+								<span class="개별평가">시험: <%=r시험 %></span>
+								<span class="개별평가">조모임: <%=r조모임 %></span>
+							</td>
+							</tr>
+							<%} %>
+						</table>
+					</div>
+					<div class="col-md-4 offset-4 d-flex justify-content-center">	<!--  d-flex justify-content-center : 박스권 내에서 가운데 배치 -->
+							 <ul class="pagination">
+							 <!-- 이전 버튼 -->
+							 <%if( currentpage == 1  ){ // 현재페이지가 1이면 0페이지로 요청 못하게 제한두기  %>
+							 	<li class="page-item">  <a class="page-link pagenum" href="review.jsp?lno=<%=lno%>">이전</a></li>
+							 <%}else{ %>
+							 	<li class="page-item">  <a class="page-link pagenum" href="review.jsp?lno=<%=lno%>&pagenum=<%=currentpage-1%> ">이전</a></li>
+							 <%} %>
+							 
+							 <!-- 페이징 버튼 -->
+							 	<% for( int i = startbtn  ; i<=endhtn ; i++ ){ %>
+							 		<li class="page-item"> 
+								 		<a class="page-link pagenum" href="review.jsp?lno=<%=lno%>&pagenum=<%=i%>"> 
+								 			<%=i %> 
+								 		</a> 
+							 		</li>
+								<%} %>
+							
+							<!-- 다음 버튼 --> 
+							 <%if( currentpage == lastpage  ){ // 현재페이지가 마지막페이지 이면 마지막페이지 이상으로 요청 못하게 제한두기  %>
+							 	<li class="page-item"> <a class="page-link pagenum" href="review.jsp?lno=<%=lno%>&pagenum=<%=currentpage%>">다음</a></li>
+							 <%}else{ %>
+							 	<li class="page-item"> <a class="page-link pagenum" href="review.jsp?lno=<%=lno%>&pagenum=<%=currentpage+1%>">다음</a></li>
+							 <%} %>
+							 </ul>
+						</div>
 					</div>
 			</div>
 		</div>

@@ -12,6 +12,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/team3/css/board/boardview.css">
 <link rel="stylesheet" type="text/css" href="/team3/css/board/reply.css">
+<script src="https://kit.fontawesome.com/d77abffe02.js"></script>
 <!-- 폰트어썸[ 아이콘 ]  -->
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
 </head>
@@ -26,6 +27,7 @@ int mno = BoardDao.getBoardDao().getmno(mid);
 
 <h1>게시물조회</h1>
 <input type="hidden" value="<%=bno%>" id="bno">
+
 
 			 
 				<div class="view_header">
@@ -104,7 +106,7 @@ int mno = BoardDao.getBoardDao().getmno(mid);
 				
 			%>
 			<div id="wrap">
-			<p>댓글</p> <div>댓글</div>
+			
 			<% for(Reply reply : replylist) { %>
 			
 			<div id="reply_wrap"> <!-- 댓글출력구역 -->
@@ -113,10 +115,22 @@ int mno = BoardDao.getBoardDao().getmno(mid);
 				<div class="rheader"><span><i class="fas fa-user"></i></span>  <%=reply.getRnickname() %>   <time><%=reply.getRdate() %></time></div> 
 				<div class="rmain"><p class="con"><%=reply.getRcontent()%><p></div>
 				<div class="rfooter">
-				<div><i class="fas fa-thumbs-up"></i> <i class="far fa-comment-alt"></i></div>
+				
+					<div id="relike_area">
+			<%
+				if(mid != null && ReplyDao. getReplyDao().getreplylike(reply.getRno(), mno)) {%>
+				 <span onclick="rereplyview(<%=reply.getRno()%>,<%=reply.getBno()%>)"><i class="far fa-comment-alt"></i></span>
+				<button onclick="saverelike('<%=mid%>',<%=reply.getRno()%>);"><i class="fas fa-thumbs-up"></i><%=reply.getRelike() %></button>
+				
+			<% } else {%>
+			 <span onclick="rereplyview(<%=reply.getRno()%>,<%=reply.getBno()%>)"><i class="far fa-comment-alt"></i></span>
+			<button onclick="saverelike('<%=mid%>',<%=reply.getRno()%>);"><i class="far fa-thumbs-up"></i>  <%=reply.getRelike() %></button>
+			<%} %>
+			
+			</div>
 				<div class="btn_area">
 				<div class="test"><button onclick="updateview(<%=reply.getRno()%>,'<%=reply.getRcontent()%>',<%=reply.getBno()%>)">수정</button></div>
-				<div class="test"><button onclick="replydelete(<%=reply.getRno()%>)">삭제</button></div>
+				<div class="test"><button onclick="replydelete(<%=reply.getRno()%>,<%=reply.getBno()%>)">삭제</button></div>
 				</div>
 				</div>
 				
@@ -131,15 +145,47 @@ int mno = BoardDao.getBoardDao().getmno(mid);
 			<div class="rwrite_wrap" id=<%=reply.getRno()%>> <!-- row : 가로배치 -->
 	
 			</div>
-					
-					
-			<% }%>
 			
+			<!-- 대댓글 출력 -->
+			<%ArrayList<Reply> rereplylist = ReplyDao.getReplyDao().rereplylist( bno , reply.getRno() );
+				for( Reply rereply : rereplylist ){%>
+				<div id="reply_wrap"> <!-- 댓글출력구역 -->
 			
+				<div class="rbox re">
+				<div class="rheader"><span><i class="fas fa-user"></i></span>  <%=rereply.getRnickname() %>   <time><%=reply.getRdate() %></time></div> 
+				<div class="rmain"><p class="con"><%=rereply.getRcontent()%><p></div>
+				<div class="rfooter">
+						<div id="relike_area">
+			<%
+				if(mid != null && ReplyDao. getReplyDao().getreplylike(rereply.getRno(), mno)) {%>
+				 <span onclick="rereplyview(<%=rereply.getRno()%>,<%=rereply.getBno()%>)"></span>
+				<button onclick="saverelike('<%=mid%>',<%=rereply.getRno()%>);"><i class="fas fa-thumbs-up"></i><%=rereply.getRelike() %></button>
+				
+			<% } else {%>
+			 <span onclick="rereplyview(<%=rereply.getRno()%>,<%=rereply.getBno()%>)"></span>
+			<button onclick="saverelike('<%=mid%>',<%=rereply.getRno()%>);"><i class="far fa-thumbs-up"></i>  <%=rereply.getRelike() %></button>
+			<%} %>
 			
+			</div>
+				<div class="btn_area">
+				<div class="test"><button onclick="reupdateview(<%=rereply.getRno()%>,'<%=rereply.getRcontent()%>',<%=rereply.getBno()%>)">수정</button></div>
+				<div class="test"><button onclick="replydelete(<%=rereply.getRno()%> ,<%=rereply.getBno()%>)">삭제</button></div>
+				</div>
+				</div>
+				
+			</div>
+			</div> 
 			
+			<!-- 대댓입력창 -->
+			<div class="rwrite_wrap" id=<%=rereply.getRno()%>> <!-- row : 가로배치 -->
 	
+			</div>
 			
+				
+				
+			<%  }  } %>
+			
+					
 			
 			
 			</div>

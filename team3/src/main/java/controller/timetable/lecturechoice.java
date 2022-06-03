@@ -50,7 +50,7 @@ public class lecturechoice extends HttpServlet {
 			}
 			
 			
-			System.out.println(array);
+			
 		} catch (JSONException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

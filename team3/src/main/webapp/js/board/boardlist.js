@@ -1,8 +1,9 @@
 
 let boardlist;
-let searchlist;
+let comentcount;
 $( function(){
 	getboardlist();
+	
 
 }); 
 
@@ -38,6 +39,9 @@ function getboardlist(){
 		}
 	});
 }
+
+
+
 
 function getsearchlist(){
 	
@@ -80,6 +84,7 @@ function view() {
 		'<h2>'+boardlist[i]["btitle"]+'</h2>'+
 		'<span>'+boardlist[i]["bnickname"]+'</span><span>'+boardlist[i]["bdate"]+'</span>'+
 		'<span>추천수 : '+boardlist[i]["blike"]+' </span>'+
+		'<span><img src="/team3/board/upload/bcomment.svg"> : '+boardlist[i]["rcount"]+' </span>'+
 		'</div>'
 		
 	}

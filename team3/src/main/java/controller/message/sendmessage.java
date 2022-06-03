@@ -1,4 +1,4 @@
-package controller.board;
+package controller.message;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,20 +7,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
 
-import dao.ReplyDao;
+import dao.MessageDao;
 
 /**
- * Servlet implementation class replydelete
+ * Servlet implementation class sendmessage
  */
-@WebServlet("/board/replydelete")
-public class replydelete extends HttpServlet {
+@WebServlet("/message/sendmessage")
+public class sendmessage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public replydelete() {
+    public sendmessage() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,11 +30,16 @@ public class replydelete extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int rno = Integer.parseInt(request.getParameter("rno") );
-		int bno = Integer.parseInt(request.getParameter("bno") );
-		boolean result = ReplyDao.getReplyDao().replydelete(rno,bno);
-		if( result ) { response.getWriter().print(1); }
-		else { response.getWriter().print(2); }
+		int mnum = Integer.parseInt( request.getParameter("mnum"));
+		// DB처리 
+		JSONArray jsonArray = MessageDao.getMessageDao().sendlist(mnum);
+		// request , response -> 전송 인코딩 타입 -> 문자열 
+			// 1. 응답객체내 한글 인코딩 타입설정 
+			response.setCharacterEncoding("UTF-8");
+			// *** 2. 응답객체의 자료형 [ 문자열 -> json 형식 ] 
+			response.setContentType("application/json");
+			// 3. 응답전송 
+			response.getWriter().print( jsonArray );
 	}
 
 	/**
