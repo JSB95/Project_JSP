@@ -110,12 +110,16 @@ $("#btn_regist").on('click', function(){
 					
 					$('.lecture_time_list').eq(i).find('.lecture-code').html('과목코드 : ' + code);
 					$('.lecture_time_list').eq(i).find('.lecture-code').css('color', colorlist['font'][num]);
-					$('.lecture_time_list').eq(i).css('background-color', colorlist['background'][num]);
+					$('.lecture_time_list').eq(i).css({
+						background : "linear-gradient(to left, " + colorlist['background'][num] + " 97%, " + colorlist['font'][num] + " 3%)"
+					});
+					console.log("linear-gradient(90deg, " + colorlist['font'][num] + " 90%, " + colorlist['background'][num] + " 90%)");
 					$('.lecture_time_list').eq(i).hover(function(){
 						$(this).css('background-color',colorlist['hover'][num]);
 					}, function(){
 						$(this).css('background-color',colorlist['background'][num]);
 					})
+					//$('.lecture_time_list').eq(i).append("<style>#btn_info:before {background-color: red; }</style>");
 					break;
 					
 				} else if(timelist[i] == time1[j] && timelist2[i] != ''){

@@ -439,8 +439,17 @@ ol, ul {
 }
 
 
-.lecture_time_list[data-event="lecture-01"]:before {
-    background-color: #009688; 
+.lecture_time_lis2t:before {
+    background-color: var(--color,white); 
+}
+
+#btn_info:before{
+	content: '';
+    position: absolute;
+    width: 0.1875rem;
+    height: 100%;
+    top: 0;
+    left: 0;
 }
     
     
