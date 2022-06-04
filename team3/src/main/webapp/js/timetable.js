@@ -61,12 +61,6 @@ function lectureprint(department1){
 
 }
 
-$("#timetable td").bind('click', function(){
-	var x = $(this).closest('tr').index();
-	var y = $(this).closest('td').index();
-	console.log("tr : " + x + " / td : " + y);
-	
-})
 
 let duplicationchk = true;
 let timelist2 = [];
@@ -92,10 +86,6 @@ $("#btn_regist").on('click', function(){
 	  timelist2.push(text2);
 	});
 	
-	
-	
-	
-	console.log(timelist2);
 	loop:
 	for (let i = 0; i < timelist.length; i++){
 		
@@ -135,6 +125,7 @@ $("#btn_regist").on('click', function(){
 	timelist2.length = 0;
 	
 });
+
 function deletedupli(name){
 	
 	timelist2.length = 0;
@@ -155,8 +146,6 @@ function deletedupli(name){
 			
 		}
 	}
-	
-	
 	
 }
 let name;
