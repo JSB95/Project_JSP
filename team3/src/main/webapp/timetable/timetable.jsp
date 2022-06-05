@@ -364,7 +364,7 @@
 		                <div class="right">
 		                
 		                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">확인</button>
-		                    <button type="button" class="btn btn-danger">과목 삭제하기</button>
+		                    <button type="button" class="btn btn-danger" id="delete_lecture">과목 삭제하기</button>
 		                    
 		                </div>
 		                

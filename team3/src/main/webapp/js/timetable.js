@@ -207,14 +207,14 @@ function deletedupli(name){
 let lno2 = 0;
 // task modal show
 $(document).on('click','#info_btn',function(){
-	console.log($(this).parent().html());
+	
 	setTimeout(function(){
 		$('#modal-lecture-task').modal('show');
 	},500);
 	var regex = /[^0-9]/g;
 	lno2 = $(this).find('.lecture-code').html().replace(regex, "");
 
-	console.log("정규식 결과 : " + lno2);
+	
 	
 })
 
@@ -251,7 +251,7 @@ $('#modal-lecture-task').on('show.bs.modal',function(){
 
 
 
-
+// tooltip initializeing
 $(function () {
 	
 	var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -261,12 +261,7 @@ $(function () {
 	
 });
 
-/*$(function () {
-	
-
-
-});*/ 
-
+// popover initializeing
 $(function(){
 	//var myDefaultAllowList = bootstrap.Tooltip.Default.allowList;
 	//myDefaultAllowList.input = ['class'];
@@ -282,4 +277,26 @@ $(function(){
 	    	return $("#PopoverContent").html();
 	    }
   });
+})
+
+// 과목삭제버튼
+$("#delete_lecture").on('click',function(){
+	var regex = /[^0-9]/g;
+	let delete_lno = $(this).parent().parent().parent().find('.lecture_code').html();
+	$('.lecture_time_list').each(function(){
+	  var text2 = $(this).find('.lecture-code').html().replace(regex,"");
+	  timelist2.push(text2);
+	});
+	$('#modal-lecture-task').modal('hide');
+	for (let i = 0; i < timelist2.length; i++){
+		if (timelist2[i] == delete_lno){
+			$('.lecture_time_list').eq(i).find('.lecture-title').html('');
+			$('.lecture_time_list').eq(i).find('.material-icons').css('display', 'none');
+			$('.lecture_time_list').eq(i).find('.lecture-code').html('');
+			$('.lecture_time_list').eq(i).unbind('mouseenter mouseleave');
+			$('.lecture_time_list').eq(i).css('background-color','');
+			$('.lecture_time_list').eq(i).css('background','');
+		}
+	}
+	
 })
