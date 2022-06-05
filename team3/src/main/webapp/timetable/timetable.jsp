@@ -20,11 +20,13 @@
 <body>
 
 	<div class="container-lecture">
-	
+		
+		<!-- 헤드라인 -->
 		<section class="header">
 			<h3 class="headline">시간표</h3>
 		</section>
 		
+		<!-- 단과대 / 학과 선택 -->
 		<div class="row">
 		
 			<div class="col-md-6 selectbox">
@@ -43,6 +45,7 @@
 		
 		<br><br>
 		
+		<!-- 강의선택 navigation bar -->
 		<section class="section-nav">
 		
 			<form id="search-form" class="form-search">
@@ -59,6 +62,7 @@
 		
 		</section>
 		
+		<!-- 시간표 -->
 		<section class="section-list" style="float: right;">
 		
         <div class="container-xl">
@@ -223,94 +227,190 @@
         
     </section>
 		
+		<!-- 강의선택 Modal -->
+		<div class="modal fade" id="modal-lecture-info" role="dialog" aria-hidden="true">
+		
+			<div class="modal-dialog">
+			
+				<div class="modal-content"> 
 				
-			<div class="modal fade" id="modal-lecture-info" role="dialog" aria-hidden="true">
-				<div class="modal-dialog">
-				
-					<div class="modal-content"> 
+					<div class="modal-header">
 					
-						<div class="modal-header">
+						 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					
+					</div>
+					
+					<div class="modal-body">
+					
+						<h3 class="lecture_title">1</h3>
 						
-							 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						<ul class="lecture-info">
 						
-						</div>
-						
-						<div class="modal-body">
-						
-							<h3 class="lecture_title">1</h3>
-							
-							<ul class="lecture-info">
-							
-									<li class="lecture-time">
-									
-										<i class="material-icons ic-lecture-info">access_alarm</i>
-										강의시간 : <span class="lecture_time">1</span><span class="lecture_time_db" style="display: none;"></span>
-										
-									</li>
-									
-									<li class="">
-										<i class="material-icons ic-lecture-info">code</i>
-										교과목 코드 : <span class="lecture_code">1</span> 
-									</li>
-									
-									<li class="">
-										<i class="material-icons ic-lecture-info">school</i>
-										담당 교수 : <span class="lecture_professor">1</span>
-									</li>
-									
-								</ul>
+								<li class="lecture-time">
 								
-								<div class="lecture-description">
-									<p class="txt-description">텍스트디스크립션</p>
-								</div>
+									<i class="material-icons ic-lecture-info">access_alarm</i>
+									강의시간 : <span class="lecture_time">1</span><span class="lecture_time_db" style="display: none;"></span>
+									
+								</li>
 								
-						</div>
-						
-						<div class="modal-footer">
-						
-							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-							<button type="button" class="btn btn-primary" id="btn_regist">과목 등록하기</button>
-						
-						</div>
+								<li class="">
+									<i class="material-icons ic-lecture-info">code</i>
+									교과목 코드 : <span class="lecture_code">1</span> 
+								</li>
+								
+								<li class="">
+									<i class="material-icons ic-lecture-info">school</i>
+									담당 교수 : <span class="lecture_professor">1</span>
+								</li>
+								
+							</ul>
+							
+							<div class="lecture-description">
+								<p class="txt-description">텍스트디스크립션</p>
+							</div>
+							
+					</div>
+					
+					<div class="modal-footer">
+					
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+						<button type="button" class="btn btn-primary" id="btn_regist">과목 등록하기</button>
 					
 					</div>
 				
 				</div>
-				
+			
 			</div>
-
+			
+		</div>
 		
+		<!-- 시간표 강의 선택 Modal -->
+		<div class="modal fade" id="modal-lecture-task" role="dialog" aria-hidden="true">
 		
-	
+		    <div class="modal-dialog" role="document">
+		    
+		        <div class="modal-content">
+		        
+		            <div class="modal-header">
+		            
+		                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		                
+		            </div>
+		            
+		            <div class="modal-body">
+		            
+		                <h3 class="lecture_title"></h3>
+		                
+		                <ul class="lecture-info">
+		                
+		                    <li class="lecture-time">
+		                    
+		                        <i class="material-icons ic-lecture-info">access_alarm</i>
+		                        강의시간 : <span class="lecture_time"></span>
+		                        
+		                    </li>
+		                    
+		                    <li class="lecture-code">
+		                        <i class="material-icons ic-lecture-info">code</i>
+		                        교과목코드 : <span class="lecture_code"></span>
+		                    </li>
+		                    
+		                    <li class="lecture-code">
+		                        <i class="material-icons ic-lecture-info">school</i>
+		                        담당교수 : <span class="lecture_professor"></span>
+		                    </li>
+		                    
+		                </ul>
+		                
+		                <div class="lecture-description">
+		                    <p class="txt-description">강의내용 간략히
+		                    </p>
+		                </div>
+		
+		                <div class="lecture-memo">
+		                
+		                    <h5 class="memo-header">메모</h5>
+		                    
+		                    <ul>
+		                    
+		                        <li class="memo-list">
+		                        
+		                            <div class="memo-content" data-bs-toggle="tooltip" data-bs-placement="bottom" title="간단한 툴팁">
+		                                <i class="material-icons ic-lecture-noti">assignment</i>
+		                                <span class="lecture-noti-title">메모내용 간략히</span>
+		                            </div>
+		                            
+		                            <div class="memo-btn">
+		                                <a href="javascript:void(0)"><i class="material-icons ic-lecture-noti">delete</i></a>
+		                            </div>
+		                            
+		                        </li>
+		                        
+		                    </ul>
+		                    
+		                </div>
+		                
+		            </div>
+		            
+		            <div class="modal-footer">
+		            
+		                <div class="left">
+		                    <button class="btn btn-light-primary" type="button" data-bs-toggle="popover" data-bs-trigger="click" data-bs-placement="right" data-bs-html="true">
+		                        메모 등록
+		                    </button>
+		                    
+		                </div>
+		                
+		                <div class="right">
+		                
+		                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">확인</button>
+		                    <button type="button" class="btn btn-danger">과목 삭제하기</button>
+		                    
+		                </div>
+		                
+		            </div>
+		            
+		        </div>
+		        
+		    </div>
+		    
+		</div>
+		
+		<div id="PopoverContent" style="display: none;">
+		
+		    <h5 class="schedule-title">메모 등록하기</h5>
+		    
+		    <div class="form-group">
+		    
+		        <label class="col-form-label">제목
+		        
+		            <input type="text" class="form-control" id="recipient-name" placeholder="제목 추가">
+		            
+		        </label>
+		        
+		    </div>
+		    
+		    <div class="form-group">
+		    
+		        <label for="message-text" class="col-form-label">설명</label>
+		        
+		        <textarea class="form-control" id="message-text" placeholder="설명 추가"></textarea>
+		        
+		    </div>
+		    
+		    <button type="button" class="btn btn-primary btn-save">등록</button>
+		    
+		</div>
+		
 	</div>
 	
-	
 
 	
-	
-	<!-- Latest compiled and minified JavaScript -->
-
-
-
-
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> -->
-	
-	
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-	
-	<!-- Latest compiled and minified JavaScript -->
-	
-
-	
-	
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="/team3/js/timetable.js" type="text/javascript"></script>
-	
 	<script src="https://kit.fontawesome.com/d77abffe02.js"></script>
-	
-	
-	
 
 </body>
 </html>

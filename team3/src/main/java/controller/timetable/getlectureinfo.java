@@ -38,7 +38,7 @@ public class getlectureinfo extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setCharacterEncoding("UTF-8");
 		int lno = Integer.parseInt(request.getParameter("lno"));
-		String department = request.getParameter("department");
+
 		ArrayList<String> temp = new ArrayList<String>();
 		Lecture lecture = LectureDao.getLectureDao().getlectureinfo(lno);
 			

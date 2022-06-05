@@ -1,6 +1,4 @@
-let jsondata;
-let jsonlist = [];
-
+// 셀렉트 박스, 강의목록 넣기
 $(function(){
 	
 	$.ajax({
@@ -11,7 +9,7 @@ $(function(){
 		}
 	})
 	
-	let html = '<a href="#" id="btn_info">' +
+	let html = '<a href="javascript:void(0)">' +
                     '<div class="lecture-info">' + 
                         '<h6 class="lecture-title"></h6>' +
                         '<h6 class="lecture-code"></h6>' +
@@ -28,6 +26,7 @@ $(function(){
 
 })
 
+// 단과대 변경시 학과목록 변경
 function collegechange(){
 	let college = $("#collegebox").val();
 	$.ajax({
@@ -40,13 +39,14 @@ function collegechange(){
 	})
 }
 
-let department = $("#departmentbox").val();
-
+// 학과 변경시 강의navbar변경
+let department;
 function departmentchange(){
-	console.log($("#departmentbox").val());
+	department = $("#departmentbox").val();
 	lectureprint(department);
 }
 
+// 강의목록 출력
 function lectureprint(department1){
 	
 	department1 = $("#departmentbox").val();
@@ -61,10 +61,50 @@ function lectureprint(department1){
 
 }
 
+// info modal show
+let lno = 0;
+$(document).on('click','#card-lecture', function(e){
+	
+	setTimeout(function(){
+		$('#modal-lecture-info').modal('show');	
+	},500);
+	
+	lno = $(this).find('#lectureno').val();
+});
 
-let duplicationchk = true;
+// 강의 클릭시 모달
+$('#modal-lecture-info').on('show.bs.modal',function(){
+
+	$.ajax({
+		url : "../timetable/getlectureinfo",
+		data : {"lno" : lno},
+		success : function(json){
+			jsondata = json;
+			var ltime = jsondata['ltime'];
+			var lname = jsondata["lname"];
+			var lno = jsondata['lno'];
+			var lprofessor = jsondata['lprofessor'];
+			var ltime_db = jsondata['ltime_db'];
+			var modal = $(this);
+			
+			$(".lecture_title").html(lname);
+			$(".lecture_time").html(ltime);
+			$(".lecture_code").html(lno);
+			$(".lecture_professor").html(lprofessor);
+			$(".lecture_time_db").html(ltime_db);
+			modal.find('#modal-lecture-info .lecture-title').html('test');
+			modal.find('.lecture_time').html(ltime);
+			modal.find('.lecture_code').html(lno);
+			modal.find('.lecture_professor').html(lprofessor);
+			modal.find('.lecture_time_db').html(ltime_db);
+		
+		}
+	}); 
+	
+});
+
+// 과목등록 클릭시 시간표에 추가
 let timelist2 = [];
-
 $("#btn_regist").on('click', function(){
 	
 	$('#modal-lecture-info').modal('hide');
@@ -103,6 +143,7 @@ $("#btn_regist").on('click', function(){
 			for (let j = 0; j < time1.length; j++){
 				
 				if (timelist[i] == time1[j] && timelist2[i] == ''){
+					$('.lecture_time_list').eq(i).find('a').contents().unwrap().wrapAll('<a href="javascript:void(0)" id="info_btn">');
 					let num = random_num;
 					$('.lecture_time_list').eq(i).find('.lecture-title').html(name);
 					$('.lecture_time_list').eq(i).find('.lecture-title').css('color', colorlist['font'][num]);
@@ -113,19 +154,18 @@ $("#btn_regist").on('click', function(){
 					$('.lecture_time_list').eq(i).css({
 						background : "linear-gradient(to left, " + colorlist['background'][num] + " 97%, " + colorlist['font'][num] + " 3%)"
 					});
-					console.log("linear-gradient(90deg, " + colorlist['font'][num] + " 90%, " + colorlist['background'][num] + " 90%)");
+					
 					$('.lecture_time_list').eq(i).hover(function(){
 						$(this).css('background-color',colorlist['hover'][num]);
 					}, function(){
 						$(this).css('background-color',colorlist['background'][num]);
 					})
-					//$('.lecture_time_list').eq(i).append("<style>#btn_info:before {background-color: red; }</style>");
+					
 					break;
 					
 				} else if(timelist[i] == time1[j] && timelist2[i] != ''){
-					console.log("중복검사걸림");
+
 					alert("겹친 수업 존재 : " + timelist2[i]);
-					duplicationchk = false;
 					deletedupli(name);
 					timelist2.length = 0;
 					break loop;
@@ -141,6 +181,7 @@ $("#btn_regist").on('click', function(){
 	
 });
 
+// 중복과목 삭제 / 시간표에서 제거
 function deletedupli(name){
 	
 	timelist2.length = 0;
@@ -157,76 +198,32 @@ function deletedupli(name){
 			$('.lecture_time_list').eq(i).find('.lecture-code').html('');
 			$('.lecture_time_list').eq(i).unbind('mouseenter mouseleave');
 			$('.lecture_time_list').eq(i).css('background-color','');
-			console.log("지우기");
-			
+			$('.lecture_time_list').eq(i).css('background','');
 		}
 	}
 	
 }
-let name;
-$('#card-lecture').click(function () {
-	
-	alert($(this).html());
-  
-});
 
-
-$('.lecture-time > a').click(function () {
-  $('#modal-lecture-task').modal('show');
-});
-
-$("#btn_regist").on('click', function(){
-	$('#modal-lecture-task').modal('show');
-});
-
-
-
-/*$(function () {
-  $('[data-toggle="tooltip"]').tooltip();
-});
-
-$(function () {
-  $('[data-toggle="popover"]').popover({
-    container: 'body',
-    html: true,
-    placement: 'right',
-    sanitize: false,
-    content: function () {
-    return $("#PopoverContent").html();
-    }
-  });
-}); 
-
-function li_onclick(){
-	const $btn = $('#card-lecture');
-	
-	$btn.on('click',function(e){
-		console.log(e.target);
-	});
-}*/
-
-let lecturelist = [ ];
-let lno = 0;
-$(document).on('click','#card-lecture', function(e){
-	console.log(e.target);
-	console.log($(this).find('#getlname').html());
+let lno2 = 0;
+// task modal show
+$(document).on('click','#info_btn',function(){
+	console.log($(this).parent().html());
 	setTimeout(function(){
-		$('#modal-lecture-info').modal('show');	
+		$('#modal-lecture-task').modal('show');
 	},500);
-	
-	
-	
-	lno = $(this).find('#lectureno').val();
-});
+	var regex = /[^0-9]/g;
+	lno2 = $(this).find('.lecture-code').html().replace(regex, "");
 
+	console.log("정규식 결과 : " + lno2);
+	
+})
 
-
-$('#modal-lecture-info').on('show.bs.modal',function(){
-	department = $("#departmentbox").val();
-	console.log(department);
+// 시간표 강의 클릭시 모달
+$('#modal-lecture-task').on('show.bs.modal',function(){
+	
 	$.ajax({
 		url : "../timetable/getlectureinfo",
-		data : {"lno" : lno, "department" : department},
+		data : {"lno" : lno2},
 		success : function(json){
 			jsondata = json;
 			var ltime = jsondata['ltime'];
@@ -246,8 +243,43 @@ $('#modal-lecture-info').on('show.bs.modal',function(){
 			modal.find('.lecture_code').html(lno);
 			modal.find('.lecture_professor').html(lprofessor);
 			modal.find('.lecture_time_db').html(ltime_db);
-			console.log("db시간 : " + ltime_db);
+		
 		}
 	}); 
 	
+})
+
+
+
+
+$(function () {
+	
+	var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+	var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+		return new bootstrap.Tooltip(tooltipTriggerEl)
+	})
+	
 });
+
+/*$(function () {
+	
+
+
+});*/ 
+
+$(function(){
+	//var myDefaultAllowList = bootstrap.Tooltip.Default.allowList;
+	//myDefaultAllowList.input = ['class'];
+	//myDefaultAllowList.textarea = ['class'];
+	//console.log(myDefaultAllowList);
+	
+	var popover = new bootstrap.Popover(document.querySelector('[data-bs-toggle="popover"]'),{
+	    container: 'body',
+	    html: true,
+	    placement: 'auto',
+	    sanitize: false,
+	    content: function () {
+	    	return $("#PopoverContent").html();
+	    }
+  });
+})
