@@ -376,6 +376,7 @@
 		    
 		</div>
 		
+		<!-- 메모 pop over -->
 		<div id="PopoverContent" style="display: none;">
 		
 		    <h5 class="schedule-title">메모 등록하기</h5>

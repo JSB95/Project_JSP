@@ -63,6 +63,7 @@ function lectureprint(department1){
 
 // info modal show
 let lno = 0;
+let temp = null;
 $(document).on('click','#card-lecture', function(e){
 	
 	setTimeout(function(){
@@ -70,6 +71,7 @@ $(document).on('click','#card-lecture', function(e){
 	},500);
 	
 	lno = $(this).find('#lectureno').val();
+
 });
 
 // 강의 클릭시 모달
@@ -117,16 +119,30 @@ $("#btn_regist").on('click', function(){
 	
 	let timelist = [];
 	
+	let codelist = [];
+	
 	var colorlist = [];
 	
 	var time1 = time1.split("_");
+	
+	var regex = /[^0-9]/g;
 	
 	$('.lecture_time_list').each(function(){
 	  var text = $(this).attr('value');
 	  timelist.push(text);
 	  var text2 = $(this).find('.lecture-title').html();
 	  timelist2.push(text2);
+	  var temp = $(this).find('.lecture-code').html().replace(regex,"");
+	  codelist.push(temp);
+	  
 	});
+	
+	for (let x = 0; x < codelist.length; x++){
+		if (codelist[x] == code){
+			alert("이미 등록한 강의입니다.");
+			return;
+		}
+	}
 	
 	
 	$.ajax({
@@ -166,7 +182,7 @@ $("#btn_regist").on('click', function(){
 				} else if(timelist[i] == time1[j] && timelist2[i] != ''){
 
 					alert("겹친 수업 존재 : " + timelist2[i]);
-					deletedupli(name);
+					deletedupli(code);
 					timelist2.length = 0;
 					break loop;
 					
@@ -175,24 +191,48 @@ $("#btn_regist").on('click', function(){
 			}
 			
 		}
-		
 		timelist2.length = 0;
 	},1000);
+	
+	let codelist_dump = [];
+	
+	setTimeout(function(){
+		$('.timeline-vertical').find('ul').each(function(){
+			
+			$(this).find('.lecture-code').each(function(){
+				
+				codelist_dump.push($(this).html());
+				
+				for (let i = 0; i < codelist_dump.length; i++){
+					if (codelist_dump[i] == codelist_dump[i+1]){
+						
+					}
+				}
+				
+			})
+			console.log("요일 끝");
+		})
+		
+		console.table(codelist_dump)
+		
+	},2000);
+	
+	
 	
 });
 
 // 중복과목 삭제 / 시간표에서 제거
-function deletedupli(name){
+function deletedupli(code){
 	
 	timelist2.length = 0;
-	
+	var regex = /[^0-9]/g;
 	$('.lecture_time_list').each(function(){
-	  var text2 = $(this).find('.lecture-title').html();
+	  var text2 = $(this).find('.lecture-code').html().replace(regex,"");
 	  timelist2.push(text2);
 	});
 	
 	for (let i = 0; i < timelist2.length; i++){
-		if (timelist2[i] == name){
+		if (timelist2[i] == code){
 			$('.lecture_time_list').eq(i).find('.lecture-title').html('');
 			$('.lecture_time_list').eq(i).find('.material-icons').css('display', 'none');
 			$('.lecture_time_list').eq(i).find('.lecture-code').html('');
@@ -300,3 +340,11 @@ $("#delete_lecture").on('click',function(){
 	}
 	
 })
+
+function isEmpty(str){
+	if(typeof str == "undefined" || str == null || str == ""){
+		return true;
+	} else {
+		return false;
+	}
+}

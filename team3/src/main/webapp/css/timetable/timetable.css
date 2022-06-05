@@ -115,6 +115,9 @@ ol, ul {
         padding: 1rem;
         border: 0.0625rem solid #D7E2EB;
         border-radius: 0.5rem; }
+.container-lecture .section-nav .list-lecture .card-lecture:disabled {
+	background: green;
+}
 .container-lecture .section-nav .list-lecture .card-lecture .lecture-title {
           font-size: 20px;
           line-height: 1.6;
