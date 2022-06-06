@@ -19,39 +19,43 @@
 		Member member =  MemberDao.getMemberDao().getmemberinfo(mid);
 	%>
 	<div class="container">
-		<h3 class="text-center">회원정보</h3>
-		<div class="row">
+		<div class="row mt-3">
 			<div class="col-md-4">
-				<div>
+				<div class="memberbox">
 					<h4>내프로필</h4>
-					<hr>
-					이름 : <%=member.getMname() %><br>
-					학번 : <%=member.getMcode() %><br>
-					아이디 : <%=member.getMid() %><br>
-					연락처 : <%=member.getMphone() %><br>
-					이메일 : <%=member.getMemail() %><br>
+					<div class="mdetailbox">
+						<p class="mname"><%=member.getMname() %></p>
+						<p><%=member.getMcode() %></p>
+						<p><%=member.getMid() %></p>
+						<p><%=member.getMphone() %></p>
+						<p><%=member.getMemail() %></p>
+					</div>
 				</div>
 			</div>
 			<div class="col-md-8">
-				<h4>계정</h4>
-				<hr>
-				<div>
-					<h5><a href="/team3/member/infoupdate.jsp">정보 수정</a></h5>
+				<h4 class="mboxtitle1">나의 활동</h4>
+				<div class="accountbox">
+					<div>
+						<h5>내가 쓴 글</h5>
+					</div>
+					<div>
+						<h5><a href="/team3/message/getmessage.jsp">쪽지함</a></h5>
+					</div>
 				</div>
-				<div>
-					<h5>내가 쓴 글</h5>
-				</div>
-				<div>
-					<h5>쪽지함</h5>
-				</div>
-				<div>
-					<h5><a href="logout">로그아웃</a></h5>
-				</div>
-				<div>
-					<h5><a href="/team3/member/pwupdate.jsp">비밀번호 변경</a></h5>
-				</div>
-				<div>
-					<h5><a href="/team3/member/mdelete.jsp">회원탈퇴</a></h5>
+				<h4 class="mboxtitle2">계정</h4>
+				<div class="accountbox">
+					<div>
+						<h5><a href="/team3/member/infoupdate.jsp">정보 수정</a></h5>
+					</div>
+					<div>
+						<h5><a href="logout">로그아웃</a></h5>
+					</div>
+					<div>
+						<h5><a href="/team3/member/pwupdate.jsp">비밀번호 변경</a></h5>
+					</div>
+					<div>
+						<h5><a href="/team3/member/mdelete.jsp">회원탈퇴</a></h5>
+					</div>
 				</div>
 			</div>
 		</div>

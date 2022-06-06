@@ -37,9 +37,10 @@
 					<input class="form-control mb-2" type="text" id="memail" name="memail" placeholder="이메일을 입력해주세요.">
 					<div id="emailcheck" class="check">이메일 형식을 지켜주세요</div>
 					<div>
-					<span>아이디</span>
-					<input class="form-control mb-2" type="text" id="mid" name="mid" placeholder="아이디를 입력해주세요.">
-					<div id="idcheck" class="check">영어, 숫자로 5~15자리 입력가능합니다</div>
+						<span>아이디</span>
+						<input class="form-control mb-2" type="text" id="mid" name="mid" placeholder="아이디를 입력해주세요.">
+						<div id="idcheck" class="check">영어, 숫자로 5~15자리 입력가능합니다</div>
+					</div>
 				</div>
 				<div>
 					<span>비밀번호</span>
@@ -49,7 +50,6 @@
 					<span>비밀번호 확인</span>
 					<input class="form-control mb-2" type="password" id="mpasswordcheck" placeholder="비밀번호를 입력해주세요.">
 					<div id="passwordcheck" class="check">영어, 숫자로 5~15자리 입력가능합니다</div>
-				</div>
 				</div>
 				<div class="row my-4">
 					<div class="col-md-4">
