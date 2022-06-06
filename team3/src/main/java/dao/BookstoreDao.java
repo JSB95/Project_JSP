@@ -2,6 +2,9 @@ package dao;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import dto.Textbook;
 
 public class BookstoreDao extends Dao{
@@ -97,6 +100,44 @@ public class BookstoreDao extends Dao{
 	public boolean bookupdate(Textbook textbook) {
 		
 		return false;
+	}
+	//책 출력리스트
+	public JSONArray getbooklist(String keyword) {
+		JSONArray jsonArray = new JSONArray();
+		String sql = null;
+		System.out.println(keyword);
+		if(keyword == null){
+			sql = "select * from textbook order by tno desc";
+			}
+		else {
+			sql = "select * from textbook where ttitle like '%"+keyword+"%' order by tno desc";
+		}
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				JSONObject object = new JSONObject();
+				object.put("tno", rs.getInt(1));
+				object.put("timg", rs.getString(2) );
+				object.put("ttitle",rs.getString(3));
+				object.put("tcontent", rs.getString(4));
+				object.put("tprice", rs.getInt(5));
+				object.put("tactive", rs.getInt(6));
+				object.put("tcondition", rs.getInt(7));
+				object.put("tauthor",rs.getString(8) );
+				object.put("tcompany",rs.getString(9) );
+				object.put("tclass",rs.getString(10) );
+				jsonArray.put(object);
+				
+			}
+			return jsonArray;
+			
+		} catch (Exception e) {
+			System.out.println("getbooklist 오류 : "+ e);
+			}
+		
+		
+		return null;
 	}
 	
 }

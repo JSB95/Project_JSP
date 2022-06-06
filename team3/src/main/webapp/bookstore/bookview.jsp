@@ -52,13 +52,13 @@
 			</div>
 			<%
 			if(textbook.getMno()== MemberDao.getMemberDao().getmno(loginid)){ %>
-				<div class="row">
+				<div>
 					<a href="/team3/bookstore/bookupdate.jsp?tno=<%=textbook.getTno() %>">
 						<button class="btnbook" onclick="bookupdate()">수정하기</button>
 					</a>
 				</div>
 			<%}else{ %>
-				<div class="row">
+				<div>
 					<button class="btnbook">쪽지 보내기</button>
 				</div>
 			<%} %>
