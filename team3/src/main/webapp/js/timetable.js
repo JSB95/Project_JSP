@@ -281,33 +281,6 @@ $("#btn_regist").on('click', function(){
 						
 					}
 					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-						
-						
-					
-					
-					
 					break;
 					
 				} else if(timelist[i] == time1[j] && timelist2[i] != ''){
@@ -327,18 +300,6 @@ $("#btn_regist").on('click', function(){
 		
 	},2000);
 	
-	// 저기
-	/*let coli = []
-	$('.timeline-vertical').each(function(){
-		console.log($('.mon').find('.lecture-code').html());
-		console.log($(this).find('.lecture-code').html());
-		var codeli = $(this).find('li').find('.lecture-code').html();
-		coli.push(codeli)
-	})
-	console.log(coli)*/
-	
-	
-
 });
 
 // 중복과목 삭제 / 시간표에서 제거
@@ -466,5 +427,25 @@ function isEmpty(str){
 		return true;
 	} else {
 		return false;
+	}
+}
+
+function filter(){
+	
+	var value, name, item, i;
+	
+	value = document.getElementById("value").value;
+	item = document.getElementsByClassName("card-lecture");
+	
+	for (i = 0; i < item.length; i++){
+		name = item[i].getElementsByClassName("lecture-title");
+		if(name[0].innerHTML.indexOf(value) > -1 ){
+			item[i].style.display = "flex";
+			
+			item[i].style.flexDirection = "column";
+			
+ 		} else {
+			item[i].style.display = "none";
+}
 	}
 }

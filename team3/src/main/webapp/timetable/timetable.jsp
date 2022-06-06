@@ -50,7 +50,7 @@
 		
 			<form id="search-form" class="form-search">
 			
-				<input type="text" placeholder="강의검색" class="form-control">
+				<input type="text" placeholder="강의검색" class="form-control" onkeyup="filter()" id="value">
 				
 				<span><i class="material-icons ic-search">search</i></span>
 				
