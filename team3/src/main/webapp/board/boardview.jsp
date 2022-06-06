@@ -25,15 +25,22 @@ int mno = BoardDao.getBoardDao().getmno(mid);
 
 %>
 
-<h1>게시물조회</h1>
+<%@include file="../header.jsp"%>
+
+
 <input type="hidden" value="<%=bno%>" id="bno">
+<div class="content_wrap">
 
-
-			 
+			 <div class="view_wrap">
 				<div class="view_header">
 				
 				<div class="board_title">
-					<h1><%=board.getBtitle() %></h1>
+					<div class="t"><h1><%=board.getBtitle() %></h1></div>
+					
+					
+						<div class="date"><span>  <%=board.getBdate() %> </span>
+				
+				</div>
 				</div>
 				
 				
@@ -47,9 +54,7 @@ int mno = BoardDao.getBoardDao().getmno(mid);
 						<span><%=board.getBnickname() %></span> 
 						
 					</div>
-					<div><span>작성일  <%=board.getBdate() %> </span>
 				
-				</div>
 				</div>
 				
 				
@@ -67,27 +72,34 @@ int mno = BoardDao.getBoardDao().getmno(mid);
 			<% if( board.getBimg() == null ){ // 첨부파일이 없을경우 %> 
 				 첨부파일 :  - 
 			<%	}else{  %>
-				 <div class="img_area">이미지 : <img width="100%" alt="" src="/team3/board/upload/<%=board.getBimg()%>"> </div> <!-- 첨부파일 다운로드 -->
+				 <div class="img_area"><img width="100%" alt="" src="/team3/board/upload/<%=board.getBimg()%>"> </div> <!-- 첨부파일 다운로드 -->
 			<% } %>
 			
 			<div id="like_area">
 			<%
 				if(mid != null && BoardDao.getBoardDao().getblike(bno, mno)) {%>
-				<button onclick="saveblike('<%=mid%>');"><i class="fas fa-thumbs-up"></i><%=board.getBlike() %></button>
+				<button class="likeb" onclick="saveblike('<%=mid%>');"><i class="fas fa-thumbs-up"></i> <%=board.getBlike() %></button>
 			<% } else {%>
 			
-			<button onclick="saveblike('<%=mid%>');"><i class="far fa-thumbs-up"></i>  <%=board.getBlike() %></button>
+			<button  class="likeb" onclick="saveblike('<%=mid%>');"><i class="far fa-thumbs-up"></i>  <%=board.getBlike() %></button>
 			<%} %>
 			
 			</div>
 			
-			
+		
+			</div>
+			<div class="lay">
+				<div class="upbutton_area"> <!-- 게시물 수정삭제 버튼 구역 -->
+					<a href="boardupdate.jsp?bno=<%=board.getBno()%>"><button>수정</button></a>
+					<a href="boarddelete?bno=<%=board.getBno()%>"> <button>삭제</button> </a>
+				</div>
+			</div>
 			
 			<!-- 댓글작성구역 ------------------------------------------------------------------------------------->
 			
 			<div class="rwrite_wrap"> <!-- row : 가로배치 -->
 			<div class="rwirte_area">
-				<textarea  rows="4" cols="50" name="rcontent" id="rcontent"  ></textarea>
+				<textarea  rows="2" cols="30" name="rcontent" id="rcontent"  ></textarea>
 				
 				<button type="button" id="rwrite" onclick="replywrite(<%=bno%>)">등록</button>
 				
@@ -98,7 +110,7 @@ int mno = BoardDao.getBoardDao().getmno(mid);
 			</div>
 		</div>
 		
-			
+		</div>		
 			
 			<!-- 댓글출력구역------------------------------------------------------------------------------------ -->
 			<%
@@ -120,11 +132,11 @@ int mno = BoardDao.getBoardDao().getmno(mid);
 			<%
 				if(mid != null && ReplyDao. getReplyDao().getreplylike(reply.getRno(), mno)) {%>
 				 <span onclick="rereplyview(<%=reply.getRno()%>,<%=reply.getBno()%>)"><i class="far fa-comment-alt"></i></span>
-				<button onclick="saverelike('<%=mid%>',<%=reply.getRno()%>);"><i class="fas fa-thumbs-up"></i><%=reply.getRelike() %></button>
+				<button class="likebre" onclick="saverelike('<%=mid%>',<%=reply.getRno()%>);"><i class="fas fa-thumbs-up"></i><%=reply.getRelike() %></button>
 				
 			<% } else {%>
 			 <span onclick="rereplyview(<%=reply.getRno()%>,<%=reply.getBno()%>)"><i class="far fa-comment-alt"></i></span>
-			<button onclick="saverelike('<%=mid%>',<%=reply.getRno()%>);"><i class="far fa-thumbs-up"></i>  <%=reply.getRelike() %></button>
+			<button class="likebre" onclick="saverelike('<%=mid%>',<%=reply.getRno()%>);"><i class="far fa-thumbs-up"></i>  <%=reply.getRelike() %></button>
 			<%} %>
 			
 			</div>
@@ -159,11 +171,11 @@ int mno = BoardDao.getBoardDao().getmno(mid);
 			<%
 				if(mid != null && ReplyDao. getReplyDao().getreplylike(rereply.getRno(), mno)) {%>
 				 <span onclick="rereplyview(<%=rereply.getRno()%>,<%=rereply.getBno()%>)"></span>
-				<button onclick="saverelike('<%=mid%>',<%=rereply.getRno()%>);"><i class="fas fa-thumbs-up"></i><%=rereply.getRelike() %></button>
+				<button class="likebre" onclick="saverelike('<%=mid%>',<%=rereply.getRno()%>);"><i class="fas fa-thumbs-up"></i><%=rereply.getRelike() %></button>
 				
 			<% } else {%>
 			 <span onclick="rereplyview(<%=rereply.getRno()%>,<%=rereply.getBno()%>)"></span>
-			<button onclick="saverelike('<%=mid%>',<%=rereply.getRno()%>);"><i class="far fa-thumbs-up"></i>  <%=rereply.getRelike() %></button>
+			<button class="likebre" onclick="saverelike('<%=mid%>',<%=rereply.getRno()%>);"><i class="far fa-thumbs-up"></i>  <%=rereply.getRelike() %></button>
 			<%} %>
 			
 			</div>
@@ -194,12 +206,9 @@ int mno = BoardDao.getBoardDao().getmno(mid);
 			
 			
 			
-			<div class="upbutton_area"> <!-- 게시물 수정삭제 버튼 구역 -->
-				<a href="boardupdate.jsp?bno=<%=board.getBno()%>"><button>수정</button></a>
-				<a href="boarddelete?bno=<%=board.getBno()%>"> <button>삭제</button> </a>
-			</div>
 			
 			
+		
 		
 
 <script type="text/javascript" src="/team3/js/board/boardview.js"></script>

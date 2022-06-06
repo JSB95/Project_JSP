@@ -1,23 +1,47 @@
+@font-face {
+    font-family: 'KOHIBaeumOTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/KOHIBaeumOTF.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+	font-family: 'KOHIBaeumOTF';
+}
+
+
 #list{
 	
-	width: 30vw;
-	border: 1px solid black;
-	border-radius: 15px;
-	margin-top: 20px;
+	width: 35vw;
+	border-bottom: 1px solid black;
+	
+	
+	word-break:break-all;
 }
+
+ 
  
  .list span {
  	padding: 20px;
+ 	margin-top: 10px;
  }
  .list h2 {
  	padding: 20px;
  }
  
  
+ .board_category{
+ display : flex;
+ 	justify-content: flex-start;
+width: 35%;
+ }
+ .board_category button{
  
+   margin-right: 5px;
+   margin-bottom: 15px;
  
- 
- 
+ }
+
  
  .content_wrap{
  	margin: 0 auto;
@@ -25,9 +49,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #F2F2F2;
  }
  
- 
+ #list{
+ 	background-color: white;
+ 	border: 1px solid #eee;
+ }
  
  
  
@@ -49,5 +77,45 @@
 	
 }
 #list span {
-	margin-left: 20px;
+	margin-left: 30px;
 }
+
+.search_area{
+	
+	    font-family: "serif";
+	   
+	    margin-bottom: 5px;
+	    }
+select {
+	
+	height: 30px;
+	text-align: center;
+	
+	
+}
+
+.serach_input {
+	
+	height: 30px;
+	width: 400px;	
+}
+.search_button{
+	width: 50px;
+}
+option {
+	padding: 2px;
+}
+
+.board_category{
+	margin-top: 30px;
+}
+button{
+	color: white;
+	background-color: #6A7BA2;
+	border: none;
+	width: 80px;
+	height: 30px;
+	text-align: cetner;
+	
+}
+

@@ -20,17 +20,23 @@ String best = "best";
 %>
 
 
-<!-- 인기글 전체글 선택 -->
-	<div class="board_category">
-		<a href="boardlist.jsp"><button>전체글</button></a>
-		<button onclick="boardbest()">인기글</button>
-		<a href="boardwirte.jsp"><button>글쓰기</button></a>
-	</div>
+
 <!-- ---------------------- 테이블 구역 -------------------------- -->
-	
+
+<%@include file="../header.jsp"%>
+
 	<div class="content_wrap">
-		
-		
+	
+		<div class="board_category">
+		<div><a href="boardlist.jsp"><button>전체글</button></a></div>
+		<div><button onclick="boardbest()">인기글</button></div>
+		<div><a href="boardwirte.jsp"><button>글쓰기</button></a></div>
+	</div>
+	
+	
+		<!-- 인기글 전체글 선택 -->
+	
+	
 		<div class="search_area">
 		
 				<div  class="search_area"> <!-- 키 선택 -->
@@ -43,6 +49,9 @@ String best = "best";
 					<input type="button" class="search_button" value="검색" onclick="getsearchlist()">
 				</div>
 			</div>
+		
+		
+	
 			
 			
 		<div id="listbox"  >
