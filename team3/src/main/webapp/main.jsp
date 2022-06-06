@@ -26,42 +26,55 @@
 		</div>
 		<div class="iconbox"><!-- 페이지이동 아이콘 -->
 			<ul class="nav justify-content-center">
-			  <li class="nav-item">
-			    <a class="nav-link active" aria-current="page" href="#">
-			    	<i class="fas fa-calendar-check"></i><br><br>
+			  <li class="nav-item iconitem">
+			    <a class="nav-link active iconlink" aria-current="page" href="#">
+			    	<i class="fas fa-calendar-check"></i>
 			    	<h5 class="h5">시간표</h5>
-					<span>나의 일정을 한눈에!</span>
+					<span class="font">나의 일정을 한눈에!</span>
 			    </a>
 			  </li>
-			  <li class="nav-item">
-			    <a class="nav-link" href="/team3/board/boardlist.jsp">
+			  <li class="nav-item iconitem">
+			    <a class="nav-link iconlink" href="/team3/board/boardlist.jsp">
 			    	<i class="far fa-comment-alt"></i>
 			    	<h5 class="h5">게시판</h5>
-					<span>다양한 소통<br>활동을 즐기자!</span>
+					<span class="font">다양한 소통<br>활동을 즐기자!</span>
 			    </a>
 			  </li>
-			  <li class="nav-item">
-			    <a class="nav-link" href="/team3/review/reviewlist.jsp?keyword=">
+			  <li class="nav-item iconitem">
+			    <a class="nav-link iconlink" href="/team3/review/reviewlist.jsp?keyword=">
 			   	 	<i class="fas fa-user-graduate"></i>
 			   	 	<h5 class="h5">강의평</h5>
-					<span>강의정보를<br>알고싶다면?</span>
+					<span class="font">강의정보를<br>알고싶다면?</span>
 			    </a>
 			  </li>
-			  <li class="nav-item">
-			    <a class="nav-link" href="#">
+			  <li class="nav-item iconitem">
+			    <a class="nav-link iconlink" href="#">
 			    	<i class="fas fa-book-open"></i>
 			    	<h5 class="h5">책방</h5>
-					<span>저렴한 가격으로<br>책을 구매하자!</span>
+					<span class="font">저렴한 가격으로<br>책을 구매하자!</span>
+			    </a>
+			  </li>
+			  <li class="nav-item iconitem">
+			    <a class="nav-link iconlink" href="#">
+			    	<i class="fas fa-book-open"></i>
+			    	<h5 class="h5">학점계산기</h5>
+					<span class="font">편리한<br>성적 계산기</span>
 			    </a>
 			  </li>
 			</ul>
 			
 		</div>
-		<div class="tablelist"><!-- 게시판출력 -->
+		<div class="container tablelist"><!-- 게시판출력 -->
 			<div class="row">
-				<div class="col-md-6">
-						<h3>자유게시판</h3>
-					<table class="table">
+				<div class="col-md-6 tablebox">
+					<h3>자유게시판<i class="fa-solid fa-feather boardimg"></i></h3>
+					<table class="table tablefont">
+						<tr>
+							<td>제목</td><td>추천수</td><td>댓글수</td>
+						</tr>
+						<tr>
+							<td>제목</td><td>추천수</td><td>댓글수</td>
+						</tr>
 						<tr>
 							<td>제목</td><td>추천수</td><td>댓글수</td>
 						</tr>
@@ -70,9 +83,15 @@
 						</tr>
 					</table>
 				</div>
-				<div class="col-md-6">
-					<h3>HOT 게시판</h3>
-					<table class="table">
+				<div class="col-md-6 tablebox">
+					<h3>HOT 게시판<i class="fa-solid fa-feather boardimg"></i></h3>
+					<table class="table tablefont">
+						<tr>
+							<td>제목</td><td>추천수</td><td>댓글수</td>
+						</tr>
+						<tr>
+							<td>제목</td><td>추천수</td><td>댓글수</td>
+						</tr>
 						<tr>
 							<td>제목</td><td>추천수</td><td>댓글수</td>
 						</tr>
@@ -82,6 +101,32 @@
 					</table>
 				</div>
 			</div>
+		</div>
+		<div class="container booklist"><!-- 페이지이동 아이콘 -->
+			<h3>판매중인 책</h3>
+			<ul class="nav justify-content-left bookimg">
+			  <li class="nav-item books">
+			    <a class="nav-link active" aria-current="page" href="#">
+			    	<img class="book" alt="" src="/team3/img/책.jpg">
+			    </a>
+			  </li>
+			  <li class="nav-item books">
+			    <a class="nav-link" aria-current="page" href="#">
+			    	<img class="book" alt="" src="/team3/img/책.jpg">
+			    </a>
+			  </li>
+			  <li class="nav-item books">
+			    <a class="nav-link" aria-current="page" href="#">
+			    	<img class="book" alt="" src="/team3/img/책.jpg">
+			    </a>
+			  </li>
+			  <li class="nav-item books">
+			    <a class="nav-link" aria-current="page" href="#">
+			    	<img class="book" alt="" src="/team3/img/책.jpg">
+			    </a>
+			  </li>
+			</ul>
+			
 		</div>
 	</div>
 	
