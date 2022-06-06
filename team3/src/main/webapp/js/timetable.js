@@ -213,7 +213,7 @@ $("#btn_regist").on('click', function(){
 								if (code == mon_list[r]){
 									console.log(r + "번째 걸림");
 									$('.lecture_time_list').eq(i).find('.lecture-title').html("");
-									$('.lecture_time_list').eq(i).find('.lecture-code').html("");
+									$('.lecture_time_list').eq(i).find('.lecture-code').css('color', colorlist['background'][num]);
 									$('.lecture_time_list').eq(i).find('.material-icons').css('display', 'none');
 									continue loop;
 								}
@@ -227,7 +227,7 @@ $("#btn_regist").on('click', function(){
 								if (code == tue_list[r]){
 									console.log(r + "번째 걸림");
 									$('.lecture_time_list').eq(i).find('.lecture-title').html("");
-									$('.lecture_time_list').eq(i).find('.lecture-code').html("");
+									$('.lecture_time_list').eq(i).find('.lecture-code').css('color', colorlist['background'][num]);
 									$('.lecture_time_list').eq(i).find('.material-icons').css('display', 'none');
 									continue loop;
 								}
@@ -241,11 +241,11 @@ $("#btn_regist").on('click', function(){
 								if (code == wed_list[r]){
 									console.log(r + "번째 걸림");
 									$('.lecture_time_list').eq(i).find('.lecture-title').html("");
-									$('.lecture_time_list').eq(i).find('.lecture-code').html("");
+									$('.lecture_time_list').eq(i).find('.lecture-code').css('color', colorlist['background'][num]);
 									$('.lecture_time_list').eq(i).find('.material-icons').css('display', 'none');
-									console.table(wed_list);
 									
-									continue loop;
+									
+									
 								}
 							}
 							
@@ -257,7 +257,7 @@ $("#btn_regist").on('click', function(){
 								if (code == thu_list[r]){
 									console.log(r + "번째 걸림");
 									$('.lecture_time_list').eq(i).find('.lecture-title').html("");
-									$('.lecture_time_list').eq(i).find('.lecture-code').html("");
+									$('.lecture_time_list').eq(i).find('.lecture-code').css('color', colorlist['background'][num]);
 									$('.lecture_time_list').eq(i).find('.material-icons').css('display', 'none');
 									continue loop;
 								}
@@ -271,7 +271,7 @@ $("#btn_regist").on('click', function(){
 								if (code == fri_list[r]){
 									console.log(r + "번째 걸림");
 									$('.lecture_time_list').eq(i).find('.lecture-title').html("");
-									$('.lecture_time_list').eq(i).find('.lecture-code').html("");
+									$('.lecture_time_list').eq(i).find('.lecture-code').css('color', colorlist['background'][num]);
 									$('.lecture_time_list').eq(i).find('.material-icons').css('display', 'none');
 									continue loop;
 								}
