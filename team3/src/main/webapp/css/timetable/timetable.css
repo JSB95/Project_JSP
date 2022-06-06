@@ -43,7 +43,7 @@ ol, ul {
 .container-lecture {
   position: relative; 
  }
- .container-lecture .header {
+ .container-lecture .header_timetable {
     border-bottom: 0.0625rem solid #D7E2EB;
     padding: 1rem 1.5rem;
     display: flex;
@@ -51,7 +51,7 @@ ol, ul {
     align-items: center;
     position: sticky; 
 }
-.container-lecture .header .headline {
+.container-lecture .header_timetable .headline {
       display: inline-block;
       margin-bottom: 0;
       font-weight: 700;

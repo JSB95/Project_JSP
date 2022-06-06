@@ -19,19 +19,23 @@
 </head>
 <body>
 
+	<%@include file = "../header.jsp" %>
+	
+	<div class="container">
+	
 	<div class="container-lecture">
 		
 		<!-- 헤드라인 -->
-		<section class="header">
+		<section class="header_timetable">
 			<h3 class="headline">시간표</h3>
 		</section>
 		
 		<!-- 단과대 / 학과 선택 -->
 		<div class="row">
 		
-			<div class="col-md-6 selectbox">
+			<div class="col-md-6 selectbox" style="border-bottom: 1px;">
 			
-				<div class="row" style="margin-right: -60px; margin-left: -2px;">
+				<div class="row" style="margin-right: -60px; margin-left: -2px; margin-top: 40px;">
 				
 					<div id="collegebox_wrap" class="col-sm-4"> </div>
 					
@@ -404,6 +408,10 @@
 		</div>
 		
 	</div>
+	
+	</div>
+	
+	<%@include file = "../footer.jsp" %>
 	
 
 	

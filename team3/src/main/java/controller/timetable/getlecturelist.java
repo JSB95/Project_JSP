@@ -118,7 +118,7 @@ public class getlecturelist extends HttpServlet {
 				
 						"</h6>" +
 			
-						"<ul class=\"list-lecture-info\">" +
+						"<ul class=\"list-lecture-info\" style=\"padding-left: 0\">" +
 			
 							"<li> 교과목 코드 : " + lecture.getLno() +" </li>" + 
 							"<li> 담당 교수 : <span id=\"getlprofessor\">"  + lecture.getLprofessor()  + "</span> </li>" +
