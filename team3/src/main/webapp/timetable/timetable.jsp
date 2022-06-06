@@ -109,7 +109,7 @@
                                 <h4 class="day_mon">Mon</h4>
                             </div>
                             
-                            <ul>
+                            <ul class="mon">
                             	<li class="lecture_time_list" value="월&#47;1"></li>
                             	<li class="lecture_time_list" value="월&#47;2"></li>
                             	<li class="lecture_time_list" value="월&#47;3"></li>
@@ -131,7 +131,7 @@
                                 <h4 class="day">Tue</h4>
                             </div>
                             
-                            <ul>
+                            <ul class="tue">
                             	<li class="lecture_time_list" value="화&#47;1"></li>
                             	<li class="lecture_time_list" value="화&#47;2"></li>
                             	<li class="lecture_time_list" value="화&#47;3"></li>
@@ -154,7 +154,7 @@
                                 <h4 class="day">Wed</h4>
                             </div>
 
-                            <ul>
+                            <ul class="wed">
                             	<li class="lecture_time_list" value="수&#47;1"></li>
                             	<li class="lecture_time_list" value="수&#47;2"></li>
                             	<li class="lecture_time_list" value="수&#47;3"></li>
@@ -177,7 +177,7 @@
                                 <h4 class="day">Thu</h4>
                             </div>
 
-                            <ul>
+                            <ul class="thu">
                             	<li class="lecture_time_list" value="목&#47;1"></li>
                             	<li class="lecture_time_list" value="목&#47;2"></li>
                             	<li class="lecture_time_list" value="목&#47;3"></li>
@@ -200,7 +200,7 @@
                                 <h4 class="day">Fri</h4>
                             </div>
 
-                            <ul>
+                            <ul class="fri">
                             	<li class="lecture_time_list" value="금&#47;1"></li>
                             	<li class="lecture_time_list" value="금&#47;2"></li>
                             	<li class="lecture_time_list" value="금&#47;3"></li>

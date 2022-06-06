@@ -107,6 +107,7 @@ $('#modal-lecture-info').on('show.bs.modal',function(){
 
 // 과목등록 클릭시 시간표에 추가
 let timelist2 = [];
+let codelist_dump = [];
 $("#btn_regist").on('click', function(){
 	
 	$('#modal-lecture-info').modal('hide');
@@ -159,23 +160,153 @@ $("#btn_regist").on('click', function(){
 			for (let j = 0; j < time1.length; j++){
 				
 				if (timelist[i] == time1[j] && timelist2[i] == ''){
-					$('.lecture_time_list').eq(i).find('a').contents().unwrap().wrapAll('<a href="javascript:void(0)" id="info_btn">');
 					let num = random_num;
-					$('.lecture_time_list').eq(i).find('.lecture-title').html(name);
+					
+					let mon_list = [];
+					let tue_list = [];
+					let wed_list = [];
+					let thu_list = [];
+					let fri_list = [];
+					$('.mon .lecture_time_list').each(function(){
+						var mon = $(this).find('.lecture-code').html().replace(regex,"");
+						mon_list.push(mon);
+					})
+					$('.tue .lecture_time_list').each(function(){
+						var tue = $(this).find('.lecture-code').html().replace(regex,"");
+						tue_list.push(tue);
+					})
+					$('.wed .lecture_time_list').each(function(){
+						var wed = $(this).find('.lecture-code').html().replace(regex,"");
+						wed_list.push(wed);
+					})
+					$('.thu .lecture_time_list').each(function(){
+						var thu = $(this).find('.lecture-code').html().replace(regex,"");
+						thu_list.push(thu);
+					})
+					$('.fri .lecture_time_list').each(function(){
+						var fri = $(this).find('.lecture-code').html().replace(regex,"");
+						fri_list.push(fri);
+					})
+					
+					$('.lecture_time_list').eq(i).find('a').contents().unwrap().wrapAll('<a href="javascript:void(0)" id="info_btn">');
 					$('.lecture_time_list').eq(i).find('.lecture-title').css('color', colorlist['font'][num]);
 					$('.lecture_time_list').eq(i).find('.material-icons').css({'display': 'block','color' : colorlist['font'][num]});
-					
-					$('.lecture_time_list').eq(i).find('.lecture-code').html('과목코드 : ' + code);
 					$('.lecture_time_list').eq(i).find('.lecture-code').css('color', colorlist['font'][num]);
 					$('.lecture_time_list').eq(i).css({
 						background : "linear-gradient(to left, " + colorlist['background'][num] + " 97%, " + colorlist['font'][num] + " 3%)"
 					});
-					
 					$('.lecture_time_list').eq(i).hover(function(){
 						$(this).css('background-color',colorlist['hover'][num]);
 					}, function(){
 						$(this).css('background-color',colorlist['background'][num]);
 					})
+					
+					$('.lecture_time_list').eq(i).find('.lecture-title').html(name);
+					
+					
+					
+					$('.lecture_time_list').eq(i).find('.lecture-code').html('과목코드 : ' + code);
+					
+					switch (time1[j].split("/")[0]){
+						case "월" : 
+							for (let r = 0; r < mon_list.length; r++){
+								if (code == mon_list[r]){
+									console.log(r + "번째 걸림");
+									$('.lecture_time_list').eq(i).find('.lecture-title').html("");
+									$('.lecture_time_list').eq(i).find('.lecture-code').html("");
+									$('.lecture_time_list').eq(i).find('.material-icons').css('display', 'none');
+									continue loop;
+								}
+							}
+							
+							break;
+							
+						case "화" :
+						
+							for (let r = 0; r < tue_list.length; r++){
+								if (code == tue_list[r]){
+									console.log(r + "번째 걸림");
+									$('.lecture_time_list').eq(i).find('.lecture-title').html("");
+									$('.lecture_time_list').eq(i).find('.lecture-code').html("");
+									$('.lecture_time_list').eq(i).find('.material-icons').css('display', 'none');
+									continue loop;
+								}
+							}
+							
+							break;
+							
+						case "수" :
+						
+							for (let r = 0; r < wed_list.length; r++){
+								if (code == wed_list[r]){
+									console.log(r + "번째 걸림");
+									$('.lecture_time_list').eq(i).find('.lecture-title').html("");
+									$('.lecture_time_list').eq(i).find('.lecture-code').html("");
+									$('.lecture_time_list').eq(i).find('.material-icons').css('display', 'none');
+									console.table(wed_list);
+									
+									continue loop;
+								}
+							}
+							
+							break;
+							
+						case "목" : 
+						
+							for (let r = 0; r < thu_list.length; r++){
+								if (code == thu_list[r]){
+									console.log(r + "번째 걸림");
+									$('.lecture_time_list').eq(i).find('.lecture-title').html("");
+									$('.lecture_time_list').eq(i).find('.lecture-code').html("");
+									$('.lecture_time_list').eq(i).find('.material-icons').css('display', 'none');
+									continue loop;
+								}
+							}
+							
+							break;
+							
+						case "금" :
+						
+							for (let r = 0; r < fri_list.length; r++){
+								if (code == fri_list[r]){
+									console.log(r + "번째 걸림");
+									$('.lecture_time_list').eq(i).find('.lecture-title').html("");
+									$('.lecture_time_list').eq(i).find('.lecture-code').html("");
+									$('.lecture_time_list').eq(i).find('.material-icons').css('display', 'none');
+									continue loop;
+								}
+							}
+							
+							break;
+						
+					}
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+						
+						
+					
+					
 					
 					break;
 					
@@ -185,40 +316,29 @@ $("#btn_regist").on('click', function(){
 					deletedupli(code);
 					timelist2.length = 0;
 					break loop;
-					
-					
+
 				}
+
 			}
 			
 		}
-		timelist2.length = 0;
-	},1000);
-	
-	let codelist_dump = [];
-	
-	setTimeout(function(){
-		$('.timeline-vertical').find('ul').each(function(){
 			
-			$(this).find('.lecture-code').each(function(){
-				
-				codelist_dump.push($(this).html());
-				
-				for (let i = 0; i < codelist_dump.length; i++){
-					if (codelist_dump[i] == codelist_dump[i+1]){
-						
-					}
-				}
-				
-			})
-			console.log("요일 끝");
-		})
-		
-		console.table(codelist_dump)
+		timelist2.length = 0;
 		
 	},2000);
 	
+	// 저기
+	/*let coli = []
+	$('.timeline-vertical').each(function(){
+		console.log($('.mon').find('.lecture-code').html());
+		console.log($(this).find('.lecture-code').html());
+		var codeli = $(this).find('li').find('.lecture-code').html();
+		coli.push(codeli)
+	})
+	console.log(coli)*/
 	
 	
+
 });
 
 // 중복과목 삭제 / 시간표에서 제거
