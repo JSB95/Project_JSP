@@ -22,6 +22,21 @@ $(function(){
     $('.lecture_time_list').html(html);
     $('.lecture_time_list').css('','');
     $('.lecture_time_list').find('.material-icons').css('display', 'none');
+    
+    var mid = $('#mid').val();
+    
+    setTimeout(function(){
+	
+		$.ajax({
+			url : "../timetable/gettimetable",
+			data : {"mid" : mid},
+			success : function(re){
+				console.table(re);
+			}
+		})
+	
+	},2000);
+    
 	
 
 })
@@ -121,8 +136,6 @@ $("#btn_regist").on('click', function(){
 	var professor = $(this).parent().parent().find('.lecture_professor').html();
 	
 	var mid = $('#mid').val();
-	
-	console.log(mid);
 	
 	$.ajax({
 		url : "../timetable/savetimetable",
@@ -417,7 +430,20 @@ $(function(){
 // 과목삭제버튼
 $("#delete_lecture").on('click',function(){
 	var regex = /[^0-9]/g;
+	
+	var mid = $('#mid').val();
+	
 	let delete_lno = $(this).parent().parent().parent().find('.lecture_code').html();
+	
+	$.ajax({
+		url : "../timetable/deletetimetable",
+		data : {"mid" : mid, "code" : delete_lno},
+		success : function(re){
+			console.log(re);
+		}
+	})
+	
+	
 	$('.lecture_time_list').each(function(){
 	  var text2 = $(this).find('.lecture-code').html().replace(regex,"");
 	  timelist2.push(text2);

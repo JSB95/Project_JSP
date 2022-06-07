@@ -40,9 +40,9 @@ public class savetimetable extends HttpServlet {
 		boolean result = LectureDao.getLectureDao().savetimetable(table_name, table_professor, table_time, table_code, mno);
 		
 		if (result) {
-			response.getWriter().print("db성공");
+			response.getWriter().print("database save success");
 		} else {
-			response.getWriter().print("db실패");
+			response.getWriter().print("database save failure");
 		}
 	}
 

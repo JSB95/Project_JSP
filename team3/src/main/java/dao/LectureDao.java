@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import dto.Lecture;
+import dto.Timetable;
 
 public class LectureDao extends Dao{
 	public LectureDao() {
@@ -126,5 +127,40 @@ public class LectureDao extends Dao{
 		}
 		
 		return false;
+	}
+	
+	public boolean deletetimetable(String table_code, int mno) {
+		
+		String sql = "DELETE FROM timetable WHERE table_code = '" + table_code + "' AND mno = " + mno;
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println("deletetimetable ERROR : " + e);
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
+	public ArrayList<Timetable> gettimetabe(int mno){
+		
+		String sql = "SELECT * FROM timetable WHERE mno = " + mno;
+		ArrayList<Timetable> arrayList = new ArrayList<Timetable>();
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Timetable timetable = new Timetable(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), 0);
+				arrayList.add(timetable);
+			}
+			return arrayList;
+		} catch (Exception e) {
+			
+		}
+		return null;
 	}
 }

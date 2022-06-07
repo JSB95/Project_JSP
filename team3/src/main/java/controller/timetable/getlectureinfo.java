@@ -119,7 +119,7 @@ public class getlectureinfo extends HttpServlet {
 			jsonObject.put("lno", lecture.getLno());
 			jsonObject.put("lprofessor",lecture.getLprofessor());
 			jsonObject.put("ltime_db",lecture.getLtime());
-			System.out.println("DB 시간 : " + lecture.getLtime());
+			
 			jsonArray.put(jsonObject);
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("application/json");
