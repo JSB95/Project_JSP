@@ -49,7 +49,7 @@ public class MessageDao extends Dao{
 	public ArrayList<Message> getmessage(int mno,int startrow,int listsize){
 		ArrayList<Message> getmessage = new ArrayList<Message>();
 		try {
-			String sql = "SELECT * FROM message where mgetno="+mno+" limit "+startrow+","+listsize;
+			String sql = "SELECT * FROM message where mgetno="+mno+" order by mnum desc limit "+startrow+","+listsize;
 
 			ps=con.prepareStatement(sql);
 			rs=ps.executeQuery();
@@ -138,7 +138,7 @@ public class MessageDao extends Dao{
 	public ArrayList<Message> sendmessage(int mno,int startrow,int listsize){
 		ArrayList<Message> sendmessage = new ArrayList<Message>();
 		try {
-			String sql = "SELECT * FROM message where msendno="+mno+" limit "+startrow+","+listsize;
+			String sql = "SELECT * FROM message where msendno="+mno+" order by mnum desc limit "+startrow+","+listsize;
 			ps=con.prepareStatement(sql);
 			rs=ps.executeQuery();
 			while(rs.next()) {
@@ -154,7 +154,6 @@ public class MessageDao extends Dao{
 	}
 	
 	public JSONArray sendlist(int mnum){
-		System.out.println(mnum);
 		JSONArray jsonArray = new JSONArray();
 		try {
 			String 

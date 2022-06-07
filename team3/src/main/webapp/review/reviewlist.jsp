@@ -69,19 +69,19 @@
 
 	<%@include file="../header.jsp"%>
 	
-	<div class="container">
+	<div class="container content_wrap">
 		<div class="row">
-			<div class="col-md-9">
+			<h3 class="text" style="margin-top: 40px">최근강의평</h3>
+			<div class="">
+				<a href="reviewwrite.jsp?keyword="><button  class="write" type="button">강의평쓰기</button></a>
+			</div>
+			<div class="justify-content-center">
 				<form action="reviewlist.jsp?pagenum=<%=currentpage %>">
 					<input class="search" type="text" name="keyword" placeholder="강의명 또는 교수명을 입력해주세요"><input class="searchbtn" type="submit" value="검색"><br>
 				
 				</form>
 			</div>
-			<div class="col-md-3 d-flex justify-content-end">
-				<a href="reviewwrite.jsp?keyword="><button  class="write" type="button">강의평쓰기</button></a>
-			</div>
 			<div class="reviewbox">
-				<h3>최근강의평</h3>
 				<div class="line"></div>
 				<table class="table table-hover">
 				

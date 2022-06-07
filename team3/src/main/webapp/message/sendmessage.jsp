@@ -114,7 +114,26 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">받은쪽지</h5>
+        <h5 class="modal-title">보낸쪽지</h5>
+        <a href="sendmessage.jsp"><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+      </div>
+      <div class="modal-body" id="mcontent1">
+      
+      </div>
+      <div class="modal-footer">
+        <a href="sendmessage.jsp"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button></a>
+        <div id="send1">
+      	</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" tabindex="-1" id="send">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">보낸쪽지</h5>
         <a href="sendmessage.jsp"><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
       </div>
       <div class="modal-body" id="mcontent1">
