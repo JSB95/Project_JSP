@@ -10,17 +10,17 @@
 
 </head>
 <body>
-
+	<%@include file="../header.jsp"%>
 	<div class="container">
 		<div class="row"><!-- 계산출력 -->
 			<div class="col-md-4">
-				전체평점
+				<div id="전체평점">전체평점<br>0.00</div>
 			</div>
 			<div class="col-md-4">
-				전공평점			
+				<div id="전공평점">전공평점<br>0.00</div>			
 			</div>
 			<div class="col-md-4">
-				취득학점
+				<div id="취득학점">취득학점<br>0.00</div>
 			</div>
 		</div>
 		
@@ -33,9 +33,10 @@
 					<%for(int i =0 ; i<10; i++){ %>
 					<tr>
 						<td><input type="text"></td>
-						<td><input type="text" id="학점"></td>
+						<td><input type="text" id="학점<%=i%>"></td>
 						<td>
-							<select id="성적">
+							<select id="성적<%=i%>">
+								<option value="none">선택</option>
 								<option value="4.5">A+</option>
 								<option value="4.0">A0</option>
 								<option value="3.5">B+</option>
@@ -45,11 +46,11 @@
 								<option value="1.5">D+</option>
 								<option value="1.0">D0</option>
 								<option value="0">F</option>
-								<option value="">P</option>
-								<option value="0">NP</option>
+								<option value="P">P</option>
+								<option value="NP">NP</option>
 							</select>
 						</td>
-						<td><input type="checkbox" id="전공" value="" name="전공"></td>
+						<td><input type="checkbox" id="전공<%=i%>" name="전공"></td>
 					</tr>
 					<%} %>
 				</table>

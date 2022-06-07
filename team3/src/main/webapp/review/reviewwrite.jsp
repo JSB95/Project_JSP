@@ -36,7 +36,7 @@
 		String 이수구분 = "전공";
 	%>
 	
-	
+	<%@include file="../header.jsp"%>
 	<div class="container">
 		<div class="row">
 				<div>
