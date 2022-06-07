@@ -85,10 +85,12 @@ function view() {
 	
 	
 	for(let i = 0; i<boardlist.length; i++) {
-		console.log(boardlist[i]["bdate"].split(" ")[1])
+		console.log("ㄴ스플릿"+boardlist[i]["bdate"])
+		console.log("스플릿"+boardlist[i]["bdate"].split(" ")[1])
 	
-	if(boardlist[i]["bdate"]==date) {
+	if(boardlist[i]["bdate"].split(" ")[0]==date) {
 		boardlist[i]["bdate"] = boardlist[i]["bdate"].split(" ")[1]
+		
 	} else {
 		boardlist[i]["bdate"] = boardlist[i]["bdate"].split(" ")[0]
 	}
