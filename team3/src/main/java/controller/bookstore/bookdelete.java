@@ -17,13 +17,13 @@ import dto.Textbook;
  * Servlet implementation class delete
  */
 @WebServlet("/bookstore/delete")
-public class delete extends HttpServlet {
+public class bookdelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public delete() {
+    public bookdelete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -63,7 +63,6 @@ public class delete extends HttpServlet {
 
 	}
 
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
