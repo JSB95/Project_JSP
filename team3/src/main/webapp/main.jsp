@@ -1,3 +1,4 @@
+<%@page import="org.json.JSONArray"%>
 <%@page import="dto.Board"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.BoardDao"%>
@@ -51,11 +52,8 @@
 			    </a>
 			  </li>
 
-			  <li class="nav-item">
-			    <a class="nav-link" href="/team3/bookstore/booklist.jsp"><i class="fas fa-book-open"></i></a>
-
 			  <li class="nav-item iconitem">
-			    <a class="nav-link iconlink" href="#">
+			    <a class="nav-link" href="/team3/bookstore/booklist.jsp"><i class="fas fa-book-open"></i></a>
 			    	<i class="fas fa-book-open"></i>
 			    	<h5 class="h5">책방</h5>
 					<span class="font">저렴한 가격으로<br>책을 구매하자!</span>
@@ -77,7 +75,11 @@
 				<div class="col-md-6 tablebox">
 					<h3>자유게시판<i class="fa-solid fa-feather boardimg"></i></h3>
 					<table class="table tablefont">
+						<tr>
+							<th>제목</th><th>댓글수</th><th>작성일</th>
+						</tr>
 					<%ArrayList<Board> getboardlist = BoardDao.getBoardDao().getboardlist();
+						JSONArray json=BoardDao.getBoardDao().getboardbestlist();
 						for(int i=0;i<5;i++){
 					%>
 						<tr>
@@ -90,17 +92,15 @@
 					<h3>HOT 게시판<i class="fa-solid fa-feather boardimg"></i></h3>
 					<table class="table tablefont">
 						<tr>
-							<td>제목</td><td>추천수</td><td>댓글수</td>
+							<th>제목</th><th>댓글수</th><th>추천수</th>
 						</tr>
+						<%for(int i=0; i<5; i++){ %>
 						<tr>
-							<td>제목</td><td>추천수</td><td>댓글수</td>
+							<td><%=json.getJSONObject(i).get("btitle") %></td>
+							<td><%=json.getJSONObject(i).get("rcount") %></td>
+							<td><%=json.getJSONObject(i).get("blike") %></td>
 						</tr>
-						<tr>
-							<td>제목</td><td>추천수</td><td>댓글수</td>
-						</tr>
-						<tr>
-							<td>제목</td><td>추천수</td><td>댓글수</td>
-						</tr>
+						<%} %>
 					</table>
 				</div>
 			</div>
