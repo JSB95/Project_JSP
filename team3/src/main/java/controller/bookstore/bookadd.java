@@ -67,7 +67,7 @@ public class bookadd extends HttpServlet {
 		String tclass = multi.getParameter("tclass");
 		int mno = MemberDao.getMemberDao().getmno(mid);
 		
-		Textbook textbook = new Textbook(0 , timg, ttitle, tcontent, tprice, 1, tcondition, tauthor, tcompany, tyear, tclass, mno);
+		Textbook textbook = new Textbook(0 , timg, ttitle, tcontent, tprice, tcondition, tauthor, tcompany, tyear, tclass, mno);
 		
 		boolean result = BookstoreDao.getBookstoreDao().bookadd(textbook);
 		

@@ -6,7 +6,6 @@ public class Textbook {
 	private String ttitle;
 	private String tcontent;
 	private int tprice;
-	private int tactive; 
 	private int tcondition;
 	private String tauthor;
 	private String tcompany;
@@ -16,13 +15,13 @@ public class Textbook {
 	@Override
 	public String toString() {
 		return "Textbook [tno=" + tno + ", timg=" + timg + ", ttitle=" + ttitle + ", tcontent=" + tcontent + ", tprice="
-				+ tprice + ", tactive=" + tactive + ", tcondition=" + tcondition + ", tauthor=" + tauthor
+				+ tprice + ",  tcondition=" + tcondition + ", tauthor=" + tauthor
 				+ ", tcompany=" + tcompany + ", tyear=" + tyear + ", tclass=" + tclass + ", mno=" + mno + "]";
 	}
 	public Textbook() {
 		super();
 	}
-	public Textbook(int tno, String timg, String ttitle, String tcontent, int tprice, int tactive, int tcondition,
+	public Textbook(int tno, String timg, String ttitle, String tcontent, int tprice, int tcondition,
 			String tauthor, String tcompany, String tyear, String tclass, int mno) {
 		super();
 		this.tno = tno;
@@ -30,7 +29,6 @@ public class Textbook {
 		this.ttitle = ttitle;
 		this.tcontent = tcontent;
 		this.tprice = tprice;
-		this.tactive = tactive;
 		this.tcondition = tcondition;
 		this.tauthor = tauthor;
 		this.tcompany = tcompany;
@@ -67,12 +65,6 @@ public class Textbook {
 	}
 	public void setTprice(int tprice) {
 		this.tprice = tprice;
-	}
-	public int getTactive() {
-		return tactive;
-	}
-	public void setTactive(int tactive) {
-		this.tactive = tactive;
 	}
 	public int getTcondition() {
 		return tcondition;

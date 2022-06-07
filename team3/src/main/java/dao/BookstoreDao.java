@@ -53,12 +53,11 @@ public class BookstoreDao extends Dao{
 						rs.getString(4),
 						rs.getInt(5),
 						rs.getInt(6),
-						rs.getInt(7),
+						rs.getString(7),
 						rs.getString(8),
 						rs.getString(9),
 						rs.getString(10),
-						rs.getString(11),
-						rs.getInt(12)
+						rs.getInt(11)
 						);
 				booklist.add(textbook);
 			}
@@ -82,12 +81,11 @@ public class BookstoreDao extends Dao{
 						rs.getString(4),
 						rs.getInt(5),
 						rs.getInt(6),
-						rs.getInt(7),
+						rs.getString(7),
 						rs.getString(8),
 						rs.getString(9),
 						rs.getString(10),
-						rs.getString(11),
-						rs.getInt(12)
+						rs.getInt(11)
 						);
 				return textbook;
 			}
@@ -139,11 +137,10 @@ public class BookstoreDao extends Dao{
 				object.put("ttitle",rs.getString(3));
 				object.put("tcontent", rs.getString(4));
 				object.put("tprice", rs.getInt(5));
-				object.put("tactive", rs.getInt(6));
-				object.put("tcondition", rs.getInt(7));
-				object.put("tauthor",rs.getString(8) );
-				object.put("tcompany",rs.getString(9) );
-				object.put("tclass",rs.getString(10) );
+				object.put("tcondition", rs.getInt(6));
+				object.put("tauthor",rs.getString(7) );
+				object.put("tcompany",rs.getString(8) );
+				object.put("tclass",rs.getString(9) );
 				jsonArray.put(object);
 				
 			}
