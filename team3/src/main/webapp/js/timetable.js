@@ -211,7 +211,7 @@ $("#btn_regist").on('click', function(){
 						case "월" : 
 							for (let r = 0; r < mon_list.length; r++){
 								if (code == mon_list[r]){
-									console.log(r + "번째 걸림");
+									
 									$('.lecture_time_list').eq(i).find('.lecture-title').html("");
 									$('.lecture_time_list').eq(i).find('.lecture-code').css('color', colorlist['background'][num]);
 									$('.lecture_time_list').eq(i).find('.material-icons').css('display', 'none');
@@ -225,7 +225,7 @@ $("#btn_regist").on('click', function(){
 						
 							for (let r = 0; r < tue_list.length; r++){
 								if (code == tue_list[r]){
-									console.log(r + "번째 걸림");
+									
 									$('.lecture_time_list').eq(i).find('.lecture-title').html("");
 									$('.lecture_time_list').eq(i).find('.lecture-code').css('color', colorlist['background'][num]);
 									$('.lecture_time_list').eq(i).find('.material-icons').css('display', 'none');
@@ -239,7 +239,7 @@ $("#btn_regist").on('click', function(){
 						
 							for (let r = 0; r < wed_list.length; r++){
 								if (code == wed_list[r]){
-									console.log(r + "번째 걸림");
+									
 									$('.lecture_time_list').eq(i).find('.lecture-title').html("");
 									$('.lecture_time_list').eq(i).find('.lecture-code').css('color', colorlist['background'][num]);
 									$('.lecture_time_list').eq(i).find('.material-icons').css('display', 'none');
@@ -255,7 +255,7 @@ $("#btn_regist").on('click', function(){
 						
 							for (let r = 0; r < thu_list.length; r++){
 								if (code == thu_list[r]){
-									console.log(r + "번째 걸림");
+									
 									$('.lecture_time_list').eq(i).find('.lecture-title').html("");
 									$('.lecture_time_list').eq(i).find('.lecture-code').css('color', colorlist['background'][num]);
 									$('.lecture_time_list').eq(i).find('.material-icons').css('display', 'none');
@@ -269,7 +269,7 @@ $("#btn_regist").on('click', function(){
 						
 							for (let r = 0; r < fri_list.length; r++){
 								if (code == fri_list[r]){
-									console.log(r + "번째 걸림");
+									
 									$('.lecture_time_list').eq(i).find('.lecture-title').html("");
 									$('.lecture_time_list').eq(i).find('.lecture-code').css('color', colorlist['background'][num]);
 									$('.lecture_time_list').eq(i).find('.material-icons').css('display', 'none');
@@ -430,6 +430,7 @@ function isEmpty(str){
 	}
 }
 
+// 검색 필터
 function filter(){
 	
 	var value, name, item, i;
@@ -446,6 +447,6 @@ function filter(){
 			
  		} else {
 			item[i].style.display = "none";
-}
+		}
 	}
 }
