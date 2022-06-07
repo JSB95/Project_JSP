@@ -63,7 +63,7 @@ function getsearchlist(){
 
 
 function boardbest() {
-	alert("gd")
+	
 	$.ajax({
 		url : "/team3/board/bestlist",
 		
@@ -77,7 +77,23 @@ function boardbest() {
 function view() {
 	let html ="";
 	
+	var today = new Date();
+	formatDate(today);
+	let date = formatDate(today);
+	console.log(date)
+	
+	
+	
 	for(let i = 0; i<boardlist.length; i++) {
+		console.log(boardlist[i]["bdate"].split(" ")[1])
+	
+	if(boardlist[i]["bdate"]==date) {
+		boardlist[i]["bdate"] = boardlist[i]["bdate"].split(" ")[1]
+	} else {
+		boardlist[i]["bdate"] = boardlist[i]["bdate"].split(" ")[0]
+	}
+	
+		
 		if( i >= viewcount ) break; // 만약에 i가 화면에 표시할 주문수와 동일하면 출력 금지 
 		html += 
 		'<div id="list" onclick="location.href=\'boardview.jsp?bno='+boardlist[i]["bno"]+'\'">'+
@@ -113,6 +129,20 @@ function view2() {
 	$("#listbox").html(html);
 }
 */
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
 
 
 
