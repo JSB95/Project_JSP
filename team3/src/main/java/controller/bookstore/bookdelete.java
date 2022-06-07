@@ -16,7 +16,7 @@ import dto.Textbook;
 /**
  * Servlet implementation class delete
  */
-@WebServlet("/bookstore/delete")
+@WebServlet("/bookstore/bookdelete")
 public class bookdelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

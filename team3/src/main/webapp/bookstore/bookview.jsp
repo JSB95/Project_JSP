@@ -59,7 +59,7 @@
 						</a>
 					</div>
 					<div class="col-md-6">
-						<a href="/team3/bookstore/bookdelete?tno=<%=textbook.getTno()%>"><button class="form-control">삭제</button></a>
+						<a href="/team3/bookstore/bookdelete?tno=<%=textbook.getTno()%>"><button class="form-control">삭제하기</button></a>
 					</div>
 				</div>
 			<%}else{ %>

@@ -60,7 +60,7 @@ function view(){
 function search(){
 	let keyword = $("#keyword").val();
 	$.ajax({ 
-		url : "/team3/bookstore/booklist" ,
+		url : "/team3/bookstore/getbooklist" ,
 		data : {"keyword" : keyword}, 
 		success : function( result ){
 			booklist = result;
