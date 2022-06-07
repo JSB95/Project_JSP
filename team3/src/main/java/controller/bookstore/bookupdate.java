@@ -44,7 +44,7 @@ public class bookupdate extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int tno = Integer.parseInt(request.getParameter("tno"));
-		
+		System.out.println("tno : " +tno);
 		String uploadpath = "/team3/bookstore/bookimg";
 		MultipartRequest multi = new MultipartRequest(
 				request, // 요청방식
@@ -82,7 +82,7 @@ public class bookupdate extends HttpServlet {
 		int mno = MemberDao.getMemberDao().getmno(mid);
 		
 		Textbook textbook = new Textbook(tno , timg, ttitle, tcontent, tprice, 1, tcondition, tauthor, tcompany, tyear, tclass, mno);
-		
+		System.out.println(textbook.toString());
 		boolean result = BookstoreDao.getBookstoreDao().bookupdate(textbook);
 		
 		if( result ) { 

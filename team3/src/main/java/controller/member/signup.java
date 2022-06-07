@@ -52,8 +52,6 @@ public class signup extends HttpServlet {
 		
 		boolean result = MemberDao.getMemberDao().signup(member);
 		
-		System.out.println(result);
-		
 		if (result) {
 			response.sendRedirect("/team3/member/login.jsp");
 		}else {

@@ -37,14 +37,9 @@ public class findid extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("findid");
 		String mname = request.getParameter("mname");
 		String memail = request.getParameter("memail");
 		String mid = MemberDao.getMemberDao().findid(mname, memail);
-		
-		System.out.println("이름 : " + mname);
-		System.out.println("이메일 : " + memail);
-		System.out.println("아이디 : " + mid);
 		
 		response.getWriter().print(mid);
 		

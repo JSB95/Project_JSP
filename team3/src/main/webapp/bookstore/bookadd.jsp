@@ -34,9 +34,11 @@
 			</div>
 			<div>
 				<h3 style="display: inline;">실제 사진을 올려주세요</h3>
-				<input id="timg" class="timg" type="file" name="timg" accept="image/*">
-				<div id="addimgbox" class="addimgbox" onclick="addimg()">
-					<img alt="" src="camera.png">
+				<div id="imgbox">
+					<input id="timg" class="timg" type="file" name="timg" accept="image/*">
+					<div id="addimgbox" class="addimgbox" onclick="addimg()">
+						<img alt="" src="camera.png">
+					</div>
 				</div>
 				<div id="previewbox">
 					<img id="preview" class="col-md-4" width="100%">

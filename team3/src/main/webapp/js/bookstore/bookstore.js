@@ -1,5 +1,6 @@
 //사진 미리보기
 $("#timg").change(function(e){
+	alert("프리뷰");
 	$("#addimgbox").hide();
 	let reader = new FileReader();
 	reader.readAsDataURL(e.target.files[0]);
@@ -10,22 +11,11 @@ $("#timg").change(function(e){
 });
 //사진 추가
 function addimg(){
+	alert("추가");
 	$("#timg").click();
 }
-//사진 삭제
-function bimgdelete(tno){
-	
-		alert("삭제중");
-	$.ajax({
-		url : "bimgdelete" ,
-		data : { "tno" : tno },
-		success : function( result ){
-			if(result == "1"){
-				alert("첨부파일삭제완료");
-				location.reload();
-			}else {
-				alert("첨부파일삭제오류");
-			}
-		}
-	});
+//사진 변경
+function bimgupdate(){
+	addimg();
+	console.log($("#timg").val());
 }
