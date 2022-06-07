@@ -57,6 +57,19 @@ public class BoardDao extends Dao {
 		return 0;
 		}
 	
+	public int getnos2(int rno) {
+		String sql = "select mno from reply where rno = '"+rno+"'";
+		
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (Exception e) {}
+		return 0;
+		}
+	
 	
 	
 	

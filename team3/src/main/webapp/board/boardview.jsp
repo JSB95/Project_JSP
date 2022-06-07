@@ -19,13 +19,14 @@
 <body>
 <%
 int bno = Integer.parseInt( request.getParameter("bno"));
+
 Board board  = BoardDao.getBoardDao().getboaBoard(bno);
 String mid = (String)session.getAttribute("login"); 
 int mno = BoardDao.getBoardDao().getmno(mid);
 String id = BoardDao.getBoardDao().getmid(mno);
 int mno2 = BoardDao.getBoardDao().getnos(bno);
-System.out.println(mid);
-System.out.println("첫번째"+mno+"두번째"+mno2);
+
+
 
 %>
 
@@ -42,10 +43,13 @@ System.out.println("첫번째"+mno+"두번째"+mno2);
 					<div class="t"><h1><%=board.getBtitle() %></h1></div>
 					
 					
-						<div class="date"><span>  <%=board.getBdate() %> </span>
+					
+						
 				
 				</div>
 				</div>
+				
+				<div class="line"></div>
 				
 				
 				
@@ -55,11 +59,13 @@ System.out.println("첫번째"+mno+"두번째"+mno2);
 						<span><i class="fas fa-user"></i></span> 
 					</div>
 					<div>
-						<span><%=board.getBnickname() %></span> 
+						<span style="margin-left:10px;"><%=board.getBnickname() %></span> 
 						
 					</div>
+					<div class="date"><span>  <%=board.getBdate() %> </span>
 				
 				</div>
+					
 				
 				
 				
@@ -74,7 +80,7 @@ System.out.println("첫번째"+mno+"두번째"+mno2);
 			
 			
 			<% if( board.getBimg() == null ){ // 첨부파일이 없을경우 %> 
-				 첨부파일 :  - 
+				
 			<%	}else{  %>
 				 <div class="img_area"><img width="100%" alt="" src="/team3/board/upload/<%=board.getBimg()%>"> </div> <!-- 첨부파일 다운로드 -->
 			<% } %>
@@ -149,8 +155,11 @@ System.out.println("첫번째"+mno+"두번째"+mno2);
 			
 			</div>
 				<div class="btn_area">
+				<% int mno3 = BoardDao.getBoardDao().getnos2(reply.getRno());%>
+				<%if(mno == mno3) { %>
 				<div class="test"><button onclick="updateview(<%=reply.getRno()%>,'<%=reply.getRcontent()%>',<%=reply.getBno()%>)">수정</button></div>
 				<div class="test"><button onclick="replydelete(<%=reply.getRno()%>,<%=reply.getBno()%>)">삭제</button></div>
+				<% }%>
 				</div>
 				</div>
 				
@@ -188,8 +197,11 @@ System.out.println("첫번째"+mno+"두번째"+mno2);
 			
 			</div>
 				<div class="btn_area">
+				<% int mno4 = BoardDao.getBoardDao().getnos2(rereply.getRno());%>
+				<%if(mno == mno4) { %>
 				<div class="test"><button onclick="reupdateview(<%=rereply.getRno()%>,'<%=rereply.getRcontent()%>',<%=rereply.getBno()%>)">수정</button></div>
 				<div class="test"><button onclick="replydelete(<%=rereply.getRno()%> ,<%=rereply.getBno()%>)">삭제</button></div>
+				<%} %>
 				</div>
 				</div>
 				

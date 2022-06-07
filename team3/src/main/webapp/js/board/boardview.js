@@ -58,8 +58,11 @@ function saverelike(mid,rno){
 function replywrite(bno) {
 	let rcontent = $("#rcontent").val();
 	var anonymous = $('input:checkbox[id="anonymous"]').is(':checked');
-	alert(anonymous);
-	$.ajax({
+	if(rcontent=="") {
+		alert("내용을입력해주세요");
+		return
+	} else {
+		$.ajax({
 		url: "/team3/board/replywrite" ,
 		data: { "bno":bno , "rcontent" : rcontent ,"anonymous" :anonymous} ,
 		success : function( result ){
@@ -73,12 +76,19 @@ function replywrite(bno) {
 			else{ alert("댓글작성이 실패했습니다."); }
 		}
 	});
+		
+	}
+	
 }
 
 // 대댓글 등록
 function rereplywrite(rno,bno) {
 	let rcontent = $("#rrcontent").val();
 	var anonymous = $('input:checkbox[id="anonymous"]').is(':checked');
+	if(rcontent==" ") {
+		alert("내용을입력해주세요");
+		return;
+	}
 	
 	$.ajax({
 		url: "/team3/board/rereplywrite" ,
@@ -165,8 +175,12 @@ function replyupdate(rno ,bno){ // 수정쓰기메소드
 	var anonymous = $('input:checkbox[id="anonymous"]').is(':checked');
 	//alert(rno)
 	//alert(bno)
-	alert(upcontent);
-	$.ajax({
+	//alert(upcontent);
+	if(upcontent == "" || upcontent == "        ") {
+		alert("내용을입력해주세요")	;
+		return;
+	} else {
+		$.ajax({
 		url : "/team3/board/replyupdate" , 
 		data : { "rno" : rno ,"upcontent":upcontent,"bno":bno ,"anonymous" :anonymous } ,
 		success : function( result ){
@@ -178,6 +192,9 @@ function replyupdate(rno ,bno){ // 수정쓰기메소드
 			else{ alert("수정 실패했습니다."); }
 		}
 	});
+		
+	}
+	
 }
 
 // 대댓글 수정

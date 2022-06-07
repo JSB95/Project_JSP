@@ -5,13 +5,24 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'GothicA1-Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/GothicA1-Light.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
 *{
 	font-family: 'KOHIBaeumOTF';
 }
 
+#list span{
+	font-family: 'GothicA1-Light';
+	font-weight: bold;
+}
 
 #list{
-	
+	 
 	width: 35vw;
 	border-bottom: 1px solid black;
 	
@@ -39,6 +50,7 @@ width: 35%;
  
    margin-right: 5px;
    margin-bottom: 15px;
+   font-size: 12px;
  
  }
 
@@ -80,6 +92,7 @@ width: 35%;
 	margin-left: 30px;
 }
 
+
 .search_area{
 	
 	    font-family: "serif";
@@ -116,6 +129,7 @@ button{
 	width: 80px;
 	height: 30px;
 	text-align: cetner;
+	
 	
 }
 
