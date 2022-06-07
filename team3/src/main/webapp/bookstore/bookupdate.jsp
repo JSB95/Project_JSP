@@ -39,10 +39,14 @@
 				<input type="radio" value="3" name="tcondition">하
 			</div>
 			<div>
-				<h3>실제 사진을 올려주세요</h3>
-				<input class="form-control" id="timg" type="file" name="timg" accept=".jpg, .jpeg, .png" >
-				<div>
-					<img width="150px" id="preview" alt="" src="/team3/bookstore/bookimg/<%=textbook.getTimg()%>">
+				<h3 style="display: inline;">실제 사진을 올려주세요</h3>
+				<button type="button" onclick="bimgdelete(<%=textbook.getTno()%>)">파일삭제</button>
+				<input id="timg" class="timg" type="file" name="timg" accept="image/*">
+				<div id="addimgbox" class="addimgbox" onclick="addimg()">
+					<img alt="" src="camera.png">
+				</div>
+				<div id="previewbox">
+					<img id="preview" class="col-md-4" width="100%">
 				</div> 
 			</div>
 			<div>

@@ -168,5 +168,17 @@ public class BookstoreDao extends Dao{
 		}
 		return false;
 	}
+	//사진 삭제
+	public boolean bimgdelete(int tno) {
+		String sql = "update textbook set timg = null where tno = "+tno;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println("bimgdelete 오류 " + e);
+		}
+		return false;
+	}
 	
 }
