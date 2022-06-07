@@ -45,7 +45,7 @@ public class bookupdate extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int tno = Integer.parseInt(request.getParameter("tno"));
 		System.out.println("tno : " +tno);
-		String uploadpath = "/team3/bookstore/bookimg";
+		String uploadpath = "C:\\Users\\504\\git\\jsp\\team3\\src\\main\\webapp\\bookstore\\bookimg";
 		MultipartRequest multi = new MultipartRequest(
 				request, // 요청방식
 				uploadpath,	//파일저장경로

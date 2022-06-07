@@ -20,7 +20,7 @@
 	%>
 	<div class="container">
 		<h3 class="text-center my-4">판매하기</h3>
-		<form class="col-md-8 offset-2"  action="/team3/bookstore/bookupdate?tno<%=textbook.getTno() %>>" method="post" enctype="multipart/form-data">
+		<form class="col-md-8 offset-2"  action="/team3/bookstore/bookupdate?tno=<%=textbook.getTno() %>" method="post" enctype="multipart/form-data">
 			<div>
 				<h3>자세한 책 정보를 적어주세요</h3>
 				<input class="form-control" type="text" name="ttitle" value="<%=textbook.getTtitle() %>">
@@ -34,9 +34,19 @@
 			</div>
 			<div>
 				<h3>보존 상태는 어떤가요?</h3>
+				<%if(textbook.getTcondition() == 1){%>
+					<input type="radio" value="1" name="tcondition" checked="checked">상
+					<input type="radio" value="2" name="tcondition">중
+					<input type="radio" value="3" name="tcondition">하
+				<%}else if(textbook.getTcondition() == 2){%>
+					<input type="radio" value="1" name="tcondition">상
+					<input type="radio" value="2" name="tcondition" checked="checked">중
+					<input type="radio" value="3" name="tcondition">하
+				<%}else {%>
 				<input type="radio" value="1" name="tcondition">상
 				<input type="radio" value="2" name="tcondition">중
-				<input type="radio" value="3" name="tcondition">하
+				<input type="radio" value="3" name="tcondition" checked="checked">하
+				<%} %>
 			</div>
 			<div>
 				<h3 style="display: inline;">실제 사진을 올려주세요</h3>
