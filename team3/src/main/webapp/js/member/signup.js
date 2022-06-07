@@ -118,7 +118,7 @@ $( function(){
 		let mpassword = $("#mpassword").val(); 
 		let mpasswordcheck = $("#mpasswordcheck").val(); 
 		
-		let passwordj = /^[a-zA-Z0-9]{5,15}$/;
+		let passwordj = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,15}$/;
 		
 		if(passwordj.test(mpassword)){
 			if( mpassword != mpasswordcheck ){
@@ -131,7 +131,7 @@ $( function(){
 				pass[6] = true;
 			}
 		}else{
-			$("#passwordcheck").html("영문과 숫자로 5~15글자 입력해주세요.");
+			$("#passwordcheck").html("영문, 숫자, 특수문자 포함 6~15글자 입력해주세요.");
 			pass[5] = false;
 		}
 	}); //비밀번호 확인 end

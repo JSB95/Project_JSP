@@ -19,9 +19,13 @@
 .content_table_tr {
 	margin-bottom: 10px;
 }
+.scrollbox{
+	height: 100%;
+	overflow-x: scroll;
+}
 .tprice {
     color: #ff5d57;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
 }
 .bookconditon {
@@ -41,6 +45,48 @@
 	background-color: #ff5d57;
 	color: white;
 	border: none;
-	border-radius: 10px;
+	border-radius: 5px;
 	height: 40px;
+	width: 100%
+}
+.addimgbox {
+	width: 30%;
+    box-sizing: border-box;
+    border: 1px dashed #d6d6d6;
+    cursor: pointer;
+    position: relative;
+}
+.addimgbox:after {
+	content:"";
+	display: block;
+	padding-bottom: 100%;
+}
+.addimgbox img {
+	position: absolute;
+	width: 33%;
+	margin: 33%;
+}
+#timg {
+	display: none;
+}
+.list_ttitle{
+	font-size : 20px;
+	font-weight: bold;
+}
+.list_tprice{
+	color: #ff5d57;
+    font-size: 18px;
+    font-weight: bold;
+}
+.bdetailbox{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+.list_tcondition {
+	color: #33b207;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 20px 0px;
 }

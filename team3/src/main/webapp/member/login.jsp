@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +20,7 @@
 				<div> 
 					<input class="form-control my-2" type="text" id="mid" name="mid" placeholder="아이디">
 				</div>
-				<div>
+				<div class="fileinputbox">
 					<input class="form-control my-2" type="password" id="mpassword" name="mpassword" placeholder="비밀번호">
 				</div>
 				<input class="form-control btn btn-dark my-4" type="submit" value="로그인하기">

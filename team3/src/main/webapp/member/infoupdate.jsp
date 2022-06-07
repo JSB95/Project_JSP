@@ -18,8 +18,9 @@
 		String mid = (String)session.getAttribute("login");
 		Member member =  MemberDao.getMemberDao().getmemberinfo(mid);
 	%>
+	<%@include file="../header.jsp" %>
 	<div class="container">
-		<h3>회원정보 수정</h3>
+		<h3 class="menutitle">회원정보 수정</h3>
 		<div>
 			<table class="table">
 				<tr>
@@ -34,21 +35,27 @@
 				<tr>
 					<td>이메일</td>
 					<td><input value="<%=member.getMemail()%>" class="form-control mb-2" type="text" id="memail" name="memail" placeholder="이메일을 입력해주세요."></td>
-					<td id="emailcheck">이메일 형식을 지켜주세요</td>
+					<td id="emailcheck" style="color: #999999;" >이메일 형식을 지켜주세요</td>
 				</tr>
 				<tr>
 					<td>전화번호</td>
 					<td><input value="<%=member.getMphone()%>" class="form-control mb-2" type="text" id="mphone" name="mphone" placeholder="전화번호 11자리를 입력해주세요.(- 제외)"></td>
-					<td id="phonecheck">하이픈(-)을 제외한 숫자만 입력해주세요</td>
+					<td id="phonecheck" style="color: #999999;">하이픈(-)을 제외한 숫자만 입력해주세요</td>
 				</tr>
 				<tr>
 					<td>비밀번호</td>
 					<td><input class="form-control mb-2" type="password" id="mpassword" name="mpassword" placeholder="비밀번호를 입력해주세요."></td>
-					<td>회원님의 비밀번호를 입력해주세요</td>
+					<td style="color: #999999;">정보를 수정 하시려면 기존 비밀번호를 입력하시기 바랍니다.</td>
 				</tr>
 			</table>
-			<button onclick="update()" type="submit">수정</button>
-			<a href="/team3/member/memberinfo.jsp"><button>취소</button></a>
+			<div class="row">
+				<div class="col-md-2 offset-4">
+					<button class="form-control btn btn-dark" onclick="update()" type="submit">수정</button>
+				</div>
+				<div  class="col-md-2">
+					<a href="/team3/member/memberinfo.jsp"><button class="form-control btn btn-outline-secondary">취소</button></a>
+				</div>
+			</div>
 			<input type="hidden" value="<%=member.getMemail()%>" id="email">
 			<input type="hidden" value="<%=member.getMphone()%>" id="phone">
 			<input type="hidden" value="<%=member.getMpassword()%>" id="password">

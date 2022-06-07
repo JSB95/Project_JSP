@@ -17,22 +17,30 @@
 		String mid = (String)session.getAttribute("login");
 		Member member =  MemberDao.getMemberDao().getmemberinfo(mid);
 	%>
+	<%@include file="../header.jsp" %>
 	<div class="container">
-		<div>
-			<span>현재 비밀번호</span>
-			<input  type="password" id="oldpassword" name="oldpassword" placeholder="비밀번호를 입력해주세요.">
+		<div class="container col-md-6 offset-3">
+			<h3 class="menutitle">비밀번호 변경</h3>
+			<div class="my-4">
+				<h5>현재 비밀번호</h5>
+				<input class="form-control" type="password" id="oldpassword" name="oldpassword" placeholder="현재 비밀번호를 입력해주세요.">
+			</div>
+			<div>
+				<h5>새로운 비밀번호</h5>
+				<input class="form-control" type="password" id="mpassword" name="mpassword" placeholder="비밀번호를 입력해주세요.">
+				<span id="passwordcheck" class="check">영문, 숫자, 특수문자 포함 6~15글자 입력해주세요.</span>
+				<h5>새 비밀번호 확인</h5>
+				<input class="form-control" type="password" id="mpasswordcheck" placeholder="비밀번호를 입력해주세요.">
+			</div>
+			<div class="row my-4">
+				<div class="col-md-4">
+					<a href="/team3/member/memberinfo.jsp"><button class="form-control btn btn-outline-secondary" >취소</button></a>
+				</div>
+				<div class="col-md-8">
+					<button onclick="updatepw()" type="submit" class="form-control btn btn-dark ">수정</button>
+				</div>
+			</div>
 		</div>
-		<div>
-			<span>새로운 비밀번호</span>
-			<input  type="password" id="mpassword" name="mpassword" placeholder="비밀번호를 입력해주세요.">
-		</div>
-		<div>
-			<span>비밀번호 확인</span>
-			<input  type="password" id="mpasswordcheck" placeholder="비밀번호를 입력해주세요.">
-			<div id="passwordcheck" class="check">영어, 숫자로 5~15자리 입력가능합니다</div>
-		</div>
-		<button onclick="updatepw()" type="submit">수정</button>
-		<a href="/team3/member/memberinfo.jsp"><button>취소</button></a>
 		<input type="hidden" value="<%=member.getMpassword()%>" id="password">
 	</div>
 	<!-- jquery cdn -->

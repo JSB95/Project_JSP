@@ -35,7 +35,7 @@
 			    <a class="nav-link" href="/team3/review/reviewlist.jsp?keyword="><i class="fas fa-user-graduate"></i></a>
 			  </li>
 			  <li class="nav-item">
-			    <a class="nav-link" href="#"><i class="fas fa-book-open"></i></a>
+			    <a class="nav-link" href="/team3/bookstore/booklist.jsp"><i class="fas fa-book-open"></i></a>
 			  </li>
 			</ul>
 			

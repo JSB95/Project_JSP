@@ -13,18 +13,28 @@
 	<link href="/team3/css/member/member.css" rel="stylesheet">
 </head>
 <body>
+	<%@include file="../header.jsp" %>
 	<%
 		String mid = (String)session.getAttribute("login");
 		Member member =  MemberDao.getMemberDao().getmemberinfo(mid);
 	%>
 	<div class="container">
-		<div>
-			<span>정말 탈퇴하시겠습니까?</span>
-			<input type="password" id="mpassword" name="mpassword" placeholder="비밀번호를 입력해주세요.">
+		<div class="deletebox container col-md-6 offset-3">
+			<h3 class="menutitle">회원탈퇴</h3>
+			<div>
+				<h5>정말 탈퇴하시겠습니까?</h5>
+				<input class="form-control" type="password" id="mpassword" name="mpassword" placeholder="비밀번호를 입력해주세요.">
+			</div>
+			<div class="deletebtn row my-4">
+				<div class="col-md-6">
+					<button onclick="mdelete()" type="submit" class="form-control btn btn-outline-secondary">탈퇴</button>
+				</div>
+				<div class="col-md-6">
+					<a href="/team3/member/memberinfo.jsp"><button class="form-control btn btn-outline-secondary" >취소</button></a>
+				</div>
+			</div>
 		</div>
 		
-		<button onclick="mdelete()" type="submit">탈퇴</button>
-		<a href="/team3/member/memberinfo.jsp"><button>취소</button></a>
 		<input type="hidden" value="<%=member.getMpassword()%>" id="password">
 	</div>
 	<!-- jquery cdn -->
