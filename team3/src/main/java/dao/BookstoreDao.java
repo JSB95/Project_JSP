@@ -97,8 +97,25 @@ public class BookstoreDao extends Dao{
 		}
 		return null;
 	}
+	//책 수정
 	public boolean bookupdate(Textbook textbook) {
-		
+		String sql = "update textbook set timg=?, ttitle=?, tcontent=?, tprice=?, tcondition=?, tauthor=?, tcompany=?, tyear=?, tclass=? where tno=?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, textbook.getTimg());
+			ps.setString(2, textbook.getTtitle());
+			ps.setString(3, textbook.getTcontent());
+			ps.setInt(4, textbook.getTprice());
+			ps.setInt(5, textbook.getTcondition());
+			ps.setString(6, textbook.getTauthor());
+			ps.setString(7, textbook.getTcompany());
+			ps.setString(8, textbook.getTyear());
+			ps.setString(9, textbook.getTclass());
+			ps.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println("bookupdate 오류 " + e);
+		}
 		return false;
 	}
 	//책 출력리스트
@@ -138,6 +155,18 @@ public class BookstoreDao extends Dao{
 		
 		
 		return null;
+	}
+	//책 삭제
+	public boolean bookdelete(int tno) {
+		String sql = "delete from textbook where tno="+tno;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.execute();
+			return true;
+		} catch (Exception e) {
+			System.out.println("bookdelete 오류 : "+ e);
+		}
+		return false;
 	}
 	
 }

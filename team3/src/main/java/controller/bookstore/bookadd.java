@@ -42,7 +42,8 @@ public class bookadd extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String uploadpath = request.getSession().getServletContext().getRealPath("/bookstore/bookimg");
+		//String uploadpath = request.getSession().getServletContext().getRealPath("/bookstore/bookimg");
+		String uploadpath = "C:\\Users\\504\\git\\jsp\\team3\\src\\main\\webapp\\bookstore\\bookimg";
 		
 		MultipartRequest multi = new MultipartRequest(
 				request, // 요청방식

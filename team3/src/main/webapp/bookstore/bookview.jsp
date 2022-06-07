@@ -50,20 +50,54 @@
 			<div class="row">
 				<span>상세설명</span><span class="tcontent"><%=textbook.getTcontent()%></span>
 			</div>
-			<%
-			if(textbook.getMno()== MemberDao.getMemberDao().getmno(loginid)){ %>
-				<div>
-					<a href="/team3/bookstore/bookupdate.jsp?tno=<%=textbook.getTno() %>">
-						<button class="btnbook" onclick="bookupdate()">수정하기</button>
-					</a>
+				<%
+				if(textbook.getMno()== MemberDao.getMemberDao().getmno(loginid)){ %>
+				<div class="row">
+					<div class="col-md-6">
+						<a href="/team3/bookstore/bookupdate.jsp?tno=<%=textbook.getTno() %>">
+							<button class="btnbook" onclick="bookupdate()">수정하기</button>
+						</a>
+					</div>
+					<div class="col-md-6">
+						<a href="delete?tno=<%=textbook.getTno()%>"><button class="form-control">삭제</button></a>
+					</div>
 				</div>
 			<%}else{ %>
 				<div>
-					<button class="btnbook">쪽지 보내기</button>
+					<button class="btnbook"  data-bs-toggle="modal" data-bs-target="#read">쪽지 보내기</button>
 				</div>
 			<%} %>
 		</div>
 	</div>
+	<!-- 쪽지 모달 -->	
+<div class="modal" tabindex="-1" id="read">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">쪽지 보내기</h5>
+        <a href="bookview.jsp"><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+      </div>
+      <div class="modal-body" id="mcontent1">
+      	<div class="modal-body" id="mcontent">
+			<div class="container">
+				<p><%=MemberDao.getMemberDao().getmid(textbook.getMno())%></p>
+				<input type="hidden" id="getno" value="<%=textbook.getMno()%>">
+			<textarea class="ctext" rows="" cols="" id="content"></textarea>
+		</div>
+	</div>
+      </div>
+      <div class="modal-footer">
+      	<button type="button" id="send" class="btn btn-primary" onclick="reply()">보내기</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        <div id="send1">
+      	</div>
+      </div>
+    </div>
+  </div>
+</div>
+	
+	
+	<script src="/team3/js/message/message.js" type="text/javascript"></script>
 	<script src="/team3/js/bookstore/bookstore.js" type="text/javascript"></script>
 </body>
 </html>

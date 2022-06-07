@@ -45,7 +45,7 @@ public class bookupdate extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int tno = Integer.parseInt(request.getParameter("tno"));
 		
-		String uploadpath = request.getSession().getServletContext().getRealPath("/bookstore/bookimg");
+		String uploadpath = "/team3/bookstore/bookimg";
 		MultipartRequest multi = new MultipartRequest(
 				request, // 요청방식
 				uploadpath,	//파일저장경로
@@ -64,7 +64,8 @@ public class bookupdate extends HttpServlet {
 			if (timg == null) {
 				timg = oldimg;
 			}else {
-				String upload = request.getSession().getServletContext().getRealPath("/bookstore/bookimg"+oldimg);
+				String upload = "/team3/bookstore/bookimg"+oldimg;
+				//String upload = request.getSession().getServletContext().getRealPath("/bookstore/bookimg"+oldimg);
 				File file = new File(upload);
 				file.delete();
 			}

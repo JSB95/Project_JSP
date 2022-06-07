@@ -22,7 +22,6 @@
 .scrollbox{
 	height: 100%;
 	overflow-x: scroll;
-	border: 1px red solid;
 }
 .tprice {
     color: #ff5d57;
@@ -46,8 +45,9 @@
 	background-color: #ff5d57;
 	color: white;
 	border: none;
-	border-radius: 10px;
+	border-radius: 5px;
 	height: 40px;
+	width: 100%
 }
 .addimgbox {
 	width: 30%;
