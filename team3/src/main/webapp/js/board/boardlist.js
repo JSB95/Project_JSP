@@ -63,7 +63,7 @@ function getsearchlist(){
 
 
 function boardbest() {
-	alert("gd")
+	
 	$.ajax({
 		url : "/team3/board/bestlist",
 		
@@ -77,14 +77,36 @@ function boardbest() {
 function view() {
 	let html ="";
 	
+	var today = new Date();
+	formatDate(today);
+	let date = formatDate(today);
+	console.log(date)
+	
+	
+	
 	for(let i = 0; i<boardlist.length; i++) {
+		console.log(boardlist[i]["bdate"].split(" ")[1])
+	
+	if(boardlist[i]["bdate"]==date) {
+		boardlist[i]["bdate"] = boardlist[i]["bdate"].split(" ")[1]
+	} else {
+		boardlist[i]["bdate"] = boardlist[i]["bdate"].split(" ")[0]
+	}
+	
+		
 		if( i >= viewcount ) break; // 만약에 i가 화면에 표시할 주문수와 동일하면 출력 금지 
 		html += 
 		'<div id="list" onclick="location.href=\'boardview.jsp?bno='+boardlist[i]["bno"]+'\'">'+
-		'<h2>'+boardlist[i]["btitle"]+'</h2>'+
-		'<span>'+boardlist[i]["bnickname"]+'</span><span>'+boardlist[i]["bdate"]+'</span>'+
-		'<span>추천수 : '+boardlist[i]["blike"]+' </span>'+
-		'<span><img src="/team3/board/upload/bcomment.svg"> : '+boardlist[i]["rcount"]+' </span>'+
+		'<span style="font-size : 15px; color:#999; float:right; margin-right:10px;margin-top: 15px; margin-bottom: 35px;" >' +boardlist[i]["bdate"]+  '</span>'+
+		'<div style="margin-top:15px; margin-bottom: 10px;">'+
+		'<span style="font-size : 25px">'+boardlist[i]["btitle"]+'</span>'+
+		
+		'</div>'+
+		'<span>'+boardlist[i]["bnickname"]+'</span>'+
+		'<div style="margin-top: 10px; margin-bottom: 5px;">'+
+		'<span><img src="/team3/board/upload/blike.svg" id ="cicon"> '+boardlist[i]["blike"]+' </span>'+
+		'<span><img src="/team3/board/upload/bcomment.svg" id ="cicon"> '+boardlist[i]["rcount"]+' </span>'+
+		'</div>'+
 		'</div>'
 		
 	}
@@ -107,6 +129,20 @@ function view2() {
 	$("#listbox").html(html);
 }
 */
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
 
 
 

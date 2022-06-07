@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+button {
+	background-color: #6A7BA2;
+	color: white;
+	border: none;
+}
+
 #reply_wrap{
 	width: 50%;
 	margin: 0 auto;
@@ -32,6 +38,8 @@ time{
 	margin-right: 30px;
 }
 .rbox{
+	background-color: white;
+	 
 	border: 2px solid #eeeeee;
 	
 }
@@ -52,7 +60,8 @@ time{
 	flex-direction: column;
 }
 .rwirte_area{
-	display: flex
+	display: flex;
+	margin-top: 15px;
 }
 .rfooter{
 	display: flex;
@@ -72,4 +81,20 @@ margin-left: 50px;
 	display: flex;
 		margin-left: 50px;
 }
+#wrap{
+	
+}
 
+.likebre{
+	border: none;
+	background-color: white;
+	color: #6A7BA2;
+
+}
+
+.test {
+	margin-right: 5px;
+}
+.test button {
+	width: 60px;
+}

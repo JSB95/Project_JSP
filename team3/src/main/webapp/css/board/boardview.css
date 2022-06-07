@@ -1,4 +1,34 @@
 
+@font-face {
+    font-family: 'KOHIBaeumOTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/KOHIBaeumOTF.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+	font-family: 'KOHIBaeumOTF';
+}
+
+butoon {
+	background-color: #6A7BA2;
+	color: white;
+}
+
+ .content_wrap{
+ 	margin: 0 auto;
+ 	margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F2F2F2;
+   
+ }
+
+#wrap{
+	 background-color: #F2F2F2;
+}
+
 .img_area{
 	width: 20%;
 }
@@ -7,4 +37,55 @@
 	display: flex;
 	
 	
+	
+}
+
+.view_wrap{
+	background-color: white;
+	width: 50%;
+	margin: 0 auto;
+	 word-break:break-all;
+	 border: 1px solid #eee;
+	 padding: 50px;
+	 margin-top: 50px;
+	
+}
+.likeb{
+	border: none;
+	background-color: white;
+	color: #6A7BA2;
+	font-size: 25px
+}
+#like_area{
+	margin-top: 10px;
+}
+.upbutton_area button{
+	background-color: #6A7BA2;
+	color: white;
+	border:none;
+	width: 80px;
+}
+.lay{
+	display: flex;
+    justify-content: flex-end;
+    width: 50%;
+    margin-top: 5px;
+}
+.boardview_content , .user , .img_area{
+	margin-top: 15px;
+	
+}
+.board_title{
+	display: flex;
+
+}
+.t {
+	width: 80%;
+}
+.date{
+	width : 20%;
+		float: right;
+}
+.date, time{
+	color: #999;
 }
