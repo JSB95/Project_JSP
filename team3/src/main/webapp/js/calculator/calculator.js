@@ -20,11 +20,11 @@ function 등록(){
 					}
 				if($("#학점"+i).val()!=""&&$("#성적"+i).val()!="none"&&$("#성적"+i).val()!="P"&&$("#성적"+i).val()!="NP"){
 					전체총점+= (parseInt($("#학점"+i).val())*parseFloat($("#성적"+i).val()));
-					전체갯수++;
+					전체갯수+=parseInt($("#학점"+i).val());
 					}
 				if($('input:checkbox[id="전공'+i+'"]').is(':checked')==true&&$("#학점"+i).val()!=""&&$("#성적"+i).val()!="none"&&$("#성적"+i).val()!="P"&&$("#성적"+i).val()!="NP"){
 					전공총점+= (parseInt($("#학점"+i).val())*parseFloat($("#성적"+i).val()));
-					전공갯수++;
+					전공갯수+=parseInt($("#학점"+i).val());
 					}
 				}
 			

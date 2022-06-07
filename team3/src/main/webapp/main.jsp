@@ -1,3 +1,6 @@
+<%@page import="dto.Board"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="dao.BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -55,7 +58,7 @@
 			    </a>
 			  </li>
 			  <li class="nav-item iconitem">
-			    <a class="nav-link iconlink" href="#">
+			    <a class="nav-link iconlink" href="calculator/calculator.jsp">
 			    	<i class="fas fa-book-open"></i>
 			    	<h5 class="h5">학점계산기</h5>
 					<span class="font">편리한<br>성적 계산기</span>
@@ -69,18 +72,13 @@
 				<div class="col-md-6 tablebox">
 					<h3>자유게시판<i class="fa-solid fa-feather boardimg"></i></h3>
 					<table class="table tablefont">
+					<%ArrayList<Board> getboardlist = BoardDao.getBoardDao().getboardlist();
+						for(int i=0;i<5;i++){
+					%>
 						<tr>
-							<td>제목</td><td>추천수</td><td>댓글수</td>
+							<td><%=getboardlist.get(i).getBtitle()%></td><td><%=getboardlist.get(i).getRcount()%></td><td><%=getboardlist.get(i).getBdate()%></td>
 						</tr>
-						<tr>
-							<td>제목</td><td>추천수</td><td>댓글수</td>
-						</tr>
-						<tr>
-							<td>제목</td><td>추천수</td><td>댓글수</td>
-						</tr>
-						<tr>
-							<td>제목</td><td>추천수</td><td>댓글수</td>
-						</tr>
+					<%} %>
 					</table>
 				</div>
 				<div class="col-md-6 tablebox">

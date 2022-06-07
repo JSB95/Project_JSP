@@ -10,7 +10,7 @@
 
 </head>
 <body>
-
+	<%@include file="../header.jsp"%>
 	<div class="container">
 		<div class="row"><!-- 계산출력 -->
 			<div class="col-md-4">

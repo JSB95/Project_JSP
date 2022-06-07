@@ -64,7 +64,7 @@
 	ArrayList<Message> getmessage = MessageDao.getMessageDao().getmessage(mno, startrow, listsize); 
 	%>
 
-
+<%@include file="../header.jsp"%>
 	<%@include file="messagebar.jsp"%>
 	
 	<div class="container">
