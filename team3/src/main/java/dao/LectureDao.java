@@ -106,4 +106,25 @@ public class LectureDao extends Dao{
 		}
 		return null;
 	}
+	
+	public boolean savetimetable(String table_name, String table_professor, String table_time, int table_code, int mno) {
+		
+		String sql = "INSERT INTO timetable(table_name, table_professor, table_time, table_code, mno) VALUES (?, ?, ?, ?, ?)";
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, table_name);
+			ps.setString(2, table_professor);
+			ps.setString(3, table_time);
+			ps.setInt(4, table_code);
+			ps.setInt(5, mno);
+			ps.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println("savetimetable ERROR : " + e);
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
 }

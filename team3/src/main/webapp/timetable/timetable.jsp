@@ -1,3 +1,4 @@
+<%@page import="javax.websocket.Session"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,9 +20,13 @@
 </head>
 <body>
 
+	<%String mid = (String)session.getAttribute("login"); %>
+
 	<%@include file = "../header.jsp" %>
 	
 	<div class="container">
+	
+		<input type="text" value="<%=mid%>" id="mid" style="display: none">
 	
 		<div class="container-lecture">
 			

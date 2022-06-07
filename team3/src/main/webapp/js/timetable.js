@@ -118,6 +118,20 @@ $("#btn_regist").on('click', function(){
 	
 	var code = $(this).parent().parent().find('.lecture_code').html();
 	
+	var professor = $(this).parent().parent().find('.lecture_professor').html();
+	
+	var mid = $('#mid').val();
+	
+	console.log(mid);
+	
+	$.ajax({
+		url : "../timetable/savetimetable",
+		data : {"name" : name, "professor" : professor, "time1" : time1, "code" : code, "mid" : mid},
+		success : function(re){
+			console.log(re);
+		}
+	})
+	
 	let timelist = [];
 	
 	let codelist = [];
@@ -300,7 +314,7 @@ $("#btn_regist").on('click', function(){
 		
 	},2000);
 	
-});
+ });
 
 // 중복과목 삭제 / 시간표에서 제거
 function deletedupli(code){
