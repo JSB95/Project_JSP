@@ -22,6 +22,10 @@ int bno = Integer.parseInt( request.getParameter("bno"));
 Board board  = BoardDao.getBoardDao().getboaBoard(bno);
 String mid = (String)session.getAttribute("login"); 
 int mno = BoardDao.getBoardDao().getmno(mid);
+String id = BoardDao.getBoardDao().getmid(mno);
+int mno2 = BoardDao.getBoardDao().getnos(bno);
+System.out.println(mid);
+System.out.println("첫번째"+mno+"두번째"+mno2);
 
 %>
 
@@ -88,13 +92,17 @@ int mno = BoardDao.getBoardDao().getmno(mid);
 			
 		
 			</div>
+			
 			<div class="lay">
+			
 				<div class="upbutton_area"> <!-- 게시물 수정삭제 버튼 구역 -->
+				<% if(mno == mno2){  %>
 					<a href="boardupdate.jsp?bno=<%=board.getBno()%>"><button>수정</button></a>
 					<a href="boarddelete?bno=<%=board.getBno()%>"> <button>삭제</button> </a>
+					<%} %>
 				</div>
 			</div>
-			
+		
 			<!-- 댓글작성구역 ------------------------------------------------------------------------------------->
 			
 			<div class="rwrite_wrap"> <!-- row : 가로배치 -->
