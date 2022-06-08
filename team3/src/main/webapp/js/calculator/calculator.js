@@ -1,4 +1,4 @@
-function 등록(){
+/*function 등록(){
 	var 취득학점 = 0;
 	var 전체총점 = 0;
 	var 전체갯수 = 0;
@@ -50,43 +50,68 @@ function 등록(){
 			'<div id="취득학점">취득학점<br>'+취득학점+'</div>'
 		);
 	
-}
-
+}*/
+let gradeSelectTemplete;
 $(function(){
-	let html =  '<tr>'+
-				'	<td>'+
-				'		<input name="name" maxlength="50">'+
-				'	</td>'+
-				'	'+
-				'	<td>'+
-				'		<input name="credit" type="number" maxlength="4">'+
-				'	</td>'+
-				'	'+
-				'	<td>'+
-				'		<select name="grade">'+
-				'			<option value="A+" selected="selected">A+</option>'+
-				'			<option value="A0">A0</option>'+
-				'			<option value="B+">B+</option>'+
-				'			<option value="B0">B0</option>'+
-				'			<option value="C+">C+</option>'+
-				'			<option value="C0">C0</option>'+
-				'			<option value="D+">D+</option>'+
-				'			<option value="D0">D0</option>'+
-				'			<option value="F">F</option>'+
-				'			<option value="P">P</option>'+
-				'			<option value="NP">NP</option>'+
-				'		</select>'+
-				'	</td>'+
-				'	'+
-				'	<td>'+
-				'		<label>'+
-				'			<input name="major" type="checkbox"><span></span>'+
-				'		</label>'+
-				'	</td>'+
-				'</tr>';
-	for (let i = 0; i < 6; i++){
-		$('.subjects').find('tbody').append(html);
+	gradeSelectTemplete = $('<select></select>');
+	let grade = [];
+	$('option').each(function(){
+		var text = $(this).attr('value');
+		grade.push(text);
+	})
+	_.each(grade, function(grade){
+		$('<option></option>').val(grade).text(grade).appendTo(gradeSelectTemplete);
+	})
+	console.log(gradeSelectTemplete.html())
+})
+
+function insertSubject(subject){
+	var $tbody = $('#container').find('table.subjects > tbody');
+	var $tbodyTr = $('<tr></tr>').appendTo($tbody);
+	var $nameTd = $('<td></td>').appendTo($tbodyTr);
+	var $creditTd = $('<td></td>').appendTo($tbodyTr);
+	var $gradeTd = $('<td></td>').appendTo($tbodyTr);
+	var $majorTd = $('<td></td>').appendTo($tbodyTr);
+	if (!subject){
+		subject = {
+			name: '',
+			credit: 0,
+			grade: 'A+',
+			isMajor: false
+		};
 	}
 	
+	
+	var $gradeSelect = gradeSelectTemplete.clone();
+	console.log($gradeSelect.html());
+
+	
+	$gradeSelect.find('option').filter(function () {
+		return $(this).text() === subject.grade;
+	}).attr('selected', 'selected');
+	
+	$gradeSelect.attr('name', 'grade').appendTo($gradeTd);
+	$('<input>').attr('name', 'credit').val(subject.credit).attr({
+		type: 'number',
+		maxlength: '4'
+	}).appendTo($creditTd);
+	$('<input>').attr('name', 'name').val(subject.name).attr({
+		maxlength: '50'
+	}).appendTo($nameTd);
+	$('<label>').appendTo($majorTd).append(
+		$('<input>').attr({ name: 'major', type: 'checkbox' }).prop({
+			checked: subject.isMajor
+		}),
+		$('<span>')
+	);
+}
+
+$('#container').find('table.subjects > tfoot a.new').on('click',function(){
+	insertSubject();
 })
+
+
+
+
+
 

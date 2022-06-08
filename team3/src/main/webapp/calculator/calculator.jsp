@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	
-		<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" > -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"> 
 		<link type="text/css" href="/team3/css/calculator/common.css" rel="stylesheet">
 		<link type="text/css" href="/team3/css/calculator/partial.css" rel="stylesheet">
 		<link type="text/css" href="/team3/css/calculator/modal.css" rel="stylesheet">
@@ -42,7 +42,7 @@
 						
 						</div>
 						
-						<div class="column acqusition">
+						<div class="column acquisition">
 						
 							<h4>취득 학점</h4>
 							<p class="value">0</p>
@@ -104,8 +104,8 @@
             					
             				</div>
           				</div>
-          <ul class="ratioplot"><li><span class="grade">A+</span><div class="ratiowrapper"><div class="ratiobar" style="width: calc(41.6667%); height: 4px; background-color: rgb(242, 133, 114);"></div><span class="ratiotext" style="left: calc(41.6667%); color: rgb(242, 133, 114);">17%</span></div></li><li><span class="grade">A0</span><div class="ratiowrapper"><div class="ratiobar" style="width: calc(41.6667%); height: 4px; background-color: rgb(236, 197, 92);"></div><span class="ratiotext" style="left: calc(41.6667%); color: rgb(236, 197, 92);">17%</span></div></li><li><span class="grade">B+</span><div class="ratiowrapper"><div class="ratiobar" style="width: calc(41.6667%); height: 4px; background-color: rgb(160, 198, 97);"></div><span class="ratiotext" style="left: calc(41.6667%); color: rgb(160, 198, 97);">17%</span></div></li><li><span class="grade">B0</span><div class="ratiowrapper"><div class="ratiobar" style="width: calc(41.6667%); height: 4px; background-color: rgb(130, 209, 194);"></div><span class="ratiotext" style="left: calc(41.6667%); color: rgb(130, 209, 194);">17%</span></div></li><li><span class="grade">C+</span><div class="ratiowrapper"><div class="ratiobar" style="width: calc(41.6667%); height: 4px; background-color: rgb(122, 158, 224);"></div><span class="ratiotext" style="left: calc(41.6667%); color: rgb(122, 158, 224);">17%</span></div></li></ul>
-        </article>
+					<ul class="ratioplot"><li><span class="grade">A+</span><div class="ratiowrapper"><div class="ratiobar" style="width: calc(41.6667%); height: 4px; background-color: rgb(242, 133, 114);"></div><span class="ratiotext" style="left: calc(41.6667%); color: rgb(242, 133, 114);">17%</span></div></li><li><span class="grade">A0</span><div class="ratiowrapper"><div class="ratiobar" style="width: calc(41.6667%); height: 4px; background-color: rgb(236, 197, 92);"></div><span class="ratiotext" style="left: calc(41.6667%); color: rgb(236, 197, 92);">17%</span></div></li><li><span class="grade">B+</span><div class="ratiowrapper"><div class="ratiobar" style="width: calc(41.6667%); height: 4px; background-color: rgb(160, 198, 97);"></div><span class="ratiotext" style="left: calc(41.6667%); color: rgb(160, 198, 97);">17%</span></div></li><li><span class="grade">B0</span><div class="ratiowrapper"><div class="ratiobar" style="width: calc(41.6667%); height: 4px; background-color: rgb(130, 209, 194);"></div><span class="ratiotext" style="left: calc(41.6667%); color: rgb(130, 209, 194);">17%</span></div></li><li><span class="grade">C+</span><div class="ratiowrapper"><div class="ratiobar" style="width: calc(41.6667%); height: 4px; background-color: rgb(122, 158, 224);"></div><span class="ratiotext" style="left: calc(41.6667%); color: rgb(122, 158, 224);">17%</span></div></li></ul>
+				</article>
 					
 					
 				
@@ -149,7 +149,37 @@
 					
 					<tbody>
 					
-						
+						<tr>
+							<td>
+								<input name="name" maxlength="50">
+							</td>
+							
+							<td>
+								<input name="credit" type="number" maxlength="4" value="0">
+							</td>
+							
+							<td>
+								<select name="grade">
+									<option value="A+" selected="selected">A+</option>
+									<option value="A0">A0</option>
+									<option value="B">B</option>
+									<option value="B0">B0</option>
+									<option value="C">C</option>
+									<option value="C0">C0</option>
+									<option value="D">D</option>
+									<option value="D0">D0</option>
+									<option value="F">F</option>
+									<option value="P">P</option>
+									<option value="NP">NP</option>
+								</select>
+							</td>
+							
+							<td>
+								<label>
+									<input name="major" type="checkbox"><span></span>
+								</label>
+							</td>
+						</tr>
 					
 					</tbody>
 					
@@ -176,6 +206,8 @@
 
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript" src="/team3/js/calculator/calculator.js"></script>
+	<script  src="https://cdn.jsdelivr.net/npm/underscore@1.13.4/underscore-umd-min.js"></script>
+	
 	
 	
 	
