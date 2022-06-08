@@ -49,6 +49,7 @@
    * 시간표
  ## DB설계
  ![db](https://user-images.githubusercontent.com/100547825/169978602-5e09e0f3-187a-462a-b431-3e6c4270e0b6.png)
+ ![dbd](https://user-images.githubusercontent.com/100547825/172571306-1ca916f2-8b12-48f7-9560-5b55b58f744a.JPG)
  
  ## 컨트롤러 설계
  
