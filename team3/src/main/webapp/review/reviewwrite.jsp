@@ -38,10 +38,11 @@
 	
 	<%@include file="../header.jsp"%>
 	<div class="container">
+		<h3 class="text" style="margin-top: 40px">강의평등록</h3>
 		<div class="row">
 				<div>
 					<form action="reviewwrite.jsp">
-					<div>
+					<div class="searchbox">
 						<input class="search" type="text" name="keyword" placeholder="강의명을 입력해주세요">
 						<input class="searchbtn" type="submit" value="검색">
 					</div>
@@ -61,7 +62,7 @@
 						이수구분="전공";
 					}else{이수구분="교양";}
 					%>
-					<tr onclick="lecturelist(<%=lecturelist.get(i).getLno() %>)">
+					<tr class="click" onclick="lecturelist(<%=lecturelist.get(i).getLno() %>)">
 						<td><%=lecturelist.get(i).getLname() %></td>
 						<td><%=lecturelist.get(i).getLprofessor() %></td>
 						<td><%=lecturelist.get(i).getLcredit() %>학점</td>

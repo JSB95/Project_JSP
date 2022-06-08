@@ -57,7 +57,7 @@ function tableview1(){
 			for( let i = 0 ; i<jsonarray1.length; i++ ){
 				
 			   bt+=
-			  '<button type="button" id="send1" class="btn btn-primary" onclick="send1(\''+jsonarray1[i]["mid"]+'\','+jsonarray1[i]["mgetno"]+')">답장</button>'
+			  '<button type="button" id="send1" class="btn btn-primary" onclick="send1(\''+jsonarray1[i]["mid"]+'\','+jsonarray1[i]["mgetno"]+')">보내기</button>'
 			   
 			}
 		
@@ -116,7 +116,7 @@ function send1(mid,sendno){
 	'</div>'
 );
 	$("#send1").html( 
-	 '<button type="button" id="send1" class="btn btn-primary" onclick="reply1()">답장</button>'
+	 '<button type="button" id="send1" class="btn btn-primary" onclick="reply1()">보내기</button>'
 );
 
 }

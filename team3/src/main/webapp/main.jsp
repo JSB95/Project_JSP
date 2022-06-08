@@ -54,7 +54,7 @@
 
 
 			  <li class="nav-item iconitem">
-			    <a class="nav-link" href="/team3/bookstore/booklist.jsp"><i class="fas fa-book-open"></i></a>
+			    <a class="nav-link iconlink" href="/team3/bookstore/booklist.jsp">
 			    	<i class="fas fa-book-open"></i>
 			    	<h5 class="h5">책방</h5>
 					<span class="font">저렴한 가격으로<br>책을 구매하자!</span>
