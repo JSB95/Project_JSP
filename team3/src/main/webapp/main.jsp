@@ -31,7 +31,7 @@
 		<div class="iconbox"><!-- 페이지이동 아이콘 -->
 			<ul class="nav justify-content-center">
 			  <li class="nav-item iconitem">
-			    <a class="nav-link active iconlink" aria-current="page" href="#">
+			    <a class="nav-link active iconlink" aria-current="page" href="/team3/timetable/timetable.jsp">
 			    	<i class="fas fa-calendar-check"></i>
 			    	<h5 class="h5">시간표</h5>
 					<span class="font">나의 일정을 한눈에!</span>
