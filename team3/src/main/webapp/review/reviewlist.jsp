@@ -72,16 +72,20 @@
 	<div class="container content_wrap">
 		<div class="row">
 			<h3 class="text" style="margin-top: 40px">최근강의평</h3>
-			<div class="">
+			<div>
 				<a href="reviewwrite.jsp?keyword="><button  class="write" type="button">강의평쓰기</button></a>
 			</div>
-			<div class="justify-content-center">
-				<form action="reviewlist.jsp?pagenum=<%=currentpage %>">
-					<input class="search" type="text" name="keyword" placeholder="강의명 또는 교수명을 입력해주세요"><input class="searchbtn" type="submit" value="검색"><br>
-				
-				</form>
-			</div>
+			
 			<div class="reviewbox">
+				<div>
+					<form action="reviewlist.jsp?pagenum=<%=currentpage %>">
+						<div class="sea">
+							<input class="search" type="text" name="keyword" placeholder="강의명 또는 교수명을 입력해주세요">
+							<input class="searchbtn" type="submit" value="검색">
+						</div><br>
+					
+					</form>
+				</div>
 				<div class="line"></div>
 				<table class="table table-hover">
 				
@@ -92,8 +96,12 @@
 					System.out.print(json.getJSONObject(j).get("reviewrate"));
 				%>
 					<tr class="tabletr" onClick="location.href='/team3/review/review.jsp?lno=<%=json.getJSONObject(j).get("lno")%>'">
-						<td>
+						<td class="td">
 							<h5><%=json.getJSONObject(j).get("lname")%></h5><%=json.getJSONObject(j).get("lprofessor")%> 교수님<br>
+							
+							
+						</td>
+						<td>
 							<%if(json.getJSONObject(j).get("reviewrate").equals(1)){ %>
 								<img class="star" alt="" src="img/노란별.png">
 								<img class="star"  alt="" src="img/회색별.png">
@@ -135,7 +143,6 @@
 					</tr>
 					<%} %>
 				</table>
-				</div>
 				<div>
 					<div class="col-md-4 offset-4 d-flex justify-content-center">	<!--  d-flex justify-content-center : 박스권 내에서 가운데 배치 -->
 						 <ul class="pagination">
@@ -165,6 +172,8 @@
 						 </ul>
 					</div>
 				</div>
+				</div>
+				
 		</div>
 	</div>
 	
