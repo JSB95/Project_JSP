@@ -19,7 +19,7 @@
 			<input id="btitle" name="btitle" type="text" placeholder="제목"> 
 			<textarea id="bcontent" name="bcontent" style="resize: none;"></textarea> 
 			<input id ="bimg" name="bimg" type="file"> 
-			<div style="width:100%"><img id="preview" width="100%"></div>
+			<div style="width:30%"><img id="preview" width="100%"></div>
 			<div><input id="anonymous" type="radio" value="아이디" name="anonymous" checked="checked">아이디</div>
 			<div><input id="anonymous" type="radio" value="익명" name="anonymous">익명</div>
 			
