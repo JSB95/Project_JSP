@@ -1,3 +1,5 @@
+<%@page import="dao.MessageDao"%>
+<%@page import="dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,7 +12,9 @@
 	<link href="/team3/css/header.css" rel="stylesheet" >
 </head>
 <body>
-	<%String loginid = (String)session.getAttribute("login");%>
+	<%String loginid = (String)session.getAttribute("login");
+	int mno1 = MemberDao.getMemberDao().getmno(loginid);
+	%>
 	<div class="container">
 		<div class="row header">
 			<div class="col-md-3 d-flex align-self-center">
@@ -28,8 +32,11 @@
 				<ul class="navbar-nav">
 					<li class="nav-item"><a href="/team3/member/memberinfo.jsp">내정보</a></li>
 					<li class="nav-item">
-						<a href="#">쪽지</a>
-						<span>2</span>
+						<a href="/team3/message/getmessage.jsp">쪽지</a>
+						<%
+						int mcount= MessageDao.getMessageDao().getcount(mno1);
+						%>
+						<span><%=mcount %></span>
 					</li>
 				</ul>
 			</div>

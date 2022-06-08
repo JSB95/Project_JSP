@@ -78,7 +78,7 @@
 	</div>
 	
 	
-	
+	<%@include file="../footer.jsp"%>
 	
 	
 	<script src="/team3/js/review/reviewadd.js" type="text/javascript"></script>

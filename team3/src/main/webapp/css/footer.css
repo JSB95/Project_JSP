@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.footer{
+	height: 230px;
+	background-color: #6a7ba2;
+	color: white;
+}
+.p1{
+	text-align: center;
+}
+.line12{
+	border-right: 1px solid white;
+}

@@ -21,6 +21,24 @@
 	margin-top: 10px;
 	margin-right: 200px;
 }
+.count{
+	width: 20px;
+	height: 20px;
+	border-radius: 10px;
+	background-color: #7b2b44;
+	color: white;
+	text-align: center;
+	line-height: 20px;
+	font-size: 5px;
+}
+
+.bcontent{
+	 display: inline-block;
+    width: 400px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 .iconbox{
 	background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url("/team3/img/대학.jpg");
@@ -29,7 +47,9 @@
 	width: 100%;
 }
 
-
+.tr{
+	cursor: pointer;
+}
 
 .iconlink{
 	padding: 40px 50px 0px 50px;
@@ -88,6 +108,12 @@ a{
 	border: 1px solid #eeeeee;
 	border-radius: 10px;
 	padding : 50px 50px;
+}
+.dp1{
+	margin-top: 10px;
+}
+.dp2{
+	margin-right: 10px;
 }
 
 .tablefont{

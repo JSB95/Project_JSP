@@ -14,6 +14,9 @@
 img{
 	width: 20px;
 }
+.학점{
+	color: gray;
+}
 
 .tableviewbox{
 	border: 2px solid black;
@@ -28,21 +31,42 @@ img{
 	width: 20px;
 	height: 20px;
 }
-
 .box{
-	border: 1px solid #eeeeee;
+	width:800px !important;
+	border: 1px solid gray;
+	border-radius: 10px;
+	padding: 20px 20px 10px 20px;
+	margin: 0 auto;
+}
+
+.box1{
+	width:800px !important;
+	border: 1px solid gray;
+	border-radius: 10px;
+	padding: 20px 20px 10px 20px;
+	margin: 0 auto;
+}
+.box2{
+	margin: 0 auto;
+	margin-top: 50px !important;
+	width:800px !important;
+	border: 1px solid gray;
 	border-radius: 10px;
 	padding: 20px 20px 10px 20px;
 }
 
-.reviewbox{
+#reviewbox{
+	margin: 0 auto;
+	width: 800px !important;
 	border: 1px solid gray;
 	border-radius: 10px;
 	padding: 20px 40px 10px 40px;
 	 margin-top: 20px !important;
+	 
 }
 
-.tabletr{
+#tabletr{
+	width: 800px !important;
 	height: 50px;
 	padding: 0px 20px 0px 20px;
 	cursor: pointer;
@@ -100,6 +124,11 @@ img{
 .text{
 	text-align: center;
 	margin-top:50px;
+}
+.강의평가{
+	text-align: center;
+	margin-top:50px !important;
+	margin-bottom:20px !important;
 }
 
 .rcontent{

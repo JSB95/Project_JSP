@@ -89,8 +89,9 @@ img{
 
 .submitbtn{
 	width: 100%;
-	border: 1px solid #bbb;
-    border-radius: 5px;
+	border: 1px solid; background-color: #6a7ba2;
+	color: white;
+	  border-radius: 5px;
     margin: 0 auto;
 	padding: 10px 12px;
 }

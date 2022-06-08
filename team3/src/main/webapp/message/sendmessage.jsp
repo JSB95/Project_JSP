@@ -57,6 +57,7 @@
 	%>
 
 	<%@include file="../header.jsp"%>
+	<h3 class="mess">보낸쪽지함</h3>
 	<%@include file="messagebar.jsp"%>
 	
 	<div class="container">
@@ -147,7 +148,7 @@
     </div>
   </div>
 </div>
-
+<%@include file="../footer.jsp"%>
 
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="/team3/js/message/message.js" type="text/javascript"></script>
