@@ -51,7 +51,7 @@
 			<div>
 				<h3 style="display: inline;">실제 사진을 올려주세요</h3>
 				<input id="timg" class="timg" type="file" name="timg" accept="image/*">
-				<button id="updatebtn" type="button" onclick="bimgupdate()">파일변경</button>
+				<button id="updatebtn" class="imgupdatebtn" type="button" onclick="bimgupdate()">파일변경</button>
 				<div id="imgbox">
 					
 				</div>
@@ -67,9 +67,14 @@
 				<h3>추가 설명을 자유롭게 적어주세요</h3>
 				<input class="form-control" type="text" name="tcontent" placeholder="(1000자 이내)" value="<%=textbook.getTcontent()%>">
 			</div>
-		
-			<button id="btnadd" >수정</button>
-			<a href="/team3/bookstore/booklist.jsp"><button>취소</button></a>
+			<div class="row my-3">
+				<div class="col-md-2 offset-4">
+					<button class="form-control btn btn-dark"  id="btnadd" >수정</button>
+				</div>
+				<div class="col-md-2">
+					<a href="/team3/bookstore/booklist.jsp"><button class="form-control btn btn-outline-secondary">취소</button></a>
+				</div>
+			</div>
 		</form>
 		
 	</div>

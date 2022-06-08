@@ -55,7 +55,7 @@
 				<div class="row">
 					<div class="col-md-6">
 						<a href="/team3/bookstore/bookupdate.jsp?tno=<%=textbook.getTno() %>">
-							<button class="btnbook" onclick="bookupdate()">수정하기</button>
+							<button class="btnbook " onclick="bookupdate()">수정하기</button>
 						</a>
 					</div>
 					<div class="col-md-6">
@@ -95,7 +95,6 @@
     </div>
   </div>
 </div>
-	
 	
 	<script src="/team3/js/message/message.js" type="text/javascript"></script>
 	<script src="/team3/js/bookstore/bookstore.js" type="text/javascript"></script>

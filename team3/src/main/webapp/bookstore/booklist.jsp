@@ -37,7 +37,9 @@
 		<div class="scrollbox">
 			<div class="row col-md-10 offset-1">
 				<span class="col-sm-6">최근 올라온 책</span>
-				<a class="col-sm-6 d-flex justify-content-end" href="/team3/bookstore/bookadd.jsp"><button>판매하기</button></a>
+				<div class="col-sm-6 d-flex justify-content-end" >
+					<a href="/team3/bookstore/bookadd.jsp"><button class="sellbtn">판매하기</button></a>
+				</div>
 			</div>
 			<div id="booklistbox" class="col-md-10 offset-1">
 			</div>
