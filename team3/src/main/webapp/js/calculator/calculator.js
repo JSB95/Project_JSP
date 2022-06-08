@@ -51,3 +51,42 @@ function 등록(){
 		);
 	
 }
+
+$(function(){
+	let html =  '<tr>'+
+				'	<td>'+
+				'		<input name="name" maxlength="50">'+
+				'	</td>'+
+				'	'+
+				'	<td>'+
+				'		<input name="credit" type="number" maxlength="4">'+
+				'	</td>'+
+				'	'+
+				'	<td>'+
+				'		<select name="grade">'+
+				'			<option value="A+" selected="selected">A+</option>'+
+				'			<option value="A0">A0</option>'+
+				'			<option value="B+">B+</option>'+
+				'			<option value="B0">B0</option>'+
+				'			<option value="C+">C+</option>'+
+				'			<option value="C0">C0</option>'+
+				'			<option value="D+">D+</option>'+
+				'			<option value="D0">D0</option>'+
+				'			<option value="F">F</option>'+
+				'			<option value="P">P</option>'+
+				'			<option value="NP">NP</option>'+
+				'		</select>'+
+				'	</td>'+
+				'	'+
+				'	<td>'+
+				'		<label>'+
+				'			<input name="major" type="checkbox"><span></span>'+
+				'		</label>'+
+				'	</td>'+
+				'</tr>';
+	for (let i = 0; i < 6; i++){
+		$('.subjects').find('tbody').append(html);
+	}
+	
+})
+
