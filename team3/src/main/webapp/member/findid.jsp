@@ -12,8 +12,8 @@
 </head>
 
 <body>
-	<div class="container">
-		<div class="container" style="width: 400px;">
+	<div class="container mainbox">
+		<div class="container loginbox" style="width: 400px;">
 			<h3 class="text-center my-4">아이디 찾기</h3>
 			<form >
 				<div> 

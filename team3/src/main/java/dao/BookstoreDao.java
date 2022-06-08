@@ -109,6 +109,7 @@ public class BookstoreDao extends Dao{
 			ps.setString(7, textbook.getTcompany());
 			ps.setString(8, textbook.getTyear());
 			ps.setString(9, textbook.getTclass());
+			ps.setInt(10, textbook.getTno());
 			ps.executeUpdate();
 			return true;
 		} catch (Exception e) {

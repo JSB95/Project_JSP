@@ -65,3 +65,13 @@ a{
 .accountbox a {
 	color: black;
 }
+.mainbox{
+	height: 100vh;
+	display: flex;
+}
+.loginbox{
+	margin: auto;
+	width: 400px;
+	height: 300px;
+	align-content: center;
+}

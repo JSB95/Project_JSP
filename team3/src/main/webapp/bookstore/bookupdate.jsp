@@ -20,7 +20,7 @@
 	%>
 	<div class="container">
 		<h3 class="text-center my-4">판매하기</h3>
-		<form class="col-md-8 offset-2"  action="/team3/bookstore/bookupdate?tno=<%=textbook.getTno() %>" method="post" enctype="multipart/form-data">
+		<form class="col-md-8 offset-2 bookform"  action="/team3/bookstore/bookupdate?tno=<%=textbook.getTno() %>" method="post" enctype="multipart/form-data">
 			<div>
 				<h3>자세한 책 정보를 적어주세요</h3>
 				<input class="form-control" type="text" name="ttitle" value="<%=textbook.getTtitle() %>">
