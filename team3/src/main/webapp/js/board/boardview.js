@@ -1,4 +1,4 @@
-
+var blank_pattern = /^\s+|\s+$/g;
 function saveblike(mid){
 	// 
 	let bno = $("#bno").val();
@@ -25,9 +25,7 @@ function saveblike(mid){
 }
 
 function saverelike(mid,rno){
-	// 
-	//let rno = $("#rno").val();
-	alert(rno)
+	
 	
 	$.ajax({
 		url : "/team3/board/saverelike",
@@ -58,7 +56,8 @@ function saverelike(mid,rno){
 function replywrite(bno) {
 	let rcontent = $("#rcontent").val();
 	var anonymous = $('input:checkbox[id="anonymous"]').is(':checked');
-	if(rcontent=="") {
+	
+	if(rcontent==""|| rcontent.replace( blank_pattern, '' ) == "" ) {
 		alert("내용을입력해주세요");
 		return
 	} else {
@@ -85,7 +84,7 @@ function replywrite(bno) {
 function rereplywrite(rno,bno) {
 	let rcontent = $("#rrcontent").val();
 	var anonymous = $('input:checkbox[id="anonymous"]').is(':checked');
-	if(rcontent==" ") {
+	if(rcontent==" " ||rcontent.replace( blank_pattern, '' ) == "") {
 		alert("내용을입력해주세요");
 		return;
 	}
@@ -115,7 +114,7 @@ function updateview(rno,rcontent,bno){ // 댓글수정창 표시 메소드
 	// JS 작성 공간 에서는 HTML 작성 불가능 --> HTML 문자처리 
 		$("#"+rno).html(
 			'<div class="rwirte_area">'+
-				'<textarea  rows="4" cols="50" name="upcontent" id="upcontent"  > '+rcontent+'</textarea>'+
+				'<textarea  rows="2" cols="30" name="upcontent" id="upcontent"  > '+rcontent+'</textarea>'+
 			'<button type="button" id="rwrite" onclick="replyupdate('+rno+','+bno+')">등록</button>'+	
 			'</div>'+	
 			'<span> <input id="anonymous" type="checkbox" value="익명" name="anonymous"> 익명</span>'
@@ -129,7 +128,7 @@ function rereplyview( rno,bno ){ // 대댓글 입력창 표시 메소드
 	// JS 작성 공간 에서는 HTML 작성 불가능 --> HTML 문자처리 
 		$("#"+rno).html(
 			'<div class="rwirte_area">'+
-				'<textarea  rows="4" cols="50" name="rrcontent" id="rrcontent"  > </textarea>'+
+				'<textarea  rows="2" cols="30" name="rrcontent" id="rrcontent"  > </textarea>'+
 			'<button type="button" id="rrwrite" onclick="rereplywrite('+rno+','+bno+')">등록</button>'+	
 			'</div>'+	
 			'<span> <input id="anonymous" type="checkbox" value="익명" name="anonymous"> 익명</span>'
@@ -142,7 +141,7 @@ function reupdateview(rno,rcontent,bno){ // 댓글수정창 표시 메소드
 	// JS 작성 공간 에서는 HTML 작성 불가능 --> HTML 문자처리 
 		$("#"+rno).html(
 			'<div class="rwirte_area2">'+
-				'<textarea  rows="4" cols="50" name="upcontent2" id="upcontent2"  > '+rcontent+'</textarea>'+
+				'<textarea  rows="2" cols="30" name="upcontent2" id="upcontent2"  > '+rcontent+'</textarea>'+
 			'<button type="button" id="rwrite" onclick="rereplyupdate('+rno+','+bno+')">등록</button>'+	
 			'</div>'+	
 			'<span> <input style="margin-left:50px" id="anonymous" type="checkbox" value="익명" name="anonymous"> 익명</span>'
@@ -173,10 +172,8 @@ function replydelete( rno,bno ){
 function replyupdate(rno ,bno){ // 수정쓰기메소드
 	let upcontent= $("#upcontent").val();
 	var anonymous = $('input:checkbox[id="anonymous"]').is(':checked');
-	//alert(rno)
-	//alert(bno)
-	//alert(upcontent);
-	if(upcontent == "" || upcontent == "        ") {
+	
+	if(upcontent == "" ||upcontent.replace( blank_pattern, '' ) == "") {
 		alert("내용을입력해주세요")	;
 		return;
 	} else {
@@ -201,10 +198,15 @@ function replyupdate(rno ,bno){ // 수정쓰기메소드
 function rereplyupdate(rno ,bno){ // 수정쓰기메소드
 	let upcontent2= $("#upcontent2").val();
 	var anonymous = $('input:checkbox[id="anonymous"]').is(':checked');
-	//alert(rno)
-	//alert(bno)
-	alert(upcontent2);
-	$.ajax({
+	
+	
+	if(upcontent2.replace( blank_pattern, '' ) == "") {
+		alert("내용을입력해주세요")	;
+		return;
+	}
+	else {
+		
+		$.ajax({
 		url : "/team3/board/rereplyupdate" , 
 		data : { "rno" : rno ,"upcontent2":upcontent2,"bno":bno ,"anonymous" :anonymous } ,
 		success : function( result ){
@@ -216,6 +218,9 @@ function rereplyupdate(rno ,bno){ // 수정쓰기메소드
 			else{ alert("수정 실패했습니다."); }
 		}
 	});
+		
+	}
+	
 }
 
 
