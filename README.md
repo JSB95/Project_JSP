@@ -27,7 +27,7 @@
 |06-07|:ballot_box_with_check:|게시판view작업, mainview작업, 책방view작업, 시간표 DB 처리, 학점계산기 |
 |06-08|:ballot_box_with_check:|테스트3|
 |06-09|:ballot_box_with_check:|테스트3|
-|06-10|:ballot_box_with_check:|테스트3|
+|06-10&nbsp;&nbsp;|:ballot_box_with_check:|테스트3|
 
 ***역할 ***
 * 장승빈 : 시간표 기능&페이지 작업
