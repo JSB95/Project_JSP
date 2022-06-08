@@ -12,9 +12,9 @@
 </head>
 <body>
 	<%@include file="../header.jsp" %>
-	<div class="container">
+	<div class="container ">
 		<h3 class="text-center my-4">판매하기</h3>
-		<form class="col-md-8 offset-2"  action="/team3/bookstore/bookadd" method="post" enctype="multipart/form-data">
+		<form class="col-md-8 offset-2 bookform"  action="/team3/bookstore/bookadd" method="post" enctype="multipart/form-data">
 			<div class="addbox">
 				<h3>자세한 책 정보를 적어주세요</h3>
 				<input class="form-control" type="text" name="ttitle" placeholder="책 제목을 적어주세요">
@@ -34,9 +34,11 @@
 			</div>
 			<div>
 				<h3 style="display: inline;">실제 사진을 올려주세요</h3>
-				<input id="timg" class="timg" type="file" name="timg" accept="image/*">
-				<div id="addimgbox" class="addimgbox" onclick="addimg()">
-					<img alt="" src="camera.png">
+				<div id="imgbox">
+					<input id="timg" class="timg" type="file" name="timg" accept="image/*">
+					<div id="addimgbox" class="addimgbox" onclick="addimg()">
+						<img alt="" src="camera.png">
+					</div>
 				</div>
 				<div id="previewbox">
 					<img id="preview" class="col-md-4" width="100%">
@@ -53,8 +55,14 @@
 			<!-- 
 			<input type="submit" value="등록">
 			 -->
-			<button id="btnadd" >확인</button>
-			<a href="/team3/bookstore/booklist.jsp"><button>취소</button></a>
+			 <div class="row my-3">
+				<div class="col-md-2 offset-4">
+					<button id="btnadd" class="form-control btn btn-dark">확인</button>
+				</div>
+				<div class="col-md-2">
+					<a href="/team3/bookstore/booklist.jsp"><button class="form-control btn btn-outline-secondary">취소</button></a>
+				</div>
+			</div>
 		</form>
 		
 	</div>

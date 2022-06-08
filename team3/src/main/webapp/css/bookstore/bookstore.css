@@ -1,8 +1,15 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
-*{
-	font-family: 'Noto Sans KR', sans-serif;
+@font-face {
+    font-family: 'KOHIBaeumOTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/KOHIBaeumOTF.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
+
+*{
+	font-family: 'KOHIBaeumOTF';
+}
+
 .bookbox, .contentbox{
 	border: 1px solid grey;
 	border-radius: 10px;
@@ -51,6 +58,7 @@
 }
 .addimgbox {
 	width: 30%;
+	max-width: 180px;
     box-sizing: border-box;
     border: 1px dashed #d6d6d6;
     cursor: pointer;
@@ -89,4 +97,26 @@
     font-weight: bold;
     font-size: 18px;
     padding: 20px 0px;
+}
+.sellbtn{
+	border: 1px solid #ced4da;
+	border-radius: 0.25rem;
+	color: #999999;
+}
+.imgupdatebtn{
+	border: 1px solid #ced4da;
+	border-radius: 0.25rem;
+	color: #6a6a6a;
+	font-size: 14px;
+}
+.bookform input, img {
+	margin-bottom: 10px;
+}
+.ctext {
+	width: 100%;
+    margin-top: 10px;
+    border: 2px solid #eeeeee;
+  	border-radius: 10px;
+    padding: 0px 20px 10px 20px;
+    height: 400px;
 }

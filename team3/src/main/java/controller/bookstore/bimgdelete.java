@@ -1,26 +1,26 @@
-package controller.member;
+package controller.bookstore;
 
+import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import dao.MemberDao;
+import dao.BookstoreDao;
 
 /**
- * Servlet implementation class findid
+ * Servlet implementation class bimgdelete
  */
-@WebServlet("/member/findid")
-public class findid extends HttpServlet {
+@WebServlet("/bookstore/bimgdelete")
+public class bimgdelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public findid() {
+    public bimgdelete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,21 +29,25 @@ public class findid extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		int tno = Integer.parseInt(request.getParameter("tno"));
+		String timg = BookstoreDao.getBookstoreDao().getBook(tno).getTimg();
+		boolean result = BookstoreDao.getBookstoreDao().bimgdelete(tno);
+		if(result) {
+			String uploadpath = "/team3/bookstore/bookimg"+timg;
+			File file = new File(uploadpath);
+			file.delete();
+			response.getWriter().print("1");
+		}else {
+			response.getWriter().print("2");
+		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String mname = request.getParameter("mname");
-		String memail = request.getParameter("memail");
-		String mid = MemberDao.getMemberDao().findid(mname, memail);
-		
-		response.getWriter().print(mid);
-		
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

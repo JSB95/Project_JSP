@@ -34,10 +34,8 @@ public class mdelete extends HttpServlet {
 		boolean result = MemberDao.getMemberDao().delete(mid);
 		if (result) {
 			response.getWriter().println(1);
-			System.out.println(result);
 		}else {
 			response.getWriter().println(2);
-			System.out.println(result);
 		}
 	}
 

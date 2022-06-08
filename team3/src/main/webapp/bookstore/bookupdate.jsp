@@ -20,7 +20,7 @@
 	%>
 	<div class="container">
 		<h3 class="text-center my-4">판매하기</h3>
-		<form class="col-md-8 offset-2"  action="/team3/bookstore/bookupdate?tno<%=textbook.getTno() %>>" method="post" enctype="multipart/form-data">
+		<form class="col-md-8 offset-2 bookform"  action="/team3/bookstore/bookupdate?tno=<%=textbook.getTno() %>" method="post" enctype="multipart/form-data">
 			<div>
 				<h3>자세한 책 정보를 적어주세요</h3>
 				<input class="form-control" type="text" name="ttitle" value="<%=textbook.getTtitle() %>">
@@ -34,14 +34,28 @@
 			</div>
 			<div>
 				<h3>보존 상태는 어떤가요?</h3>
+				<%if(textbook.getTcondition() == 1){%>
+					<input type="radio" value="1" name="tcondition" checked="checked">상
+					<input type="radio" value="2" name="tcondition">중
+					<input type="radio" value="3" name="tcondition">하
+				<%}else if(textbook.getTcondition() == 2){%>
+					<input type="radio" value="1" name="tcondition">상
+					<input type="radio" value="2" name="tcondition" checked="checked">중
+					<input type="radio" value="3" name="tcondition">하
+				<%}else {%>
 				<input type="radio" value="1" name="tcondition">상
 				<input type="radio" value="2" name="tcondition">중
-				<input type="radio" value="3" name="tcondition">하
+				<input type="radio" value="3" name="tcondition" checked="checked">하
+				<%} %>
 			</div>
 			<div>
-				<h3>실제 사진을 올려주세요</h3>
-				<input class="form-control" id="timg" type="file" name="timg" accept=".jpg, .jpeg, .png" >
-				<div>
+				<h3 style="display: inline;">실제 사진을 올려주세요</h3>
+				<input id="timg" class="timg" type="file" name="timg" accept="image/*">
+				<button id="updatebtn" class="imgupdatebtn" type="button" onclick="bimgupdate()">파일변경</button>
+				<div id="imgbox">
+					
+				</div>
+				<div id="previewbox">
 					<img width="150px" id="preview" alt="" src="/team3/bookstore/bookimg/<%=textbook.getTimg()%>">
 				</div> 
 			</div>
@@ -53,9 +67,14 @@
 				<h3>추가 설명을 자유롭게 적어주세요</h3>
 				<input class="form-control" type="text" name="tcontent" placeholder="(1000자 이내)" value="<%=textbook.getTcontent()%>">
 			</div>
-		
-			<button id="btnadd" >수정</button>
-			<a href="/team3/bookstore/booklist.jsp"><button>취소</button></a>
+			<div class="row my-3">
+				<div class="col-md-2 offset-4">
+					<button class="form-control btn btn-dark"  id="btnadd" >수정</button>
+				</div>
+				<div class="col-md-2">
+					<a href="/team3/bookstore/booklist.jsp"><button class="form-control btn btn-outline-secondary">취소</button></a>
+				</div>
+			</div>
 		</form>
 		
 	</div>

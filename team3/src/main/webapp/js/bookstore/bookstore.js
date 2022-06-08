@@ -12,3 +12,8 @@ $("#timg").change(function(e){
 function addimg(){
 	$("#timg").click();
 }
+//사진 변경
+function bimgupdate(){
+	addimg();
+	console.log($("#timg").val());
+}
