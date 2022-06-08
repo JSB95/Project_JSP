@@ -6,8 +6,15 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'GothicA1-Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/GothicA1-Light.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
 *{
-	font-family: 'KOHIBaeumOTF';
+	font-family: 'GothicA1-Light';
 }
 
 butoon {
@@ -27,10 +34,12 @@ butoon {
 
 #wrap{
 	 background-color: #F2F2F2;
+	 padding-bottom: 30px;
 }
 
 .img_area{
-	width: 20%;
+	width: 60%;
+	margin-left: 50px;
 }
 
 .user {
@@ -40,6 +49,9 @@ butoon {
 	
 }
 
+.content_wrap {
+	font-family: 'GothicA1-Light';
+}
 .view_wrap{
 	background-color: white;
 	width: 50%;
@@ -83,9 +95,21 @@ butoon {
 	width: 80%;
 }
 .date{
-	width : 20%;
-		float: right;
+    width: 88%;
+    float: right;
+    display: flex;
+    justify-content: flex-end;
+	
 }
 .date, time{
 	color: #999;
+}
+.line{
+	width: 100%;
+	height: 1px;
+	background-color: #999;
+}
+.boardview_content{
+	margin-left: 50px;
+	margin-top: 20px;
 }

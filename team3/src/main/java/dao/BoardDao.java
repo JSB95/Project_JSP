@@ -31,6 +31,47 @@ public class BoardDao extends Dao {
 		return 0;
 		}
 	
+	public String getmid(int mno) {
+		String sql = "select mid from member where mno = '"+mno+"'";
+		
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getString(1);
+			}
+		} catch (Exception e) {}
+		return null;
+		}
+	
+	public int getnos(int bno) {
+		String sql = "select mno from board where bno = '"+bno+"'";
+		
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (Exception e) {}
+		return 0;
+		}
+	
+	public int getnos2(int rno) {
+		String sql = "select mno from reply where rno = '"+rno+"'";
+		
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (Exception e) {}
+		return 0;
+		}
+	
+	
+	
 	
 	
 	
@@ -285,6 +326,8 @@ public class BoardDao extends Dao {
 		} catch (Exception e) {System.out.println("댓글갯수 출력 오류"+ e);}
 		return 0;
 	}
+	
+	
 	
 
 	

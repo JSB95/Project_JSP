@@ -59,7 +59,7 @@ time{
 	display: flex;
 	flex-direction: column;
 }
-.rwirte_area{
+.rwirte_area,.rwirte_area2{
 	display: flex;
 	margin-top: 15px;
 }

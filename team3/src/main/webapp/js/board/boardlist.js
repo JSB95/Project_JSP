@@ -85,10 +85,12 @@ function view() {
 	
 	
 	for(let i = 0; i<boardlist.length; i++) {
-		console.log(boardlist[i]["bdate"].split(" ")[1])
+		console.log("ㄴ스플릿"+boardlist[i]["bdate"])
+		console.log("스플릿"+boardlist[i]["bdate"].split(" ")[1])
 	
-	if(boardlist[i]["bdate"]==date) {
+	if(boardlist[i]["bdate"].split(" ")[0]==date) {
 		boardlist[i]["bdate"] = boardlist[i]["bdate"].split(" ")[1]
+		
 	} else {
 		boardlist[i]["bdate"] = boardlist[i]["bdate"].split(" ")[0]
 	}
@@ -97,15 +99,15 @@ function view() {
 		if( i >= viewcount ) break; // 만약에 i가 화면에 표시할 주문수와 동일하면 출력 금지 
 		html += 
 		'<div id="list" onclick="location.href=\'boardview.jsp?bno='+boardlist[i]["bno"]+'\'">'+
-		'<span style="font-size : 15px; color:#999; float:right; margin-right:10px;margin-top: 15px; margin-bottom: 35px;" >' +boardlist[i]["bdate"]+  '</span>'+
-		'<div style="margin-top:15px; margin-bottom: 10px;">'+
-		'<span style="font-size : 25px">'+boardlist[i]["btitle"]+'</span>'+
+		'<span style="font-size : 12px; color:#999; float:right; margin-right:10px;margin-top: 5px; margin-bottom: 35px;" >' +boardlist[i]["bdate"]+  '</span>'+
+		'<div style="margin-top:5px; margin-bottom: 5px;">'+
+		'<span style="font-size : 20px;">'+boardlist[i]["btitle"]+'</span>'+
 		
 		'</div>'+
-		'<span>'+boardlist[i]["bnickname"]+'</span>'+
-		'<div style="margin-top: 10px; margin-bottom: 5px;">'+
-		'<span><img src="/team3/board/upload/blike.svg" id ="cicon"> '+boardlist[i]["blike"]+' </span>'+
-		'<span><img src="/team3/board/upload/bcomment.svg" id ="cicon"> '+boardlist[i]["rcount"]+' </span>'+
+		'<span style="font-size:12px;">'+boardlist[i]["bnickname"]+'</span>'+
+		'<div style="margin-top: 5px; margin-bottom: 5px;">'+
+		'<span id="like"><img src="/team3/board/upload/blike.svg" id ="cicon"> '+boardlist[i]["blike"]+' </span>'+
+		'<span id="coment" style="margin-left :15px;"><img src="/team3/board/upload/bcomment.svg" id ="cicon"> '+boardlist[i]["rcount"]+' </span>'+
 		'</div>'+
 		'</div>'
 		
