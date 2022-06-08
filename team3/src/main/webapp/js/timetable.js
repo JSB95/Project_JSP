@@ -3,8 +3,10 @@ $(function(){
 	
 	$.ajax({
 		url : "../timetable/getcollege",
+		async : false,
 		success : function(re){
 			$("#collegebox_wrap").html(re);
+			
 			collegechange();
 		}
 	})
@@ -25,17 +27,172 @@ $(function(){
     
     var mid = $('#mid').val();
     
-    setTimeout(function(){
+
 	
 		$.ajax({
 			url : "../timetable/gettimetable",
 			data : {"mid" : mid},
+			async : false,
 			success : function(re){
-				console.table(re);
+				
+				for (let i = 0; i < re.length; i++){
+					var name = re[i]['name'];
+					var time1 = re[i]['time'].split("_");
+					var code = re[i]['code'];
+					var regex = /[^0-9]/g;
+					var colorlist = [];
+					let timelist_init = []
+					$('.lecture_time_list').each(function(){
+						var text = $(this).attr('value');
+						timelist_init.push(text);
+					})
+					
+					$.ajax({
+						url : "../timetable/getcolorlist",
+						async : false,
+						success : function(colorlist_json){
+							colorlist = colorlist_json;
+						}
+					})
+					console.table(colorlist);
+					
+					var random_num = Math.floor(Math.random() * 10);
+
+						
+						loop:
+						for (let a = 0; a < timelist_init.length; a++){
+							for (let b = 0; b < time1.length; b++){
+								if(timelist_init[a] == time1[b]){
+									let num = random_num;
+									let mon_list = [];
+									let tue_list = [];
+									let wed_list = [];
+									let thu_list = [];
+									let fri_list = [];
+									$('.mon .lecture_time_list').each(function(){
+										var mon = $(this).find('.lecture-code').html().replace(regex,"");
+										mon_list.push(mon);
+									})
+									$('.tue .lecture_time_list').each(function(){
+										var tue = $(this).find('.lecture-code').html().replace(regex,"");
+										tue_list.push(tue);
+									})
+									$('.wed .lecture_time_list').each(function(){
+										var wed = $(this).find('.lecture-code').html().replace(regex,"");
+										wed_list.push(wed);
+									})
+									$('.thu .lecture_time_list').each(function(){
+										var thu = $(this).find('.lecture-code').html().replace(regex,"");
+										thu_list.push(thu);
+									})
+									$('.fri .lecture_time_list').each(function(){
+										var fri = $(this).find('.lecture-code').html().replace(regex,"");
+										fri_list.push(fri);
+									})
+									
+									$('.lecture_time_list').eq(a).find('a').contents().unwrap().wrapAll('<a href="javascript:void(0)" id="info_btn">');
+									$('.lecture_time_list').eq(a).find('.lecture-title').css('color', colorlist['font'][num]);
+									$('.lecture_time_list').eq(a).find('.material-icons').css({'display': 'block','color' : colorlist['font'][num]});
+									$('.lecture_time_list').eq(a).find('.lecture-code').css('color', colorlist['font'][num]);
+									$('.lecture_time_list').eq(a).css({
+										background : "linear-gradient(to left, " + colorlist['background'][num] + " 97%, " + colorlist['font'][num] + " 3%)"
+									});
+									$('.lecture_time_list').eq(a).hover(function(){
+										$(this).css('background-color',colorlist['hover'][num]);
+									}, function(){
+										$(this).css('background-color',colorlist['background'][num]);
+									})
+									
+									$('.lecture_time_list').eq(a).find('.lecture-title').html(name);
+									
+									$('.lecture_time_list').eq(a).find('.lecture-code').html('과목코드 : ' + code);
+									
+									switch (time1[b].split("/")[0]){
+										case "월" : 
+											for (let r = 0; r < mon_list.length; r++){
+												if (code == mon_list[r]){
+													
+													$('.lecture_time_list').eq(a).find('.lecture-title').html("");
+													$('.lecture_time_list').eq(a).find('.lecture-code').css('color', colorlist['background'][num]);
+													$('.lecture_time_list').eq(a).find('.material-icons').css('display', 'none');
+													continue loop;
+												}
+											}
+											
+											break;
+											
+										case "화" :
+										
+											for (let r = 0; r < tue_list.length; r++){
+												if (code == tue_list[r]){
+													
+													$('.lecture_time_list').eq(a).find('.lecture-title').html("");
+													$('.lecture_time_list').eq(a).find('.lecture-code').css('color', colorlist['background'][num]);
+													$('.lecture_time_list').eq(a).find('.material-icons').css('display', 'none');
+													continue loop;
+												}
+											}
+											
+											break;
+											
+										case "수" :
+										
+											for (let r = 0; r < wed_list.length; r++){
+												if (code == wed_list[r]){
+													
+													$('.lecture_time_list').eq(a).find('.lecture-title').html("");
+													$('.lecture_time_list').eq(a).find('.lecture-code').css('color', colorlist['background'][num]);
+													$('.lecture_time_list').eq(a).find('.material-icons').css('display', 'none');
+													
+													
+													
+												}
+											}
+											
+											break;
+											
+										case "목" : 
+										
+											for (let r = 0; r < thu_list.length; r++){
+												if (code == thu_list[r]){
+													
+													$('.lecture_time_list').eq(a).find('.lecture-title').html("");
+													$('.lecture_time_list').eq(a).find('.lecture-code').css('color', colorlist['background'][num]);
+													$('.lecture_time_list').eq(a).find('.material-icons').css('display', 'none');
+													continue loop;
+												}
+											}
+											
+											break;
+											
+										case "금" :
+										
+											for (let r = 0; r < fri_list.length; r++){
+												if (code == fri_list[r]){
+													
+													$('.lecture_time_list').eq(a).find('.lecture-title').html("");
+													$('.lecture_time_list').eq(a).find('.lecture-code').css('color', colorlist['background'][num]);
+													$('.lecture_time_list').eq(a).find('.material-icons').css('display', 'none');
+													continue loop;
+												}
+											}
+											
+											break;
+										
+									}
+									
+									break;
+								}
+							}
+						}
+						
+
+					
+				}
 			}
 		})
 	
-	},2000);
+
     
 	
 
