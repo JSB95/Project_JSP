@@ -36,7 +36,10 @@
 				<h4 class="mboxtitle1">나의 활동</h4>
 				<div class="accountbox">
 					<div>
-						<h5>내가 쓴 글</h5>
+						<h5><a href="/team3/member/myboard.jsp">내가 쓴 글</a></h5>
+					</div>
+					<div>
+						<h5><a href="/team3/member/mybook.jsp">내 책 조회</a></h5>
 					</div>
 					<div>
 						<h5><a href="/team3/message/getmessage.jsp">쪽지함</a></h5>

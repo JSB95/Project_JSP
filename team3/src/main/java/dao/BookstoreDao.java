@@ -178,5 +178,31 @@ public class BookstoreDao extends Dao{
 		}
 		return false;
 	}
+	public JSONArray mybooklist(int mno) {
+		JSONArray jsonArray = new JSONArray();
+		String sql = "select * from textbook where mno ="+mno+" order by tno desc";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				JSONObject object = new JSONObject();
+				object.put("tno", rs.getInt(1));
+				object.put("timg", rs.getString(2) );
+				object.put("ttitle",rs.getString(3));
+				object.put("tcontent", rs.getString(4));
+				object.put("tprice", rs.getInt(5));
+				object.put("tcondition", rs.getInt(6));
+				object.put("tauthor",rs.getString(7) );
+				object.put("tcompany",rs.getString(8) );
+				object.put("tclass",rs.getString(9) );
+				jsonArray.put(object);
+				
+			}
+			return jsonArray;
+		} catch (Exception e) {
+			System.out.println("mybooklist 오류 : "+ e);
+			}
+		return null;
+	}
 	
 }

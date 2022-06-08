@@ -18,7 +18,7 @@
 		int tno = Integer.parseInt(request.getParameter("tno"));
 		Textbook textbook = BookstoreDao.getBookstoreDao().getBook(tno);
 	%>
-	<div class="container">
+	<div class="bviewbox">
 		<h3 class="text-center my-4">책방</h3>
 		<div class="contentbox"><!-- 상세정보 -->
 			<h5 class="ttitle"><%=textbook.getTtitle() %></h5>
@@ -64,7 +64,7 @@
 				</div>
 			<%}else{ %>
 				<div>
-					<button class="btnbook"  data-bs-toggle="modal" data-bs-target="#read">쪽지 보내기</button>
+					<button class="btnbook"  data-bs-toggle="modal" data-bs-target="#read">판매자에게 쪽지 보내기</button>
 				</div>
 			<%} %>
 		</div>

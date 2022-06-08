@@ -27,17 +27,17 @@
 		}
 	%>
 		<div class="row my-3 col-md-10 offset-1">
-			<div class="col-sm-10">
+			<div class="col-md-10">
 				<input id="keyword" name="keyword" class="form-control" type="text" placeholder="구매할 책을 검색하세요">
 			</div>
-			<div class="col-sm-2">
+			<div class="col-md-2">
 				<button class="form-control" type="button" onclick="search()">검색</button>
 			</div>
 		</div>
 		<div class="scrollbox">
 			<div class="row col-md-10 offset-1">
-				<span class="col-sm-6">최근 올라온 책</span>
-				<div class="col-sm-6 d-flex justify-content-end" >
+				<span class="col-md-6">최근 올라온 책</span>
+				<div class="col-md-6 d-flex justify-content-end" >
 					<a href="/team3/bookstore/bookadd.jsp"><button class="sellbtn">판매하기</button></a>
 				</div>
 			</div>

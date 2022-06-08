@@ -49,7 +49,7 @@
 				<%} %>
 			</div>
 			<div>
-				<h3 style="display: inline;">실제 사진을 올려주세요</h3>
+				<h3 style="display: inline-block;">실제 사진을 올려주세요</h3>
 				<input id="timg" class="timg" type="file" name="timg" accept="image/*">
 				<button id="updatebtn" class="imgupdatebtn" type="button" onclick="bimgupdate()">파일변경</button>
 				<div id="imgbox">
