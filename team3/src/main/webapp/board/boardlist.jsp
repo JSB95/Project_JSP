@@ -25,17 +25,16 @@ String best = "best";
 
 <%@include file="../header.jsp"%>
 
-	<div class="content_wrap">
+	<div class="container content_wrap">
+
 	
 		<div class="board_category">
-		<div><a href="boardlist.jsp"><button>전체글</button></a></div>
+		<div><button onclick="getboardlist()">전체글</button></div>
 		<div><button onclick="boardbest()">인기글</button></div>
 		<div><a href="boardwirte.jsp"><button>글쓰기</button></a></div>
+		
+		
 	</div>
-	
-	
-		<!-- 인기글 전체글 선택 -->
-	
 	
 		<div class="search_area">
 		
@@ -49,6 +48,13 @@ String best = "best";
 					<input type="button" class="search_button" value="검색" onclick="getsearchlist()">
 				</div>
 			</div>
+		
+	
+	
+		<!-- 인기글 전체글 선택 -->
+	
+	
+		
 		
 		
 	

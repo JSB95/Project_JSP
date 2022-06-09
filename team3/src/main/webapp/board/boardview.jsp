@@ -34,7 +34,7 @@ int mno2 = BoardDao.getBoardDao().getnos(bno);
 
 
 <input type="hidden" value="<%=bno%>" id="bno">
-<div class="content_wrap">
+<div class="container content_wrap">
 
 			 <div class="view_wrap">
 				<div class="view_header">
@@ -55,13 +55,11 @@ int mno2 = BoardDao.getBoardDao().getnos(bno);
 				
 				
 				<div class="user"> 
-					<div>
+					<div class="user_h">
 						<span><i class="fas fa-user"></i></span> 
-					</div>
-					<div>
 						<span style="margin-left:10px;"><%=board.getBnickname() %></span> 
-						
 					</div>
+					
 					<div class="date"><span>  <%=board.getBdate() %> </span>
 				
 				</div>
@@ -106,6 +104,7 @@ int mno2 = BoardDao.getBoardDao().getnos(bno);
 					<a href="boardupdate.jsp?bno=<%=board.getBno()%>"><button>수정</button></a>
 					<a href="boarddelete?bno=<%=board.getBno()%>"> <button>삭제</button> </a>
 					<%} %>
+					<a href="boardlist.jsp"><button>글목록</button></a>
 				</div>
 			</div>
 		
@@ -131,7 +130,7 @@ int mno2 = BoardDao.getBoardDao().getnos(bno);
 				ArrayList<Reply> replylist = ReplyDao.getReplyDao().replylist(bno);
 				
 			%>
-			<div id="wrap">
+			<div class="container" id="wrap">
 			
 			<% for(Reply reply : replylist) { %>
 			
@@ -145,11 +144,11 @@ int mno2 = BoardDao.getBoardDao().getnos(bno);
 					<div id="relike_area">
 			<%
 				if(mid != null && ReplyDao. getReplyDao().getreplylike(reply.getRno(), mno)) {%>
-				 <span onclick="rereplyview(<%=reply.getRno()%>,<%=reply.getBno()%>)"><i class="far fa-comment-alt"></i></span>
-				<button class="likebre" onclick="saverelike('<%=mid%>',<%=reply.getRno()%>);"><i class="fas fa-thumbs-up"></i><%=reply.getRelike() %></button>
+				 <span style="margin-right:10px;" onclick="rereplyview(<%=reply.getRno()%>,<%=reply.getBno()%>)"><i class="far fa-comment-alt"></i></span>
+				<button class="likebre" onclick="saverelike('<%=mid%>',<%=reply.getRno()%>);"><i class="fas fa-thumbs-up"></i> <%=reply.getRelike() %></button>
 				
 			<% } else {%>
-			 <span onclick="rereplyview(<%=reply.getRno()%>,<%=reply.getBno()%>)"><i class="far fa-comment-alt"></i></span>
+			 <span style="margin-right:10px;" onclick="rereplyview(<%=reply.getRno()%>,<%=reply.getBno()%>)"><i class="far fa-comment-alt"></i></span>
 			<button class="likebre" onclick="saverelike('<%=mid%>',<%=reply.getRno()%>);"><i class="far fa-thumbs-up"></i>  <%=reply.getRelike() %></button>
 			<%} %>
 			

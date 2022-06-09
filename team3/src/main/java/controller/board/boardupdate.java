@@ -1,5 +1,6 @@
 package controller.board;
 
+import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -53,18 +54,34 @@ public class boardupdate extends HttpServlet {
 				1024*1024*10, // 3.파일최대 용량 허용 범위 [10mb]
 				"UTF-8", // 4.인코딩타입
 				new DefaultFileRenamePolicy()); // 4.보안방식 : 동일한 파일명이 있을경우 자동 이름 변환
+		
+		
 		HttpSession session = request.getSession();
 		String mid = (String)session.getAttribute("login");
 		
 		int bno = Integer.parseInt( multi.getParameter("bno"));
+		String bimg = multi.getFilesystemName("bimg");
+		Board temp = BoardDao.getBoardDao().getboaBoard(bno);
+		String oldfile = temp.getBimg();
+		
+		if(bimg==null) { // 새로운 첨부파일 없다.
+			bimg = oldfile;
+		} else { // 새로운 첨부파일 있다.
+			// * 기존파일은 서버 내에서 삭제처리
+			String upload = request.getSession().getServletContext().getRealPath("/board/upload/"+oldfile);
+			File file = new File(upload);
+			file.delete();
+		}
 		
 		int mno = BoardDao.getBoardDao().getmno(mid);
 		request.setCharacterEncoding("UTF-8");
 		String btitle = multi.getParameter("btitle");
 		String bcontent = multi.getParameter("bcontent");
 		bcontent = bcontent.replace("\r\n", "<br>");
-		String bimg = multi.getFilesystemName("bimg");
+		
 		String radio = multi.getParameter("anonymous");
+		
+		
 		//System.out.println(radio.toString());
 		
 		
@@ -99,3 +116,23 @@ public class boardupdate extends HttpServlet {
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

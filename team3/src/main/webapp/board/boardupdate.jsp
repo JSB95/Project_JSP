@@ -28,14 +28,14 @@ Board board = BoardDao.getBoardDao().getboaBoard(bno);
 			
 			<%if(board.getBimg() !=null)  { %>
 			<div style="width:100%">
-				<img id="preview" width="100%" src="/team3/board/upload/<%=board.getBimg()%>">
-				<button type="button" onclick="filedelete(<%=board.getBno()%>)"> 사진삭제</button>
+				<img id="preview" width="30%" src="/team3/board/upload/<%=board.getBimg()%>">
+				<div><button type="button" onclick="filedelete(<%=board.getBno()%>)"> 사진삭제</button></div>
 				</div>
 			<%}
 			%>
 		
 			
-			<div><input id="anonymous" type="radio" value="아이디" name="anonymous" checked="checked">아이디</div>
+			<div style="margin-top:10px;"><input id="anonymous" type="radio" value="아이디" name="anonymous" checked="checked">아이디</div>
 			<div><input id="anonymous" type="radio" value="익명" name="anonymous">익명</div>
 			
 			<div class="btn_area">
