@@ -48,8 +48,16 @@ public class login extends HttpServlet {
 			session.setAttribute("login", mid);
 			response.sendRedirect("/team3/main.jsp");
 		}else if(result == 2) {
-			response.sendRedirect("/team3/member/login.jsp?result=2");
+			response.setContentType("text/html; charset=UTF-8");
+			response.getWriter().print(
+					"<script type='text/javascript' charset='UTF-8'>"
+					+ "alert('일치하는 회원 정보가 없습니다.');"
+					+"location.href ='/team3/member/login.jsp';"		
+					+ "</script>"
+					);
+			
 		}else if(result == 3) {
+			
 			System.out.println("오류");
 		}
 	}
