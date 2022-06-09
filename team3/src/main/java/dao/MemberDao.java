@@ -182,7 +182,7 @@ public class MemberDao extends Dao {
 		}
 		return false;
 	}
-
+	//회원 탈퇴
 	public boolean delete(String mid) {
 		String sql = "delete from member where mid = '"+mid+"'";
 		try {
@@ -247,6 +247,20 @@ public class MemberDao extends Dao {
 			System.out.println("myboardlist 오류 : "+ e);
 			}
 		return null;
+	}
+	//전화번호 중복체크
+	public boolean phonecheck(String mphone) {
+		String sql = "select * from member where mphone = '"+mphone+"'";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				return true;
+			}
+		} catch (Exception e) {
+			System.out.println("phonecheck 오류 : " + e);
+		}
+		return false;
 	}
 	
 	

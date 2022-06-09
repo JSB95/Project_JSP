@@ -38,6 +38,7 @@ public class signup extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		String mname = request.getParameter("mname");
 		String mcode = request.getParameter("mcode");
@@ -53,7 +54,12 @@ public class signup extends HttpServlet {
 		boolean result = MemberDao.getMemberDao().signup(member);
 		
 		if (result) {
-			response.sendRedirect("/team3/member/login.jsp");
+			response.getWriter().print(
+					"<script type='text/javascript' charset='UTF-8'>"
+					+ "alert('"+mid+"님, 반갑습니다!');"
+					+"location.href ='/team3/member/login.jsp';"		
+					+ "</script>"
+					);
 		}else {
 			System.out.println("오류");
 			response.sendRedirect("/team3/member/login.jsp");

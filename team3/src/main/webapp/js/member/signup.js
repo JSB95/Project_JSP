@@ -50,8 +50,19 @@ $( function(){
 		let phonej = /^010([0-9]{8})$/;	//숫자만 가능 010 + 숫자8자리
 		
 		if(phonej.test(mphone)){
-			$("#phonecheck").html("사용가능한 번호입니다.");
-			pass[2] = true;
+			$.ajax({
+	            url : "/team3/member/phonecheck" ,
+	            data : { "mphone" : mphone } ,
+	            success : function( result ){
+	               if( result == 1 ){ 
+	                  $("#phonecheck").html("사용중인 전화번호입니다.");
+	                  pass[2] = false;
+	               }else{ 
+	                 $("#phonecheck").html("사용가능한 전화번호입니다.");
+	                  pass[2] = true;
+	          	 	}
+            	}
+         	});
 		}else{
 			$("#phonecheck").html("다시 확인해주세요");
 			pass[2] = false;
@@ -121,21 +132,14 @@ $( function(){
 		let passwordj = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,15}$/;
 		
 		if(passwordj.test(mpassword)){
-			if( mpassword != mpasswordcheck ){
-				
-				$("#passwordcheck").html("패스워드가 서로 다릅니다.");
-				pass[5] = false;
-			}else{
-				$("#passwordcheck").html("사용가능한 비밀번호 입니다.");
 				pass[5] = true; 
-				pass[6] = true;
-			}
 		}else{
 			$("#passwordcheck").html("영문, 숫자, 특수문자 포함 6~15글자 입력해주세요.");
 			pass[5] = false;
 		}
 	}); //비밀번호 확인 end
 	//비밀번호 일치 확인
+	
 	$("#mpasswordcheck").keyup(function(){
 		let mpassword = $("#mpassword").val(); 
 		let mpasswordcheck = $("#mpasswordcheck").val(); 

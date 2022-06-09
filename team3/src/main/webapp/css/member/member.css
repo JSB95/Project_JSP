@@ -76,3 +76,9 @@ a{
 	height: 300px;
 	align-content: center;
 }
+input[type=password]{
+   font-family:"굴림";
+}
+input[type=password]::placeholder{
+   font-family: 'KOHIBaeumOTF';
+}
