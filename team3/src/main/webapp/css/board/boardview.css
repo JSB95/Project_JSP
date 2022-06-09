@@ -14,13 +14,16 @@
 }
 
 *{
-	font-family: 'GothicA1-Light';
+	font-family: 'KOHIBaeumOTF';
 }
 
 butoon {
 	background-color: #6A7BA2;
 	color: white;
+	border-radius: 10px;
+	
 }
+
 
  .content_wrap{
  	margin: 0 auto;
@@ -28,12 +31,13 @@ butoon {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #F2F2F2;
+    background-color: #edf0f5;
+    font-family: 'GothicA1-Light';
    
  }
 
 #wrap{
-	 background-color: #F2F2F2;
+	 background-color: #edf0f5;
 	 padding-bottom: 30px;
 }
 
@@ -49,9 +53,7 @@ butoon {
 	
 }
 
-.content_wrap {
-	font-family: 'GothicA1-Light';
-}
+
 .view_wrap{
 	background-color: white;
 	width: 50%;
@@ -60,6 +62,7 @@ butoon {
 	 border: 1px solid #eee;
 	 padding: 50px;
 	 margin-top: 50px;
+	 border-radius: 10px;
 	
 }
 .likeb{
@@ -73,18 +76,21 @@ butoon {
 }
 .upbutton_area button{
 	background-color: #6A7BA2;
-	color: white;
-	border:none;
-	width: 80px;
+    color: white;
+    border: none;
+    width: 80px;
+    height: 30px;
+    font-size: 12px;
+    border-radius: 10px;
 }
 .lay{
 	display: flex;
     justify-content: flex-end;
     width: 50%;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 .boardview_content , .user , .img_area{
-	margin-top: 15px;
+	margin-top: 20px;
 	
 }
 .board_title{
@@ -113,3 +119,13 @@ butoon {
 	margin-left: 50px;
 	margin-top: 20px;
 }
+#rcontent,#rrcontent,#upcontent,#upcontent2 {
+	resize: none;
+}
+.user_h{
+	width: 100%;
+}
+
+.far{
+ 	color: #6A7BA2;
+ }

@@ -104,10 +104,10 @@ function view() {
 		'<span style="font-size : 20px;">'+boardlist[i]["btitle"]+'</span>'+
 		
 		'</div>'+
-		'<span style="font-size:12px;">'+boardlist[i]["bnickname"]+'</span>'+
+		'<span style="font-size:12px; padding-left:10px;">'+boardlist[i]["bnickname"]+'</span>'+
 		'<div style="margin-top: 5px; margin-bottom: 5px;">'+
-		'<span id="like"><img src="/team3/board/upload/blike.svg" id ="cicon"> '+boardlist[i]["blike"]+' </span>'+
-		'<span id="coment" style="margin-left :15px;"><img src="/team3/board/upload/bcomment.svg" id ="cicon"> '+boardlist[i]["rcount"]+' </span>'+
+		'<span id="like"><i class="far fa-thumbs-up"></i> '+boardlist[i]["blike"]+' </span>'+
+		'<span id="coment" style="margin-left :15px;"><i class="far fa-comment-alt"></i> '+boardlist[i]["rcount"]+' </span>'+
 		'</div>'+
 		'</div>'
 		
