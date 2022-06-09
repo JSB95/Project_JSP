@@ -178,6 +178,7 @@ public class BookstoreDao extends Dao{
 		}
 		return false;
 	}
+	//내 책 조회
 	public JSONArray mybooklist(int mno) {
 		JSONArray jsonArray = new JSONArray();
 		String sql = "select * from textbook where mno ="+mno+" order by tno desc";
@@ -196,7 +197,6 @@ public class BookstoreDao extends Dao{
 				object.put("tcompany",rs.getString(8) );
 				object.put("tclass",rs.getString(9) );
 				jsonArray.put(object);
-				
 			}
 			return jsonArray;
 		} catch (Exception e) {

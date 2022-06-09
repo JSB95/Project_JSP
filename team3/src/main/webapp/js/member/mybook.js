@@ -34,8 +34,6 @@ function view(){
 			}else {
 				bookcondition = "하";
 			}
-		console.log(booklist[i]["tcondition"]);
-		console.log(bookcondition);
 		html +=  '<div class="row bookbox my-3" onclick="location.href=\'/team3/bookstore/bookview.jsp?tno='+booklist[i]["tno"]+'\';">'+
 			'	<div class="col-sm-3">'+
 			'		<img width="150px" alt="" src="/team3/bookstore/bookimg/'+booklist[i]["timg"]+'">'+

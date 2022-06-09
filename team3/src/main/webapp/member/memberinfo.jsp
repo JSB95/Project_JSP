@@ -19,16 +19,18 @@
 		Member member =  MemberDao.getMemberDao().getmemberinfo(mid);
 	%>
 	<div class="container">
-		<div class="row mt-3">
+		<div class="row mt-3 he">
 			<div class="col-md-4">
 				<div class="memberbox">
 					<h4>내프로필</h4>
 					<div class="mdetailbox">
 						<p class="mname"><%=member.getMname() %></p>
-						<p><%=member.getMcode() %></p>
-						<p><%=member.getMid() %></p>
-						<p><%=member.getMphone() %></p>
-						<p><%=member.getMemail() %></p>
+						<div class="">
+							<p><%=member.getMcode() %></p>
+							<p><%=member.getMid() %></p>
+							<p><%=member.getMphone() %></p>
+							<p><%=member.getMemail() %></p>
+						</div>
 					</div>
 				</div>
 			</div>

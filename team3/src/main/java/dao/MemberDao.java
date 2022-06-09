@@ -1,5 +1,11 @@
 package dao;
 
+import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import dto.Board;
 import dto.Member;
 
 public class MemberDao extends Dao {
@@ -203,7 +209,7 @@ public class MemberDao extends Dao {
 		}
 		return 0;
 	}
-	
+	// 회원아이디 구하기
 	public String getmid (int mno) {
 		String sql = "select mid from member where mno = '"+mno+"'";
 		try {
@@ -215,6 +221,31 @@ public class MemberDao extends Dao {
 		} catch (Exception e) {
 			System.out.println("getmid 오류 : "+ e);
 		}
+		return null;
+	}
+	
+	//내가 쓴글 조회
+	public JSONArray myboardlist(int mno) {
+		JSONArray jsonArray = new JSONArray();
+		String sql = "select * from board where mno ="+mno+" order by bno desc";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				JSONObject object = new JSONObject();
+				object.put("bno", rs.getInt(1));
+				object.put("btitle",rs.getString(2) );
+				object.put("bcontent",rs.getString(3));
+				object.put("rcount", rs.getInt(6));
+				object.put("blike", rs.getInt(7));
+				object.put("bnickname",rs.getString(8) );
+				object.put("bdate",rs.getString(9) );
+				jsonArray.put(object);
+			}
+			return jsonArray;
+		} catch (Exception e) {
+			System.out.println("myboardlist 오류 : "+ e);
+			}
 		return null;
 	}
 	
