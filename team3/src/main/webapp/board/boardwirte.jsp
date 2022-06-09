@@ -36,6 +36,7 @@
 	</div>
 	
 	</div>
+	<%@include file="../footer.jsp"%>
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="../js/board/board.js"></script>
 

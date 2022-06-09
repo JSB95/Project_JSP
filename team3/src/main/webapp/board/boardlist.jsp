@@ -68,7 +68,7 @@ String best = "best";
 	
 	
 	
-
+<%@include file="../footer.jsp"%>
 
 
 

@@ -226,7 +226,7 @@ int mno2 = BoardDao.getBoardDao().getnos(bno);
 			
 			
 			
-			
+			<%@include file="../footer.jsp"%>
 		
 		
 
