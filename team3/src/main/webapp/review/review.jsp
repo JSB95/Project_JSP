@@ -115,14 +115,17 @@
 	
 	<div class="container">
 		<div class="row">
-			<div class="box"><!-- 강의 -->
+			<h3 class="강의평가">강의평가</h3>
+			<div class="box1"><!-- 강의 -->
 				<h4><%=lecture.getLname() %></h4>
 				교수명: <%=lecture.getLprofessor() %><br>
 				이수구분: <%=ldivision %>
 			</div>
-			<div class="box">
+			<div class="box2">
 				<div class="rline"><!-- 강의평평균 -->
 					<h4>강의평</h4>
+					<div class="row">
+						<div class="col-md-3">
 					<%if(5==star){ %>
 						<img class="star" alt="" src="img/노란별.png">
 									<img class="star"  alt="" src="img/노란별.png">
@@ -200,11 +203,15 @@
 									<img class="star"  alt="" src="img/회색별.png">
 									<img class="star"  alt="" src="img/회색별.png">
 					<%} %>
-					<%=st %>
-					<br>
+					<%=st %><br><br>
+					<span class="학점"><%=lecture.getLcredit()%>학점</span>
+					</div>
+					<div class="col-md-9">
 					과제: <%=과제 %><br>
 					시험: <%=시험 %><br>
 					조모임: <%=조모임 %>
+					</div>
+					</div>
 				</div>
 				<div><!-- 강의평리스트 -->
 					<div>
@@ -308,7 +315,7 @@
 			</div>
 		</div>
 	</div>
-	
+	<%@include file="../footer.jsp"%>
 	
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

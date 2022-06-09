@@ -57,13 +57,14 @@
 	%>
 
 	<%@include file="../header.jsp"%>
+	<h3 class="mess">보낸쪽지함</h3>
 	<%@include file="messagebar.jsp"%>
 	
 	<div class="container">
 		<div class="tablebox">
 			<table class="table">
 					<tr>
-						<th>받은이</th><th class="내용">내용</th><th>작성일</th><th>상태</th>
+						<th>받은이</th><th class="내용">내용</th><th>작성일</th><th class="ing">상태</th>
 					</tr>
 				<%for(Message message : sendmessage){ 
 					int sendno = message.getMgetno();
@@ -71,7 +72,7 @@
 					if(message.getMactive()==1){
 				%>
 					<tr class="td" onclick="confirm(<%=message.getMnum() %>)" data-bs-toggle="modal" data-bs-target="#read">
-						<td><%=sendid %></td><td><span class="mcontent"><%=message.getMcontent()%></span></td><td><%=message.getMtime() %></td><td>읽지않음</td>
+						<td><%=sendid %></td><td><span class="mcontent1"><%=message.getMcontent()%></span></td><td><%=message.getMtime() %></td><td>읽지않음</td>
 					</tr>
 				<%}else{ %>
 					<tr class="td" onclick="confirm(<%=message.getMnum() %>)" data-bs-toggle="modal" data-bs-target="#read">
@@ -147,7 +148,7 @@
     </div>
   </div>
 </div>
-
+<%@include file="../footer.jsp"%>
 
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="/team3/js/message/message.js" type="text/javascript"></script>

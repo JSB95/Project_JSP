@@ -40,6 +40,7 @@
 	<div class="container">
 		<h3 class="text" style="margin-top: 40px">강의평등록</h3>
 		<div class="row">
+			<div class="col-md-4">
 				<div>
 					<form action="reviewwrite.jsp">
 					<div class="searchbox">
@@ -48,37 +49,34 @@
 					</div>
 					</form>
 				</div><!-- 강의검색 -->
-			<div class="lecturetable" style="overflow-y:scroll; height: 200px; margin: 0 auto;">
-				<table class="table table-hover text-center">
-					<tr>
-						<th>과목</th>
-						<th>교수명</th>
-						<th>학점</th>
-						<th>이수구분</th>
-					</tr>
-				<% for (int i=0; i<lecturelist.size();i++){
-					int ldivision = lecturelist.get(i).getLdivision();
-					if(ldivision==0){
-						이수구분="전공";
-					}else{이수구분="교양";}
-					%>
-					<tr class="click" onclick="lecturelist(<%=lecturelist.get(i).getLno() %>)">
-						<td><%=lecturelist.get(i).getLname() %></td>
-						<td><%=lecturelist.get(i).getLprofessor() %></td>
-						<td><%=lecturelist.get(i).getLcredit() %>학점</td>
-						<td><%=이수구분 %></td>
-					</tr>
-					<%}%>
-				</table>
-			</div><!-- 강의리스트 -->
-			<div id="tableviewbox">
-			</div><!-- 강의평 -->
-			
+				<div class="lecturetable" style="overflow-y:scroll; height: 500px; margin: 0 auto;">
+					<div id="up" class="list-group">
+						<% for (int i=0; i<lecturelist.size();i++){
+						int ldivision = lecturelist.get(i).getLdivision();
+						if(ldivision==0){
+							이수구분="전공";
+						}else{이수구분="교양";}
+						%>
+						<button type="button" class="list_1" onclick="lecturelist(<%=lecturelist.get(i).getLno() %>)">
+							<span><%=lecturelist.get(i).getLname() %></span><br>
+							<span class="교수명"><%=lecturelist.get(i).getLprofessor() %> 교수님</span><br>
+							<span class="이수구분"><%=이수구분 %>:<%=lecturelist.get(i).getLcredit() %>학점</span>
+						</button>
+						<%}%>
+						<a class="up" href="#up"><i class="fa-solid fa-circle-arrow-up"></i></a>
+					</div>
+					
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div id="tableviewbox">
+				</div>
+			</div>
 		</div>
 	</div>
 	
 	
-	
+	<%@include file="../footer.jsp"%>
 	
 	
 	<script src="/team3/js/review/reviewadd.js" type="text/javascript"></script>

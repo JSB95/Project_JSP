@@ -183,5 +183,16 @@ public class MessageDao extends Dao{
 		}catch(Exception e) {System.out.println("sendlist"+e);}
 		return null;
 	}
-	
+	///안읽은 쪽지갯수
+	public int getcount(int mno) {
+		try {
+			String sql = "select count(*) from message where mactive=1 and mgetno="+mno;
+			ps=con.prepareStatement(sql);
+			rs=ps.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+		}catch(Exception e) {}
+		return 0;
+	}
 }

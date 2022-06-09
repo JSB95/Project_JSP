@@ -14,7 +14,7 @@
 <body>
 	<div class="container mainbox">
 		<div class="container loginbox" style="width: 400px;">
-			<h3 class="text-center my-4">비밀번호 찾기</h3>
+			<h3 class="text-center my-4 blue">비밀번호 찾기</h3>
 			<form >
 				<div> 
 					<input class="form-control my-2" type="text" id="mid" name="mid" placeholder="아이디">
@@ -22,11 +22,11 @@
 				<div>
 					<input class="form-control my-2" type="text" id="memail" name="memail" placeholder="이메일">
 				</div>
-				<input class="form-control btn btn-dark my-4" onclick="findpw()" value="비밀번호 찾기">
+				<input class="form-control btn my-4 btnlogin" onclick="findpw()" value="비밀번호 찾기">
 			</form>
 			<div class="text-center my-2">
-				<a href="/team3/member/findid.jsp">아이디 찾기</a>
-				<a href="/team3/member/login.jsp">로그인하러 가기</a>
+				<a class="searchlink" href="/team3/member/findid.jsp">아이디 찾기</a>
+				<a class="searchlink" href="/team3/member/login.jsp">로그인하러 가기</a>
 			</div>
 		</div>
 	</div>

@@ -41,7 +41,7 @@ function tableview(){
 				'<div class="row">'+
 				'<input type="hidden" id="lno">'+
 				'	<div class="col-md-3" id="lecture">'+
-				'		<span class="lname">'+jsonarray[i]["lname"]+'</span>'+
+				'		<span class="lname">'+jsonarray[i]["lname"]+'</span><br>'+
 				'		<span>'+jsonarray[i]["lprofessor"]+'교수</span><br>'+
 				'		<span>'+jsonarray[i]["lcredit"]+'학점</span><br>'+
 				'		<span class="lcollege">'+division+' : : </span>'+
@@ -78,16 +78,16 @@ function tableview(){
 				'		총평<br>'+
 				'<input type="hidden" id="star">'+
 				'	<span id="starlist">'+
-				'		<img alt="" src="img/회색별.png" onclick="star1()">'+
-				'		<img alt="" src="img/회색별.png" onclick="star2()">'+
-				'		<img alt="" src="img/회색별.png" onclick="star3()">'+
-				'		<img alt="" src="img/회색별.png" onclick="star4()">'+
-				'		<img alt="" src="img/회색별.png" onclick="star5()"><br>'+
+				'		<img class="별" alt="" src="img/회색별.png" onclick="star1()">'+
+				'		<img class="별" alt="" src="img/회색별.png" onclick="star2()">'+
+				'		<img class="별" alt="" src="img/회색별.png" onclick="star3()">'+
+				'		<img class="별" alt="" src="img/회색별.png" onclick="star4()">'+
+				'		<img class="별" alt="" src="img/회색별.png" onclick="star5()"><br>'+
 					'</span>'+
 				'		<br>'+
 				'	</div>'+
 				'	<div class="col-md-9">'+
-				'		<textarea class="textarea" rows="10" cols="100%" id="text" placeholder="이 강의에 대한 총평을 작성해주세요. (등록 후에는 수정 및 삭제가 불가능하므로 신중히 적어주세요.)"></textarea><br>'+
+				'		<textarea class="textarea" rows="10" cols="100%" id="text" placeholder="이 강의에 대한 총평을 작성해주세요.                                                                            (등록 후에는 수정 및 삭제가 불가능하므로 신중히 적어주세요.)"></textarea><br>'+
 				'	</div>'+
 			'	</div>'+
 			'</div>'+
@@ -225,11 +225,11 @@ function star1(){
 	$("#star").val(1);
 	$("#starlist").html( 
 		'	<span id="starlist">'+
-			'		<img alt="" src="img/노란별.png" onclick="star1()">'+
-			'		<img alt="" src="img/회색별.png" onclick="star2()">'+
-			'		<img alt="" src="img/회색별.png" onclick="star3()">'+
-			'		<img alt="" src="img/회색별.png" onclick="star4()">'+
-			'		<img alt="" src="img/회색별.png" onclick="star5()"><br>'+
+			'		<img class="별" alt="" src="img/노란별.png" onclick="star1()">'+
+			'		<img class="별" alt="" src="img/회색별.png" onclick="star2()">'+
+			'		<img class="별" alt="" src="img/회색별.png" onclick="star3()">'+
+			'		<img class="별" alt="" src="img/회색별.png" onclick="star4()">'+
+			'		<img class="별" alt="" src="img/회색별.png" onclick="star5()"><br>'+
 		'</span>'
 	 );
 }
@@ -237,11 +237,11 @@ function star1(){
 	$("#star").val(1);
 	$("#starlist").html( 
 		'	<span id="starlist">'+
-			'		<img alt="" src="img/노란별.png" onclick="star1()">'+
-			'		<img alt="" src="img/회색별.png" onclick="star2()">'+
-			'		<img alt="" src="img/회색별.png" onclick="star3()">'+
-			'		<img alt="" src="img/회색별.png" onclick="star4()">'+
-			'		<img alt="" src="img/회색별.png" onclick="star5()"><br>'+
+			'		<img class="별" alt="" src="img/노란별.png" onclick="star1()">'+
+			'		<img class="별" alt="" src="img/회색별.png" onclick="star2()">'+
+			'		<img class="별" alt="" src="img/회색별.png" onclick="star3()">'+
+			'		<img class="별" alt="" src="img/회색별.png" onclick="star4()">'+
+			'		<img class="별" alt="" src="img/회색별.png" onclick="star5()"><br>'+
 		'</span>'
 	 );
 }
@@ -249,11 +249,11 @@ function star2(){
 	$("#star").val(2);
 	$("#starlist").html( 
 		'	<span id="starlist">'+
-			'		<img alt="" src="img/노란별.png" onclick="star1()">'+
-			'		<img alt="" src="img/노란별.png" onclick="star2()">'+
-			'		<img alt="" src="img/회색별.png" onclick="star3()">'+
-			'		<img alt="" src="img/회색별.png" onclick="star4()">'+
-			'		<img alt="" src="img/회색별.png" onclick="star5()"><br>'+
+			'		<img class="별" alt="" src="img/노란별.png" onclick="star1()">'+
+			'		<img class="별" alt="" src="img/노란별.png" onclick="star2()">'+
+			'		<img class="별" alt="" src="img/회색별.png" onclick="star3()">'+
+			'		<img class="별" alt="" src="img/회색별.png" onclick="star4()">'+
+			'		<img class="별" alt="" src="img/회색별.png" onclick="star5()"><br>'+
 		'</span>'
 	 );
 }
@@ -261,11 +261,11 @@ function star3(){
 	$("#star").val(3);
 	$("#starlist").html( 
 		'	<span id="starlist">'+
-			'		<img alt="" src="img/노란별.png" onclick="star1()">'+
-			'		<img alt="" src="img/노란별.png" onclick="star2()">'+
-			'		<img alt="" src="img/노란별.png" onclick="star3()">'+
-			'		<img alt="" src="img/회색별.png" onclick="star4()">'+
-			'		<img alt="" src="img/회색별.png" onclick="star5()"><br>'+
+			'		<img class="별" alt="" src="img/노란별.png" onclick="star1()">'+
+			'		<img class="별" alt="" src="img/노란별.png" onclick="star2()">'+
+			'		<img class="별" alt="" src="img/노란별.png" onclick="star3()">'+
+			'		<img class="별" alt="" src="img/회색별.png" onclick="star4()">'+
+			'		<img class="별" alt="" src="img/회색별.png" onclick="star5()"><br>'+
 		'</span>'
 	 );
 }
@@ -273,11 +273,11 @@ function star4(){
 	$("#star").val(4);
 	$("#starlist").html( 
 		'	<span id="starlist">'+
-			'		<img alt="" src="img/노란별.png" onclick="star1()">'+
-			'		<img alt="" src="img/노란별.png" onclick="star2()">'+
-			'		<img alt="" src="img/노란별.png" onclick="star3()">'+
-			'		<img alt="" src="img/노란별.png" onclick="star4()">'+
-			'		<img alt="" src="img/회색별.png" onclick="star5()"><br>'+
+			'		<img class="별" alt="" src="img/노란별.png" onclick="star1()">'+
+			'		<img class="별" alt="" src="img/노란별.png" onclick="star2()">'+
+			'		<img class="별" alt="" src="img/노란별.png" onclick="star3()">'+
+			'		<img class="별" alt="" src="img/노란별.png" onclick="star4()">'+
+			'		<img class="별" alt="" src="img/회색별.png" onclick="star5()"><br>'+
 		'</span>'
 	 );
 }
@@ -285,11 +285,11 @@ function star5(){
 	$("#star").val(5);
 	$("#starlist").html( 
 		'	<span id="starlist">'+
-			'		<img alt="" src="img/노란별.png" onclick="star1()">'+
-			'		<img alt="" src="img/노란별.png" onclick="star2()">'+
-			'		<img alt="" src="img/노란별.png" onclick="star3()">'+
-			'		<img alt="" src="img/노란별.png" onclick="star4()">'+
-			'		<img alt="" src="img/노란별.png" onclick="star5()"><br>'+
+			'		<img class="별" alt="" src="img/노란별.png" onclick="star1()">'+
+			'		<img class="별" alt="" src="img/노란별.png" onclick="star2()">'+
+			'		<img class="별" alt="" src="img/노란별.png" onclick="star3()">'+
+			'		<img class="별" alt="" src="img/노란별.png" onclick="star4()">'+
+			'		<img class="별" alt="" src="img/노란별.png" onclick="star5()"><br>'+
 		'</span>'
 	 );
 }
@@ -302,7 +302,7 @@ function reviewsubmit(){
 	let star = $("#star").val();
 	let test = $("#test").val();
 	let home = $("#homework").val();
-	let text = $("#text").val();
+	let text = $("#text").val().replace(/(?:\r\n|\r|\n)/g, '<br />');
 	let lno = $("#lno").val();
 	if(homework==""){alert("과제여부를 선택해주세요");return;}
 	else if(team==""){alert("조모임을 선택해주세요");return;}

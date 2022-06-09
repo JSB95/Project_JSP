@@ -76,7 +76,7 @@
 				<a href="reviewwrite.jsp?keyword="><button  class="write" type="button">강의평쓰기</button></a>
 			</div>
 			
-			<div class="reviewbox">
+			<div id="reviewbox">
 				<div>
 					<form action="reviewlist.jsp?pagenum=<%=currentpage %>">
 						<div class="sea">
@@ -95,7 +95,7 @@
 					for(int j=0; j<json.length();j++){
 					System.out.print(json.getJSONObject(j).get("reviewrate"));
 				%>
-					<tr class="tabletr" onClick="location.href='/team3/review/review.jsp?lno=<%=json.getJSONObject(j).get("lno")%>'">
+					<tr id="tabletr" onClick="location.href='/team3/review/review.jsp?lno=<%=json.getJSONObject(j).get("lno")%>'">
 						<td class="td">
 							<h5><%=json.getJSONObject(j).get("lname")%></h5><%=json.getJSONObject(j).get("lprofessor")%> 교수님<br>
 							
@@ -176,7 +176,7 @@
 				
 		</div>
 	</div>
-	
+	<%@include file="../footer.jsp"%>
 	<script src="/team3/js/review/reviewlist.js" type="text/javascript"></script>
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
