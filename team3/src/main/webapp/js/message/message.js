@@ -122,9 +122,11 @@ function send1(mid,sendno){
 }
 
 function reply(){
-	let mcontent = $("#content").val();
+	let mcontent = $("#content").val().replace(/(?:\r\n|\r|\n)/g, '<br />');
 	let getno = $("#getno").val();
 	
+	if(mcontent==""){alert("메시지를 입력해주세요");}
+	else{
 	$.ajax({
 			url : '/team3/message/send' ,
 			data: {"getno": getno , "mcontent": mcontent },
@@ -133,11 +135,13 @@ function reply(){
 				location.reload();
 			}
 		});
+	}
 }
 function reply1(){
-	let mcontent = $("#content1").val();
+	let mcontent =  $("#content1").val().replace(/(?:\r\n|\r|\n)/g, '<br />');
 	let getno = $("#getno1").val();
-	
+	if(mcontent==""){alert("메시지를 입력해주세요");}
+	else{
 	$.ajax({
 			url : '/team3/message/send' ,
 			data: {"getno": getno , "mcontent": mcontent },
@@ -146,9 +150,6 @@ function reply1(){
 				location.reload();
 			}
 		});
+	}
 }
 
-function close(){
-	alert("??");
-	location.reload();
-}

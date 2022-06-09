@@ -34,17 +34,17 @@
 
 .bcontent{
 	 display: inline-block;
-    width: 400px;
+    width: 340px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .iconbox{
-	background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url("/team3/img/대학.jpg");
+	background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url("/team3/img/대학교.png");
 	padding: 20px 0px 20px 0px;
 	margin-left: 0 auto;margin-right:0 auto;margin-top: 50px;margin-bottom: 40;
-	width: 100%;
+	background-size: 100%;
 }
 
 .tr{
@@ -89,8 +89,8 @@ a{
 
 
 .booklist{
-	margin-top: 20PX;
-	border: 1px solid #eeeeee;
+	margin-top: 40PX;
+	border: 1px solid  rgb(128, 128, 128);
 	border-radius: 10px;
 	padding : 30px 30px;
 	margin-left: 0px auto;
@@ -99,15 +99,22 @@ a{
 }
 
 .book{
-	border: 1px solid #eeeeee;
+	border: 1px solid rgb(128, 128, 128);
 	border-radius: 10px;
 	width: 200px;
 }
 
-.tablebox{
-	border: 1px solid #eeeeee;
+.tablebox1{
+	border: 1px solid rgb(128, 128, 128);
 	border-radius: 10px;
 	padding : 50px 50px;
+	margin-right: 10px;
+}
+.tablebox2{
+	border: 1px solid rgb(128, 128, 128);
+	border-radius: 10px;
+	padding : 50px 50px;
+	margin-left: 10px;
 }
 .dp1{
 	margin-top: 10px;
@@ -136,4 +143,18 @@ a{
 
 .bookimg{
 	margin-left: 80px;
+}
+
+
+.footer{
+	height: 230px;
+	background-color: #004795;
+	color: white;
+	margin-top: 100px;
+}
+.p1{
+	text-align: center;
+}
+.line12{
+	border-right: 1px solid white;
 }

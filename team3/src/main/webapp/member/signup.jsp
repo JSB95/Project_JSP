@@ -13,7 +13,7 @@
 
 <body>
 	<div class="container">
-		<h3 class="text-center mt-4">회원가입</h3>
+		<h3 class="text-center mt-4 blue">회원가입</h3>
 		<div class="container col-md-6 offset-3">
 			<form class="signupform" id="signupform" action="/team3/member/signup" method="post">
 				
@@ -56,7 +56,7 @@
 						<a href="/team3/member/login.jsp"><button class="form-control btn btn-outline-secondary" type="button">로그인하기</button></a>
 					</div>
 					<div class="col-md-8">
-						<button class="form-control btn btn-dark " onclick="signup()" type="button">가입하기</button>
+						<button class="form-control btnlogin" onclick="signup()" type="button">가입하기</button>
 					</div>
 				</div>
 			</form>

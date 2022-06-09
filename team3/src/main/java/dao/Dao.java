@@ -15,7 +15,7 @@ public class Dao {
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://admin.cwidctdjagpz.us-east-1.rds.amazonaws.com:3306/jsp?serverTimezone=UTC","admin","asdfasdf");
+			con = DriverManager.getConnection("jdbc:mysql://admin.cwidctdjagpz.us-east-1.rds.amazonaws.com:3306/jsp?serverTimezone=Asia/Seoul","admin","asdfasdf");
 			System.out.println("Connection");
 		} catch (Exception e) {
 			System.err.println("DB Connect error : " + e);

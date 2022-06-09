@@ -38,12 +38,33 @@
 	 
  }
  
+ .ing{
+ 	width: 100px;
+ }
+ 
+
  .mcontent{
- 	 display: inline-block;
     width: 550px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+     display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-height: 1.6em;
+    -webkit-box-orient: vertical;
+    height: 1.6em
+ }
+ 
+  .mcontent1{
+    width: 500px ;
+    white-space: nowrap;;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-height: 1.4em;
+    -webkit-box-orient: vertical;
+    height: 1.4em
  }
  .td{
 	height: 20px;
