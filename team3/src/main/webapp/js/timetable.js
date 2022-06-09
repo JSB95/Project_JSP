@@ -119,7 +119,7 @@ $(function(){
 											for (let r = 0; r < mon_list.length; r++){
 												if (code == mon_list[r]){
 													
-													$('.lecture_time_list').eq(a).find('.lecture-title').html("");
+													$('.lecture_time_list').eq(a).find('.lecture-title').css('color', colorlist['background'][num]);
 													$('.lecture_time_list').eq(a).find('.lecture-code').css('color', colorlist['background'][num]);
 													$('.lecture_time_list').eq(a).find('.material-icons').css('display', 'none');
 													
@@ -133,7 +133,7 @@ $(function(){
 											for (let r = 0; r < tue_list.length; r++){
 												if (code == tue_list[r]){
 													
-													$('.lecture_time_list').eq(a).find('.lecture-title').html("");
+													$('.lecture_time_list').eq(a).find('.lecture-title').css('color', colorlist['background'][num]);
 													$('.lecture_time_list').eq(a).find('.lecture-code').css('color', colorlist['background'][num]);
 													$('.lecture_time_list').eq(a).find('.material-icons').css('display', 'none');
 													
@@ -147,7 +147,7 @@ $(function(){
 											for (let r = 0; r < wed_list.length; r++){
 												if (code == wed_list[r]){
 													
-													$('.lecture_time_list').eq(a).find('.lecture-title').html("");
+													$('.lecture_time_list').eq(a).find('.lecture-title').css('color', colorlist['background'][num]);
 													$('.lecture_time_list').eq(a).find('.lecture-code').css('color', colorlist['background'][num]);
 													$('.lecture_time_list').eq(a).find('.material-icons').css('display', 'none');
 													
@@ -163,7 +163,7 @@ $(function(){
 											for (let r = 0; r < thu_list.length; r++){
 												if (code == thu_list[r]){
 													
-													$('.lecture_time_list').eq(a).find('.lecture-title').html("");
+													$('.lecture_time_list').eq(a).find('.lecture-title').css('color', colorlist['background'][num]);
 													$('.lecture_time_list').eq(a).find('.lecture-code').css('color', colorlist['background'][num]);
 													$('.lecture_time_list').eq(a).find('.material-icons').css('display', 'none');
 													
@@ -177,7 +177,7 @@ $(function(){
 											for (let r = 0; r < fri_list.length; r++){
 												if (code == fri_list[r]){
 													
-													$('.lecture_time_list').eq(a).find('.lecture-title').html("");
+													$('.lecture_time_list').eq(a).find('.lecture-title').css('color', colorlist['background'][num]);
 													$('.lecture_time_list').eq(a).find('.lecture-code').css('color', colorlist['background'][num]);
 													$('.lecture_time_list').eq(a).find('.material-icons').css('display', 'none');
 													
@@ -304,14 +304,7 @@ $("#btn_regist").on('click', function(){
 	
 	var mid = $('#mid').val();
 	
-	$.ajax({
-		url : "../timetable/savetimetable",
-		data : {"name" : name, "professor" : professor, "time" : time, "code" : code, "mid" : mid},
-		async : false,
-		success : function(re){
-			console.log(re);
-		}
-	})
+	
 	
 	let timelist = [];
 	
@@ -360,7 +353,7 @@ $("#btn_regist").on('click', function(){
 			for (let j = 0; j < time1.length; j++){
 				
 				if (timelist[i] == time1[j] && timelist2[i] == ''){
-					console.table(timelist2);
+					
 					let num = random_num;
 					
 					let mon_list = [];
@@ -516,7 +509,14 @@ $("#btn_regist").on('click', function(){
 		timelist2.length = 0;
 		
 	
-		
+		$.ajax({
+			url : "../timetable/savetimetable",
+			data : {"name" : name, "professor" : professor, "time" : time, "code" : code, "mid" : mid},
+			async : false,
+			success : function(re){
+				console.log(re);
+			}
+		})
 	
 		
 	
@@ -549,13 +549,16 @@ function deletedupli(code){
 	
 	var mid = $('#mid').val();
 	
-	$.ajax({
-		url : "../timetable/deletetimetable",
-		data : {"mid" : mid, "code" : code},
-		success : function(re){
-			console.log(re);
-		}
-	})
+	setTimeout(function(){
+		$.ajax({
+			url : "../timetable/deletetimetable",
+			data : {"mid" : mid, "code" : code},
+			success : function(re){
+				console.log(re);
+			}
+		})
+	},2000);
+
 	
 }
 

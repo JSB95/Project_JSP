@@ -235,7 +235,41 @@ function update(){
 	
 }
 
+$('#container').find('table.subjects > tfoot a.reset').on('click',function(){
+	var $container = $('#container');
+	var $subjects = $container.find('table.subjects');
+	var $tbody = $subjects.find('tbody');
+	if (!confirm($subjects.find('caption > h3').text() + ' 정보를 초기화하시겠습니까?')) {
+		return false;
+	}
+	$tbody.find('tr:eq(9)').nextAll().remove();
+	$tbody.find('select[name="grade"]').val('A+');
+	$tbody.find('input[name="credit"]').val('0');
+	$tbody.find('input[name="name"]').val('');
+	$tbody.find('input[name="major"]').prop({ checked: false });
+	$tbody.find('input').first().change();
+})
 
+$('#container').find('article.overview > div.acquisition p.total').on('click', function () {
+	showRequiredCreditForm();
+});
+
+function showRequiredCreditForm(){
+	var requiredCredit = Number($('.acquisition p.total').html().split("/ ")[1]);
+	console.log(requiredCredit);
+	var $requiredCreditForm = $('#requiredCreditForm');
+	$requiredCreditForm.find('input[name="required_credit"]').val(requiredCredit);
+	$requiredCreditForm.show();
+	var $requiredCredit = $requiredCreditForm.find('input[name="required_credit"]');
+	$requiredCreditForm.find('a.close').one('click', function () {
+		$requiredCreditForm.hide();
+		$('.acquisition p.total').html("/ " + $requiredCredit);
+	});
+	
+	
+	
+	
+}
 
 
 
