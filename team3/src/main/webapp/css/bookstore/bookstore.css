@@ -6,14 +6,36 @@
     font-style: normal;
 }
 
-*{
-	font-family: 'KOHIBaeumOTF';
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
 
-.bookbox, .contentbox{
+*{
+	 font-family: 'KOHIBaeumOTF';
+}
+a{
+	color: black;
+}
+.bviewbox{
+	max-width: 900px;
+	margin: 0 auto;
+}
+.booklist-mainbox{
+	max-width: 900px;
+	margin: 0 auto;
+	
+}
+.bookbox {
 	border: 1px solid grey;
 	border-radius: 10px;
-	padding : 30px 50px;
+	padding : 10px 40px;
+}
+.bookbox img{
+	max-height: 160px;
+	max-width: 120px;
+}
+.contentbox{
+	border: 1px solid grey;
+	border-radius: 10px;
+	padding : 20px 40px;
 	margin: 20px 0px;
 }
 .ttitle {
@@ -25,10 +47,6 @@
 }
 .content_table_tr {
 	margin-bottom: 10px;
-}
-.scrollbox{
-	height: 100%;
-	overflow-x: scroll;
 }
 .tprice {
     color: #ff5d57;
@@ -94,22 +112,30 @@
 .list_tcondition {
 	color: #33b207;
     text-decoration: none;
-    font-weight: bold;
     font-size: 18px;
-    padding: 20px 0px;
+    font-weight: bold;
+    
 }
 .sellbtn{
-	border: 1px solid #ced4da;
+	border: none;
 	border-radius: 0.25rem;
-	color: #999999;
+	color: white;
+	background-color: #1665bc;
+	padding: 5px 10px 0px 10px;
+	font-size: 14px;
 }
+
+
 .imgupdatebtn{
 	border: 1px solid #ced4da;
 	border-radius: 0.25rem;
 	color: #6a6a6a;
 	font-size: 14px;
 }
-.bookform input, img {
+.bookform h3{
+	margin-top: 30px;
+}
+.bookform input {
 	margin-bottom: 10px;
 }
 .ctext {
@@ -119,4 +145,19 @@
   	border-radius: 10px;
     padding: 0px 20px 10px 20px;
     height: 400px;
+}
+.book-info {
+	color: #999999;
+	font-size: 14px;
+	font-weight: normal;
+	width: 110px;
+}
+#top{
+	position:fixed;
+	right: 20px;
+	bottom: 40px;
+}
+.fa-circle-arrow-up{
+	color: gray;
+	font-size: 30px; 
 }

@@ -19,16 +19,18 @@
 		Member member =  MemberDao.getMemberDao().getmemberinfo(mid);
 	%>
 	<div class="container">
-		<div class="row mt-3">
+		<div class="row mt-3 he">
 			<div class="col-md-4">
 				<div class="memberbox">
 					<h4>내프로필</h4>
 					<div class="mdetailbox">
 						<p class="mname"><%=member.getMname() %></p>
-						<p><%=member.getMcode() %></p>
-						<p><%=member.getMid() %></p>
-						<p><%=member.getMphone() %></p>
-						<p><%=member.getMemail() %></p>
+						<div class="">
+							<p><%=member.getMcode() %></p>
+							<p><%=member.getMid() %></p>
+							<p><%=member.getMphone() %></p>
+							<p><%=member.getMemail() %></p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -36,7 +38,10 @@
 				<h4 class="mboxtitle1">나의 활동</h4>
 				<div class="accountbox">
 					<div>
-						<h5>내가 쓴 글</h5>
+						<h5><a href="/team3/member/myboard.jsp">내가 쓴 글</a></h5>
+					</div>
+					<div>
+						<h5><a href="/team3/member/mybook.jsp">내 책 조회</a></h5>
 					</div>
 					<div>
 						<h5><a href="/team3/message/getmessage.jsp">쪽지함</a></h5>

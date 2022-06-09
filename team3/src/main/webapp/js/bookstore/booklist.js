@@ -1,7 +1,6 @@
 
 
 let booklist ;
-
 $(function(){
 	$.ajax({
 		url : "/team3/bookstore/getbooklist",
@@ -13,8 +12,7 @@ $(function(){
 	});
 })
 
-
-let viewcount = 3; 
+let viewcount = 4; 
 $(window).scroll(function(){
 	if($(window).scrollTop() + 50 >= $(document).height() - $(window).height()){
 		viewcount++; 
@@ -37,18 +35,31 @@ function view(){
 			}else {
 				bookcondition = "하";
 			}
-		console.log(booklist[i]["tcondition"]);
-		console.log(bookcondition);
+		let price = booklist[i]["tprice"].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		html +=  '<div class="row bookbox my-3" onclick="location.href=\'/team3/bookstore/bookview.jsp?tno='+booklist[i]["tno"]+'\';">'+
-			'	<div class="col-sm-3">'+
-			'		<img width="150px" alt="" src="/team3/bookstore/bookimg/'+booklist[i]["timg"]+'">'+
+			'	<div class="col-sm-3 text-center">'+
+			'		<img alt="" src="/team3/bookstore/bookimg/'+booklist[i]["timg"]+'">'+
 			'	</div>'+
-			'	<div class="col-sm-8 ms-1 bdetailbox">'+
+			'	<div class="col-sm-9 bdetailbox">'+
 			'		<div class="list_ttitle">'+booklist[i]["ttitle"]+'</div>'+
-			'		<div class="list_tauthor">'+booklist[i]["tauthor"]+'</div>'+
-			'		<div class="list_tcompany">'+booklist[i]["tcompany"]+'</div>'+
-			'		<div class="list_tcondition">'+bookcondition+'</div>'+
-			'		<div class="list_tprice">'+booklist[i]["tprice"]+'</div>'+
+						'<table>'+
+						'   <tr>'+
+						'       <td class="book-info">저자</td>'+
+						'       <td class="list_tauthor">'+booklist[i]["tauthor"]+'</td>'+
+						'   </tr>'+
+						'    <tr>'+
+						'       <td class="book-info">출판사</td>'+
+						'       <td class="list_tcompany">'+booklist[i]["tcompany"]+'</td>'+
+						'   </tr>'+
+						'    <tr>'+
+						'       <td class="book-info">상태</td>'+
+						'       <td class="list_tcondition">'+bookcondition+'</td>'+
+						'   </tr>'+
+						'    <tr>'+
+						'       <td class="book-info">가격</td>'+
+						'       <td class="list_tprice">'+price+'<span style="font-size: 14px; color: black;"> 원</span></td>'+
+						'   </tr>'+
+						'</table>'+
 			'	</div>'+
 			'</div>';
 		
