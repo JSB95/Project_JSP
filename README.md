@@ -15,13 +15,13 @@
 |05-26|  :ballot_box_with_check:  |DB설계|
 |05-27|  :ballot_box_with_check:  |게시판 등록, 강의평 등록, 시간표 강의 등록, 회원가입&유효성검사|
 |05-28|  :ballot_box_with_check:  |게시판 출력, 강의평 등록, 회원가입&유효성검사, 시간표 목록 출력|
-|05-29|  :ballot_box_with_check:  |게시판 수정&삭제, 강의평 등록&삭제, 로그인&id찾기&비밀번호찾기, 시간표 검색,선택 기능|
+|05-29|  :ballot_box_with_check:  |게시판 수정&삭제, 강의평 등록, 로그인&id찾기&비밀번호찾기, 시간표 검색,선택 기능|
 |05-30|  :ballot_box_with_check:  |게시글 좋아요, 강의평 출력, 회원정보출력&회원탈퇴, 시간표 선택&변경 이벤트 처리|
 |05-31|  :ballot_box_with_check:  |게시판,강의평 검색&페이징,  회원정보&수정veiw작업, 시간표 선택&변경 이벤트 처리|
 |06-01|  :ballot_box_with_check:  |댓글등록&출력, 강의평 유효성검사, 회원정보수정&유효성검사, 시간표 등록 이벤트 처리 |
 |06-02|  :ballot_box_with_check:  |댓글 수정&삭제, 강의평view작업, 회원가입veiw작업, 시간표 등록 이벤트 처리|
 |06-03|  :ballot_box_with_check:  |대댓글 등록&수정&삭제, 쪽지보내기&답장 기능, 책방 등록&수정&삭제, 시간표 변경&삭제 이벤트 처리|
-|06-04|  :ballot_box_with_check:  |댓글 좋아요기능, 쪽지목록출력, 책방 책 출력&페이징&검색, 시간표 변경&삭제 이벤트 처리|
+|06-04|  :ballot_box_with_check:  |댓글 좋아요기능, 쪽지목록출력, 책방 책 출력&검색, 시간표 변경&삭제 이벤트 처리|
 |06-05|  :ballot_box_with_check:  |게시판 유효성검사, 쪽지 유효성검사, 책방 유효성검사, 시간표 DB 처리 |
 |06-06|  :ballot_box_with_check:  |댓글 유효성검사, 쪽지view작업, 책방 쪽지, 시간표 DB 처리 |
 |06-07|  :ballot_box_with_check:  |게시판view작업, mainview작업, 책방view작업, 시간표 DB 처리, 학점계산기 |
