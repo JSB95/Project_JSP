@@ -37,6 +37,7 @@ function view(){
 			}else {
 				bookcondition = "하";
 			}
+		let money = booklist[i]["tprice"].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		html +=  '<div class="row bookbox my-3" onclick="location.href=\'/team3/bookstore/bookview.jsp?tno='+booklist[i]["tno"]+'\';">'+
 			'	<div class="col-sm-3 text-center">'+
 			'		<img alt="" src="/team3/bookstore/bookimg/'+booklist[i]["timg"]+'">'+
@@ -58,7 +59,7 @@ function view(){
 						'   </tr>'+
 						'    <tr>'+
 						'       <td class="book-info">가격</td>'+
-						'       <td class="list_tprice">'+booklist[i]["tprice"]+'</td>'+
+						'       <td class="list_tprice">'+money+'<span style="font-size: 14px; color: black;"> 원</span></td>'+
 						'   </tr>'+
 						'</table>'+
 			'	</div>'+

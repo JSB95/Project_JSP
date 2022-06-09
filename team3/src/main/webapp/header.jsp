@@ -12,7 +12,7 @@
 <body>
 	<%String loginid = (String)session.getAttribute("login");%>
 	<div class="container">
-		<div class="row header">
+		<div class="row header" id="header">
 			<div class="col-md-3 d-flex align-self-center">
 				<a href="/team3/main.jsp" class="logo">캠퍼스타임</a>
 			</div>

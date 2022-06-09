@@ -11,6 +11,9 @@
 *{
 	 font-family: 'KOHIBaeumOTF';
 }
+a{
+	color: black;
+}
 .bviewbox{
 	max-width: 900px;
 	margin: 0 auto;
@@ -39,10 +42,6 @@
 }
 .content_table_tr {
 	margin-bottom: 10px;
-}
-.scrollbox{
-	height: 100%;
-	overflow-x: scroll;
 }
 .tprice {
     color: #ff5d57;
@@ -117,7 +116,7 @@
 	border-radius: 0.25rem;
 	color: white;
 	background-color: #1665bc;
-	padding: 5px 10px ;
+	padding: 5px 10px 0px 10px;
 	font-size: 14px;
 }
 
@@ -147,4 +146,13 @@
 	font-size: 14px;
 	font-weight: normal;
 	width: 110px;
+}
+#top{
+	position:fixed;
+	right: 20px;
+	bottom: 40px;
+}
+.fa-circle-arrow-up{
+	color: gray;
+	font-size: 30px; 
 }

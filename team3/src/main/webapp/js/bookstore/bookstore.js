@@ -19,7 +19,6 @@ function bimgupdate(){
 	console.log($("#timg").val());
 }
 function bookadd(){
-	alert("등록중");
 	let timg = $("#timg").val();
 	let ttitle = $("#ttitle").val();
 	let tcontent = $("#tcontent").val();
@@ -36,5 +35,4 @@ function bookadd(){
 	}else{
 		$("#bookform").submit();
 	}
-	alert(timg+"/"+ttitle+"/"+tcontent+"/"+tprice+"/"+tcondition+"/"+tauthor+"/"+tcompany+"/"+tyear+"/"+tclass);
 }

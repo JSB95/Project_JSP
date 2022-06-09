@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 	<!-- bookstore css -->
 	<link href="/team3/css/bookstore/bookstore.css" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/d77abffe02.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<%@include file="../header.jsp" %>
@@ -28,7 +29,7 @@
 	%>
 		<div class="row my-3 col-md-10 offset-1">
 			<div class="col-md-10">
-				<input id="keyword" name="keyword" class="form-control" type="text" placeholder="구매할 책을 검색하세요">
+				<input id="keyword" name="keyword" class="form-control" type="text" placeholder="구매할 책을 검색하세요" onKeypress="javascript:if(event.keyCode==13) {search()}">
 			</div>
 			<div class="col-md-2">
 				<button class="form-control" type="button" onclick="search()">검색</button>
@@ -44,6 +45,9 @@
 			<div id="booklistbox" class="col-md-10 offset-1">
 			</div>
 		</div>
+	</div>
+	<div id="top">
+		<a href="#header"><i class="fa-solid fa-circle-arrow-up"></i></a>
 	</div>
 	<script src="/team3/js/bookstore/booklist.js" type="text/javascript"></script>
 </body>
