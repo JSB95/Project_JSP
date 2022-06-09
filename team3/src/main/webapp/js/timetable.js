@@ -35,30 +35,37 @@ $(function(){
 			async : false,
 			success : function(re){
 				
+				let timelist_init = [];
+				$('.lecture_time_list').each(function(){
+					var text = $(this).attr('value');
+					timelist_init.push(text);
+				});
+				
+				
+				
+				var colorlist = [];
+					
+				$.ajax({
+					url : "../timetable/getcolorlist",
+					async : false,
+					success : function(colorlist_json){
+						colorlist = colorlist_json;
+					}
+				})
+				
+				
+				
 				for (let i = 0; i < re.length; i++){
 					var name = re[i]['name'];
 					var time1 = re[i]['time'].split("_");
 					var code = re[i]['code'];
 					var regex = /[^0-9]/g;
-					var colorlist = [];
-					let timelist_init = []
-					$('.lecture_time_list').each(function(){
-						var text = $(this).attr('value');
-						timelist_init.push(text);
-					})
 					
-					$.ajax({
-						url : "../timetable/getcolorlist",
-						async : false,
-						success : function(colorlist_json){
-							colorlist = colorlist_json;
-						}
-					})
-					console.table(colorlist);
 					
 					var random_num = Math.floor(Math.random() * 10);
 
-						
+					
+							
 						loop:
 						for (let a = 0; a < timelist_init.length; a++){
 							for (let b = 0; b < time1.length; b++){
@@ -115,7 +122,7 @@ $(function(){
 													$('.lecture_time_list').eq(a).find('.lecture-title').html("");
 													$('.lecture_time_list').eq(a).find('.lecture-code').css('color', colorlist['background'][num]);
 													$('.lecture_time_list').eq(a).find('.material-icons').css('display', 'none');
-													continue loop;
+													
 												}
 											}
 											
@@ -129,7 +136,7 @@ $(function(){
 													$('.lecture_time_list').eq(a).find('.lecture-title').html("");
 													$('.lecture_time_list').eq(a).find('.lecture-code').css('color', colorlist['background'][num]);
 													$('.lecture_time_list').eq(a).find('.material-icons').css('display', 'none');
-													continue loop;
+													
 												}
 											}
 											
@@ -159,7 +166,7 @@ $(function(){
 													$('.lecture_time_list').eq(a).find('.lecture-title').html("");
 													$('.lecture_time_list').eq(a).find('.lecture-code').css('color', colorlist['background'][num]);
 													$('.lecture_time_list').eq(a).find('.material-icons').css('display', 'none');
-													continue loop;
+													
 												}
 											}
 											
@@ -173,7 +180,7 @@ $(function(){
 													$('.lecture_time_list').eq(a).find('.lecture-title').html("");
 													$('.lecture_time_list').eq(a).find('.lecture-code').css('color', colorlist['background'][num]);
 													$('.lecture_time_list').eq(a).find('.material-icons').css('display', 'none');
-													continue loop;
+													
 												}
 											}
 											
@@ -181,10 +188,12 @@ $(function(){
 										
 									}
 									
+									
 									break;
 								}
 							}
 						}
+						
 						
 
 					
@@ -204,6 +213,7 @@ function collegechange(){
 	$.ajax({
 		url : "../timetable/getdepartment",
 		data : {"college" : college},
+		async : false,
 		success : function(re){
 			$("#departmentbox_wrap").html(re);
 			departmentchange();
@@ -286,7 +296,7 @@ $("#btn_regist").on('click', function(){
 	
 	var name = $(this).parent().parent().find('.lecture_title').html();
 	
-	var time1 = $(this).parent().parent().find('.lecture_time_db').html();
+	var time = $(this).parent().parent().find('.lecture_time_db').html();
 	
 	var code = $(this).parent().parent().find('.lecture_code').html();
 	
@@ -296,7 +306,8 @@ $("#btn_regist").on('click', function(){
 	
 	$.ajax({
 		url : "../timetable/savetimetable",
-		data : {"name" : name, "professor" : professor, "time1" : time1, "code" : code, "mid" : mid},
+		data : {"name" : name, "professor" : professor, "time" : time, "code" : code, "mid" : mid},
+		async : false,
 		success : function(re){
 			console.log(re);
 		}
@@ -308,7 +319,7 @@ $("#btn_regist").on('click', function(){
 	
 	var colorlist = [];
 	
-	var time1 = time1.split("_");
+	var time1 = time.split("_");
 	
 	var regex = /[^0-9]/g;
 	
@@ -324,7 +335,11 @@ $("#btn_regist").on('click', function(){
 	
 	for (let x = 0; x < codelist.length; x++){
 		if (codelist[x] == code){
-			alert("이미 등록한 강의입니다.");
+			Swal.fire({
+				icon : 'error',
+				title : '이미 등록한 과목입니다.',
+				text : '다른 강의를 선택해주세요.'
+			})
 			return;
 		}
 	}
@@ -332,18 +347,20 @@ $("#btn_regist").on('click', function(){
 	
 	$.ajax({
 		url : "../timetable/getcolorlist",
+		async : false,
 		success : function(colorlist_json){
 			colorlist = colorlist_json;
 		}
 	})
 	var random_num = Math.floor(Math.random() * 10);
-	setTimeout(function(){
+	
 		loop:
 		for (let i = 0; i < timelist.length; i++){
 			
 			for (let j = 0; j < time1.length; j++){
 				
 				if (timelist[i] == time1[j] && timelist2[i] == ''){
+					console.table(timelist2);
 					let num = random_num;
 					
 					let mon_list = [];
@@ -396,7 +413,7 @@ $("#btn_regist").on('click', function(){
 							for (let r = 0; r < mon_list.length; r++){
 								if (code == mon_list[r]){
 									
-									$('.lecture_time_list').eq(i).find('.lecture-title').html("");
+									$('.lecture_time_list').eq(i).find('.lecture-title').css('color', colorlist['background'][num]);
 									$('.lecture_time_list').eq(i).find('.lecture-code').css('color', colorlist['background'][num]);
 									$('.lecture_time_list').eq(i).find('.material-icons').css('display', 'none');
 									continue loop;
@@ -410,7 +427,7 @@ $("#btn_regist").on('click', function(){
 							for (let r = 0; r < tue_list.length; r++){
 								if (code == tue_list[r]){
 									
-									$('.lecture_time_list').eq(i).find('.lecture-title').html("");
+									$('.lecture_time_list').eq(i).find('.lecture-title').css('color', colorlist['background'][num]);
 									$('.lecture_time_list').eq(i).find('.lecture-code').css('color', colorlist['background'][num]);
 									$('.lecture_time_list').eq(i).find('.material-icons').css('display', 'none');
 									continue loop;
@@ -424,10 +441,10 @@ $("#btn_regist").on('click', function(){
 							for (let r = 0; r < wed_list.length; r++){
 								if (code == wed_list[r]){
 									
-									$('.lecture_time_list').eq(i).find('.lecture-title').html("");
+									$('.lecture_time_list').eq(i).find('.lecture-title').css('color', colorlist['background'][num]);
 									$('.lecture_time_list').eq(i).find('.lecture-code').css('color', colorlist['background'][num]);
 									$('.lecture_time_list').eq(i).find('.material-icons').css('display', 'none');
-									
+									continue loop;
 									
 									
 								}
@@ -440,7 +457,7 @@ $("#btn_regist").on('click', function(){
 							for (let r = 0; r < thu_list.length; r++){
 								if (code == thu_list[r]){
 									
-									$('.lecture_time_list').eq(i).find('.lecture-title').html("");
+									$('.lecture_time_list').eq(i).find('.lecture-title').css('color', colorlist['background'][num]);
 									$('.lecture_time_list').eq(i).find('.lecture-code').css('color', colorlist['background'][num]);
 									$('.lecture_time_list').eq(i).find('.material-icons').css('display', 'none');
 									continue loop;
@@ -454,7 +471,7 @@ $("#btn_regist").on('click', function(){
 							for (let r = 0; r < fri_list.length; r++){
 								if (code == fri_list[r]){
 									
-									$('.lecture_time_list').eq(i).find('.lecture-title').html("");
+									$('.lecture_time_list').eq(i).find('.lecture-title').css('color', colorlist['background'][num]);
 									$('.lecture_time_list').eq(i).find('.lecture-code').css('color', colorlist['background'][num]);
 									$('.lecture_time_list').eq(i).find('.material-icons').css('display', 'none');
 									continue loop;
@@ -465,11 +482,27 @@ $("#btn_regist").on('click', function(){
 						
 					}
 					
-					break;
+					console.table(timelist2);
 					
+					
+					
+					Swal.fire({
+					  icon: 'success',
+					  title: '수업이 등록되었습니다.',
+					  showConfirmButton: false,
+					  timer: 1500
+					})
+					
+					
+					
+					continue loop;
 				} else if(timelist[i] == time1[j] && timelist2[i] != ''){
 
-					alert("겹친 수업 존재 : " + timelist2[i]);
+					Swal.fire({
+						icon : 'error',
+						title : '해당 과목 시간에 이미 수업이 존재합니다.',
+						text : "'" + $('.lecture_time_list').eq(i).find('.lecture-title').html() + "' 수업과 시간이 겹칩니다. 다른 강의를 선택해주세요."
+					})
 					deletedupli(code);
 					timelist2.length = 0;
 					break loop;
@@ -482,7 +515,11 @@ $("#btn_regist").on('click', function(){
 			
 		timelist2.length = 0;
 		
-	},2000);
+	
+		
+	
+		
+	
 	
  });
 
@@ -498,14 +535,27 @@ function deletedupli(code){
 	
 	for (let i = 0; i < timelist2.length; i++){
 		if (timelist2[i] == code){
+			$('.lecture_time_list').eq(i).find('a').contents().unwrap().wrapAll('<a href="javascript:void(0)">');
 			$('.lecture_time_list').eq(i).find('.lecture-title').html('');
 			$('.lecture_time_list').eq(i).find('.material-icons').css('display', 'none');
 			$('.lecture_time_list').eq(i).find('.lecture-code').html('');
 			$('.lecture_time_list').eq(i).unbind('mouseenter mouseleave');
 			$('.lecture_time_list').eq(i).css('background-color','');
 			$('.lecture_time_list').eq(i).css('background','');
+			$('.lecture_time_list').eq(i).find('.lecture-title').css('color','');
+			$('.lecture_time_list').eq(i).find('.lecture-code').css('color','');
 		}
 	}
+	
+	var mid = $('#mid').val();
+	
+	$.ajax({
+		url : "../timetable/deletetimetable",
+		data : {"mid" : mid, "code" : code},
+		success : function(re){
+			console.log(re);
+		}
+	})
 	
 }
 
@@ -614,8 +664,13 @@ $("#delete_lecture").on('click',function(){
 			$('.lecture_time_list').eq(i).unbind('mouseenter mouseleave');
 			$('.lecture_time_list').eq(i).css('background-color','');
 			$('.lecture_time_list').eq(i).css('background','');
+			$('.lecture_time_list').eq(i).find('.lecture-title').css('color','');
+			$('.lecture_time_list').eq(i).find('.lecture-code').css('color','');
+			$('.lecture_time_list').eq(i).find('a').contents().unwrap().wrapAll('<a href="javascript:void(0)">');
 		}
 	}
+	
+	timelist2.length = 0;
 	
 })
 
@@ -646,4 +701,15 @@ function filter(){
 			item[i].style.display = "none";
 		}
 	}
+}
+
+function already_regist(){
+	
+}
+
+function lecture_duplicate(){
+	Swal.fire({
+		icon : 'error',
+		title : '겹쳐있는 시간표'
+	})
 }

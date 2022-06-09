@@ -32,7 +32,7 @@ public class savetimetable extends HttpServlet {
 		// TODO Auto-generated method stub
 		String table_name = request.getParameter("name");
 		String table_professor = request.getParameter("professor");
-		String table_time = request.getParameter("time1");
+		String table_time = request.getParameter("time");
 		int table_code = Integer.parseInt(request.getParameter("code"));
 		String mid = request.getParameter("mid");
 		int mno = MemberDao.getMemberDao().getmno(mid);

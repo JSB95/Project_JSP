@@ -52,7 +52,8 @@
 	
 }*/
 let gradeSelectTemplete;
-$(function(){
+$().ready(function(){
+	var $container = $('#container');
 	gradeSelectTemplete = $('<select></select>');
 	let grade = [];
 	$('option').each(function(){
@@ -62,8 +63,14 @@ $(function(){
 	_.each(grade, function(grade){
 		$('<option></option>').val(grade).text(grade).appendTo(gradeSelectTemplete);
 	})
-	console.log(gradeSelectTemplete.html())
+	
+	
+	$container.find('table.subjects > tbody').on('change', 'input, select', function () {
+		update();
+	});
+	
 })
+
 
 function insertSubject(subject){
 	var $tbody = $('#container').find('table.subjects > tbody');
@@ -83,7 +90,7 @@ function insertSubject(subject){
 	
 	
 	var $gradeSelect = gradeSelectTemplete.clone();
-	console.log($gradeSelect.html());
+
 
 	
 	$gradeSelect.find('option').filter(function () {
@@ -109,6 +116,125 @@ function insertSubject(subject){
 $('#container').find('table.subjects > tfoot a.new').on('click',function(){
 	insertSubject();
 })
+
+function update(){
+	var $container = $('#container');
+	var $subjects = $container.find('table.subjects');
+	var $tbody = $subjects.find('tbody');
+	var subjects = [];
+	$tbody.find('tr').each(function(){
+		
+		var $tr = $(this);
+		subjects.push({
+			grade: $tr.find('select[name="grade"]').val(),
+			credit: Number($tr.find('input[name="credit"]').val()),
+			name: $tr.find('input[name="name"]').val(),
+			isMajor: $tr.find('input[name="major"]').prop('checked')
+		})
+		
+	})
+	var majorSubject = _.where(subjects, {isMajor : true});
+	var sumCredits = function(subjects){
+		return _.reduce(subjects, function (mem, subject){
+			return mem + subject.credit;
+		}, 0);
+	};
+	
+	var filterPassSubjects = function (subjects) {
+		return _.reject(subjects, function (subject) {
+			return _.contains(['F', 'NP'], subject.grade);
+		});
+	};
+	
+	var filterCalcSubjects = function (subjects) {
+		return _.reject(subjects, function (subject) {
+			return _.contains(['P', 'NP'], subject.grade);
+		});
+	};
+	
+	subjects.credit = sumCredits(filterPassSubjects(subjects));
+	var credit_cal = sumCredits(filterCalcSubjects(subjects));
+	$('.information > .acquisition').html(subjects.credit);
+	if(subjects.credit < 0){
+		subjects.credit = 0;
+	}
+	$('.acquisition > p.value').html(subjects.credit);
+	console.table(subjects);
+	var total = 0;
+	var total_major = 0;
+	var credit_major = sumCredits(filterPassSubjects(majorSubject));
+	var credit_major_cal = sumCredits(filterCalcSubjects(majorSubject));
+	if (credit_major_cal < 0){
+		credit_major_cal = 0;
+	}
+	
+	for (let i = 0; i < subjects.length; i++){
+		if(subjects[i].credit != 0 && subjects[i].credit > 0){
+			if(subjects[i].grade == "A+"){
+				total += 4.5 * subjects[i].credit;
+				if(subjects[i].isMajor == true){
+					total_major += (4.5 * subjects[i].credit); 
+				}
+			} else if (subjects[i].grade == "A0"){
+				total += 4 * subjects[i].credit;
+				if(subjects[i].isMajor == true){
+					total_major += (4 * subjects[i].credit); 
+				}
+			} else if (subjects[i].grade == "B+"){
+				total += 3.5 * subjects[i].credit;
+				if(subjects[i].isMajor == true){
+					total_major += (3.5 * subjects[i].credit); 
+				}
+			} else if (subjects[i].grade == "B0"){
+				total += 3 * subjects[i].credit;
+				if(subjects[i].isMajor == true){
+					total_major += (3 * subjects[i].credit); 
+				}
+			} else if (subjects[i].grade == "C+"){
+				total += 2.5 * subjects[i].credit;
+				if(subjects[i].isMajor == true){
+					total_major += (2.5 * subjects[i].credit); 
+				}
+			} else if (subjects[i].grade == "C0"){
+				total += 2 * subjects[i].credit;
+				if(subjects[i].isMajor == true){
+					total_major += (2 * subjects[i].credit); 
+				}
+			} else if (subjects[i].grade == "D+"){
+				total += 1.5 * subjects[i].credit;
+				if(subjects[i].isMajor == true){
+					total_major += (1.5 * subjects[i].credit); 
+				}
+			} else if (subjects[i].grade == "D0"){
+				total += 1  * subjects[i].credit;
+				if(subjects[i].isMajor == true){
+					total_major += (1 * subjects[i].credit); 
+				}
+			} else if (subjects[i].grade == "F"){
+				total += 0;
+			} else if (subjects[i].grade == "P"){
+				total += 0;
+			} else if (subjects[i].grade == "NP"){
+				total += 0;
+			}
+		}
+	}
+	
+	var gpa = Math.round((total/credit_cal) * 100) / 100 ;
+	var gpa_major = Math.round((total_major / credit_major_cal) * 100) / 100 ;
+	if (isNaN(gpa) || !isFinite(gpa)){
+		gpa = 0;
+	}
+	if (isNaN(gpa_major) || !isFinite(gpa_major)){
+		gpa_major = 0;
+	}
+	$('.gpa > p.value, .information > dd.gpa').text(gpa);
+	
+	$('.major > p.value, .information > dd.major').text(gpa_major);
+
+	
+}
+
 
 
 
