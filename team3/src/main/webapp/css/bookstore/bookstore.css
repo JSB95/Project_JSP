@@ -18,6 +18,11 @@ a{
 	max-width: 900px;
 	margin: 0 auto;
 }
+.booklist-mainbox{
+	max-width: 900px;
+	margin: 0 auto;
+	
+}
 .bookbox {
 	border: 1px solid grey;
 	border-radius: 10px;
@@ -112,7 +117,7 @@ a{
     
 }
 .sellbtn{
-	border: 1px solid #ced4da;
+	border: none;
 	border-radius: 0.25rem;
 	color: white;
 	background-color: #1665bc;

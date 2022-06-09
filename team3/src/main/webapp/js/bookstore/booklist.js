@@ -1,7 +1,6 @@
 
 
 let booklist ;
-
 $(function(){
 	$.ajax({
 		url : "/team3/bookstore/getbooklist",
@@ -12,7 +11,6 @@ $(function(){
 		}
 	});
 })
-
 
 let viewcount = 4; 
 $(window).scroll(function(){
@@ -37,12 +35,12 @@ function view(){
 			}else {
 				bookcondition = "하";
 			}
-		let money = booklist[i]["tprice"].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		let price = booklist[i]["tprice"].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		html +=  '<div class="row bookbox my-3" onclick="location.href=\'/team3/bookstore/bookview.jsp?tno='+booklist[i]["tno"]+'\';">'+
 			'	<div class="col-sm-3 text-center">'+
 			'		<img alt="" src="/team3/bookstore/bookimg/'+booklist[i]["timg"]+'">'+
 			'	</div>'+
-			'	<div class="col-sm-8 ms-1 bdetailbox">'+
+			'	<div class="col-sm-9 bdetailbox">'+
 			'		<div class="list_ttitle">'+booklist[i]["ttitle"]+'</div>'+
 						'<table>'+
 						'   <tr>'+
@@ -59,7 +57,7 @@ function view(){
 						'   </tr>'+
 						'    <tr>'+
 						'       <td class="book-info">가격</td>'+
-						'       <td class="list_tprice">'+money+'<span style="font-size: 14px; color: black;"> 원</span></td>'+
+						'       <td class="list_tprice">'+price+'<span style="font-size: 14px; color: black;"> 원</span></td>'+
 						'   </tr>'+
 						'</table>'+
 			'	</div>'+
