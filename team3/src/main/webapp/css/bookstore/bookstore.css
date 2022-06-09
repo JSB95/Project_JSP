@@ -9,6 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
 
 *{
+	 font-family: 'KOHIBaeumOTF';
 }
 .bviewbox{
 	max-width: 900px;
@@ -19,7 +20,10 @@
 	border-radius: 10px;
 	padding : 10px 40px;
 }
-
+.bookbox img{
+	max-height: 160px;
+	max-width: 120px;
+}
 .contentbox{
 	border: 1px solid grey;
 	border-radius: 10px;
@@ -142,4 +146,5 @@
 	color: #999999;
 	font-size: 14px;
 	font-weight: normal;
+	width: 110px;
 }

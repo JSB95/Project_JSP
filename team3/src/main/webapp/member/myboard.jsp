@@ -15,7 +15,7 @@
 	<%@include file="../header.jsp" %>
 	<div class="container">
 		<h3 class="text-center my-4">내가 쓴 글</h3>
-		<div id="myboardlist">
+		<div id="myboardlist" class="col-md-10 offset-1">
 		</div>
 	</div>
 	<script src="/team3/js/member/myboard.js" type="text/javascript"></script>
