@@ -1,13 +1,13 @@
  /*bar*/
- @font-face {
-    font-family: 'KOHIBaeumOTF';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/KOHIBaeumOTF.woff') format('woff');
+@font-face {
+    font-family: 'Happiness-Sans-Title';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
 *{
-	font-family: 'KOHIBaeumOTF';
+	font-family: 'Happiness-Sans-Title';
 }
  
   .barbtn{
@@ -106,4 +106,5 @@
 	border-radius: 10px;
 	padding: 0px 20px 10px 20px;
 	height: 400px;
+	resize: none;
  }

@@ -1,14 +1,13 @@
 @charset "UTF-8";
-
 @font-face {
-    font-family: 'KOHIBaeumOTF';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/KOHIBaeumOTF.woff') format('woff');
+    font-family: 'Happiness-Sans-Title';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
 *{
-	font-family: 'KOHIBaeumOTF';
+	font-family: 'Happiness-Sans-Title';
 }
 
 img{
@@ -87,6 +86,9 @@ img{
 .searchbtn{
 	margin: 10px 0;
 	padding: 10px 12px;
+	background-color: white;
+	border-radius: 5px;
+	border: 1px solid gray;
 }
 
 .write{

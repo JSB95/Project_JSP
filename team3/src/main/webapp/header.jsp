@@ -26,17 +26,19 @@
 					<li class="nav-item"><a href="/team3/board/boardlist.jsp">자유게시판</a></li>
 					<li class="nav-item"><a href="/team3/review/reviewlist.jsp?keyword=">강의평</a></li>
 					<li class="nav-item"><a href="/team3/bookstore/booklist.jsp">책방</a></li>
+					<li class="nav-item"><a href="/team3/calculator/calculator.jsp">학점계산기</a></li>
 				</ul>
 			</div>
 			<div class="col-md-3 navbar navbar-expand-md d-flex justify-content-end">
 				<ul class="navbar-nav">
 					<li class="nav-item"><a href="/team3/member/memberinfo.jsp">내정보</a></li>
 					<li class="nav-item">
-						<a href="/team3/message/getmessage.jsp">쪽지</a>
-						<%
+					<%
 						int mcount= MessageDao.getMessageDao().getcount(mno1);
 						%>
-						<span><%=mcount %></span>
+						<a href="/team3/message/getmessage.jsp">쪽지</a>
+						
+						<a href="/team3/message/getmessage.jsp"><%=mcount %></a>
 					</li>
 				</ul>
 			</div>

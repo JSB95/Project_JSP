@@ -119,6 +119,7 @@ function send1(mid,sendno){
 	 '<button type="button" id="send1" class="btn btn-primary" onclick="reply1()">보내기</button>'
 );
 
+
 }
 
 function reply(){
