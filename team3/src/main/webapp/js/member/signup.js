@@ -133,8 +133,9 @@ $( function(){
 		
 		if(passwordj.test(mpassword)){
 				pass[5] = true; 
+			$("#passwordcheck1").html("사용가능한 비밀번호 입니다.");
 		}else{
-			$("#passwordcheck").html("영문, 숫자, 특수문자 포함 6~15글자 입력해주세요.");
+			$("#passwordcheck1").html("영문, 숫자, 특수문자 포함 6~15글자 입력해주세요.");
 			pass[5] = false;
 		}
 	}); //비밀번호 확인 end
@@ -145,11 +146,11 @@ $( function(){
 		let mpasswordcheck = $("#mpasswordcheck").val(); 
 		
 		if( mpassword != mpasswordcheck ){
-				$("#passwordcheck").html("비밀번호가 일치하지 않습니다.");
+				$("#passwordcheck2").html("비밀번호가 일치하지 않습니다.");
 				pass[6] = false;
 			}else{
-				$("#passwordcheck").html("사용가능한 비밀번호 입니다.");
-				pass[6] = true; pass[5] = true;
+				$("#passwordcheck2").html("비밀번호가 일치합니다.");
+				pass[6] = true;
 			}
 		}); //비밀번호 일치 확인 end
 	});
@@ -204,33 +205,36 @@ function update(){
 }
 //////////////////////////////////////// 비밀번호 수정
 function updatepw(){
+	let oldpassword = $("#oldpassword").val(); 
 	let mpassword = $("#mpassword").val(); 
-	//비밀번호 확인
-	if ($("#oldpassword").val()==$("#password").val()){
-		pass[4] = true;
-	}
-	console.log($("#oldpassword").val());
-	console.log($("#password").val());
-	
+	let mpasswordcheck = $("#mpasswordcheck").val(); 
 	for(let i = 0; i <pass.length; i++){
 			console.log(pass[i]);
 		}
-	if(pass[4] == true && pass[5] == true && pass[6] == true){
+	if(pass[5]==true){
 		$.ajax({
 			url:"/team3/member/updatepw",
 			type: 'POST',   
-			data : {"mpassword" : mpassword},
+			data : {
+				"mpassword" : mpassword,
+				"oldpassword" : oldpassword,
+				"mpasswordcheck" : mpasswordcheck,
+					},
 			success : function(result){
 				if(result == 1){
 					alert("수정 완료");
 					location.href = "/team3/member/memberinfo.jsp";
-				}else{
+				}else if(result == 2){
 					alert("비밀번호 변경 오류");
+				}else if(result == 3){
+					alert("새로운 비밀번호를 다시 확인해 주세요.");
+				}else{
+					alert("기존 비밀번호가 일치하지 않습니다.");
 				}
 			}
 		});
-	}else{
-		alert("비밀번호를 다시 확인해주세요");
+	}else {
+		alert("사용할 수 없는 비밀번호 입니다.");
 	}
 		
 }

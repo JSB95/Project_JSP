@@ -28,7 +28,7 @@
 			<div>
 				<h5>새로운 비밀번호</h5>
 				<input class="form-control" type="password" id="mpassword" name="mpassword" placeholder="비밀번호를 입력해주세요.">
-				<span id="passwordcheck" class="check">영문, 숫자, 특수문자 포함 6~15글자 입력해주세요.</span>
+				<span id="passwordcheck1" class="check">영문, 숫자, 특수문자 포함 6~15글자 입력해주세요.</span>
 				<h5>새 비밀번호 확인</h5>
 				<input class="form-control" type="password" id="mpasswordcheck" placeholder="비밀번호를 입력해주세요.">
 			</div>
@@ -41,7 +41,6 @@
 				</div>
 			</div>
 		</div>
-		<input type="hidden" value="<%=member.getMpassword()%>" id="password">
 	</div>
 	<!-- jquery cdn -->
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>

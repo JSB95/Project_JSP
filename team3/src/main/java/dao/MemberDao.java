@@ -262,6 +262,21 @@ public class MemberDao extends Dao {
 		}
 		return false;
 	}
+	//기존 비밀번호 찾기
+	public String findpwcheck(String mid) {
+		String sql = "select mpassword from member "
+				+ "where mid = '"+mid+"'";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				return rs.getString(1);
+			}
+		} catch (Exception e) {
+			System.out.println("findpwcheck 오류 : " + e);
+		}
+		return null;
+	}
 	
 	
 }

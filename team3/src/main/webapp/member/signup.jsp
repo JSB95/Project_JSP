@@ -45,11 +45,12 @@
 				<div>
 					<span>비밀번호</span>
 					<input class="form-control mb-2" type="password" id="mpassword" name="mpassword" placeholder="비밀번호를 입력해주세요.">
+					<div id="passwordcheck1" class="check">영문, 숫자, 특수문자 포함 6~15글자 입력해주세요.</div>
 				</div>
 				<div>
 					<span>비밀번호 확인</span>
 					<input class="form-control mb-2" type="password" id="mpasswordcheck" placeholder="비밀번호를 입력해주세요.">
-					<div id="passwordcheck" class="check">영문, 숫자, 특수문자 포함 6~15글자 입력해주세요.</div>
+					<div id="passwordcheck2" class="check">비밀번호를 다시 입력해주세요.</div>
 				</div>
 				<div class="row my-4">
 					<div class="col-md-4">
