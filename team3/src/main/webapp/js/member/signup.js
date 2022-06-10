@@ -132,8 +132,8 @@ $( function(){
 		let passwordj = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,15}$/;
 		
 		if(passwordj.test(mpassword)){
-				pass[5] = true; 
 			$("#passwordcheck1").html("사용가능한 비밀번호 입니다.");
+				pass[5] = true; 
 		}else{
 			$("#passwordcheck1").html("영문, 숫자, 특수문자 포함 6~15글자 입력해주세요.");
 			pass[5] = false;
@@ -208,9 +208,6 @@ function updatepw(){
 	let oldpassword = $("#oldpassword").val(); 
 	let mpassword = $("#mpassword").val(); 
 	let mpasswordcheck = $("#mpasswordcheck").val(); 
-	for(let i = 0; i <pass.length; i++){
-			console.log(pass[i]);
-		}
 	if(pass[5]==true){
 		$.ajax({
 			url:"/team3/member/updatepw",
