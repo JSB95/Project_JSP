@@ -10,10 +10,10 @@
 	<link href="/team3/css/footer.css" rel="stylesheet" >
 </head>
 <body>
-	<div class="footer">
-		<div class="container">
+	<div id="footer">
+		<div id="container">
 			<div class="row p-5">
-				<p class="p1">개인정보처리방침 | 대학정보 | 전화번호안내 | 통합서비스센터</p>
+				<p id="p1">개인정보처리방침 | 대학정보 | 전화번호안내 | 통합서비스센터</p>
 				<div class="col-md-4 offset-2 line12"> 
 					<h3> oo대학교 </h3>
 					<p>경기도 안산시 ㅇㅇ구 ㅇㅇ로 1234-1</p>

@@ -12,7 +12,18 @@
 	<link type="text/css" href="/team3/css/calculator/calculator.css" rel="stylesheet">
 	<link type="text/css" href="/team3/css/calculator/modal.css" rel="stylesheet">
 
+	<style type="text/css">
 		
+		#container div.section{
+			 height : 100vh !important; 
+			 color: #666; 
+			 font-family: "맑은 고딕", 돋움, tahoma ; 
+			 _font-family: 돋움, tahoma; 
+			 font-size: 12px; 
+			 letter-spacing: -0.5px; "
+		}
+	
+	</style>
 
 </head>
 <body style>
