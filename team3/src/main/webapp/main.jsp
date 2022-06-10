@@ -85,7 +85,7 @@
 					<div class="tablebox1">
 					<h3>자유게시판<i class="fa-solid fa-feather boardimg"></i></h3>
 					<table class="table tablefont">
-						<tr>
+						<tr class="textcenter">
 							<th>제목</th><th>댓글수</th><th>작성일</th>
 						</tr>
 					<%ArrayList<Board> getboardlist = BoardDao.getBoardDao().getboardlist();
@@ -109,7 +109,7 @@
 					<div class="tablebox2">
 					<h3>HOT 게시판<i class="fa-solid fa-feather boardimg"></i></h3>
 					<table class="table tablefont">
-						<tr>
+						<tr class="textcenter">
 							<th>제목</th><th>댓글수</th><th>추천수</th>
 						</tr>
 						<%for(int i=0; i<5; i++){ %>

@@ -81,3 +81,29 @@ input[type=password]{
 input[type=password]::placeholder{
    font-family: 'KOHIBaeumOTF';
 }
+
+
+.아이콘{
+	font-size: 70px; 
+	width: 200px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	color: #1665bc;
+}
+
+.설명{
+ color: gray;
+}
+
+.btnlogin{
+	background-color: #1665bc;
+	color: white;
+}
+
+.searchlink{
+	color: gray;
+}
+
+.blue{
+	color: #1665bc;
+}
