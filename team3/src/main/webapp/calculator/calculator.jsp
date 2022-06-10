@@ -6,9 +6,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	
-		 
-		
-		
+	<link type="text/css" href="/team3/css/calculator/common.css" rel="stylesheet">
+	<link type="text/css" href="/team3/css/calculator/partial.css" rel="stylesheet">
+	
+	<link type="text/css" href="/team3/css/calculator/calculator.css" rel="stylesheet">
+	<link type="text/css" href="/team3/css/calculator/modal.css" rel="stylesheet">
+
 		
 
 </head>
@@ -199,22 +202,28 @@
 				</table>
 			
 			</div>
+			
+			
+			
+			<form id="requiredCreditForm" class="modal_f" style="margin-left: -200px; margin-top: -92.5px; display: none;">
+				<a title="닫기" class="close"></a>
+				<h3>졸업 학점 설정</h3>
+				<p>
+			  		<label>졸업 학점</label>
+			  	<input type="number" name="required_credit" maxlength="3" class="text">
+				</p>
+				<input type="button" value="저장" class="button">
+			</form>
+			
+			
 		
 		</div>
 		
-		<form id="requiredCreditForm" class="modal" style="margin-left: -200px; margin-top: -92.5px; display: none;">
-	      <a title="닫기" class="close"></a>
-	      <h3>졸업 학점 설정</h3>
-	      <p>
-	        <label>졸업 학점</label>
-	        <input type="number" name="required_credit" maxlength="3" class="text">
-	      </p>
-	      <input type="submit" value="저장" class="button">
-	    </form>
+		
 	
 	
 
-
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript" src="/team3/js/calculator/calculator.js"></script>
 	<script  src="https://cdn.jsdelivr.net/npm/underscore@1.13.4/underscore-umd-min.js"></script>

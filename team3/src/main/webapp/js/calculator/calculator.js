@@ -260,16 +260,71 @@ function showRequiredCreditForm(){
 	var $requiredCreditForm = $('#requiredCreditForm');
 	$requiredCreditForm.find('input[name="required_credit"]').val(requiredCredit);
 	$requiredCreditForm.show();
-	var $requiredCredit = $requiredCreditForm.find('input[name="required_credit"]');
-	$requiredCreditForm.find('a.close').one('click', function () {
+	$requiredCreditForm.find('a.close').on('click', function () {
+		var $requiredCredit = $requiredCreditForm.find('input[name="required_credit"]').val();
+		$('.acquisition p.total').text("/ " + $requiredCredit);
 		$requiredCreditForm.hide();
-		$('.acquisition p.total').html("/ " + $requiredCredit);
+	});
+	
+	$requiredCreditForm.find('input.button').on('click', function () {
+		
+		var $requiredCredit = $requiredCreditForm.find('input[name="required_credit"]').val();
+		$('.acquisition p.total').text("/ " + $requiredCredit);
+		$requiredCreditForm.hide();
 	});
 	
 	
-	
-	
 }
+
+(function ($) {
+	var _oldShow = $.fn.show;
+	$.fn.show = function (speed, oldCallback) {
+		return $(this).each(function () {
+			var obj = $(this),
+			newCallback = function () {
+				if ($.isFunction(oldCallback)) {
+					oldCallback.apply(obj);
+				}
+			};
+			obj.trigger('beforeShow');
+			_oldShow.apply(obj, [speed, newCallback]);
+			obj.trigger('afterShow');
+		});
+	};
+	var _oldHide = $.fn.hide;
+	$.fn.hide = function (speed, oldCallback) {
+		return $(this).each(function () {
+			var obj = $(this),
+			newCallback = function () {
+				if ($.isFunction(oldCallback)) {
+					oldCallback.apply(obj);
+				}
+			};
+			obj.trigger('beforeHide');
+			_oldHide.apply(obj, [speed, newCallback]);
+			obj.trigger('afterHide');
+		});
+	};
+})(jQuery);
+
+$().ready(function(){
+	$('.modal_f').bind('beforeShow', function (event) {
+		console.log("123");
+		if (event.target !== this) return false;
+		var $modal = $(this);
+		var $modalwrap = $('<div></div>').addClass('modalwrap');
+		if ($modal.hasClass('popup')) $modalwrap.addClass('lighter');
+		$modalwrap.insertBefore($modal);
+		$modal.css({ 'margin-left': -($modal.outerWidth() / 2), 'margin-top': -($modal.outerHeight() / 2) });
+	}).bind('afterHide', function (event) {
+		if (event.target !== this) return false;
+		var $modal = $(this);
+		$('div.modalwrap').remove();
+	});
+	$(document).on('click', 'div.modalwrap', function (event) {
+		$('.modal_f:visible').hide();
+	});
+})
 
 
 
