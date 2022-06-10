@@ -38,17 +38,26 @@ public class updatepw extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String mpassword = request.getParameter("mpassword");
 		HttpSession session = request.getSession();
+		String mpassword = request.getParameter("mpassword");
+		String oldpassword = request.getParameter("oldpassword");
+		String mpasswordcheck = request.getParameter("mpasswordcheck");
 		String mid = (String)session.getAttribute("login");
-		boolean result = MemberDao.getMemberDao().updatepw(mpassword, mid);
-		
-		if (result) {
-			response.getWriter().print(1);
+		String password = MemberDao.getMemberDao().findpwcheck(mid);
+		if(password.equals(oldpassword)) {
+			if(mpassword.equals(mpasswordcheck)){
+				boolean result = MemberDao.getMemberDao().updatepw(mpassword, mid);
+				if (result) {
+					response.getWriter().print(1);
+				}else {
+					response.getWriter().print(2);
+				}
+	 		}else{
+	 			response.getWriter().print(3);
+	 		}
 		}else {
-			response.getWriter().print(2);
+			response.getWriter().print(4);
 		}
-		
 	}
 
 }

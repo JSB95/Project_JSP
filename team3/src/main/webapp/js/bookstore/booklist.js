@@ -57,7 +57,7 @@ function view(){
 						'   </tr>'+
 						'    <tr>'+
 						'       <td class="book-info">가격</td>'+
-						'       <td class="list_tprice">'+price+'<span style="font-size: 14px; color: black;"> 원</span></td>'+
+						'       <td class="list_tprice">'+price+'<span style="font-size: 14px; color: #363641;"> 원</span></td>'+
 						'   </tr>'+
 						'</table>'+
 			'	</div>'+
