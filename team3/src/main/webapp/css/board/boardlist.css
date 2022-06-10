@@ -70,6 +70,7 @@
  	border: 1px solid #eee;
  	border-radius: 10px;
  	margin-top: 10px;
+ 	    margin-bottom: 20px;
  }
  
  
@@ -156,3 +157,14 @@ option {
  	font-weight: bold;
  }
 
+.bb{
+	height: 230px;
+	background-color: #6a7ba2;
+	color: white;
+}
+.p1{
+	text-align: center;
+}
+.line12{
+	border-right: 1px solid white;
+}
