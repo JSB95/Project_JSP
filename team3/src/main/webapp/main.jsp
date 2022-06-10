@@ -70,7 +70,7 @@
 			  </li>
 			  <li class="nav-item iconitem">
 			    <a class="nav-link iconlink" href="calculator/calculator.jsp">
-			    	<i class="fas fa-book-open"></i>
+			    	<i class="fas fa-calculator"></i>
 			    	<h5 class="h5">학점계산기</h5>
 					<span class="font">편리한<br>성적 계산기</span>
 			    </a>

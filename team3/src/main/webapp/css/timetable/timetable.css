@@ -42,6 +42,7 @@ ol, ul {
 
 .container-lecture {
   position: relative; 
+      height: 170vh;
  }
  .container-lecture .header_timetable {
     border-bottom: 0.0625rem solid #D7E2EB;

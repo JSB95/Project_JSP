@@ -19,7 +19,7 @@
 		Member member =  MemberDao.getMemberDao().getmemberinfo(mid);
 	%>
 	<div class="container">
-		<div class="row mt-3 he">
+		<div class="row mt-3 infobox">
 			<div class="col-md-4">
 				<div class="memberbox">
 					<h4>내프로필</h4>
