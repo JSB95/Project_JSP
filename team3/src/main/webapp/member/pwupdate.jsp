@@ -42,6 +42,8 @@
 			</div>
 		</div>
 	</div>
+	<br><br><br><br><br><br><br>
+	<%@include file="../footer.jsp"%>
 	<!-- jquery cdn -->
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="../js/member/signup.js" type="text/javascript"></script>

@@ -1,15 +1,14 @@
 @charset "UTF-8";
 @font-face {
-    font-family: 'Happiness-Sans-Title';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2') format('woff2');
+    font-family: 'KOHIBaeumOTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/KOHIBaeumOTF.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 *{
-	font-family: 'Happiness-Sans-Title';
+	font-family: 'KOHIBaeumOTF';
 }
-
 img{
 	width: 20px;
 }

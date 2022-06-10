@@ -14,7 +14,7 @@ $(function(){
 
 let viewcount = 4; 
 $(window).scroll(function(){
-	if($(window).scrollTop() + 50 >= $(document).height() - $(window).height()){
+	if($(window).scrollTop() + 250 >= $(document).height() - $(window).height()){
 		viewcount++; 
 		view();
 	}

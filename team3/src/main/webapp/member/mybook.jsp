@@ -15,6 +15,8 @@
 		<div id="booklistbox" class="col-md-10 offset-1">
 		</div>
 	</div>
+	<br><br><br><br><br><br><br>
+	<%@include file="../footer.jsp"%>
 	<script src="/team3/js/member/mybook.js" type="text/javascript"></script>
 </body>
 </html>

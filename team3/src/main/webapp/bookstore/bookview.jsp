@@ -52,6 +52,7 @@
 		<div class="contentbox"><!-- 상세 설명, 쪽지버튼 -->
 			<div class="row">
 				<span>상세설명</span><span class="tcontent"><%=textbook.getTcontent()%></span>
+				
 			</div>
 				<%
 				if(textbook.getMno()== MemberDao.getMemberDao().getmno(loginid)){ %>
@@ -98,7 +99,8 @@
 	    </div>
 	  </div>
 	</div>
-	
+	<br><br><br><br><br>
+	<%@include file="../footer.jsp" %>
 	<script src="/team3/js/message/message.js" type="text/javascript"></script>
 	<script src="/team3/js/bookstore/bookstore.js" type="text/javascript"></script>
 </body>

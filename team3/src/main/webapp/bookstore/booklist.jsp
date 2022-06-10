@@ -48,6 +48,7 @@
 			</div>
 		</div>
 	</div>
+	<br><br><br><br><br>
 	<%@include file="../footer.jsp" %>
 	<div id="top">
 		<a href="#header"><i class="fa-solid fa-circle-arrow-up"></i></a>

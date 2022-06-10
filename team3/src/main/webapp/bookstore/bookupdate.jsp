@@ -78,6 +78,8 @@
 		</form>
 		
 	</div>
+	<br><br><br><br><br>
+	<%@include file="../footer.jsp" %>
 	<!-- jquery cdn -->
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<!-- 부트스트랩 js -->

@@ -37,6 +37,8 @@
 		
 		<input type="hidden" value="<%=member.getMpassword()%>" id="password">
 	</div>
+	<br><br><br><br><br><br><br>
+	<%@include file="../footer.jsp"%>
 	<!-- jquery cdn -->
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="../js/member/login.js" type="text/javascript"></script>

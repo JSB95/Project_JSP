@@ -62,7 +62,8 @@
 				</div>
 			</form>
 		</div>
-		
+		<br><br><br><br><br><br><br>
+	<%@include file="../footer.jsp"%>
 	</div>
 	<!-- jquery cdn -->
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
