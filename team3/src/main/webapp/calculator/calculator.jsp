@@ -6,17 +6,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"> 
-		<link type="text/css" href="/team3/css/calculator/common.css" rel="stylesheet">
-		<link type="text/css" href="/team3/css/calculator/partial.css" rel="stylesheet">
-		<link type="text/css" href="/team3/css/calculator/modal.css" rel="stylesheet">
-		<link type="text/css" href="/team3/css/calculator/calculator.css" rel="stylesheet">
+		 
+		
+		
+		
 
 </head>
 <body style>
 	<jsp:include page="../header.jsp" flush="true"/>
-	
-	
 	
 		<div id="container" class="calculator">
 		
@@ -204,6 +201,16 @@
 			</div>
 		
 		</div>
+		
+		<form id="requiredCreditForm" class="modal" style="margin-left: -200px; margin-top: -92.5px; display: none;">
+	      <a title="닫기" class="close"></a>
+	      <h3>졸업 학점 설정</h3>
+	      <p>
+	        <label>졸업 학점</label>
+	        <input type="number" name="required_credit" maxlength="3" class="text">
+	      </p>
+	      <input type="submit" value="저장" class="button">
+	    </form>
 	
 	
 
