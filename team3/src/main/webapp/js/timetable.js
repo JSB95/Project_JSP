@@ -605,6 +605,11 @@ $('#modal-lecture-task').on('show.bs.modal',function(){
 		}
 	}); 
 	
+	$("#memo_regist").on('click', function(){
+		console.log($(this).html());
+	})
+
+	
 })
 
 
@@ -621,15 +626,15 @@ $(function () {
 
 // popover initializeing
 $(function(){
-	//var myDefaultAllowList = bootstrap.Tooltip.Default.allowList;
-	//myDefaultAllowList.input = ['class'];
+	var myDefaultAllowList = bootstrap.Tooltip.Default.allowList;
+	myDefaultAllowList.button = [];
 	//myDefaultAllowList.textarea = ['class'];
-	//console.log(myDefaultAllowList);
+	console.log(myDefaultAllowList);
 	
 	var popover = new bootstrap.Popover(document.querySelector('[data-bs-toggle="popover"]'),{
 	    container: 'body',
 	    html: true,
-	    placement: 'auto',
+	    placement: 'left',
 	    sanitize: false,
 	    content: function () {
 	    	return $("#PopoverContent").html();
@@ -706,13 +711,9 @@ function filter(){
 	}
 }
 
-function already_regist(){
-	
+function memoregist(e){
+	console.log($(e).parent().html());
 }
 
-function lecture_duplicate(){
-	Swal.fire({
-		icon : 'error',
-		title : '겹쳐있는 시간표'
-	})
-}
+
+

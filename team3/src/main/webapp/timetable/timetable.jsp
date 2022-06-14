@@ -243,7 +243,7 @@
 					
 						<div class="modal-header">
 						
-							 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
 						
 						</div>
 						
@@ -292,7 +292,7 @@
 			</div>
 			
 			<!-- 시간표 강의 선택 Modal -->
-			<div class="modal fade" id="modal-lecture-task" role="dialog" aria-hidden="true">
+			<div class="modal fade" id="modal-lecture-task" role="dialog" aria-hidden="true" data-bs-focus="false">
 			
 			    <div class="modal-dialog" role="document">
 			    
@@ -362,9 +362,9 @@
 			            <div class="modal-footer">
 			            
 			                <div class="left">
-			                    <button class="btn btn-light-primary" type="button" data-bs-toggle="popover" data-bs-trigger="click" data-bs-placement="right" data-bs-html="true">
+			                    <a class="btn btn-light-primary" role="button" data-bs-toggle="popover" data-bs-trigger="click" data-bs-placement="right" tabindex="0" >
 			                        메모 등록
-			                    </button>
+			                    </a>
 			                    
 			                </div>
 			                
@@ -390,23 +390,13 @@
 			    
 			    <div class="form-group">
 			    
-			        <label class="col-form-label">제목
+			        <label for="message-text" class="col-form-label">메모</label>
 			        
-			            <input type="text" class="form-control" id="recipient-name" placeholder="제목 추가">
-			            
-			        </label>
+			        <textarea class="form-control" id="message-text" placeholder="메모를 입력해주세요"></textarea>
 			        
 			    </div>
 			    
-			    <div class="form-group">
-			    
-			        <label for="message-text" class="col-form-label">설명</label>
-			        
-			        <textarea class="form-control" id="message-text" placeholder="설명 추가"></textarea>
-			        
-			    </div>
-			    
-			    <button type="button" class="btn btn-primary btn-save">등록</button>
+			    <button id="memo1" onclick="memoregist(this)" data-bs-container="body" class="btn btn-primary btn-save">등록</button>
 			    
 			</div>
 			
