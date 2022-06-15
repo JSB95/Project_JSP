@@ -292,7 +292,7 @@
 			</div>
 			
 			<!-- 시간표 강의 선택 Modal -->
-			<div class="modal fade" id="modal-lecture-task" role="dialog" aria-hidden="true" data-bs-focus="false">
+			<div class="modal fade" id="modal-lecture-task" role="dialog" aria-hidden="true" data-bs-focus="false" data-bs-backdrop="static" data-bs-keyboard="false">
 			
 			    <div class="modal-dialog" role="document">
 			    

@@ -578,7 +578,8 @@ $(document).on('click','#info_btn',function(){
 
 // 시간표 강의 클릭시 모달
 $('#modal-lecture-task').on('show.bs.modal',function(){
-	
+	let table_code = 0;
+	var modal = $(this)
 	$.ajax({
 		url : "../timetable/getlectureinfo",
 		data : {"lno" : lno2},
@@ -591,6 +592,7 @@ $('#modal-lecture-task').on('show.bs.modal',function(){
 			var ltime_db = jsondata['ltime_db'];
 			var modal = $(this);
 			
+	
 			$(".lecture_title").html(lname);
 			$(".lecture_time").html(ltime);
 			$(".lecture_code").html(lno);
@@ -604,6 +606,29 @@ $('#modal-lecture-task').on('show.bs.modal',function(){
 			
 		}
 	}); 
+	
+	var mid = $('#mid').val();
+	setTimeout(function(){
+		table_code = modal.find('.lecture_code').html();
+		console.log(table_code);
+		$.ajax({
+			url : "../timetable/getmemo",
+			data : {"mid" : mid, "table_code" : table_code},
+			success : function(memo){
+				console.log(memo);
+				if (memo == "null"){
+					$(".memo-content .lecture-noti-title").html("간단한 메모 작성");
+				} else {
+					$(".memo-content .lecture-noti-title").html(memo);
+
+				}
+			}
+		})
+	},10);
+	
+	
+	
+	
 
 	
 	
@@ -622,7 +647,7 @@ $(function () {
 	})
 	
 });
-
+let popover;
 // popover initializeing
 $(function(){
 	var myDefaultAllowList = bootstrap.Tooltip.Default.allowList;
@@ -630,7 +655,7 @@ $(function(){
 	//myDefaultAllowList.textarea = ['class'];
 	console.log(myDefaultAllowList);
 	
-	var popover = new bootstrap.Popover(document.querySelector('[data-bs-toggle="popover"]'),{
+	popover = new bootstrap.Popover(document.querySelector('[data-bs-toggle="popover"]'),{
 	    container: '#modal-lecture-task',
 	    html: true,
 	    placement: 'left',
@@ -681,13 +706,20 @@ $("#delete_lecture").on('click',function(){
 	
 })
 
-function isEmpty(str){
-	if(typeof str == "undefined" || str == null || str == ""){
-		return true;
-	} else {
-		return false;
+var isEmpty = function(value){
+
+    if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
+  
+      return true
+
+    } else {
+
+      return false
+  
 	}
-}
+
+};
+
 
 // 검색 필터
 function filter(){
@@ -712,18 +744,19 @@ function filter(){
 
 function memoregist(e){
 	let memo = $(e).parent().find('#message-text').val();
-
-	$(e).parent().parent().parent().find('.lecture-noti-title').html(memo);		
-	return memo;
+	var mid = $('#mid').val();	
+	let table_code = $(e).parent().parent().parent().find('.lecture_code').html();
+	$.ajax({
+		url : "../timetable/savememo",
+		data : {"mid" : mid, "table_code" : table_code, "memo" : memo},
+		success : function(re){
+			$(e).parent().parent().parent().find('.lecture-noti-title').html(memo);
+			popover.hide();	
+		} 
+	})
+	
 }
 
-$('#memo1').click(function(){
-	alert("1");
-})
-
-$('#PopoverContent > #memo1').on('click',function(){
-	alert('2')
-})
 
 
 

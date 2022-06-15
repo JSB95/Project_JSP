@@ -163,4 +163,36 @@ public class LectureDao extends Dao{
 		}
 		return null;
 	}
+	
+	public boolean savememo(String memo, int mno, int table_code) {
+		
+		String sql = "UPDATE timetable SET memo = '" + memo + "' WHERE mno = " + mno + " AND table_code = " + table_code;
+		try {
+			System.out.println(sql);
+			ps = con.prepareStatement(sql);
+			ps.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println("save memo ERROR : " + e);
+		}
+		
+		return false;
+	}
+	
+	public String getmemo(int mno, int table_code) {
+		String sql = "SELECT memo FROM timetable WHERE mno = " + mno + " AND table_code = " + table_code;
+		System.out.println(sql);
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				String memo = rs.getString(1);
+				return memo;
+			}
+			
+		} catch (Exception e) {
+			System.out.println("get memo ERROR : " + e);
+		}
+		return null;
+	}
 }
