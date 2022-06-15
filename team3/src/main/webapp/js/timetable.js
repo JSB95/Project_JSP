@@ -604,7 +604,7 @@ $('#modal-lecture-task').on('show.bs.modal',function(){
 			
 		}
 	}); 
-	console.log(memoregist());
+
 	
 	
 
@@ -712,7 +712,7 @@ function filter(){
 
 function memoregist(e){
 	let memo = $(e).parent().find('#message-text').val();
-	console.log($(this).html());
+
 	$(e).parent().parent().parent().find('.lecture-noti-title').html(memo);		
 	return memo;
 }

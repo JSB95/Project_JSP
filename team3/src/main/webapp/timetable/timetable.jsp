@@ -394,7 +394,7 @@
 				        
 				    </div>
 				    
-				    <button id="memo1" onclick="" class="btn btn-primary btn-save">등록</button>
+				    <button id="memo1" onclick="memoregist(this)" class="btn btn-primary btn-save">등록</button>
 				    
 				</div>
 			    
