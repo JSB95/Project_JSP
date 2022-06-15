@@ -381,24 +381,26 @@
 			        
 			    </div>
 			    
+			    <!-- 메모 pop over -->
+				<div id="PopoverContent" style="visibility: hidden;">
+				
+				    <h5 class="schedule-title">메모 등록하기</h5>
+				    
+				    <div class="form-group">
+				    
+				        <label for="message-text" class="col-form-label">메모</label>
+				        
+				        <textarea class="form-control" id="message-text" placeholder="메모를 입력해주세요"></textarea>
+				        
+				    </div>
+				    
+				    <button id="memo1" onclick="" class="btn btn-primary btn-save">등록</button>
+				    
+				</div>
+			    
 			</div>
 			
-			<!-- 메모 pop over -->
-			<div id="PopoverContent" style="display: none;">
 			
-			    <h5 class="schedule-title">메모 등록하기</h5>
-			    
-			    <div class="form-group">
-			    
-			        <label for="message-text" class="col-form-label">메모</label>
-			        
-			        <textarea class="form-control" id="message-text" placeholder="메모를 입력해주세요"></textarea>
-			        
-			    </div>
-			    
-			    <button id="memo1" onclick="memoregist(this)" data-bs-container="body" class="btn btn-primary btn-save">등록</button>
-			    
-			</div>
 			
 		</div>
 	

@@ -601,13 +601,12 @@ $('#modal-lecture-task').on('show.bs.modal',function(){
 			modal.find('.lecture_code').html(lno);
 			modal.find('.lecture_professor').html(lprofessor);
 			modal.find('.lecture_time_db').html(ltime_db);
-		
+			
 		}
 	}); 
+	console.log(memoregist());
 	
-	$("#memo_regist").on('click', function(){
-		console.log($(this).html());
-	})
+	
 
 	
 })
@@ -632,7 +631,7 @@ $(function(){
 	console.log(myDefaultAllowList);
 	
 	var popover = new bootstrap.Popover(document.querySelector('[data-bs-toggle="popover"]'),{
-	    container: 'body',
+	    container: '#modal-lecture-task',
 	    html: true,
 	    placement: 'left',
 	    sanitize: false,
@@ -712,8 +711,19 @@ function filter(){
 }
 
 function memoregist(e){
-	console.log($(e).parent().html());
+	let memo = $(e).parent().find('#message-text').val();
+	console.log($(this).html());
+	$(e).parent().parent().parent().find('.lecture-noti-title').html(memo);		
+	return memo;
 }
+
+$('#memo1').click(function(){
+	alert("1");
+})
+
+$('#PopoverContent > #memo1').on('click',function(){
+	alert('2')
+})
 
 
 
